@@ -63,7 +63,8 @@ figure {margin: 0;}
 /*** VARIABLES ***/
 
 @claro: 		#fff;
-@highlight:		#1aa2dc;
+@highlight:		#ec2383;
+@obscuro: 		#707172;
 
 @twitter: 		#2aa8df;
 @facebook: 		#3c5a97;
@@ -77,8 +78,9 @@ figure {margin: 0;}
 
 /*** MIXINS ***/
 
-.font( @size: 14px, @line: 18px, @family: 'font'){
-	font: @size / @line @family;
+.font( @size: 1em; @line: 1.4em; @weight: 400; @style: ~''; @family: "proxima-nova"; ){
+	font: @style @size / @line @family;
+	font-weight: @weight;
 }
 
 .border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
@@ -165,17 +167,18 @@ figure {margin: 0;}
 /*** FRAMEWORK ***/
 
 //propiedades
-.hide{ display: none; }
+.hide{ display: none !important; }
 .block{ display: block !important; }
 
 .text-center{ text-align: center; }
 
 .no-margin{ margin: 0 !important; }
 .no-margin-bottom{ margin-bottom: 0 !important; }
+.margin-bottom{ margin-bottom: @margen !important; }
 
 //layout
 .container{ min-width: 300px; }
-.width{ width: 90%; min-width: 300px; margin: 0 auto @margen auto; }
+.width{ width: 90%; min-width: 300px; margin-left: auto; margin-right: auto; }
 .full{ width: 100%;
   //img{ width: 100%; height: auto; }
 }
@@ -239,9 +242,83 @@ p{ margin-bottom: 1em; }
 
 body{ background: #fff; .font; }
 
+h1{ margin: 0; .font(2em, 0.8em); }
+h2{ margin: 0 0 (@margen*2) 0; .font(1.6em, 1, 600); text-transform: uppercase; color: @obscuro;
+	&.hero{ color: @highlight; }
+}
+h3{ .font(1.6em, 1, 400); color: @obscuro; }
+
+button, .boton{ padding: (@margen/1.5); border: none; .font(1.2em, 1, 300); text-decoration: none; text-transform: uppercase; text-align: center; letter-spacing: 0.05em; .border-radius; .transition; cursor: pointer;
+	&.hollow{ color: @highlight; background: transparent; border: 2px solid @highlight;
+		&:hover, &.active{ background: @highlight; color: @claro; }
+	}
+	&.solid{ background: lighten(@obscuro, 10%); color: @claro;
+		&:hover, &.active{ background: @obscuro; }
+	}
+	&.big{ padding: (@margen/2); .font(1.5em, 1); letter-spacing: 0.05em; }
+
+	&.hero{
+		&:hover, &.active{ background: @claro; color: @highlight; }
+	}
+}
+
+//Tabs
+.tabs{
+	&.hero{
+		a{ background: lighten(@highlight, 20%); color: lighten(@highlight, 30%); }
+		.active{ background: @highlight; color: @claro; }
+	}
+
+	.first{ .border-radiuses(0,0, 4px, 4px); }
+	.last{ .border-radiuses(4px, 4px,0,0); }
+}
 /*** HEADER ***/
 
+header{ margin-bottom: (@margen*2); border-bottom: 1px solid @obscuro;
+	i{ display: block; width: 100%; font-size: 2em; text-align: center; cursor: pointer; }
+}
+
+.menu, h1, .search{ display: inline-block; vertical-align: middle; padding: @margen 0; }
+
+.menu{ width: 14%; position: relative;
+	i{ }
+}
+
+nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @obscuro; position: absolute;
+	a{ display: block; padding: (@margen/2); text-align: center; border-bottom: 1px solid @claro; color: @claro; background: @obscuro; text-decoration: none; .transition;
+		&:hover{ background: lighten(@obscuro, 10%); }
+	}
+}
+
+h1{ width: 65%; text-align: center;
+	a{ color: @obscuro; text-decoration: none; }
+}
+
+.search{ width: 14%;
+	i{ font-size: 1.6em; }
+}
+
 /*** FOOTER ***/
+
+/*** MAIN ***/
+
+.main-search{ margin: 0 0 (@margen*2) 0;
+	&.hero{
+		input, button{ background: @highlight; color: @claro;
+			&:focus{ outline-color: @highlight; }
+			&:focus, &:hover{ background: darken(@highlight, 10%); }
+		}
+	}
+
+	input, button{ height: (@margen*2.5); border: none; background: lighten(@obscuro, 35%); color: @claro; outline-color: @claro; .transition;
+		&:focus{ outline-color: @obscuro; }
+		&:focus, &:hover{ background: lighten(@obscuro, 30%); }
+	}
+	input{ padding: (@margen/2); .border-radiuses(0,0,4px,4px); .font(1.2em, 1); }
+	button{ border-left: 1px solid @claro; .border-radiuses(4px,4px,0,0); font-size: 1.3em;
+		&:focus{ outline-style: none; }
+	}
+}
 
 /*** MEDIA QUERIES ***/
 
