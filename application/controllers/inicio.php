@@ -19,13 +19,17 @@ class Inicio extends CI_Controller {
 		$data['info'] = json_decode(
 		    file_get_contents('http://admin_ts:@dm1n_TS_123@localhost:8888/directorio/index.php/api/info_tramite/id/43/format/json')
 		);
-		
+
 		// Cargar vista inicio
 		$this->load->view('header', $data);
 		//$this->load->view('inicio');
 		//$this->load->view('categoria');
-		$this->load->view('tramite', $data);
+		$this->load->view('inicio', $data);
 		$this->load->view('footer', $data);
+	}
+
+	function muestraTramite($id){
+		echo $id;
 	}
 
 

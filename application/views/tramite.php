@@ -16,7 +16,7 @@
 			<a href="#" class="block text-center boton solid full margin-bottom">Categorías de servicios</a>
 		</div> <!-- /.main-busqueda -->
 		<div class="main-content columna large-8 full">
-			<h2 class="hero text-center">Desazolve de drenaje</h2>
+			<h2 class="hero text-center"><?php echo $info->nombre_tramite; ?></h2>
 
 		<div class="quick-access-menu">
 			<a href="#" class="quick-link first">
