@@ -33,6 +33,19 @@
 			cambiarTab( $(this) );
 		});
 
+		mediaCheck({
+			media: '(min-width: 1025px)',
+			entry: function() {
+				mayorQueLarge();
+			},
+			exit: function() {
+				menorQueLarge();
+			},
+			both: function() {
+				//console.log('changing state');
+			}
+		});
+
 	});
 
 	function abrirMenu(elemento, menu){
@@ -46,5 +59,22 @@
 		$('.tab-content').addClass('hide');
 		$('.'+tabAAbrir).removeClass('hide');
 	}
+
+	function mayorQueLarge(){
+		undoH2ABotones();
+	}
+
+	function menorQueLarge(){
+		h2ABotones();
+	}
+
+	function h2ABotones(){
+		$('.transform h2').addClass('boton solid hero');
+	}
+
+	function undoH2ABotones(){
+		$('.transform h2').removeClass('boton solid hero');
+	}
+
 
 })(jQuery);

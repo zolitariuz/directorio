@@ -170,6 +170,9 @@ figure {margin: 0;}
 .hide{ display: none !important; }
 .block{ display: block !important; }
 
+.xmall{ display: block; }
+.no-xmall{ display: none; }
+
 .text-center{ text-align: center; }
 
 .no-margin{ margin: 0 !important; }
@@ -178,7 +181,7 @@ figure {margin: 0;}
 
 //layout
 .container{ min-width: 300px; }
-.width{ width: 90%; min-width: 300px; margin-left: auto; margin-right: auto; }
+.width{ width: 90%; min-width: 300px; max-width: 1280px; margin-left: auto; margin-right: auto; }
 .full{ width: 100%;
   //img{ width: 100%; height: auto; }
 }
@@ -257,31 +260,61 @@ button, .boton{ padding: (@margen/1.5); border: none; .font(1.2em, 1, 300); text
 	}
 	&.big{ padding: (@margen/2); .font(1.5em, 1); letter-spacing: 0.05em; }
 
-	&.hero{
-		&:hover, &.active{ background: @claro; color: @highlight; }
+	&.hero{ background: @highlight; color: @claro;
+		&:hover, &.active{ background: lighten(@highlight, 10%); }
 	}
 }
 
 //Tabs
 .tabs{
 	&.hero{
-		a{ background: lighten(@highlight, 20%); color: lighten(@highlight, 30%); }
-		.active{ background: @highlight; color: @claro; }
+		a{ background: lighten(@highlight, 20%); color: lighten(@highlight, 30%);
+			&:hover, &.active{ background: @highlight; color: @claro; }
+		}
 	}
 
-	.first{ .border-radiuses(0,0, 4px, 4px); }
-	.last{ .border-radiuses(4px, 4px,0,0); }
+	.first{ border-right: 1px solid @claro; .border-radiuses(0,0, 4px, 4px); }
+	.last{ border-left: 1px solid @claro; .border-radiuses(4px, 4px,0,0); }
 }
+
+//Quick Menu
+.quick-access-menu{ margin: 0 0 (@margen*2) 0;
+	.quick-link{ display: inline-block; vertical-align: top; width: 25%; border-right: 1px solid @highlight; text-align: center; color: @obscuro; text-decoration: none; .font(0.7em);
+		i{ display: block; width: 100%; margin: 0 0 (@margen/2) 0; text-align: center; font-size: 1.5em; }
+	}
+	.last{ border: none; }
+}
+
+//Contenido
+.content{
+	h2{ margin-bottom: @margen; }
+	ul, p{ .font(1em, 1.4em); color: @obscuro; }
+	ul{ list-style: disc; }
+	p{
+		&.hero{ .font(1.1em, 1.4em, 600); }
+	}
+}
+article{ margin-bottom: @margen; }
+
+.paso{  margin: 0 0 @margen 0;
+	span{ display: block; width: (@margen*2); height: (@margen*2); margin: 0 (@margen/2) 0 0; .border-radius; .font(1.1em, (@margen*2)+2, 600); background: @highlight; color: @claro; text-align: center; position: relative; float: left; .transition; z-index: 2;}
+	p{
+		&:last-child{ margin-bottom: 0; }
+	}
+}
+
+
+
 /*** HEADER ***/
 
 header{ margin-bottom: (@margen*2); border-bottom: 1px solid @obscuro;
-	i{ display: block; width: 100%; font-size: 2em; text-align: center; cursor: pointer; }
+	i{ display: block; width: 100%; font-size: 2em; cursor: pointer; }
 }
 
 .menu, h1, .search{ display: inline-block; vertical-align: middle; padding: @margen 0; }
 
 .menu{ width: 14%; position: relative;
-	i{ }
+	i{ text-align: left; }
 }
 
 nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @obscuro; position: absolute;
@@ -295,7 +328,7 @@ h1{ width: 65%; text-align: center;
 }
 
 .search{ width: 14%;
-	i{ font-size: 1.6em; }
+	i{ font-size: 1.6em; text-align: right; }
 }
 
 /*** FOOTER ***/
@@ -416,7 +449,6 @@ h1{ width: 65%; text-align: center;
 @media only screen and (min-width: 64.063em) {
 	//Framework
 	.columna{
-
 		&.large-1{ width: 6.3%; }
 		&.large-2{ width: 14.6%; }
 		&.large-3{ width: 22.9%; }
@@ -432,7 +464,6 @@ h1{ width: 65%; text-align: center;
 	}
 
 	.span{
-
 		&.large-1{ width: 8.3%; }
 		&.large-2{ width: 16.6%; }
 		&.large-3{ width: 24.9%; }
@@ -451,6 +482,24 @@ h1{ width: 65%; text-align: center;
 	.no-large{ display: none; }
 
 	//========================//
+
+	//HEADER
+	header{ margin-top: (@margen*2); }
+	h1, nav.large{ margin-bottom: (@margen); }
+	h1{ width: 29%; margin-left: 1%; padding: 0; text-align: left; }
+	nav.large{ display: inline-block !important; vertical-align: top; width: 70%; border: none; background: none; position: relative;
+		a{ display: inline-block; vertical-align: top; width: 25%; padding: 0; border: none; color: @highlight; background: none; }
+	}
+
+	//MAIN
+	.main-busqueda{ padding: @margen @margen 0 @margen; background: lighten(@obscuro, 40%);
+		.boton{
+			&:last-child{ margin-top: 0; }
+		}
+	}
+
+	//Content
+	article{ border-bottom: 1px dashed lighten(@obscuro, 40%); }
 }
 
  /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
