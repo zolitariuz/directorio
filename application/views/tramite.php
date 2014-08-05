@@ -21,13 +21,10 @@
 		<div class="quick-access-menu">
 			<a href="#" class="quick-link first">
 				<i class="fa fa-university"></i>
-				¿Dónde se realiza?
+				Ente responsable
 			</a><a href="" class="quick-link">
 				<i class="fa fa-clock-o"></i>
 				Tiempo de respuesta
-			</a><a href="" class="quick-link">
-				<i class="fa fa-phone"></i>
-				Quejas y sugerencias
 			</a><a href="" class="quick-link last">
 				<i class="fa fa-map-marker"></i>
 				Áreas de atención
@@ -36,7 +33,6 @@
 
 		<section class="content">
 			<article class="consiste">
-				<h2>¿En qué consiste?</h2>
 				<p class="hero">Servicios que el Gobierno del Distrito Federal presta a todos los habitantes a través del Sistema de Aguas de la Ciudad de México y/o las Delegaciones para evitar y corregir anomalías que impidan el correcto funcionamiento del sistema de drenaje y alcantarillado.</p>
 				<ul>
 					<li>Ediﬁcaciones en suelo de conservación.</li>
@@ -75,7 +71,7 @@
 				</div>
 			</article>
 			<article class="transform" data-content="beneficio-resultado">
-				<h2>Beneficio / resultado</h2>
+				<h2>Beneficio / Documento a obtener</h2>
 				<div class="no-xmall large modal-to-be">
 					<p>Contar con instalaciones de drenaje en óptimas condiciones de funcionamiento, para evitar focos infecciosos y la óptima circulación.</p>
 				</div>
