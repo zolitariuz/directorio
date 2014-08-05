@@ -265,6 +265,14 @@ button, .boton{ padding: (@margen/1.5); border: none; .font(1.2em, 1, 300); text
 	}
 }
 
+.modal-wrapper{ width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); position: fixed; top: 0; left: 0; z-index: 9999;
+	.modal{ width: 30%; height: auto; padding: @margen; .center-full; background: @claro; position: relative; }
+	.cerrar{ color: @highlight; position: absolute; top: -(@margen/2); right: -(@margen/2); cursor: pointer;
+		.fa-stack{ width: (@margen*2) - 0.5; height: (@margen*2) - 0.5; line-height: (@margen*2) - 0.5; }
+		.fa-stack-2x{ font-size: (@margen*2) - 0.5; line-height: 1.05em }
+	}
+}
+
 //Tabs
 .tabs{
 	&.hero{
@@ -302,8 +310,6 @@ article{ margin-bottom: @margen; }
 		&:last-child{ margin-bottom: 0; }
 	}
 }
-
-
 
 /*** HEADER ***/
 

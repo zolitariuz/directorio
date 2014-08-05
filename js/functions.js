@@ -33,6 +33,10 @@
 			cambiarTab( $(this) );
 		});
 
+		$('body').on('click', '.transform .boton', function(){
+			abrirModal( $(this) );;
+		});
+
 		mediaCheck({
 			media: '(min-width: 1025px)',
 			entry: function() {
@@ -74,6 +78,22 @@
 
 	function undoH2ABotones(){
 		$('.transform h2').removeClass('boton solid hero');
+	}
+
+	function abrirModal(elemento){
+		var modalClass 		= elemento.parent().data('content');
+		var modalContent 	= elemento.parent().find('.modal-to-be').html();
+		console.log(modalContent);
+		$('.modal-wrapper.'+modalClass).fadeIn('normal', function(){
+			$(this).removeClass('hide');
+		});
+	}
+
+	function cerrarModal(elemento){
+		var aCerrar = elemento.parent();
+		aCerrar.fadeOut('normal', function(){
+			$(this).addClass('hide');
+		});
 	}
 
 
