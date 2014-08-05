@@ -8,15 +8,15 @@ class Inicio extends CI_Controller {
 	}
 
 	function index()
-	{	 
+	{
 		$data['css'] = $this->config->item('css');
 		$data['js'] = $this->config->item('js');
 		$this->load->view('header', $data);
-		$this->load->view('inicio');
+		//$this->load->view('inicio');
+		//$this->load->view('categoria');
+		$this->load->view('tramite');
 		$this->load->view('footer', $data);
 	}
 
-	function hola(){
-		echo 'tamos tomando';
-	}
+
 }
