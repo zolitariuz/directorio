@@ -37,6 +37,10 @@
 			abrirModal( $(this) );;
 		});
 
+		$('body').on('click', '.modal .cerrar', function(){
+			cerrarModal( $(this) );;
+		});
+
 		mediaCheck({
 			media: '(min-width: 1025px)',
 			entry: function() {
@@ -83,15 +87,18 @@
 	function abrirModal(elemento){
 		var modalClass 		= elemento.parent().data('content');
 		var modalContent 	= elemento.parent().find('.modal-to-be').html();
-		console.log(modalContent);
-		$('.modal-wrapper.'+modalClass).fadeIn('normal', function(){
+		//console.log(modalContent);
+		$('.modal-content').html(modalContent, function(){
+			console.log('ya');
+		});
+		$('.modal-wrapper').fadeIn('fast', function(){
 			$(this).removeClass('hide');
 		});
 	}
 
 	function cerrarModal(elemento){
-		var aCerrar = elemento.parent();
-		aCerrar.fadeOut('normal', function(){
+		var aCerrar = elemento.parent().parent();
+		aCerrar.fadeOut('fast', function(){
 			$(this).addClass('hide');
 		});
 	}
