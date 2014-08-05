@@ -40,6 +40,27 @@ class Api extends REST_Controller
         }
     }
 
+    function requisitos_get()
+    {
+        $this->load->model('info_ts');
+        if(!$this->get('id'))
+        {
+            $this->response(NULL, 400);
+        }
+ 
+        $tramite = $this->info_ts->getRequisitos( $this->get('id') );
+         
+        if($tramite)
+        {
+            $this->response($tramite, 200); // 200 being the HTTP response code
+        }
+ 
+        else
+        {
+            $this->response(NULL, 404);
+        }
+    }
+
     function consulta_materia_get()
     {
         $this->load->model('consulta_materia');
