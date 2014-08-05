@@ -88,9 +88,7 @@
 		var modalClass 		= elemento.parent().data('content');
 		var modalContent 	= elemento.parent().find('.modal-to-be').html();
 		//console.log(modalContent);
-		$('.modal-content').html(modalContent, function(){
-			console.log('ya');
-		});
+		$('.modal-content').html(modalContent);
 		$('.modal-wrapper').fadeIn('fast', function(){
 			$(this).removeClass('hide');
 		});
