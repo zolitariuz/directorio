@@ -1,0 +1,4 @@
+- Darle tratamiento a Ente responsable... 
+- Darle formato a los requisitos
+- La url del formato debe de ir como link
+- Tramite, servicio para autocomplete

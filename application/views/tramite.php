@@ -77,12 +77,12 @@
 					<p><?php echo $ts[0]->formato; ?></p>
 				</div>
 			</article>
-			<article class="transform" data-content="beneficio-resultado">
+			<!-- <article class="transform" data-content="beneficio-resultado">
 				<h2>Beneficio / Documento a obtener</h2>
 				<div class="no-xmall large modal-to-be">
 					<p>Contar con instalaciones de drenaje en óptimas condiciones de funcionamiento, para evitar focos infecciosos y la óptima circulación.</p>
 				</div>
-			</article>
+			</article> -->
 
 		</section><!-- /.content -->
 	</div><!-- width -->

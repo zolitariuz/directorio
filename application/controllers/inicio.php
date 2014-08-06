@@ -14,17 +14,20 @@ class Inicio extends CI_Controller {
 		// carga estilos y js
 		$data['css'] = $this->config->item('css');
 		$data['js'] = $this->config->item('js');
+		$id = 44;
 
+		//43, 44, 46
 		$data['ts'] = json_decode(
-		    file_get_contents('http://admin_ts:@dm1n_TS_123@localhost:8888/directorio/index.php/api/info_tramite/id/43/format/json')
+		    file_get_contents('http://admin_ts:@dm1n_TS_123@localhost:8888/directorio/index.php/api/info_tramite/id/'.$id.'/format/json')
 		);
 		$data['requisitos'] = json_decode(
-		    file_get_contents('http://admin_ts:@dm1n_TS_123@localhost:8888/directorio/index.php/api/requisitos/id/43/format/json')
+		    file_get_contents('http://admin_ts:@dm1n_TS_123@localhost:8888/directorio/index.php/api/requisitos/id/'.$id.'/format/json')
 		);
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);
 		$this->load->view('tramite', $data);
+		//$this->load->view('categoria', $data);
 		$this->load->view('footer', $data);
 	}
 
