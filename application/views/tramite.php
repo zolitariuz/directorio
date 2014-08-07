@@ -17,18 +17,18 @@
 		</div> <!-- /.main-busqueda -->
 		<div class="main-content columna large-8 full">
 			
-			<h2 class="hero text-center"><?php echo $ts[0]->nombre_tramite; ?></h2>
+			<h2 class="hero text-center"><?php echo $ts->nombre_tramite; ?></h2>
 
 		<div class="quick-access-menu">
 			<a href="#" class="quick-link first">
 				<i class="fa fa-university"></i>
 				Ente responsable: <br />
-				<?php echo $ts[0]->ente; ?>
+				<?php echo $ts->ente; ?>
 			</a><a href="" class="quick-link">
 				<i class="fa fa-clock-o"></i>
 				Tiempo de respuesta:<br />
 				<?php
-					$tiempo_respuesta = explode('_', $ts[0]->tiempo_respuesta); 
+					$tiempo_respuesta = explode('_', $ts->tiempo_respuesta); 
 					$dias = $tiempo_respuesta[0];
 
 					if($tiempo_respuesta[1] == 1){
@@ -50,23 +50,36 @@
 
 		<section class="content">
 			<article class="consiste">
-				<p class="hero"><?php echo $ts[0]->descripcion_ts; ?></p>
+				<p class="hero"><?php echo $ts->descripcion_ts; ?></p>
 			</article>
 			<article class="transform" data-content="requisitos">
 				<h2>Requisitos</h2>
 				<div class="no-xmall large modal-to-be">
 					<?php 
+
+					$documentoOficial = '';
+					$numReq = 1;
 					foreach ($requisitos as $key => $value) {
-						$numReq = intval($key) + 1;
-						echo '<div class="paso clearfix">';
-						echo '<span>'.$numReq.'</span>';
-						if(substr($value->requisito, 0, 1) == 'y' || substr($value->requisito, 0, 1) == 'o' ){
-							echo '<p>'.substr($value->requisito, 2).'</p>';
+						if($documentoOficial != $value->documento_oficial){
+							$documentoOficial = $value->documento_oficial;
+							echo '<div class="paso clearfix">';
+							echo '<span>'.$numReq.'</span>';
+							echo '<p><strong>'.$documentoOficial.': </strong>';
+							$numReq = $numReq + 1;
+							$numReqAcr = 1;
 						}
-						else {
-							echo '<p>'.$value->requisito.'</p>';
+						$documentoAcreditacion = $value->documento_acreditacion;
+						if($numReqAcr == 1){
+							if(substr($documentoAcreditacion, 0, 1) == 'y' || substr($documentoAcreditacion, 0, 1) == 'o' )
+								$documentoAcreditacion = substr($documentoAcreditacion, 2);
+						} 
+						
+						echo $documentoAcreditacion.' ';
+						if($documentoOficial != $value->documento_oficial){
+							echo '</p></div>';
+						} else {
+							$numReqAcr = $numReqAcr + 1;
 						}
-						echo '</div>';
 					}
 					?>
 				</div>
@@ -74,7 +87,7 @@
 			<article class="transform" data-content="formatos-requeridos">
 				<h2>Formatos requeridos</h2>
 				<div class="no-xmall large modal-to-be">
-					<p><?php echo $ts[0]->formato; ?></p>
+					<p></p>
 				</div>
 			</article>
 			<!-- <article class="transform" data-content="beneficio-resultado">

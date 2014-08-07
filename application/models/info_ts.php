@@ -12,7 +12,7 @@ class Info_ts extends CI_Model {
 
 		foreach ($query->result() as $key=>$row)
 		{
-		    $res[$key] = array(
+		    $res = array(
 		    	'id_cat_tramite_servicio' 	=> $row->id_cat_tramite_servicio,
 		    	'nombre_tramite' 			=> $row->nombre_tramite,
 		    	'id_tramite_servicio' 		=> $row->id_tramite_servicio,
@@ -24,7 +24,7 @@ class Info_ts extends CI_Model {
 		}
 		return $res;
 	}
-
+ // CatReq., id_tramite_servicio, CatCatReq.descripcion AS documento_oficial, CatReq.descripcion AS documento_acreditacion
 	public function getRequisitos($id){
 		$query = $this->db->get_where('v_requisito_ts', array('id_tramite_servicio' => $id));
 		$res = array();
@@ -32,8 +32,11 @@ class Info_ts extends CI_Model {
 		foreach ($query->result() as $key=>$row)
 		{
 		    $res[$key] = array(
-		    	'id_tramite_servicio' 	=> $row->id_tramite_servicio,
-		    	'requisito'	 	=> $row->requisito,
+		    	'id_requisito_ts'	 		=> $row->id_requisito_ts,
+		    	'id_cat_requisito' 			=> $row->id_cat_requisito,
+		    	'id_tramite_servicio'	 	=> $row->id_tramite_servicio,
+		    	'documento_oficial' 		=> $row->documento_oficial,
+		    	'documento_acreditacion' 	=> $row->documento_acreditacion,
 		    	);
 		}
 		return $res;

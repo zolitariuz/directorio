@@ -1,0 +1,18 @@
+-- VISTA INFO TRAMITES Y SERVICIOS
+CREATE VIEW v_info_ts
+AS
+SELECT CatTS.id_cat_tramite_servicio, CatTS.descripcion AS nombre_tramite, TS.id_tramite_servicio, TS.descripcion AS descripcion_ts, CatEnte.descripcion AS ente, TS.tiempo_respuesta, TS.beneficiario, CatMat.id_cat_materia, CatMat.descripcion AS materia, TS.is_tramite
+FROM cat_tramite_servicio CatTS 
+INNER JOIN tramite_servicio TS ON TS.id_cat_tramite_servicio = CatTS.id_cat_tramite_servicio
+INNER JOIN cat_ente CatEnte ON CatEnte.id_cat_ente = TS.id_ente_responsable
+INNER JOIN cat_materia CatMat ON CatMat.id_cat_materia = CatTS.id_cat_materia
+
+-- VISTA REQUISITOS
+CREATE VIEW v_requisito_ts
+AS
+SELECT ReqTS.id_requisito_ts, CatReq.id_cat_requisito, id_tramite_servicio, CatCatReq.descripcion AS documento_oficial, CatReq.descripcion AS documento_acreditacion
+FROM requisito_ts ReqTS 
+INNER JOIN cat_requisito CatReq ON CatReq.id_cat_requisito = ReqTS.id_cat_requisito
+INNER JOIN cat_categoria_requisito CatCatReq ON CatCatReq.id_cat_categoria_requisito = CatReq.categoria
+WHERE eliminado = 1
+ORDER BY id_tramite_servicio, categoria 
