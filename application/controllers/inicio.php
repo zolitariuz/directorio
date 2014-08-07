@@ -39,6 +39,9 @@ class Inicio extends CI_Controller {
 		$data['requisitos'] = json_decode(
 		    file_get_contents('http://admin_ts:@dm1n_TS_123@localhost:8888/directorio/index.php/api/requisitos/id/'.$idTramite.'/format/json')
 		);
+		$data['requisitos_esp'] = json_decode(
+		    file_get_contents('http://admin_ts:@dm1n_TS_123@localhost:8888/directorio/index.php/api/requisitos_esp/id/'.$idTramite.'/format/json')
+		);
 
 		// Cargar vista inicio
 		$this->load->view('header');

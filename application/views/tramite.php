@@ -56,9 +56,10 @@
 				<h2>Requisitos</h2>
 				<div class="no-xmall large modal-to-be">
 					<?php 
-
+					// Cargar requisitos
 					$documentoOficial = '';
 					$numReq = 1;
+					$esDiferente = false;
 					foreach ($requisitos as $key => $value) {
 						if($documentoOficial != $value->documento_oficial){
 							$documentoOficial = $value->documento_oficial;
@@ -67,7 +68,10 @@
 							echo '<p><strong>'.$documentoOficial.': </strong>';
 							$numReq = $numReq + 1;
 							$numReqAcr = 1;
-						}
+							$esDiferente = true;
+						} else
+							$esDiferente = false;
+
 						$documentoAcreditacion = $value->documento_acreditacion;
 						if($numReqAcr == 1){
 							if(substr($documentoAcreditacion, 0, 1) == 'y' || substr($documentoAcreditacion, 0, 1) == 'o' )
@@ -75,12 +79,26 @@
 						} 
 						
 						echo $documentoAcreditacion.' ';
-						if($documentoOficial != $value->documento_oficial){
+						if($esDiferente && $numReqAcr > 0){
+							echo 'FIN';
 							echo '</p></div>';
+							//echo '<div class="clear"></div>';
 						} else {
 							$numReqAcr = $numReqAcr + 1;
 						}
-					}
+					} // end foreach
+
+					// Cargar requisitos específicos
+					$requisitoEsp = '';
+					foreach ($requisitos_esp as $key => $value) {
+						$requisitoEsp = $value->requisito_especifico;
+						echo '<div class="paso clearfix">';
+						echo '<span>'.$numReq.'</span>';
+						echo '<p><strong>'.$requisitoEsp.'</strong></p>';
+						echo '</div>';
+						echo '<div class="clear"></div>';
+						$numReq = $numReq + 1;
+					} // end foreach
 					?>
 				</div>
 			</article>
