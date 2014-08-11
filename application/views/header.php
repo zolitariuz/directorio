@@ -32,7 +32,7 @@
 						<i class="fa fa-bars"></i>
 					</div>
 					<h1>
-						<a href="#">
+						<a href="<?php echo base_url() ?>">
 							Trámites CD MX
 							<!-- <img src="imags/logo-tramites.png" alt="" /> -->
 						</a>

@@ -20,6 +20,31 @@ class Info_ts extends CI_Model {
 		    	'ente'	 					=> $row->ente,
 		    	'tiempo_respuesta'	 		=> $row->tiempo_respuesta,
 		    	'beneficiario'	 			=> $row->beneficiario,
+		    	'materia'					=> $row->materia,
+		    	'tramite_servicio'    		=> $row->tramite_servicio
+		    	);
+		}
+		return $res;
+	}
+
+	public function getTramitesServicios($tramiteOServicio){
+		$this->db->select('*');
+		$this->db->from('v_info_ts');
+		$tipoTS = array($tramiteOServicio, '3');
+		$this->db->where_in('tramite_servicio', $tipoTS);
+		$this->db->limit(10);
+		$this->db->order_by('tramite_servicio', 'asc');
+		$query = $this->db->get();
+
+		$res = array();
+
+		foreach ($query->result() as $key=>$row)
+		{
+		    $res[$key] = array(
+		    	'id_cat_tramite_servicio' 	=> $row->id_cat_tramite_servicio,
+		    	'nombre_ts' 				=> $row->nombre_tramite,
+		    	'id_tramite_servicio' 		=> $row->id_tramite_servicio,
+		    	'tramite_servicio'    		=> $row->tramite_servicio
 		    	);
 		}
 		return $res;

@@ -22,5 +22,15 @@
 	<script src="<?php echo base_url() ?>assets/js/plugins.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/functions.js"></script>
 
+	<?php if(isset($area_atencion)) { ?>
+		<script>
+			$(document).ready(function(){
+				//getCoordenadas(1);
+			});
+		</script>
+	<?php } else {?>
+		<p>NEL</p>
+	<?php } ?>
+
 
 </html>
