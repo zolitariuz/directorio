@@ -65,12 +65,12 @@
 				<div class="no-xmall large modal-to-be">
 					<?php 
 					// Cargar requisitos si existen
+					$numReq = 1;
 					if($requisitos == '' && $requisitos_esp == ''){
 						echo '<p>Este trámite o servicio no tiene requisitos</p>';
 					} else { 
 						if($requisitos != ''){
 							$documentoOficial = '';
-							$numReq = 1;
 							$esDiferente = false;
 							$numReqAcr = -1;
 							foreach ($requisitos as $key => $value) {
@@ -138,27 +138,26 @@
 			</article>
 			<article class="" data-content="area-atencion">
 				<h2>Áreas de atención</h2>
-				<div class="">
+				<div id="map"></div>
+			</article>
+			
+			<article class="" data-content="beneficio-documento">
+				<h2>Beneficio / Documento a obtener</h2>
+				<div class="no-xmall large modal-to-be">
 					<?php 
-					if($area_atencion != ''){
-						foreach ($area_atencion as $key => $value) {
-							$urlMapa = $value->url_ubicacion;
-							echo '<p>mapa: '.$urlMapa.'</p>';
-
+					if($documento != ''){
+						foreach ($documento as $key => $value) {
+							$nombreDocumento = $value->descripcion;
+							$vigencia = $value->vigencia;
+							echo '<p>'.$nombreDocumento.'<br />';
+							echo 'Vigencia: '.$vigencia.'</p>';
 						} // end foreach
 					} else {
-						echo '<p>Este trámite o servicio no tiene áreas de atención.</p>';
-
+						echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
 					}
 					?>
 				</div>
-			</article>
-			<!-- <article class="transform" data-content="beneficio-resultado">
-				<h2>Beneficio / Documento a obtener</h2>
-				<div class="no-xmall large modal-to-be">
-					<p>Contar con instalaciones de drenaje en óptimas condiciones de funcionamiento, para evitar focos infecciosos y la óptima circulación.</p>
-				</div>
-			</article> -->
+			</article> 
 
 		</section><!-- content -->
 	</div><!-- width -->

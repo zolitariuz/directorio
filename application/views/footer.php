@@ -15,22 +15,16 @@
 				</div>
 			</div>
 		</div>
-
 	</body>
 
 	<script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/plugins.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/functions.js"></script>
-
-	<?php if(isset($area_atencion)) { ?>
-		<script>
-			$(document).ready(function(){
-				//getCoordenadas(1);
-			});
-		</script>
-	<?php } else {?>
-		<p>NEL</p>
-	<?php } ?>
-
-
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	
+	<script>
+		<?php if($area_atencion != '') { ?>
+			getMapas('<?php echo $area_atencion ?>');
+		<?php } ?>
+	</script>
 </html>

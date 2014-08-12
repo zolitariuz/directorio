@@ -137,5 +137,7 @@ class Api extends REST_Controller
             $this->response(NULL, 404);
         }
     } // end area_atencion_get
+
+
 } // end class Api
 ?>
