@@ -146,12 +146,19 @@
 				<div class="no-xmall large modal-to-be">
 					<?php 
 					if($documento != ''){
+						$sinDocumento = true;
 						foreach ($documento as $key => $value) {
 							$nombreDocumento = $value->descripcion;
 							$vigencia = $value->vigencia;
-							echo '<p>'.$nombreDocumento.'<br />';
-							echo 'Vigencia: '.$vigencia.'</p>';
+							$vigenciaArray = explode('_', $vigencia);
+							if($vigencia != -1) {
+								echo '<p>'.$nombreDocumento.'<br />';
+								echo 'Vigencia: '.$vigencia.'</p>';
+								$sinDocumento = false;
+							}
 						} // end foreach
+						if($sinDocumento)
+							echo '<p>No se obtiene documento alguno</p>';
 					} else {
 						echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
 					}
