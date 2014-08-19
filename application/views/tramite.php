@@ -16,18 +16,25 @@
 			<a href="#" class="block text-center boton solid full margin-bottom">Categorías de servicios</a>
 		</div> <!-- /.main-busqueda -->
 		<div class="main-content columna large-8 full">
-			
+			<p>Tema: <?php echo $ts->materia ?></p>
 			<h2 class="hero text-center"><?php echo $ts->nombre_tramite; ?></h2>
 
 		<div class="quick-access-menu">
-			<a href="#" class="quick-link first">
+
+			<!-- <a href="#" class="quick-link first">
 				<i class="fa fa-university"></i>
 				Ente responsable: <br />
 				<?php 
 				$ente = explode('-', $ts->ente);
 				echo $ente[0];
 				?>
+			</a> -->
 			</a><a href="" class="quick-link">
+				<i class="fa fa-dollar"></i>
+				Costo:
+				<p>$<?php echo $ts->costo; ?></p>
+			</a>
+			<a href="" class="quick-link">
 				<i class="fa fa-clock-o"></i>
 				Tiempo de respuesta:<br />
 				<?php
@@ -52,7 +59,7 @@
 				?>
 			</a><a href="" class="quick-link last">
 				<i class="fa fa-map-marker"></i>
-				Áreas de atención
+				¿Dónde se realiza?
 			</a>
 		</div>
 
@@ -136,24 +143,28 @@
 					?>
 				</div>
 			</article>
-			<article class="" data-content="area-atencion">
-				<h2>Áreas de atención</h2>
-				<div id="map"></div>
-			</article>
-			
+
 			<article class="" data-content="beneficio-documento">
-				<h2>Beneficio / Documento a obtener</h2>
+				<?php 
+				if($ts->is_tramite){
+					echo '<h2>Documento a obtener</h2>';
+				} else {
+					echo '<h2>Beneficio a obtener</h2>';
+				}
+				?>
+				
 				<div class="no-xmall large modal-to-be">
 					<?php 
+					echo TOMANDO;
 					if($documento != ''){
 						$sinDocumento = true;
 						foreach ($documento as $key => $value) {
-							$nombreDocumento = $value->descripcion;
-							$vigencia = $value->vigencia;
+							$nombreDocumento = $value['nombreDocumento'];
+							$vigencia = $value['vigencia'];
 							$vigenciaArray = explode('_', $vigencia);
+							echo '<h3>'.$nombreDocumento.'</h3>';
 							if($vigencia != -1) {
-								echo '<p>'.$nombreDocumento.'<br />';
-								echo 'Vigencia: '.$vigencia.'</p>';
+								echo '<p>Vigencia: '.$vigencia.'</p>';
 								$sinDocumento = false;
 							}
 						} // end foreach
@@ -165,6 +176,11 @@
 					?>
 				</div>
 			</article> 
+
+			<article class="" data-content="area-atencion">
+				<h2>Áreas de atención</h2>
+				<div id="map"></div>
+			</article>
 
 		</section><!-- content -->
 	</div><!-- width -->

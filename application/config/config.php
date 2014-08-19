@@ -355,10 +355,14 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Constantes del usuario
+|--------------------------------------------------------------------------
+*/
+define('TOMANDO', 'andamos tomando'); 
 
-// CSS and js goes here
-$config['css'] = 'style.css';
-$config['js'] = 'js/';
+
 
 
 

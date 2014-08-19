@@ -66,7 +66,6 @@ $autoload['libraries'] = array();
 
 $autoload['helper'] = array('url');
 
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files

@@ -45,7 +45,7 @@ class Inicio extends CI_Controller {
 	function muestraTramiteServicio($idTramite){
 
 		// Carga info de un trámite o servicio 
-		$ts =  file_get_contents('http://admin_ts:@dm1n_TS_123@localhost:8888/tramites_cdmx_ws/index.php/api/info_tramite/id/'.$idTramite.'/format/json');
+		$ts =  file_get_contents($this->urlWS.'/info_tramite/id/'.$idTramite.'/format/json');
 		if(is_null($ts))
 			$data['ts'] = '';
 		else	
@@ -84,7 +84,7 @@ class Inicio extends CI_Controller {
 		if(is_null($documento))
 			$data['documento'] = '';
 		else
-			$data['documento'] = json_decode($documento);
+			$data['documento'] = $this->dameDocumentos(json_decode($documento));
 
 		// Cargar vista tramite
 		// en caso de error, redirecciona al inicio
@@ -110,6 +110,23 @@ class Inicio extends CI_Controller {
 				);
 		}
 		return json_encode($infoMapas);
+	}
+
+	private function dameDocumentos($docs){
+		$documentos = array();
+		foreach ($docs as $key => $value) {
+			$vigenciaArray = explode('_', $value->vigencia);
+			if($vigenciaArray[0] == 1){
+				$
+			}
+			$vigencia = $value->vigencia;
+
+			$documentos[$key] = array(
+				'nombreDocumento'		=> $value->descripcion,
+				'vigencia' 				=> $vigencia,
+				);
+		}
+		return $documentos;
 	}
 
 

@@ -173,6 +173,7 @@ function creaMapa(mapas){
     	$.each(pedazos, function(i, val){
     		if(val.indexOf('sll=')>-1){
     			coordenadas = val.replace('sll=', '');
+    			console.log(coordenadas);
     		} 
     	});
     	if(typeof coordenadas === 'undefined')
