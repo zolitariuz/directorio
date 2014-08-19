@@ -31,28 +31,38 @@
 					<div class="menu no-large">
 						<i class="fa fa-bars"></i>
 					</div>
-					<h1>
-						<a href="<?php echo base_url() ?>">
-							Trámites CD MX
-							<!-- <img src="imags/logo-tramites.png" alt="" /> -->
-						</a>
-					</h1><nav class="large">
-						<a href="#">Anuncios</a><a href="#">
-							Trámites más buscados
-						</a><a href="#">
-							Teléfonos de emergencia
-						</a><a href="#">
-							Atención ciudadana
-						</a>
-					</nav>
+					<a href="#" class="block columna xmall-1">
+						<img src="images/ciudad-de-mexico.png" alt="">
+					</a>
+					<div class="columna xmall-11">
+						<h1 class="block columna xmall-4">
+							<a href="<?php echo base_url() ?>">
+								Trámites CD<strong>MX</strong>
+							</a>
+						</h1>
+						<div class="clear"></div>
+						<nav class="large">
+							<a href="#">
+								Trámites más buscados
+							</a><a href="#">
+								Trámites y servicios en línea
+							</a><a href="#">
+								Modelo integral de atención ciudadana
+							</a>
+						</nav>
+					</div>
+					<div class="barra avisos clearfix">
+						<h3 class="blok obscuro columna xmall-2">Avisos</h3>
+						<div class="mensaje columna xmall-10"></div>
+						<p class="highlight">Cierre Temporal de la Oficina de Administración Tributaria <a href="#">Tepeyac</a></p>
+					</div>
 					<div class="search no-large">
 						<i class="hide fa fa-search"></i>
 					</div>
 				</div><!-- width -->
 				<nav class="no-large">
-					<a href="#">Anuncios</a>
 					<a href="#">Trámites más buscados</a>
-					<a href="#">Teléfonos de emergencia</a>
-					<a href="#">Atención ciudadana</a>
+					<a href="#">Trámites y servicios en línea</a>
+					<a href="#">Modelo integral de atención ciudadana</a>
 				</nav>
 			</header>

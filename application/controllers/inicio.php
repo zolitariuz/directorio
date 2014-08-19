@@ -14,10 +14,10 @@ class Inicio extends CI_Controller {
 		// Esconde warnings
 		error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 		// Carga modelo con info de trámites
-		$this->load->model('info_ts');
+		//$this->load->model('info_ts');
 
 		// Datos de conexión para WS
-		$this->usuarioWS = 'admin_ts';		
+		$this->usuarioWS = 'admin_ts';
 		$this->passwordWS = '@dm1n_TS_123';
 		$this->urlPortalWS = 'localhost:8888/tramites_cdmx_ws/';
 		$this->urlWS = 'http://'.$this->usuarioWS.':'.$this->passwordWS.'@'.$this->urlPortalWS.'index.php/api/';
@@ -35,7 +35,7 @@ class Inicio extends CI_Controller {
 		$data['servicios_mas_buscados'] = json_decode(
 		    file_get_contents($this->urlWS.'/servicios/format/json')
 		);
-		
+
 		// Cargar vista inicio
 		$this->load->view('header', $data);
 		$this->load->view('inicio', $data);
@@ -44,14 +44,14 @@ class Inicio extends CI_Controller {
 
 	function muestraTramiteServicio($idTramite){
 
-		// Carga info de un trámite o servicio 
+		// Carga info de un trámite o servicio
 		$ts =  file_get_contents($this->urlWS.'/info_tramite/id/'.$idTramite.'/format/json');
 		if(is_null($ts))
 			$data['ts'] = '';
-		else	
+		else
 			$data['ts'] = json_decode($ts);
 
-		// Carga requisitos de un trámite o servicio 
+		// Carga requisitos de un trámite o servicio
 		$requisitos = file_get_contents($this->urlWS.'/requisitos/id/'.$idTramite.'/format/json');
 		if(is_null($requisitos))
 			$data['requisitos'] = '';
@@ -60,7 +60,7 @@ class Inicio extends CI_Controller {
 
 		// Carga requisitos específicos de un trámite o servicio
 		$requisitos_esp = file_get_contents($this->urlWS.'/requisitos_esp/id/'.$idTramite.'/format/json');
-		if(is_null($requisitos_esp))	
+		if(is_null($requisitos_esp))
 			$data['requisitos_esp'] = '';
 		else
 			$data['requisitos_esp'] = json_decode($requisitos_esp);
@@ -117,7 +117,7 @@ class Inicio extends CI_Controller {
 		foreach ($docs as $key => $value) {
 			$vigenciaArray = explode('_', $value->vigencia);
 			if($vigenciaArray[0] == 1){
-				$
+
 			}
 			$vigencia = $value->vigencia;
 
@@ -128,6 +128,5 @@ class Inicio extends CI_Controller {
 		}
 		return $documentos;
 	}
-
 
 }
