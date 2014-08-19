@@ -155,7 +155,7 @@
 				
 				<div class="no-xmall large modal-to-be">
 					<?php 
-					echo TOMANDO;
+					
 					if($documento != ''){
 						$sinDocumento = true;
 						foreach ($documento as $key => $value) {

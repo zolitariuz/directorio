@@ -360,7 +360,9 @@ $config['proxy_ips'] = '';
 | Constantes del usuario
 |--------------------------------------------------------------------------
 */
-define('TOMANDO', 'andamos tomando'); 
+
+// Documentos
+define('VIGENCIA', 0); 
 
 
 

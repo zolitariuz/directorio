@@ -116,8 +116,7 @@ class Inicio extends CI_Controller {
 		$documentos = array();
 		foreach ($docs as $key => $value) {
 			$vigenciaArray = explode('_', $value->vigencia);
-			if($vigenciaArray[0] == 1){
-				$
+			if($vigenciaArray[VIGENCIA] == 1){
 			}
 			$vigencia = $value->vigencia;
 
