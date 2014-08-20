@@ -43,7 +43,7 @@
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
 		<section class="categorias clearfix">
-			<h2>Categorías</h2>
+			<h2 class="text-center">Categorías</h2>
 			<div class="slider clearfix">
 				<a href="#" class="boton columna xmall-2">
 					<i class="fa fa-asterisk"></i>
@@ -110,7 +110,7 @@
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
 		<section class="pregunta clearfix">
-			<h2>Pregunta de la semana</h2>
+			<h2 class="text-center">Pregunta de la semana</h2>
 			<h4>¿Posee usted un teléfono celular?</h4>
 			<div class="columna xmall-4 center">
 				<a href="#" class="block boton columna xmall-6">Sí</a>
@@ -121,7 +121,7 @@
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
 		<section class="pregunta clearfix">
-			<h2>Anuncios</h2>
+			<h2 class="text-center">Anuncios</h2>
 			<div class="slider">
 				<img src="images/anuncio.jpg" alt="">
 				<div class="info">
