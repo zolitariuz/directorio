@@ -7,46 +7,129 @@
 			if($error == '1')
 				echo '<p>No se encontró el trámite o servicio que estabas buscando</p>';
 		?>
-		<div class="main-busqueda full columna large-4">
-			<h2 class="text-center">Buscar trámite o servicio</h2>
-
+		<section class="main-busqueda clearfix">
+			<h2 class="text-center">Buscar tu trámite o servicio</h2>
 			<form class="main-search hero clearfix" action="#">
-				<input type="text" class="span xmall-10">
+				<input type="search" class="span xmall-10">
+				<input type="hidden" name="tags_id" id="ts_id" value="x" />
 				<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
 			</form>
-
-			<h3 class="text-center">O también puedes buscar por:</h3>
-
-			<a href="#" class="block text-center boton solid full margin-bottom">Dependencia</a>
-			<a href="#" class="block text-center boton solid full margin-bottom">Delegación</a>
-			<a href="#" class="block text-center boton solid full margin-bottom">Categorías de trámites</a>
-			<a href="#" class="block text-center boton solid full margin-bottom">Categorías de servicios</a>
-		</div> <!-- /.main-busqueda -->
-
-		<div class="main-resultados columna large-8">
-			<div class="columna medium-6 text-center">
-				<h3>Trámites</h3>
-				<?php 
-				foreach ($tramites_mas_buscados as $key => $value) {
+			<h3 class="text-center">O busca por:</h3>
+			<a href="#" class="block boton columna xmall-4">
+				<i class="fa fa-asterisk"></i>
+				Institución
+			</a>
+			<a href="#" class="block boton columna xmall-4">
+				<i class="fa fa-asterisk"></i>
+				Tema
+			</a>
+		</section><!-- main-busqueda -->
+		<div class="clear"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
+		<section class="mas-comunes clearfix">
+			<h2 class="text-center">Trámites y servicios más solicitados</h2>
+			<div class="isotope">
+				<?php foreach ($ts_mas_populares as $key => $value) {
 					$tramite = $value->nombre_ts;
 					$idTS = $value->id_tramite_servicio;
-					$urlTramite = base_url().'index.php/inicio/muestraTramiteServicio/'.$idTS;
-					echo '<p><a href="'.$urlTramite.'" target="_blank">'.$tramite.'</a></p>';
-				} // end foreach
-				?>
+					$urlTramite = base_url().'index.php/inicio/muestraTramiteServicio/'.$idTS; ?>
+					<a href="<?php echo $urlTramite; ?>" class="item boton">
+						<?php echo $tramite; ?>
+					</a></a>
+				<?php } // end foreach ?>
 			</div>
-			<div class="columna medium-6 text-center">
-				<h3>Servicios</h3>
-				<?php 
-				foreach ($servicios_mas_buscados as $key => $value) {
-					$tramite = $value->nombre_ts;
-					$idTS = $value->id_tramite_servicio;
-					$urlTramite = base_url().'index.php/inicio/muestraTramiteServicio/'.$idTS;
-					echo '<p><a href="'.$urlTramite.'">'.$tramite.'</a></p>';
-				} // end foreach
-				?>
+		</section>
+		<div class="clear"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
+		<section class="categorias clearfix">
+			<h2>Categorías</h2>
+			<div class="slider clearfix">
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Asesoría y asistencia social y condominal
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Deporte
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Asesoría y asistencia social y condominal
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Deporte
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Asesoría y asistencia social y condominal
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Deporte
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Asesoría y asistencia social y condominal
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Deporte
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Asesoría y asistencia social y condominal
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Deporte
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Asesoría y asistencia social y condominal
+				</a>
+				<a href="#" class="boton columna xmall-2">
+					<i class="fa fa-asterisk"></i>
+					Deporte
+				</a>
 			</div>
-		</div>
+		</section>
+		<div class="clear"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
+		<section class="links">
+			<a href="" class="block columna xmall-6">
+				<img src="images/logo-anticorrupcion.png" alt="">
+			</a>
+			<a href="" class="block columna xmall-6">
+				<img src="images/logo-ssac.png" alt="">
+			</a>
+		</section>
+		<div class="clear"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
+		<section class="pregunta clearfix">
+			<h2>Pregunta de la semana</h2>
+			<h4>¿Posee usted un teléfono celular?</h4>
+			<div class="columna xmall-4 center">
+				<a href="#" class="block boton columna xmall-6">Sí</a>
+				<a href="#" class="block boton columna xmall-6">No</a>
+			</div>
+		</section>
+		<div class="clear"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
+		<section class="pregunta clearfix">
+			<h2>Anuncios</h2>
+			<div class="slider">
+				<img src="images/anuncio.jpg" alt="">
+				<div class="info">
+					<p>Quod ea non occurrentia fingunt, vincunt Aristonem; Satisne ergo pudori consulat, si quis sine teste libidini pareat? Quippe: habes enim a rhetoribus;</p>
+				</div>
+			</div>
+		</section>
 
 	</div><!-- width -->
 
