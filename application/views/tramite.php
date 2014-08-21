@@ -1,81 +1,98 @@
 <div class="main">
-	<div class="width">
-		<div class="no-xmall large main-busqueda columna large-4">
-			<h2 class="text-center">Buscar trámite o servicio</h2>
-
-			<form class="main-search hero clearfix" action="#">
-				<input type="text" class="span xmall-10">
-				<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
-			</form>
-
-			<h3 class="text-center">O también puedes buscar por:</h3>
-
-			<a href="#" class="block text-center boton solid full margin-bottom">Dependencia</a>
-			<a href="#" class="block text-center boton solid full margin-bottom">Delegación</a>
-			<a href="#" class="block text-center boton solid full margin-bottom">Categorías de trámites</a>
-			<a href="#" class="block text-center boton solid full margin-bottom">Categorías de servicios</a>
-		</div> <!-- /.main-busqueda -->
-		<div class="main-content columna large-8 full">
-			<p>Tema: <?php echo $ts->materia ?></p>
-			<h2 class="hero text-center"><?php echo $ts->nombre_tramite; ?></h2>
-
-		<div class="quick-access-menu">
-
-			<!-- <a href="#" class="quick-link first">
-				<i class="fa fa-university"></i>
-				Ente responsable: <br />
-				<?php 
-				$ente = explode('-', $ts->ente);
-				echo $ente[0];
-				?>
-			</a> -->
-			</a><a href="" class="quick-link">
-				<i class="fa fa-dollar"></i>
-				Costo:
-				<p>$</p>
-			</a>
-			<a href="" class="quick-link">
-				<i class="fa fa-clock-o"></i>
-				Tiempo de respuesta:<br />
-				<?php
-					// Parsear tiempo de respuesta si existe
-					if(is_null($ts->tiempo_respuesta)){
-						$tiempo_respuesta = explode('_', $ts->tiempo_respuesta); 
-						$dias = $tiempo_respuesta[0];
-
-						if($tiempo_respuesta[1] == 1){
-							$tipo = ' días hábiles'; 
-							echo $dias.$tipo;
-						} else if ($tiempo_respuesta[1] == 2){
-							$tipo = ' días naturales'; 
-							echo $dias.$tipo;
-						} else {
-							$tipo = 'inmediato'; 
-							echo $tipo;
-						}
-					} else 
-						echo 'Tiempo de respuesta no definido';
-					
-				?>
-			</a><a href="" class="quick-link last">
+	<div class="width clearfix">
+		<aside class="no-xmall large columna large-4">
+			<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
+			<div class="quick-info">
+				<i class="fa fa-asterisk"></i>
+				<div>
+					<p><span>Tema</span></p>
+					<p><?php echo $ts->materia ?></p>
+				</div>
+			</div><!-- quick-info -->
+			<div class="quick-info">
 				<i class="fa fa-map-marker"></i>
-				¿Dónde se realiza?
-			</a>
-		</div>
+				<div>
+					<p><span>Dónde se realiza</span></p>
+					<p>Delegación Miguel Hidalgo</p>
+				</div>
+			</div><!-- quick-info -->
+			<div class="quick-info">
+				<i class="fa fa-clock-o"></i>
+				<div>
+					<p><span>Tiempo de respuesta</span></p>
+					<p>
+						<?php
+						// Parsear tiempo de respuesta si existe
+						if(is_null($ts->tiempo_respuesta)){
+							$tiempo_respuesta = explode('_', $ts->tiempo_respuesta);
+							$dias = $tiempo_respuesta[0];
+
+							if($tiempo_respuesta[1] == 1){
+								$tipo = ' días hábiles';
+								echo $dias.$tipo;
+							} else if ($tiempo_respuesta[1] == 2){
+								$tipo = ' días naturales';
+								echo $dias.$tipo;
+							} else {
+								$tipo = 'inmediato';
+								echo $tipo;
+							}
+						} else
+							echo 'Tiempo de respuesta no definido';
+						?>
+					</p>
+				</div>
+			</div><!-- quick-info -->
+			<div class="quick-info">
+				<i class="fa fa-dollar"></i>
+				<div>
+					<p><span>Costo</span></p>
+					<p>$100</p>
+				</div>
+			</div><!-- quick-info -->
+			<div class="quick-info">
+				<i class="fa fa-dollar"></i>
+				<div>
+					<p><span>Costo</span></p>
+					<p>Costo variable</p>
+				</div>
+				<div class="clear"></div>
+				<div class="tabla-precio">
+					<div class="costo clearfix">
+						<div class="nombre-costo columna xmall-8">
+							<p>Registro</p>
+						</div>
+						<div class="numero-costo columna xmall-4">
+							<p>$256</p>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="costo clearfix">
+						<div class="nombre-costo columna xmall-8">
+							<p>Registro</p>
+						</div>
+						<div class="numero-costo columna xmall-4">
+							<p>$256</p>
+						</div>
+					</div>
+				</div>
+			</div><!-- quick-info -->
+		</aside>
+		<div class="main-content columna large-8 full">
 
 		<section class="content">
 			<article class="consiste">
 				<p class="hero"><?php echo $ts->descripcion_ts; ?></p>
 			</article>
 			<article class="transform" data-content="requisitos">
-				<h2>Requisitos</h2>
+				<h2 class="highlight">Requisitos</h2>
 				<div class="no-xmall large modal-to-be">
-					<?php 
+					<?php
 					// Cargar requisitos si existen
 					$numReq = 1;
 					if($requisitos == '' && $requisitos_esp == ''){
 						echo '<p>Este trámite o servicio no tiene requisitos</p>';
-					} else { 
+					} else {
 						if($requisitos != ''){
 							$documentoOficial = '';
 							$esDiferente = false;
@@ -83,28 +100,27 @@
 							foreach ($requisitos as $key => $value) {
 								if($documentoOficial != $value->documento_oficial){
 									if($numReqAcr > 1){
-										echo '</p></div>';
-										
+										echo '</ul></div>';
 									}
 
 									$documentoOficial = $value->documento_oficial;
 									echo '<div class="paso clearfix">';
 									echo '<span>'.$numReq.'</span>';
-									echo '<p><strong>'.$documentoOficial.': </strong>';
+									echo '<p><strong>'.$documentoOficial.': </strong></p><ul>';
 									$numReq = $numReq + 1;
 									$numReqAcr = 1;
-								} 
+								}
 
 								$documentoAcreditacion = $value->documento_acreditacion;
 								if($numReqAcr == 1){
 									if(substr($documentoAcreditacion, 0, 1) == 'y' || substr($documentoAcreditacion, 0, 1) == 'o' )
 										$documentoAcreditacion = substr($documentoAcreditacion, 2);
-								} 
-								
-								echo $documentoAcreditacion.' ';
+								}
+
+								echo '<li>'.$documentoAcreditacion.'</li>';
 								$numReqAcr = $numReqAcr + 1;
 							} // end foreach
-							echo '</p></div>';
+							echo '</ul></div>';
 						}
 
 						// Cargar requisitos específicos si existen
@@ -127,7 +143,7 @@
 			<article class="transform" data-content="formatos-requeridos">
 				<h2>Formatos requeridos</h2>
 				<div class="">
-					<?php 
+					<?php
 					if($formatos != ''){
 						foreach ($formatos as $key => $value) {
 							$formato = $value->nombre;
@@ -145,17 +161,17 @@
 			</article>
 
 			<article class="" data-content="beneficio-documento">
-				<?php 
+				<?php
 				if($ts->is_tramite){
 					echo '<h2>Documento a obtener</h2>';
 				} else {
 					echo '<h2>Beneficio a obtener</h2>';
 				}
 				?>
-				
+
 				<div class="no-xmall large modal-to-be">
-					<?php 
-					
+					<?php
+
 					if($documento != ''){
 						$sinDocumento = true;
 						foreach ($documento as $key => $value) {
@@ -175,7 +191,7 @@
 					}
 					?>
 				</div>
-			</article> 
+			</article>
 
 			<article class="" data-content="area-atencion">
 				<h2>Áreas de atención</h2>
