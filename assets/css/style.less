@@ -528,7 +528,7 @@ span[role="status"]{ display: none !important; }
 	//========================//
 
 	//HEADER
-	header{ margin-top: (@margen*2); border: none; }
+	header{ margin-top: (@margen*2); border: none; .transition; }
 	h1{ width: 100% !important; margin: 0 0 (@margen/2) 0 !important; padding: 0; text-align: left; }
 	nav{ display: inline-block; vertical-align: top; margin-bottom: (@margen); border: none; background: none; position: relative;
 		a{ display: inline-block; vertical-align: top; width: 23%; margin: 0 1%; padding: 0; border: none; text-align: left; color: @obscuro; background: none; }
@@ -540,12 +540,18 @@ span[role="status"]{ display: none !important; }
 		p{ margin: 0; line-height: 1.7em; }
 	}
 
-	.header-bottom{ width: 50%; margin: 0 auto; padding-top: @margen;
+	.header-bottom{ display: none; width: 50%; margin: 0 auto; padding-top: @margen;
 		.main-search{ width: 50%; display: inline-block; vertical-align: middle; }
 		.boton { padding-bottom: (@margen/2.7); border-width: 3px; margin-right: 5.2%;
 			&:hover{ padding-bottom: (@margen/2.6); border-width: 2px; }
 			&:last-child{ margin: 0; }
 		}
+	}
+
+	//Hedaer small
+	header.scroll{ position: fixed; z-index: 500;
+		&.show{  }
+		.header-bottom{ display: block; }
 	}
 
 	//MAIN-HOME

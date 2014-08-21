@@ -106,7 +106,9 @@
 		console.log(bottomBusqueda);
 
 		if( scrolled > bottomBusqueda ){
-			console.log('ya');
+			$('header').addClass('scroll');
+		} else{
+			$('header').removeClass('scroll');
 		}
 	}
 
