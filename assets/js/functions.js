@@ -104,27 +104,19 @@ function getMapas(data){
 function creaMapa(mapas){
 	var locations = [];
 	$.each(mapas, function(i, item){
+		console.log(item)
 		var l = [];
 		var coordenadas = dameCoordenadas(item.url_ubicacion);
-		console.log(coordenadas);
-		console.log(item.url_ubicacion);
+		var contenidoInfoWindow = 
+			'<h3>'+item.nombre+'</h3><h3>Dirección</h3><br /><p>' + item.calle_numero + '<br />Col. ' + item.colonia + '<br />Del. ' + item.delegacion+', ' + item.cp + '</p><h3>Teléfonos</h3><p>' + item.telefonos + '</p>';
 		if(coordenadas != -1){
 			var latLongArray = coordenadas.split(',');
-			l.push('<h4>'+item.nombre+'</h4>');
+			l.push(contenidoInfoWindow);
 			l.push(latLongArray[0]);
 			l.push(latLongArray[1]);
 			locations.push(l);
 		}
 	});
-
-	console.log(locations);
-	/*var locations = [
-      ['<h4>Bondi Beach</h4><p>Hala amigos</p>', -33.890542, 151.274856],
-      ['<h4>Coogee Beach</h4>', -33.923036, 151.259052],
-      ['<h4>Cronulla Beach</h4>', -34.028249, 151.157507],
-      ['<h4>Manly Beach</h4>', -33.80010128657071, 151.28747820854187],
-      ['<h4>Maroubra Beach</h4>', -33.950198, 151.259302]
-    ];*/
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
@@ -138,7 +130,7 @@ function creaMapa(mapas){
     });
 
     var infowindow = new google.maps.InfoWindow({
-      maxWidth: 160
+      maxWidth: 360
     });
 
     var marker;
