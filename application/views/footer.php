@@ -1,8 +1,8 @@
 		</div><!-- container -->
 
 		<footer>
-			<div class="width">
-				<section class="map">
+			<section class="map">
+				<div class="width clearfix">
 					<div class="columna xmall-2">
 						<article>
 							<h5>Servicios</h5>
@@ -40,14 +40,15 @@
 						</article>
 					</div>
 					<div class="columna xmall-3 right">
-						<img class="columna xmall-6" src="images/cgma-gray.png" alt="">
-						<img class="columna xmall-6" src="images/om-gray.png" alt="">
-						<img class="columna xmall-6" src="images/pides-gray.png" alt="">
-						<img class="columna xmall-6" src="images/ebm-gray.png" alt="">
+						<img class="columna xmall-6" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
+						<img class="columna xmall-6" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
+						<img class="columna xmall-6" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
+						<img class="columna xmall-6" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
 					</div>
-				</section>
-				<div class="clear"></div>
-				<section class="emergencia">
+				</div><!-- width -->
+			</section>
+			<section class="emergencia">
+				<div class="width clearfix">
 					<div class="columna xmall-2">
 						<h4 class="text-center">066</h4>
 						<p class="text-center">Emergencias Secretaría de Seguridad Pública </p>
@@ -73,8 +74,8 @@
 						<h4 class="text-center">5658 1111</h4>
 						<p class="text-center">LOCATEL</p>
 					</div>
-				</section>
-			</div>
+				</div><!-- width -->
+			</section>
 		</footer>
 
 		<div class="modal-wrapper hide">

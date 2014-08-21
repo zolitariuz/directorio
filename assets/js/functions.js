@@ -32,6 +32,11 @@
 				//console.log('changing state');
 			}
 		});
+
+		//Trámites más comúnes
+		callMasonry();
+
+
 	});
 
 	function abrirMenu(elemento, menu){
@@ -81,6 +86,13 @@
 		});
 	}
 
+	function callMasonry(){
+		var container = $('.masonry-container');
+    	var msnry = new Masonry( container[0], {
+    		itemSelector: '.item'
+    	});
+	}
+
 })(jQuery);
 
 
@@ -113,7 +125,7 @@ function creaMapa(mapas){
       ['<h4>Manly Beach</h4>', -33.80010128657071, 151.28747820854187],
       ['<h4>Maroubra Beach</h4>', -33.950198, 151.259302]
     ];*/
-    
+
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -131,11 +143,11 @@ function creaMapa(mapas){
 
     var marker;
     var markers = new Array();
-    
+
     var iconCounter = 0;
-    
+
     // Add the markers and infowindows to the map
-    for (var i = 0; i < locations.length; i++) {  
+    for (var i = 0; i < locations.length; i++) {
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map,
@@ -174,7 +186,7 @@ function creaMapa(mapas){
     		if(val.indexOf('sll=')>-1){
     			coordenadas = val.replace('sll=', '');
     			console.log(coordenadas);
-    		} 
+    		}
     	});
     	if(typeof coordenadas === 'undefined')
     		return -1
