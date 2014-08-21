@@ -39,11 +39,12 @@
 							<a href="#">Web Experiences</a>
 						</article>
 					</div>
-					<div class="columna xmall-3 right">
-						<img class="columna xmall-6" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
-						<img class="columna xmall-6" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
-						<img class="columna xmall-6" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
-						<img class="columna xmall-6" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
+					<div class="columna xmall-4 right">
+						<img class="columna xmall-7" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
+						<img class="columna xmall-3 right" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
+						<div class="clear"></div>
+						<img class="columna xmall-5" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
+						<img class="columna xmall-5 right" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
 					</div>
 				</div><!-- width -->
 			</section>
@@ -66,8 +67,11 @@
 						<p class="text-center">Bomberos</p>
 					</div>
 					<div class="columna xmall-2">
-						<h4 class="text-center">5683 1154</h4>
-						<h4 class="text-center">5683 2222</h4>
+						<h4 class="text-center">
+							5683 1154
+							<br/>
+							5683 2222
+						</h4>
 						<p class="text-center">Secretaría de Protección Civil</p>
 					</div>
 					<div class="columna xmall-2">
@@ -99,7 +103,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
 	<script>
-		<?php 
+		<?php
 
 		if($area_atencion != '') { ?>
 			getMapas('<?php echo $area_atencion ?>');
