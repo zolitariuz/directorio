@@ -36,6 +36,10 @@
 		//Trámites más comúnes
 		callMasonry();
 
+		//Header aparece cuando el scroll oculta la sección de búsqueda
+		$(window).scroll(function() {
+			scrollHeader();
+		});
 
 	});
 
@@ -93,6 +97,19 @@
     	});
 	}
 
+	function scrollHeader(){
+		var topBusqueda 	= $('section.busqueda').offset().top;
+		var alturaBusqueda 	= $('section.busqueda').height();
+		var bottomBusqueda 	= topBusqueda+alturaBusqueda;
+		var scrolled 		= $(window).scrollTop();
+		console.log(scrolled);
+		console.log(bottomBusqueda);
+
+		if( scrolled > bottomBusqueda ){
+			console.log('ya');
+		}
+	}
+
 })(jQuery);
 
 
@@ -107,7 +124,7 @@ function creaMapa(mapas){
 		console.log(item)
 		var l = [];
 		var coordenadas = dameCoordenadas(item.url_ubicacion);
-		var contenidoInfoWindow = 
+		var contenidoInfoWindow =
 			'<h3>'+item.nombre+'</h3><h3>Dirección</h3><br /><p>' + item.calle_numero + '<br />Col. ' + item.colonia + '<br />Del. ' + item.delegacion+', ' + item.cp + '</p><h3>Teléfonos</h3><p>' + item.telefonos + '</p>';
 		if(coordenadas != -1){
 			var latLongArray = coordenadas.split(',');
@@ -137,9 +154,9 @@ function creaMapa(mapas){
     var markers = new Array();
 
     var iconCounter = 0;
-    
+
     // Agregar marcadores e InfoWindows al mapa
-    for (var i = 0; i < locations.length; i++) {  
+    for (var i = 0; i < locations.length; i++) {
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map,
@@ -207,7 +224,7 @@ function busquedaTS(dataTS){
 	        $('#ts_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_id').attr('value');
 			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_blank');
-			
+
 	    },
 		appendTo: '.main-search'
 	});
