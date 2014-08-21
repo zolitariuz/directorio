@@ -361,8 +361,25 @@ $config['proxy_ips'] = '';
 |--------------------------------------------------------------------------
 */
 
-// Documentos
-define('VIGENCIA', 0); 
+// Tipo de duración de vigencia
+define('OTRA_DURACION', 0); 
+define('DE_DURACION', 1); 
+define('RANGO_DURACION', 2); 
+
+// Duración de vigencia
+define('AÑO_FISCAL', 3); 
+define('PERIODO_RESTANTE', 4); 
+define('PERMANENTE', 5); 
+define('MAYORIA_EDAD', 6); 
+define('NO_APLICA', 7); 
+define('INDETERMINADA', 8); 
+define('HORAS', 9); 
+define('DIAS_NATURALES', 10); 
+define('DIAS_HABILES', 11); 
+define('SEMANAS', 12); 
+define('MESES', 13); 
+define('AÑOS', 14); 
+
 
 
 

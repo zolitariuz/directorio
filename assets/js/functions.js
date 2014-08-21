@@ -115,8 +115,8 @@ function creaMapa(mapas){
 			l.push(latLongArray[1]);
 			locations.push(l);
 		}
-
 	});
+
 	console.log(locations);
 	/*var locations = [
       ['<h4>Bondi Beach</h4><p>Hala amigos</p>', -33.890542, 151.274856],
@@ -145,9 +145,9 @@ function creaMapa(mapas){
     var markers = new Array();
 
     var iconCounter = 0;
-
-    // Add the markers and infowindows to the map
-    for (var i = 0; i < locations.length; i++) {
+    
+    // Agregar marcadores e InfoWindows al mapa
+    for (var i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map,
@@ -164,15 +164,15 @@ function creaMapa(mapas){
     }
     AutoCenter();
 
-    // funciones maps
+    // Autocentrar el mapa dependiendo de los marcadores
     function AutoCenter() {
-      //  Create a new viewpoint bound
+      //  Crea un nuevo limite
       var bounds = new google.maps.LatLngBounds();
-      //  Go through each...
+      //  Itera todos los marcadores
       $.each(markers, function (index, marker) {
         bounds.extend(marker.position);
       });
-      //  Fit these bounds to the map
+      //  Mete los límites en el mapa
       map.fitBounds(bounds);
     }
 
@@ -195,45 +195,35 @@ function creaMapa(mapas){
     }
 }
 
-function llenarAutoComplete(data){
-	var nombreTS = $.parseJSON(data);
+function busquedaTS(dataTS){
+	var nombreTS = $.parseJSON(dataTS);
 	var srcNombreTS  = [ ];
 	var mapNombreTS = { };
+	var idTS;
 
+	// Llena arreglo con nombres y ids de trámites y servicios
 	$.each(nombreTS, function(i, val){
 		srcNombreTS.push(val.nombre_ts);
 		mapNombreTS[val.nombre_ts] = val.id_tramite_servicio;
 	});
 
+	// Autocompletado carga página en blanco con trámite o servicio
+	// al seleccionar opción o dar <Enter>
 	$('.main-search input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 	        $('#ts_id').val(mapNombreTS[ui.item.value]);
-	        var nombreTS = ui.item.label;
-			console.log($('#ts_id').val());
 			idTS = $('#ts_id').attr('value');
-			console.log('id: ' + idTS);
-			console.log(nombreTS);
+			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_blank');
+			
 	    },
 		appendTo: '.main-search'
 	});
+	$('.main-search button').on('click', function(e){
+		e.preventDefault();
+		idTS = $('#ts_id').val();
+		window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_blank');
+
+	});
 }
 
-function busqueda(){
-	var nombreTS;
-	var idTS;
-	$('.main-search input[type="search"]').on('autocompleteselect', function(event, ui){
-		nombreTS = ui.item.value;
-		console.log($('#ts_id').val());
-		idTS = $('#ts_id').attr('value');
-		console.log('id: ' + idTS);
-		console.log(nombreTS);
-	});
-	$('.form-busqueda input[type="submit"]').on('click', function(e){
-		e.preventDefault();
-		nombreTS = ui.item.value;
-		idTS = ui.item.id
-		console.log(idTS);
-		console.log(nombreTS);
-	});
-}
