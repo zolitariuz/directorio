@@ -31,38 +31,56 @@
 					<div class="menu no-large">
 						<i class="fa fa-bars"></i>
 					</div>
-					<a href="#" class="block columna xmall-1">
-						<img src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
-					</a>
-					<a href="#" class="block columna xmall-1 tramites-logo">
-						<img src="<?php echo base_url() ?>assets/img/tramites-logo.png" alt="">
-					</a>
-					<div class="columna xmall-10">
-						<h1 class="block columna xmall-4">
-							<a href="<?php echo base_url() ?>">
-								Trámites CD<strong>MX</strong>
-							</a>
-						</h1>
-						<div class="clear"></div>
-						<nav class="large">
-							<a href="#">
-								Anuncios
-							</a><a href="#">
-								Oficinas de atención ciudadana
-							</a><a href="#">
-								Trámites y servicios en línea
-							</a><a href="#">
-								Modelo integral de atención ciudadana
-							</a>
-						</nav>
-					</div>
-					<div class="clear"></div>
-					<div class="barra avisos clearfix">
-						<h3 class="blok obscuro columna xmall-2 text-center">Avisos</h3>
-						<div class="mensaje columna xmall-10">
-							<p class="highlight">Cierre Temporal de la <a href="#">Oficina de Administración Tributaria Tepeyac</a></p>
+					<div class="header-top">
+						<a href="#" class="block columna xmall-1">
+							<img src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
+						</a>
+						<a href="#" class="block columna xmall-1 tramites-logo">
+							<img src="<?php echo base_url() ?>assets/img/tramites-logo.png" alt="">
+						</a>
+						<div class="columna xmall-10">
+							<h1 class="block columna xmall-4">
+								<a href="<?php echo base_url() ?>">
+									Trámites CD<strong>MX</strong>
+								</a>
+							</h1>
+							<div class="clear"></div>
+							<nav class="large">
+								<a href="#">
+									Anuncios
+								</a><a href="#">
+									Oficinas de atención ciudadana
+								</a><a href="#">
+									Trámites y servicios en línea
+								</a><a href="#">
+									Modelo integral de atención ciudadana
+								</a>
+							</nav>
 						</div>
-					</div>
+						<div class="clear"></div>
+						<div class="barra avisos clearfix">
+							<h3 class="blok obscuro columna xmall-2 text-center">Avisos</h3>
+							<div class="mensaje columna xmall-10">
+								<p class="highlight">Cierre Temporal de la <a href="#">Oficina de Administración Tributaria Tepeyac</a></p>
+							</div>
+						</div>
+					</div><!-- header-top -->
+					<div class="header-bottom clearfix">
+						<form class="main-search clearfix" action="#">
+							<input type="search" class="span xmall-9">
+							<input type="hidden" name="tags_id" id="ts_id" value="x" />
+							<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
+						</form>
+						<a href="#" class="boton horizontal chico">
+							<i class="fa fa-asterisk"></i>
+							Institución
+						</a>
+						<a href="#" class="boton horizontal chico">
+							<i class="fa fa-asterisk"></i>
+							Tema
+						</a>
+
+					</div><!-- header-bottom -->
 					<div class="search no-large">
 						<i class="hide fa fa-search"></i>
 					</div>
