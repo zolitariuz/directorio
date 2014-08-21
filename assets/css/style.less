@@ -359,7 +359,10 @@ nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @ob
 footer{
 	section{ margin: 0; padding: @margen; }
 	.map{ background: lighten(@obscuro, 40%); }
-	.emergencia{ background: @obscuro; }
+	.emergencia{ background: @obscuro;
+		h4{ margin-bottom: @margen; color: @claro;}
+		p{ color: @claro;}
+	}
 	a{ color: @obscuro; text-decoration: none; }
 }
 
@@ -382,6 +385,10 @@ footer{
 	input{ padding: (@margen/2); .border-radiuses(0,0,4px,4px); .font(1.4em, 1); }
 	button{ border-left: 1px solid @claro; .border-radiuses(4px,4px,0,0); font-size: 1.3em;
 		&:focus{ outline-style: none; }
+	}
+	.ui-autocomplete{ width: 99.6% !important; max-height: 200px; margin: 0; border: 1px solid @highlight; overflow-y: scroll; list-style: none; top: -5px !important; left: 0 !important;
+		li{ padding: (@margen/4); border-bottom: 1px solid @highlight; background: @claro; }
+		.ui-state-focus{ background: @highlight; color: @claro; }
 	}
 }
 
