@@ -32,10 +32,10 @@
 						<i class="fa fa-bars"></i>
 					</div>
 					<a href="#" class="block columna xmall-1">
-						<img src="images/ciudad-de-mexico-logo.png" alt="">
+						<img src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
 					</a>
 					<a href="#" class="block columna xmall-1 tramites-logo">
-						<img src="images/tramites-logo.png" alt="">
+						<img src="<?php echo base_url() ?>assets/img/tramites-logo.png" alt="">
 					</a>
 					<div class="columna xmall-10">
 						<h1 class="block columna xmall-4">
