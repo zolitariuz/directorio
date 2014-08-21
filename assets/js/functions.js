@@ -126,7 +126,6 @@ function creaMapa(mapas){
       ['<h4>Maroubra Beach</h4>', -33.950198, 151.259302]
     ];*/
 
->>>>>>> 8b545fab84e13f4d4428b58923ed74d57a4bb766
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
