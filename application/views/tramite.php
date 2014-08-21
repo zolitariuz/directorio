@@ -32,7 +32,7 @@
 			</a><a href="" class="quick-link">
 				<i class="fa fa-dollar"></i>
 				Costo:
-				<p>$<?php echo $ts->costo; ?></p>
+				<p>$</p>
 			</a>
 			<a href="" class="quick-link">
 				<i class="fa fa-clock-o"></i>

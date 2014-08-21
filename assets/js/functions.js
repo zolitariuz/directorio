@@ -29,7 +29,6 @@
 				menorQueLarge();
 			},
 			both: function() {
-				//console.log('changing state');
 			}
 		});
 
@@ -70,9 +69,7 @@
 	function abrirModal(elemento){
 		var modalClass 		= elemento.parent().data('content');
 		var modalContent 	= elemento.parent().find('.modal-to-be').html();
-		//console.log(modalContent);
 		$('.modal-content').html(modalContent, function(){
-			console.log('ya');
 		});
 		$('.modal-wrapper').fadeIn('fast', function(){
 			$(this).removeClass('hide');
@@ -104,7 +101,6 @@ function getMapas(data){
 function creaMapa(mapas){
 	var locations = [];
 	$.each(mapas, function(i, item){
-		console.log(item)
 		var l = [];
 		var coordenadas = dameCoordenadas(item.url_ubicacion);
 		var contenidoInfoWindow = 
@@ -177,7 +173,7 @@ function creaMapa(mapas){
     	$.each(pedazos, function(i, val){
     		if(val.indexOf('sll=')>-1){
     			coordenadas = val.replace('sll=', '');
-    			console.log(coordenadas);
+
     		}
     	});
     	if(typeof coordenadas === 'undefined')
