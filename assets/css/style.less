@@ -306,34 +306,8 @@ h2, h3, p, a{
 			&:hover, &.active{ background: @highlight; color: @claro; }
 		}
 	}
-
 	.first{ border-right: 1px solid @claro; .border-radiuses(0,0, 4px, 4px); }
 	.last{ border-left: 1px solid @claro; .border-radiuses(4px, 4px,0,0); }
-}
-
-//Quick Menu
-.quick-access-menu{ margin: 0 0 (@margen*2) 0;
-	.quick-link{ display: inline-block; vertical-align: top; width: 25%; height: 60px; padding: (@margen/4); border-right: 1px solid @highlight; text-align: center; color: @obscuro; text-decoration: none; .font(0.7em);
-		i{ display: block; width: 100%; margin: 0 0 (@margen/2) 0; text-align: center; font-size: 1.5em; }
-	}
-	.last{ border: none; }
-}
-
-//Contenido
-.content{
-	h2{ margin-bottom: @margen; }
-	ul, p{ .font(1em, 1.4em); color: @obscuro; }
-	ul{ list-style: disc; }
-	p{
-		&.hero{ .font(1.1em, 1.4em, 600); }
-	}
-}
-
-.paso{  margin: 0 0 @margen 0;
-	span{ display: block; width: (@margen*2); height: (@margen*2); margin: 0 (@margen/2) 0 0; .border-radius; .font(1.1em, (@margen*2)+2, 600); background: @highlight; color: @claro; text-align: center; position: relative; float: left; .transition; z-index: 2;}
-	p{
-		&:last-child{ margin-bottom: 0; }
-	}
 }
 
 /*** HEADER ***/
@@ -528,7 +502,7 @@ span[role="status"]{ display: none !important; }
 	//========================//
 
 	//HEADER
-	header{ margin-top: (@margen*2); border: none; .transition; }
+	header{ width: 100%; padding-top: (@margen*2); border: none; background: @claro; z-index: 501; .transition; }
 	h1{ width: 100% !important; margin: 0 0 (@margen/2) 0 !important; padding: 0; text-align: left; }
 	nav{ display: inline-block; vertical-align: top; margin-bottom: (@margen); border: none; background: none; position: relative;
 		a{ display: inline-block; vertical-align: top; width: 23%; margin: 0 1%; padding: 0; border: none; text-align: left; color: @obscuro; background: none; }
@@ -549,8 +523,15 @@ span[role="status"]{ display: none !important; }
 	}
 
 	//Hedaer small
-	header.scroll{ position: fixed; z-index: 500;
-		&.show{  }
+	header.scroll{ padding: (@margen/2) 0; margin: 0; border-bottom: 1px solid @obscuro;
+		.avisos{ display: none; }
+		.header-top{
+			> a{ display: none !important; }
+			> div{ width: 100%; margin: 0; }
+			h1{ width: 26% !important; }
+			nav{ width: 74% !important; float: left; }
+			.clear{ display: none; }
+		}
 		.header-bottom{ display: block; }
 	}
 
@@ -577,6 +558,52 @@ span[role="status"]{ display: none !important; }
 			i{ font-size: 4em; color: @highlight; }
 			&.cycle-prev{ left: 2%; }
 			&.cycle-next{ right: 2%; }
+		}
+	}
+
+	//MAIN Single / not home
+	//Quick Menu
+	// .quick-access-menu{ margin: 0 0 (@margen*2) 0;
+	// 	.quick-link{ display: inline-block; vertical-align: top; width: 25%; height: 60px; padding: (@margen/4); border-right: 1px solid @highlight; text-align: center; color: @obscuro; text-decoration: none; .font(0.7em);
+	// 		i{ display: block; width: 100%; margin: 0 0 (@margen/2) 0; text-align: center; font-size: 1.5em; }
+	// 	}
+	// 	.last{ border: none; }
+	// }
+
+	aside{
+
+	}
+	.quick-info{ margin-bottom: @margen;
+		i{ display: inline-block; vertical-align: middle; width: 30px; color: @obscuro; font-size: 1.6em; }
+		>div{ display: inline-block; vertical-align: middle;}
+		p{ margin: 0; color: lighten(@obscuro, 20%);
+			span{ color: @obscuro; font-size: 0.8em; }
+		}
+		.tabla-precio{ width: 100%; margin-top: (@margen/2); padding: (@margen/2); background: lighten(@obscuro, 40%);
+			.costo{ padding: (@margen/4) 0; border-bottom: 1px solid @obscuro;
+				&:first-child{ padding-top: 0; }
+			}
+			p{ color: @obscuro; }
+			.numero-costo{
+				p{ text-align: right; }
+			}
+		}
+	}
+
+	//Contenido
+	.content{
+		h2{ margin-bottom: @margen; }
+		ul, p{ .font(1em, 1.4em); color: @obscuro; }
+		ul{ list-style: disc; }
+		p{
+			&.hero{ .font(1.1em, 1.4em, 600); }
+		}
+	}
+
+	.paso{  margin: 0 0 @margen 0;
+		span{ display: block; width: (@margen*2); height: (@margen*2); margin: 0 (@margen/2) 0 0; .border-radius; .font(1.1em, (@margen*2)+2, 600); background: @highlight; color: @claro; text-align: center; position: relative; float: left; .transition; z-index: 2;}
+		p{
+			&:last-child{ margin-bottom: 0; }
 		}
 	}
 

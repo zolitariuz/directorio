@@ -33,9 +33,13 @@
 		});
 
 		//Trámites más comúnes
-		callMasonry();
+		if ( $('.masonry-container').length > 0) {
+			callMasonry();
+		}
+
 
 		//Header aparece cuando el scroll oculta la sección de búsqueda
+		paddingMain();
 		$(window).scroll(function() {
 			scrollHeader();
 		});
@@ -95,18 +99,33 @@
 	}
 
 	function scrollHeader(){
-		var topBusqueda 	= $('section.busqueda').offset().top;
-		var alturaBusqueda 	= $('section.busqueda').height();
-		var bottomBusqueda 	= topBusqueda+alturaBusqueda;
-		var scrolled 		= $(window).scrollTop();
-		console.log(scrolled);
-		console.log(bottomBusqueda);
+		if( $('section.busqueda').length > 0 ){
+			var topBusqueda 	= $('section.busqueda').offset().top;
+			var alturaBusqueda 	= $('section.busqueda').height();
+			var bottomBusqueda 	= topBusqueda+alturaBusqueda;
+			var scrolled 		= $(window).scrollTop();
 
-		if( scrolled > bottomBusqueda ){
-			$('header').addClass('scroll');
-		} else{
-			$('header').removeClass('scroll');
+			if( scrolled > bottomBusqueda ){
+				$('header').addClass('scroll');
+			} else{
+				$('header').removeClass('scroll');
+			}
+		} else {
+			var topMain 	= $('.main').offset().top;
+			var scrolled 	= $(window).scrollTop();
+
+			if( scrolled > topMain ){
+				$('header').addClass('scroll');
+			} else{
+				$('header').removeClass('scroll');
+			}
 		}
+	}
+
+	function paddingMain(){
+		var alturaHeader = $('header').outerHeight();
+		$('header').css('position', 'fixed');
+		$('.main').css('paddingTop', (alturaHeader+20));
 	}
 
 })(jQuery);
