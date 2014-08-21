@@ -46,7 +46,9 @@
 						<div class="clear"></div>
 						<nav class="large">
 							<a href="#">
-								Trámites más buscados
+								Anuncios
+							</a><a href="#">
+								Oficinas de atención ciudadana
 							</a><a href="#">
 								Trámites y servicios en línea
 							</a><a href="#">
@@ -58,7 +60,7 @@
 					<div class="barra avisos clearfix">
 						<h3 class="blok obscuro columna xmall-2 text-center">Avisos</h3>
 						<div class="mensaje columna xmall-10">
-							<p class="highlight"><a href="#">Cierre Temporal de la Oficina de Administración Tributaria Tepeyac</a></p>
+							<p class="highlight">Cierre Temporal de la <a href="#">Oficina de Administración Tributaria Tepeyac</a></p>
 						</div>
 					</div>
 					<div class="search no-large">
