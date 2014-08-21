@@ -32,6 +32,11 @@
 				//console.log('changing state');
 			}
 		});
+
+		//Trámites más comúnes
+		callMasonry();
+
+
 	});
 
 	function abrirMenu(elemento, menu){
@@ -81,6 +86,13 @@
 		});
 	}
 
+	function callMasonry(){
+		var container = $('.masonry-container');
+    	var msnry = new Masonry( container[0], {
+    		itemSelector: '.item'
+    	});
+	}
+
 })(jQuery);
 
 
@@ -104,7 +116,17 @@ function creaMapa(mapas){
 			locations.push(l);
 		}
 	});
-    
+
+	console.log(locations);
+	/*var locations = [
+      ['<h4>Bondi Beach</h4><p>Hala amigos</p>', -33.890542, 151.274856],
+      ['<h4>Coogee Beach</h4>', -33.923036, 151.259052],
+      ['<h4>Cronulla Beach</h4>', -34.028249, 151.157507],
+      ['<h4>Manly Beach</h4>', -33.80010128657071, 151.28747820854187],
+      ['<h4>Maroubra Beach</h4>', -33.950198, 151.259302]
+    ];*/
+
+>>>>>>> 8b545fab84e13f4d4428b58923ed74d57a4bb766
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -122,7 +144,7 @@ function creaMapa(mapas){
 
     var marker;
     var markers = new Array();
-    
+
     var iconCounter = 0;
     
     // Agregar marcadores e InfoWindows al mapa
@@ -165,7 +187,7 @@ function creaMapa(mapas){
     		if(val.indexOf('sll=')>-1){
     			coordenadas = val.replace('sll=', '');
     			console.log(coordenadas);
-    		} 
+    		}
     	});
     	if(typeof coordenadas === 'undefined')
     		return -1

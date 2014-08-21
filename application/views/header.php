@@ -27,14 +27,17 @@
 		<div class="container">
 
 			<header class="clearfix">
-				<div class="width">
+				<div class="width clearfix">
 					<div class="menu no-large">
 						<i class="fa fa-bars"></i>
 					</div>
 					<a href="#" class="block columna xmall-1">
-						<img src="images/ciudad-de-mexico.png" alt="">
+						<img src="images/ciudad-de-mexico-logo.png" alt="">
 					</a>
-					<div class="columna xmall-11">
+					<a href="#" class="block columna xmall-1 tramites-logo">
+						<img src="images/tramites-logo.png" alt="">
+					</a>
+					<div class="columna xmall-10">
 						<h1 class="block columna xmall-4">
 							<a href="<?php echo base_url() ?>">
 								Trámites CD<strong>MX</strong>
@@ -51,10 +54,12 @@
 							</a>
 						</nav>
 					</div>
+					<div class="clear"></div>
 					<div class="barra avisos clearfix">
-						<h3 class="blok obscuro columna xmall-2">Avisos</h3>
-						<div class="mensaje columna xmall-10"></div>
-						<p class="highlight">Cierre Temporal de la Oficina de Administración Tributaria <a href="#">Tepeyac</a></p>
+						<h3 class="blok obscuro columna xmall-2 text-center">Avisos</h3>
+						<div class="mensaje columna xmall-10">
+							<p class="highlight">Cierre Temporal de la Oficina de Administración Tributaria <a href="#">Tepeyac</a></p>
+						</div>
 					</div>
 					<div class="search no-large">
 						<i class="hide fa fa-search"></i>
