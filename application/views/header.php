@@ -38,7 +38,7 @@
 						<a href="#" class="block columna xmall-1 tramites-logo">
 							<img src="<?php echo base_url() ?>assets/img/tramites-logo.png" alt="">
 						</a>
-						<div class="columna xmall-10">
+						<div class="columna xmall-10 clearfix">
 							<h1 class="block columna xmall-4">
 								<a href="<?php echo base_url() ?>">
 									Trámites CD<strong>MX</strong>

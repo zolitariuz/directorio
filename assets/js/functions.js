@@ -35,7 +35,10 @@
 		//Trámites más comúnes
 		callMasonry();
 
+
+
 		//Header aparece cuando el scroll oculta la sección de búsqueda
+		paddingMain();
 		$(window).scroll(function() {
 			scrollHeader();
 		});
@@ -99,15 +102,27 @@
 		var alturaBusqueda 	= $('section.busqueda').height();
 		var bottomBusqueda 	= topBusqueda+alturaBusqueda;
 		var scrolled 		= $(window).scrollTop();
-		console.log(scrolled);
-		console.log(bottomBusqueda);
 
 		if( scrolled > bottomBusqueda ){
 			$('header').addClass('scroll');
+			//esconderHeader();
 		} else{
 			$('header').removeClass('scroll');
 		}
 	}
+
+	function paddingMain(){
+		var alturaHeader = $('header').outerHeight();
+		$('header').css('position', 'fixed');
+		$('.main').css('paddingTop', (alturaHeader+80));
+	}
+
+	// function esconderHeader(){
+	// 	var alturaHeader = $('header').outerHeight();
+	// 	console.log(alturaHeader);
+	// 	$('header').css('top', -(alturaHeader+80));
+	// 	$('.main').css('paddingTop', (alturaHeader+80));
+	// }
 
 })(jQuery);
 
