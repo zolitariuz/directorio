@@ -44,7 +44,7 @@ class Inicio extends CI_Controller {
 		$this->load->view('header', $data);
 		$this->load->view('inicio', $data);
 		$this->load->view('footer', $data);
-	}
+	} // index
 
 	function muestraTramiteServicio($idTramite){
 
@@ -98,7 +98,7 @@ class Inicio extends CI_Controller {
 		else
 			header('Location: '.base_url().'?error=1');
 		$this->load->view('footer', $data);
-	}
+	} // muestraTramiteServicio
 
 	private function dameAreasAtencion($area_atencion){
 		$infoMapas = array();
@@ -114,16 +114,61 @@ class Inicio extends CI_Controller {
 				);
 		}
 		return json_encode($infoMapas);
-	}
+	} // dameAreasAtencion
 
 	private function dameDocumentos($docs){
 		$documentos = array();
 		foreach ($docs as $key => $value) {
+			// Tratamiento de cadena de vigencia
 			$vigenciaArray = explode('_', $value->vigencia);
-
-			if($vigenciaArray[VIGENCIA] == 1){
+			$vigencia = $vigenciaArray[1];
+			if($vigenciaArray[0] == DE_DURACION){
+				switch($vigenciaArray[2]){
+					case HORAS:
+						$vigencia = $vigencia.' horas.';
+						break;
+					case DIAS_NATURALES:
+						$vigencia = $vigencia.' días naturales.';
+						break;
+					case DIAS_HABILES:
+						$vigencia = $vigencia.' días hábiles.';
+						break;
+					case SEMANAS:
+						$vigencia = $vigencia.' semana(s).';
+						break;
+					case MESES:
+						$vigencia = $vigencia.' mes(es).';
+						break;
+					case AÑOS:
+						$vigencia = $vigencia.' año(s).';
+						break;
+				}// switch
+			} else if($vigenciaArray[0] == RANGO_DURACION){
+				$vigencia = $vigenciaArray[1];
+			} else if($vigenciaArray[0] == OTRA_DURACION){
+				$vigencia = 'Otra vigencia?';
+			} else {
+				switch($vigenciaArray[0]){
+					case AÑO_FISCAL:
+						$vigencia = 'Por el año fiscal que se otorga.';
+						break;
+					case PERIODO_RESTANTE:
+						$vigencia = 'Por el periodo que reste para concluir la vigencia originalmente otorgada.';
+						break;
+					case PERMANENTE:
+						$vigencia = 'Permanente.';
+						break;
+					case MAYORIA_EDAD:
+						$vigencia = 'Cuando se cumpla la mayoría de edad.';
+						break;
+					case NO_APLICA:
+						$vigencia = 'No aplica.';
+						break;
+					case INDETERMINADA:
+						$vigencia = 'Indeterminada.';
+						break;
+				}
 			}
-			$vigencia = $value->vigencia;
 
 			$documentos[$key] = array(
 				'nombreDocumento'		=> $value->descripcion,
@@ -131,6 +176,6 @@ class Inicio extends CI_Controller {
 				);
 		}
 		return $documentos;
-	}
+	} // dameDocumentos
 
 }

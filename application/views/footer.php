@@ -39,7 +39,6 @@
 		if($area_atencion != '') { ?>
 			getMapas('<?php echo $area_atencion ?>');
 		<?php } ?>
-		llenarAutoComplete('<?php echo $nombres_ts ?>');
-		busqueda();
+		busquedaTS('<?php echo $nombres_ts ?>');
 	</script>
 </html>
