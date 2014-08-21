@@ -194,3 +194,46 @@ function creaMapa(mapas){
     		return coordenadas;
     }
 }
+
+function llenarAutoComplete(data){
+	var nombreTS = $.parseJSON(data);
+	var srcNombreTS  = [ ];
+	var mapNombreTS = { };
+
+	$.each(nombreTS, function(i, val){
+		srcNombreTS.push(val.nombre_ts);
+		mapNombreTS[val.nombre_ts] = val.id_tramite_servicio;
+	});
+
+	$('.main-search input[type="search"]').autocomplete({
+		source: srcNombreTS,
+		select: function(event, ui) {
+	        $('#ts_id').val(mapNombreTS[ui.item.value]);
+	        var nombreTS = ui.item.label;
+			console.log($('#ts_id').val());
+			idTS = $('#ts_id').attr('value');
+			console.log('id: ' + idTS);
+			console.log(nombreTS);
+	    },
+		appendTo: '.main-search'
+	});
+}
+
+function busqueda(){
+	var nombreTS;
+	var idTS;
+	$('.main-search input[type="search"]').on('autocompleteselect', function(event, ui){
+		nombreTS = ui.item.value;
+		console.log($('#ts_id').val());
+		idTS = $('#ts_id').attr('value');
+		console.log('id: ' + idTS);
+		console.log(nombreTS);
+	});
+	$('.form-busqueda input[type="submit"]').on('click', function(e){
+		e.preventDefault();
+		nombreTS = ui.item.value;
+		idTS = ui.item.id
+		console.log(idTS);
+		console.log(nombreTS);
+	});
+}

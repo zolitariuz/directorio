@@ -10,7 +10,8 @@
 		<section class="busqueda clearfix">
 			<h2 class="text-center">Busca tu trámite o servicio</h2>
 			<form class="main-search hero clearfix" action="#">
-				<input type="text" class="span xmall-11">
+				<input type="search" class="span xmall-11">
+				<input type="hidden" name="tags_id" id="ts_id" value="x" />
 				<button type="submit" class="span xmall-1"><i class="fa fa-search"></i></button>
 			</form>
 			<h3 class="text-center">O busca por:</h3>
@@ -32,13 +33,13 @@
 		<section class="mas-comunes clearfix">
 			<h2 class="text-center highlight">Trámites y servicios más solicitados</h2>
 			<div class="masonry-container">
-				<?php foreach ($servicios_mas_buscados as $key => $value) {
+				<?php foreach ($ts_mas_populares as $key => $value) {
 					$tramite = $value->nombre_ts;
 					$idTS = $value->id_tramite_servicio;
 					$urlTramite = base_url().'index.php/inicio/muestraTramiteServicio/'.$idTS; ?>
 					<a href="<?php echo $urlTramite; ?>" class="item boton columna large-4">
 						<?php echo $tramite; ?>
-					</a>
+					</a></a>
 				<?php } // end foreach ?>
 			</div>
 		</section>

@@ -11,10 +11,9 @@ class Inicio extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+
 		// Esconde warnings
 		error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-		// Carga modelo con info de trámites
-		//$this->load->model('info_ts');
 
 		// Datos de conexión para WS
 		$this->usuarioWS = 'admin_ts';
@@ -29,12 +28,17 @@ class Inicio extends CI_Controller {
 		$data['error'] = $_GET['error'];
 
 		// Muestra trámites y servicios mas buscados usando WS
-		$data['tramites_mas_buscados'] = json_decode(
-		    file_get_contents($this->urlWS.'/tramites/format/json')
+		$data['ts_mas_populares'] = json_decode(
+		    file_get_contents($this->urlWS.'/tramites_servicios/format/json')
 		);
-		$data['servicios_mas_buscados'] = json_decode(
-		    file_get_contents($this->urlWS.'/servicios/format/json')
-		);
+
+		// Carga nombre y id de todos los trámites y servicios
+		// para la función de autocompletar
+		$nombres_ts =  file_get_contents($this->urlWS.'/nombres_ts/format/json');
+		if(is_null($nombres_ts))
+			$data['nombres_ts'] = '';
+		else
+			$data['nombres_ts'] = $nombres_ts;
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);
@@ -116,8 +120,8 @@ class Inicio extends CI_Controller {
 		$documentos = array();
 		foreach ($docs as $key => $value) {
 			$vigenciaArray = explode('_', $value->vigencia);
-			if($vigenciaArray[0] == 1){
 
+			if($vigenciaArray[VIGENCIA] == 1){
 			}
 			$vigencia = $value->vigencia;
 
