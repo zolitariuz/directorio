@@ -235,7 +235,7 @@ function busquedaTS(dataTS){
 
 	// Autocompletado carga página en blanco con trámite o servicio
 	// al seleccionar opción o dar <Enter>
-	$('.main-search input[type="search"]').autocomplete({
+	$('.main-search-header input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 	        $('#ts_id').val(mapNombreTS[ui.item.value]);
@@ -243,7 +243,17 @@ function busquedaTS(dataTS){
 			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_blank');
 
 	    },
-		appendTo: '.main-search'
+		appendTo: '.main-search-header'
+	});
+	$('.main-search-home input[type="search"]').autocomplete({
+		source: srcNombreTS,
+		select: function(event, ui) {
+	        $('#ts_home_id').val(mapNombreTS[ui.item.value]);
+			idTS = $('#ts_home_id').attr('value');
+			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_blank');
+
+	    },
+		appendTo: '.main-search-home'
 	});
 	$('.main-search button').on('click', function(e){
 		e.preventDefault();

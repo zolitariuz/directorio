@@ -66,7 +66,7 @@
 						</div>
 					</div><!-- header-top -->
 					<div class="header-bottom clearfix">
-						<form class="main-search clearfix" action="#">
+						<form class="main-search main-search-header clearfix" action="#">
 							<input type="search" class="span xmall-9">
 							<input type="hidden" name="tags_id" id="ts_id" value="x" />
 							<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>

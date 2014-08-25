@@ -90,6 +90,14 @@ class Inicio extends CI_Controller {
 		else
 			$data['documento'] = $this->dameDocumentos(json_decode($documento));
 
+		// Carga nombre y id de todos los trámites y servicios
+		// para la función de autocompletar
+		$nombres_ts = file_get_contents($this->urlWS.'/nombres_ts/format/json');
+		if(is_null($nombres_ts))
+			$data['nombres_ts'] = '';
+		else
+			$data['nombres_ts'] = $nombres_ts;
+
 		// Cargar vista tramite
 		// en caso de error, redirecciona al inicio
 		$this->load->view('header');

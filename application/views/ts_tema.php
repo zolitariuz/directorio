@@ -19,7 +19,7 @@
 							echo '<div class="clear"></div>';
 						}
 
-						echo '<h3>'.$primeraLetra.'</h3>';
+						echo '<h2 class="highlight">'.$primeraLetra.'</h2>';
 						echo '<div class="clear"></div>';
 						echo '<div class="masonry-container">';
 						$primeraLetraAnt = $primeraLetra;
