@@ -82,7 +82,11 @@
 
 		<section class="content">
 			<article class="consiste">
-				<p class="hero"><?php echo $ts->descripcion_ts; ?></p>
+				<?php if(is_null($ts->descripcion_ts)) { ?>
+					<p class="hero">Este trámite no tiene descripción.</p>
+				<?php } else {  ?>
+					<p class="hero"><?php echo $ts->descripcion_ts; ?></p>
+				<?php } ?>
 			</article>
 			<article class="transform" data-content="requisitos">
 				<h2 class="highlight">Requisitos</h2>
