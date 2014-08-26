@@ -99,12 +99,11 @@
 	}
 
 	function scrollHeader(){
+		var scrolled 		= $(window).scrollTop();
 		if( $('section.busqueda').length > 0 ){
 			var topBusqueda 	= $('section.busqueda').offset().top;
 			var alturaBusqueda 	= $('section.busqueda').height();
 			var bottomBusqueda 	= topBusqueda+alturaBusqueda;
-			var scrolled 		= $(window).scrollTop();
-
 			if( scrolled > bottomBusqueda ){
 				$('header').addClass('scroll');
 			} else{
@@ -112,14 +111,16 @@
 			}
 		} else {
 			var topMain 	= $('.main').offset().top;
-			var scrolled 	= $(window).scrollTop();
-
 			if( scrolled > topMain ){
-				$('header').addClass('scroll');
+				$('header, aside').addClass('scroll');
 			} else{
-				$('header').removeClass('scroll');
+				$('header, aside').removeClass('scroll');
 			}
 		}
+	}
+
+	function scrollAside(){
+
 	}
 
 	function paddingMain(){
