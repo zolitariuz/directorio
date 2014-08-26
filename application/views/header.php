@@ -65,21 +65,38 @@
 							</div>
 						</div>
 					</div><!-- header-top -->
-					<div class="header-bottom clearfix">
-						<form class="main-search main-search-header clearfix" action="#">
-							<input type="search" class="span xmall-9">
-							<input type="hidden" name="tags_id" id="ts_id" value="x" />
-							<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
-						</form>
-						<a href="#" class="boton horizontal chico">
-							<i class="fa fa-asterisk"></i>
-							Institución
-						</a>
-						<a href="#" class="boton horizontal chico">
-							<i class="fa fa-asterisk"></i>
-							Tema
-						</a>
-
+					<div class="header-bottom">
+						<div class="clearfix">
+							<h1 class="block columna xmall-3">
+								<a href="<?php echo base_url() ?>">
+									Trámites CD<strong>MX</strong>
+								</a>
+							</h1>
+							<form class="main-search main-search-header clearfix columna xmall-5" action="#">
+								<input type="search" class="span xmall-9">
+								<input type="hidden" name="tags_id" id="ts_id" value="x" />
+								<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
+							</form>
+							<a href="#" class="boton horizontal chico columna xmall-2">
+								<i class="fa fa-asterisk"></i>
+								Institución
+							</a>
+							<a href="#" class="boton horizontal chico columna xmall-2">
+								<i class="fa fa-asterisk"></i>
+								Tema
+							</a>
+						</div><!-- clearfix -->
+						<nav class="clearfix">
+							<a href="#">
+								Anuncios
+							</a><a href="#">
+								Oficinas de atención ciudadana
+							</a><a href="#">
+								Trámites y servicios en línea
+							</a><a href="#">
+								Modelo integral de atención ciudadana
+							</a>
+						</nav>
 					</div><!-- header-bottom -->
 					<div class="search no-large">
 						<i class="hide fa fa-search"></i>
