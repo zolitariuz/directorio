@@ -137,6 +137,16 @@ function getMapas(data){
 }
 
 function creaMapa(mapas){
+	// Estilos mapa
+	var styles = [
+			{
+			  stylers: [
+				{ hue: "#ec2383" }
+			  ]
+			}
+		];
+
+	// Jalar coordenadas de areas de atención
 	var locations = [];
 	$.each(mapas, function(i, item){
 		var l = [];
@@ -152,25 +162,25 @@ function creaMapa(mapas){
 		}
 	});
 
+	// Crea Mapa
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
+      zoom: 20,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
       streetViewControl: false,
       panControl: false,
+      styles: styles,
       zoomControlOptions: {
          position: google.maps.ControlPosition.LEFT_BOTTOM
       }
     });
 
     var infowindow = new google.maps.InfoWindow({
-      maxWidth: 360
+      maxWidth: 400
     });
 
     var marker;
     var markers = new Array();
-
-    var iconCounter = 0;
 
     // Agregar marcadores e InfoWindows al mapa
     for (var i = 0; i < locations.length; i++) {
@@ -188,10 +198,10 @@ function creaMapa(mapas){
         }
       })(marker, i));
     }
-    AutoCenter();
+    autoCenter();
 
     // Autocentrar el mapa dependiendo de los marcadores
-    function AutoCenter() {
+    function autoCenter() {
       //  Crea un nuevo limite
       var bounds = new google.maps.LatLngBounds();
       //  Itera todos los marcadores
@@ -200,25 +210,33 @@ function creaMapa(mapas){
       });
       //  Mete los límites en el mapa
       map.fitBounds(bounds);
-    }
+    } // autoCenter
 
+    // obtiene coordenadas de url de base de datos
     function dameCoordenadas(url){
     	var pedazos;
     	var coordenadas;
 
-    	pedazos = url.split('&');
+    	if(url.indexOf('mapa:')>-1){
+    		pedazos = url.split('mapa:');
+    		coordenadas = pedazos[1] + ',' + pedazos[2];
 
-    	$.each(pedazos, function(i, val){
-    		if(val.indexOf('sll=')>-1){
-    			coordenadas = val.replace('sll=', '');
+    	} else {
+    		pedazos = url.split('&');
 
-    		}
-    	});
+	    	$.each(pedazos, function(i, val){
+	    		if(val.indexOf('sll=')>-1){
+	    			coordenadas = val.replace('sll=', '');
+
+	    		}
+	    	});
+    	}
+
     	if(typeof coordenadas === 'undefined')
     		return -1
     	else
     		return coordenadas;
-    }
+    } // dameCoordenadas
 }
 
 function busquedaTS(dataTS){

@@ -130,6 +130,7 @@ class Inicio extends CI_Controller {
 			// Tratamiento de cadena de vigencia
 			$vigenciaArray = explode('_', $value->vigencia);
 			$vigencia = $vigenciaArray[1];
+
 			if($vigenciaArray[0] == DE_DURACION){
 				switch($vigenciaArray[2]){
 					case HORAS:
@@ -152,9 +153,32 @@ class Inicio extends CI_Controller {
 						break;
 				}// switch
 			} else if($vigenciaArray[0] == RANGO_DURACION){
-				$vigencia = $vigenciaArray[1];
+				$vigenciaIni = $vigenciaArray[1];
+				$vigenciaFin = $vigenciaArray[2];
+				switch($vigenciaArray[3]){
+					case HORAS:
+						$vigencia = 'De '.$vigenciaIni.' a '.$vigenciaFin.' horas.';
+						break;
+					case DIAS_NATURALES:
+						$vigencia = 'De '.$vigenciaIni.' a '.$vigenciaFin.' días naturales.';
+						break;
+					case DIAS_HABILES:
+						$vigencia = 'De '.$vigenciaIni.' a '.$vigenciaFin.' días hábiles.';
+						break;
+					case SEMANAS:
+						$vigencia = 'De '.$vigenciaIni.' a '.$vigenciaFin.' semana(s).';
+						break;
+					case MESES:
+						$vigencia = 'De '.$vigenciaIni.' a '.$vigenciaFin.' mes(es).';
+						break;
+					case AÑOS:
+						$vigencia = 'De '.$vigenciaIni.' a '.$vigenciaFin.' año(s).';
+						break;
+				}
 			} else if($vigenciaArray[0] == OTRA_DURACION){
 				$vigencia = 'Otra vigencia?';
+			} else if($vigenciaArray[0] == SERVICIO){
+				$vigencia = 'No tiene vigencia.';
 			} else {
 				switch($vigenciaArray[0]){
 					case AÑO_FISCAL:

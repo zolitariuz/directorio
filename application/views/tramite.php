@@ -13,7 +13,7 @@
 				<i class="fa fa-map-marker"></i>
 				<div>
 					<p><span>Dónde se realiza</span></p>
-					<p>Delegación Miguel Hidalgo</p>
+					<p>Ver área de atención</p>
 				</div>
 			</div><!-- quick-info -->
 			<div class="quick-info">

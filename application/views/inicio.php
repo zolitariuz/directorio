@@ -16,7 +16,7 @@
 			</form>
 			<h3 class="text-center">O ve trámites y servicios por:</h3>
 			<div class="columna xmall-8 center">
-				<a href="#" class="block boton vertical columna xmall-6">
+				<a href="<?php echo base_url().'index.php/instituciones' ?>" class="block boton vertical columna xmall-6">
 					<i class="fa fa-asterisk"></i>
 					Institución
 				</a>

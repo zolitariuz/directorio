@@ -362,10 +362,11 @@ $config['proxy_ips'] = '';
 */
 
 // Tipo de duración de vigencia
+define('SERVICIO', -1);
 define('OTRA_DURACION', 0); 
 define('DE_DURACION', 1); 
-define('RANGO_DURACION', 2); 
-
+define('RANGO_DURACION', 2);
+ 
 // Duración de vigencia
 define('AÑO_FISCAL', 3); 
 define('PERIODO_RESTANTE', 4); 

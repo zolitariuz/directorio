@@ -1,7 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Temas extends CI_Controller {
-
+class Instituciones extends CI_Controller {
 	// $usuarioWS y $passwordWS se encuentran en application/config/rest.php
 	private $usuarioWS;
 	private $passwordWS;
@@ -25,11 +24,11 @@ class Temas extends CI_Controller {
 	function index()
 	{
 		// Carga todos los temas (materias)
-		$temas = file_get_contents($this->urlWS.'/temas/format/json');
-		if(is_null($temas))
-			$data['temas'] = '';
+		$instituciones = file_get_contents($this->urlWS.'/instituciones/format/json');
+		if(is_null($instituciones))
+			$data['instituciones'] = '';
 		else
-			$data['temas'] = json_decode($temas);
+			$data['instituciones'] = json_decode($instituciones);
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
@@ -41,30 +40,22 @@ class Temas extends CI_Controller {
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);
-		$this->load->view('temas', $data);
+		$this->load->view('instituciones', $data);
 		$this->load->view('footer', $data);
 	} // index
 
-	function muestraTS($idTema){
+	function muestraTS($id_institucion){
 		// Carga todos los trámites y servicios por tema
-		$ts_tema = file_get_contents($this->urlWS.'/ts_tema/id/'.$idTema.'/format/json');
-		if(is_null($ts_tema))
-			$data['ts_tema'] = '';
+		$ts_institucion = file_get_contents($this->urlWS.'/ts_institucion/id/'.$id_institucion.'/format/json');
+		if(is_null($ts_institucion))
+			$data['ts_institucion'] = '';
 		else
-			$data['ts_tema'] = json_decode($ts_tema);
-
-		// Carga nombre y id de todos los trámites y servicios
-		// para la función de autocompletar
-		$nombres_ts =  file_get_contents($this->urlWS.'/nombres_ts/format/json');
-		if(is_null($nombres_ts))
-			$data['nombres_ts'] = '';
-		else
-			$data['nombres_ts'] = $nombres_ts;
+			$data['ts_institucion'] = json_decode($ts_institucion);
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);
-		$this->load->view('ts_tema', $data);
+		$this->load->view('ts_institucion', $data);
 		$this->load->view('footer', $data);
-	}
+	} // muestraTS
 
 }
