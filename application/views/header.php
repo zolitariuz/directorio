@@ -44,7 +44,7 @@
 					</div>
 					<div class="header-top">
 						<a href="#" class="block columna xmall-1">
-							<img src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
+							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
 						</a>
 						<a href="#" class="block columna xmall-1 tramites-logo">
 							<img src="<?php echo base_url() ?>assets/img/tramites-logo.png" alt="">
@@ -72,7 +72,7 @@
 						<div class="barra avisos clearfix">
 							<h3 class="blok obscuro columna xmall-2 text-center">Avisos</h3>
 							<div class="mensaje columna xmall-10">
-								<p class="highlight">Cierre Temporal de la <a href="#">Oficina de Administración Tributaria Tepeyac</a></p>
+								<p class="highlight"><span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span> | <span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span> | <span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span> | <span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span> | <span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span></p>
 							</div>
 						</div>
 					</div><!-- header-top -->
