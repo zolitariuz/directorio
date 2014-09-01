@@ -19,13 +19,13 @@
 							echo '<div class="clear"></div>';
 						}
 
-						echo '<h2 class="highlight">'.$primeraLetra.'</h2>';
+						echo '<h2 class="highlight text-center"><strong>'.$primeraLetra.'</strong></h2>';
 						echo '<div class="clear"></div>';
 						echo '<div class="masonry-container">';
 						$primeraLetraAnt = $primeraLetra;
 					}
 					?>
-					<a href="<?php echo $urlTramite; ?>" class="item boton columna large-12 no-margin-bottom">
+					<a href="<?php echo $urlTramite; ?>" class="block item boton full margin-bottom">
 					<?php echo $tramite; ?>
 					</a>
 					

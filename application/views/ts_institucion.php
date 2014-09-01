@@ -3,7 +3,8 @@
 		<div class="clear"></div>
 		<div class="clear"></div>
 		<section class="mas-comunes clearfix">
-			<h2 class="text-center highlight">Trámites y servicios:  <?php echo $ts_institucion[0]->institucion; ?></h2>
+			<h2 class="text-center highlight">Trámites y servicios</h2>
+			<h2 class="text-center highlight"><?php echo $ts_institucion[0]->institucion; ?></h2>
 				<?php 
 				$primeraLetraAnt = '';
 				foreach ($ts_institucion as $key => $value) {
@@ -19,13 +20,13 @@
 							echo '<div class="clear"></div>';
 						}
 
-						echo '<h2 class="highlight">'.$primeraLetra.'</h2>';
+						echo '<h2 class="highlight text-center"><strong>'.$primeraLetra.'</strong></h2>';
 						echo '<div class="clear"></div>';
-						echo '<div class="masonry-container">';
+						echo '<div class="">';
 						$primeraLetraAnt = $primeraLetra;
 					}
 					?>
-					<a href="<?php echo $urlTramite; ?>" class="item boton columna large-12 no-margin-bottom">
+					<a href="<?php echo $urlTramite; ?>" class="block boton full margin-bottom">
 					<?php echo $tramite; ?>
 					</a>
 					

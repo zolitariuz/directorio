@@ -2,89 +2,91 @@
 
 class Inicio extends CI_Controller {
 
-	// $usuarioWS y $passwordWS se encuentran en application/config/rest.php
-	private $usuarioWS;
-	private $passwordWS;
-	private $urlPortalWS;
-	private $urlWS;
-
 	function __construct()
 	{
 		parent::__construct();
-
 		// Esconde warnings
 		error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+	} // constructor
 
-		// Datos de conexión para WS
-		$this->usuarioWS = 'admin_ts';
-		$this->passwordWS = '@dm1n_TS_123';
-		$this->urlPortalWS = 'localhost:8888/tramites_cdmx_ws/';
-		$this->urlWS = 'http://'.$this->usuarioWS.':'.$this->passwordWS.'@'.$this->urlPortalWS.'index.php/api/';
-	}
-
+	/**
+	 * Descripción: Página de inicio
+	 * Input:		ninguno	
+	 */
 	function index()
 	{
+		// Variable de conexión a web services
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
 		// Se utiliza en caso de que exista error en alguna consulta
 		$data['error'] = $_GET['error'];
 
 		// Muestra trámites y servicios mas buscados usando WS
 		$data['ts_mas_populares'] = json_decode(
-		    file_get_contents($this->urlWS.'/tramites_servicios/format/json')
+		    file_get_contents($url_ws.'/tramites_servicios/format/json')
 		);
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
-		$nombres_ts =  file_get_contents($this->urlWS.'/nombres_ts/format/json');
+		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
 		if(is_null($nombres_ts))
 			$data['nombres_ts'] = '';
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
-		// Cargar vista inicio
+		
+
+		// Cargar vista inicio con header y footer
 		$this->load->view('header', $data);
 		$this->load->view('inicio', $data);
 		$this->load->view('footer', $data);
 	} // index
 
-	function muestraTramiteServicio($idTramite){
+	/**
+	 * Descripción: Muestra detalle de trámite o servicio
+	 * Input:		$id_tramite - id de trámite o servicio	
+	 */
+	function muestraTramiteServicio($id_tramite){
+
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
 
 		// Carga info de un trámite o servicio
-		$ts =  file_get_contents($this->urlWS.'/info_tramite/id/'.$idTramite.'/format/json');
+		$ts =  file_get_contents($url_ws.'/info_tramite/id/'.$id_tramite.'/format/json');
 		if(is_null($ts))
 			$data['ts'] = '';
 		else
 			$data['ts'] = json_decode($ts);
 
 		// Carga requisitos de un trámite o servicio
-		$requisitos = file_get_contents($this->urlWS.'/requisitos/id/'.$idTramite.'/format/json');
+		$requisitos = file_get_contents($url_ws.'/requisitos/id/'.$id_tramite.'/format/json');
 		if(is_null($requisitos))
 			$data['requisitos'] = '';
 		else
 			$data['requisitos'] = json_decode($requisitos);
 
 		// Carga requisitos específicos de un trámite o servicio
-		$requisitos_esp = file_get_contents($this->urlWS.'/requisitos_esp/id/'.$idTramite.'/format/json');
+		$requisitos_esp = file_get_contents($url_ws.'/requisitos_esp/id/'.$id_tramite.'/format/json');
 		if(is_null($requisitos_esp))
 			$data['requisitos_esp'] = '';
 		else
 			$data['requisitos_esp'] = json_decode($requisitos_esp);
 
 		// Carga formatos de un trámite o servicio
-		$formatos =  file_get_contents($this->urlWS.'/formatos/id/'.$idTramite.'/format/json');
+		$formatos =  file_get_contents($url_ws.'/formatos/id/'.$id_tramite.'/format/json');
 		if(is_null($formatos))
 			$data['formatos'] = '';
 		else
 			$data['formatos'] = json_decode($formatos);
 
 		// Carga areas de atención de un trámite o servicio
-		$area_atencion =  file_get_contents($this->urlWS.'/area_atencion/id/'.$idTramite.'/format/json');
+		$area_atencion =  file_get_contents($url_ws.'/area_atencion/id/'.$id_tramite.'/format/json');
 		if(is_null($area_atencion))
 			$data['area_atencion'] = '';
 		else
 			$data['area_atencion'] = $this->dameAreasAtencion(json_decode($area_atencion));
 
-		// Carga areas de atención de un trámite o servicio
-		$documento =  file_get_contents($this->urlWS.'/documento/id/'.$idTramite.'/format/json');
+		// Carga documento / beneficio de un trámite o servicio
+		$documento =  file_get_contents($url_ws.'/documento/id/'.$id_tramite.'/format/json');
 		if(is_null($documento))
 			$data['documento'] = '';
 		else
@@ -92,13 +94,14 @@ class Inicio extends CI_Controller {
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
-		$nombres_ts = file_get_contents($this->urlWS.'/nombres_ts/format/json');
+		$nombres_ts = file_get_contents($url_ws.'/nombres_ts/format/json');
 		if(is_null($nombres_ts))
 			$data['nombres_ts'] = '';
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
-		// Cargar vista tramite
+
+		// Carga la vista que muestra información de trámites o servicios
 		// en caso de error, redirecciona al inicio
 		$this->load->view('header');
 		if($ts != '')
@@ -108,10 +111,18 @@ class Inicio extends CI_Controller {
 		$this->load->view('footer', $data);
 	} // muestraTramiteServicio
 
+
+
+	/**
+	 * Descripción: Busca datos de áreas de atención pertenecientes a un 
+	 *              trámite o servicio
+	 * Input:		$area_atencion - arreglo con info de áreas de atención
+	 * Output:		$areas_atencion_json - JSON con info de áreas de atención
+	 */
 	private function dameAreasAtencion($area_atencion){
-		$infoMapas = array();
+		$areas_atencion_json = array();
 		foreach ($area_atencion as $key => $value) {
-			$infoMapas[$key] = array(
+			$areas_atencion_json[$key] = array(
 				'nombre'		=> $value->nombre,
 				'calle_numero' 	=> $value->calle_numero,
 		    	'delegacion' 	=> $value->delegacion,
@@ -121,9 +132,14 @@ class Inicio extends CI_Controller {
 		    	'url_ubicacion'	=> $value->url_ubicacion,
 				);
 		}
-		return json_encode($infoMapas);
+		return json_encode($areas_atencion_json);
 	} // dameAreasAtencion
 
+	/**
+	 * Descripción: Le da tratamiento a la cadena de documentos
+	 * Input:		$docs - arreglo con info de documentos
+	 * Output:		$documentos - arreglo con info de documentos formateada
+	 */
 	private function dameDocumentos($docs){
 		$documentos = array();
 		foreach ($docs as $key => $value) {

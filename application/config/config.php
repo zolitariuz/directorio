@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'ENCRIPTAR CON MAS SEGURIDAD';
 
 /*
 |--------------------------------------------------------------------------
@@ -360,6 +360,12 @@ $config['proxy_ips'] = '';
 | Constantes del usuario
 |--------------------------------------------------------------------------
 */
+
+// Datos de conexión a los web services
+define('USUARIO_WS', 'admin_ts');
+define('PASSWORD_WS', '@dm1n_TS_123');
+define('URL_WS', 'localhost:8888/tramites_cdmx_ws/index.php/api/');
+
 
 // Tipo de duración de vigencia
 define('SERVICIO', -1);

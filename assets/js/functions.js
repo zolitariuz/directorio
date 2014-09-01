@@ -142,7 +142,7 @@ function creaMapa(mapas){
 	var styles = [
 			{
 			  stylers: [
-				{ hue: "#d7d7d7" }
+				{ hue: "#ec2383" }
 			  ]
 			}
 		];

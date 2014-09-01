@@ -41,6 +41,8 @@
 $route['default_controller'] = "inicio";
 $route['404_override'] = '';
 
+$route['login'] = 'gestor_contenidos/login';
+
 
 
 /* End of file routes.php */

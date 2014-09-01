@@ -83,19 +83,19 @@
 									Trámites CD<strong>MX</strong>
 								</a>
 							</h1>
-							<form class="main-search main-search-header clearfix columna xmall-5" action="#">
-								<input type="search" class="span xmall-9">
+							<form class="main-search main-search-header clearfix columna xmall-9" action="#">
+								<input type="search" class="span xmall-10" placeholder="Busca un trámite o servicio">
 								<input type="hidden" name="tags_id" id="ts_id" value="x" />
 								<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
 							</form>
-							<a href="#" class="boton horizontal chico columna xmall-2">
+							<!-- <a href="#" class="boton horizontal chico columna xmall-2">
 								<i class="fa fa-asterisk"></i>
 								Institución
 							</a>
 							<a href="#" class="boton horizontal chico columna xmall-2">
 								<i class="fa fa-asterisk"></i>
 								Tema
-							</a>
+							</a> -->
 						</div><!-- clearfix -->
 						<nav class="clearfix">
 							<a href="#">

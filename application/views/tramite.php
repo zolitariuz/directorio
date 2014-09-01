@@ -88,7 +88,6 @@
 		</aside>
 		<div class="main-content columna large-8 full right">
 
-<<<<<<< HEAD
 		<section class="content">
 			<article class="consiste">
 				<?php if(is_null($ts->descripcion_ts)) { ?>
@@ -114,37 +113,6 @@
 								if($documentoOficial != $value->documento_oficial){
 									if($numReqAcr > 1){
 										echo '</ul></div>';
-=======
-			<section class="content">
-				<article class="consiste">
-					<p class="hero"><?php echo $ts->descripcion_ts; ?></p>
-				</article>
-				<article class="transform" data-content="requisitos">
-					<h2 class="highlight">Requisitos</h2>
-					<div class="no-xmall large modal-to-be">
-						<?php
-						// Cargar requisitos si existen
-						$numReq = 1;
-						if($requisitos == '' && $requisitos_esp == ''){
-							echo '<p>Este trámite o servicio no tiene requisitos</p>';
-						} else {
-							if($requisitos != ''){
-								$documentoOficial = '';
-								$esDiferente = false;
-								$numReqAcr = -1;
-								foreach ($requisitos as $key => $value) {
-									if($documentoOficial != $value->documento_oficial){
-										if($numReqAcr > 1){
-											echo '</ul></div>';
-										}
-
-										$documentoOficial = $value->documento_oficial;
-										echo '<div class="paso clearfix">';
-										echo '<span>'.$numReq.'</span>';
-										echo '<p><strong>'.$documentoOficial.': </strong></p><ul>';
-										$numReq = $numReq + 1;
-										$numReqAcr = 1;
->>>>>>> 62ead1f552f0c42a33508f3a740546d83152a349
 									}
 
 									$documentoAcreditacion = $value->documento_acreditacion;
@@ -173,8 +141,13 @@
 								} // end foreach
 							}
 						}
+					}
 						?>
 					</div>
+				</article>
+				<article>
+					<h2 class="highlight">Procedimientos</h2>
+					<p>Este trámite o servicio no tiene procedimientos</p>
 				</article>
 				<article class="transform" data-content="formatos-requeridos">
 					<h2 class="highlight">Formatos requeridos</h2>
