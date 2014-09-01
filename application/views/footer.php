@@ -3,48 +3,17 @@
 		<footer>
 			<section class="map">
 				<div class="width clearfix">
-					<div class="columna xmall-2">
-						<article>
-							<h5>Servicios</h5>
-							<a href="#">Infographics</a>
-							<a href="#">Videos</a>
-							<a href="#">Web Experiences</a>
-						</article>
-						<article>
-							<h5>Recursos</h5>
-							<a href="#">Infographics</a>
-							<a href="#">Videos</a>
-						</article>
+					<div class="columna xmall-3">
+						<img class="block center" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
 					</div>
-					<div class="columna xmall-2">
-						<article>
-							<h5>Servicios</h5>
-							<a href="#">Infographics</a>
-							<a href="#">Videos</a>
-							<a href="#">Web Experiences</a>
-							<a href="#">Web Experiences</a>
-							<a href="#">Web Experiences</a>
-						</article>
-						<article>
-							<h5>Recursos</h5>
-							<a href="#">Infographics</a>
-							<a href="#">Videos</a>
-						</article>
+					<div class="columna xmall-3">
+						<img class="block center" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
 					</div>
-					<div class="columna xmall-2">
-						<article>
-							<h5>Servicios</h5>
-							<a href="#">Infographics</a>
-							<a href="#">Videos</a>
-							<a href="#">Web Experiences</a>
-						</article>
+					<div class="columna xmall-3">
+						<img class="block center" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
 					</div>
-					<div class="columna xmall-4 right">
-						<img class="columna xmall-7" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
-						<img class="columna xmall-3 right" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
-						<div class="clear"></div>
-						<img class="columna xmall-5" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
-						<img class="columna xmall-5 right" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
+					<div class="columna xmall-3">
+						<img class="block center" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
 					</div>
 				</div><!-- width -->
 			</section>
