@@ -77,8 +77,19 @@
 				<hr>
 				<div class="clear"></div>
 				<article>
-					<h2 class="highlight">Procedimientos</h2>
-					<p>Este trámite o servicio no tiene procedimientos</p>
+					<?php 
+					// Cargar requisitos específicos si existen
+					if($procedimiento != ''){
+						echo '<h2 class="highlight">Procedimiento</h2>';
+						foreach ($procedimiento as $key => $value) {
+							echo '<div class="paso clearfix">';
+							echo '<span>'.$value->paso.'</span>';
+							echo '<p>'.$value->accion.'</p>';
+							echo '</div>';
+							echo '<div class="clear"></div>';
+						} // end foreach
+					}
+					?>
 				</article>
 				<div class="clear"></div>
 				<hr>

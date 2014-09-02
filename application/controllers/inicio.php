@@ -102,12 +102,19 @@ class Inicio extends CI_Controller {
 		else
 			$data['documento'] = $this->dameDocumentos(json_decode($documento));
 
-		// Carga documento / beneficio de un trámite o servicio
+		// Carga costo(s) de un trámite o servicio
 		$costo =  file_get_contents($url_ws.'/costo/id/'.$id_tramite.'/format/json');
 		if(is_null($costo))
 			$data['costo'] = '';
 		else
 			$data['costo'] = json_decode($costo);
+
+		// Carga el procedimiento del trámite o servicio
+		$procedimiento =  file_get_contents($url_ws.'/procedimiento/id/'.$id_tramite.'/format/json');
+		if(is_null($procedimiento))
+			$data['procedimiento'] = '';
+		else
+			$data['procedimiento'] = json_decode($procedimiento);
 
 
 		// Carga nombre y id de todos los trámites y servicios
