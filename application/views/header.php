@@ -76,7 +76,6 @@
 									<?php
 									foreach ($avisos as $key => $value) {
 										echo '<span>';
-
 										// ¿el aviso tiene link?
 										if(trim($value['tipo_contenido']) == 'link') {
 											echo '<a href="http://'.$value['url'].'">';
@@ -90,7 +89,6 @@
 										echo '|';
 									}// foreach anuncio
 									?>
-
 								</p>
 							</div>
 						</div>
