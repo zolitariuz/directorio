@@ -18,11 +18,20 @@
 
 		//Modals
 		$('body').on('click', '.transform .boton', function(){
-			abrirModal( $(this) );;
+			abrirModal( $(this) );
 		});
 
 		$('body').on('click', '.modal .cerrar', function(){
-			cerrarModal( $(this) );;
+			cerrarModal( $(this) );
+		});
+
+		//Overlays
+		$('body').on('click', '.overlay-opener', function(){
+			abrirOverlay( $(this) );
+		});
+
+		$('body').on('click', '.overlay-wrapper .cerrar', function(){
+			cerrarOverlay( $(this) );
 		});
 
 		//Header aparece cuando el scroll oculta la sección de búsqueda
@@ -90,6 +99,19 @@
 
 	function cerrarModal(elemento){
 		var aCerrar = elemento.parent().parent();
+		aCerrar.fadeOut('fast', function(){
+			$(this).addClass('hide');
+		});
+	}
+
+	function abrirOverlay(){
+		$('.overlay-wrapper').fadeIn('fast', function(){
+			$(this).removeClass('hide');
+		});
+	}
+
+	function cerrarOverlay(elemento){
+		var aCerrar = elemento.parent();
 		aCerrar.fadeOut('fast', function(){
 			$(this).addClass('hide');
 		});
