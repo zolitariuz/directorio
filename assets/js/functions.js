@@ -36,6 +36,11 @@
 			cerrarOverlay( $(this) );
 		});
 
+		//ScrolTop
+		$('body').on('click', '.scrollTo', function(){
+			scrollTop( $(this) );
+		});
+
 		//Header aparece cuando el scroll oculta la sección de búsqueda
 		//paddingMain();
 
@@ -147,8 +152,13 @@
 		}
 	}
 
-	function scrollAside(){
+	function scrollTop(elemento){
+		var seccion 	= elemento.data('seccion');
+		console.log(seccion);
+		var divPosicion = $("article[data-seccion='"+seccion+"']").offset().top;
+		divPosicion = divPosicion - 100;
 
+		$('html, body').animate({scrollTop: divPosicion}, 400);
 	}
 
 	function paddingMain(){

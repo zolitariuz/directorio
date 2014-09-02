@@ -77,7 +77,7 @@
 				<hr>
 				<div class="clear"></div>
 				<article>
-					<?php 
+					<?php
 					// Cargar requisitos específicos si existen
 					if($procedimiento != ''){
 						echo '<h2 class="highlight">Procedimiento</h2>';
@@ -94,7 +94,7 @@
 				<div class="clear"></div>
 				<hr>
 				<div class="clear"></div>
-				<article class="" data-content="area-atencion">
+				<article class="" data-seccion="area-atencion">
 					<h2 class="highlight">Áreas de atención</h2>
 					<div id="map"></div>
 				</article>
@@ -139,7 +139,7 @@
 			</section><!-- content -->
 			<aside class="columna xmall-3">
 				<section>
-					<a href="#" data-seccion="" class="block boton margin-bottom">
+					<a href="#" data-seccion="area-atencion" class="block boton margin-bottom scrollTo">
 						<i class="fa fa-map-marker"></i> ¿Dónde se realiza?
 					</a>
 					<div class="quick-info">
