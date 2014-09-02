@@ -26,10 +26,7 @@
 		});
 
 		//Header aparece cuando el scroll oculta la sección de búsqueda
-		paddingMain();
-		$(window).scroll(function() {
-			scrollHeader();
-		});
+		//paddingMain();
 
 		//***RESPONSIVE***//
 

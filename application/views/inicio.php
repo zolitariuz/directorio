@@ -130,16 +130,27 @@
 		<div class="clear"></div>
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
-		<section class="links clearfix">
-			<div class="columna xmall-6">
-				<a href="" class="block columna xmall-8 center">
-					<img src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
-				</a>
-			</div>
-			<div class="columna xmall-6">
-				<a href="" class="block columna xmall-8 center">
-					<img src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
-				</a>
+		<section class="anuncios clearfix">
+			<h2 class="text-center highlight">Anuncios</h2>
+			<div class="slider clearfix cycle-slideshow"
+				data-cycle-slides=".slide"
+				data-cycle-fx="scrollHorz"
+				data-cycle-swipe="true"
+			>
+				<div class="slide">
+					<img src="assets/img/anuncio.jpg" alt="">
+					<div class="full info">
+						<p>Quod ea non occurrentia fingunt, vincunt Aristonem; Satisne ergo pudori consulat, si quis sine teste libidini pareat? Quippe: habes enim a rhetoribus;</p>
+					</div>
+				</div><!-- slide -->
+				<div class="slide">
+					<img src="assets/img/anuncio.jpg" alt="">
+					<div class="full info">
+						<p>Quid est enim aliud esse versutum? In his igitur partibus duabus nihil erat, quod Zeno commutare gestiret. Tamen aberramus a proposito, et, ne longius, prorsus, inquam, Piso, si ista mala sunt, placet. Duo Reges: constructio interrete. Non igitur de improbo, sed de callido improbo quaerimus, qualis Q. Non laboro, inquit, de nomine. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. At ille non pertimuit saneque fidenter: Istis quidem ipsis verbis, inquit; Maximas vero virtutes iacere omnis necesse est voluptate dominante. Miserum hominem! Si dolor summum malum est, dici aliter non potest.</p>
+					</div>
+				</div><!-- slide -->
+				<div class="cycle-controls cycle-prev"><i class="fa fa-angle-left"></i></div>
+    			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
 			</div>
 		</section>
 		<div class="clear"></div>
@@ -156,29 +167,19 @@
 		<div class="clear"></div>
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
-		<section class="anuncios clearfix">
-			<h2 class="text-center highlight">Anuncios</h2>
-			<div class="slider clearfix cycle-slideshow"
-				data-cycle-slides=".slide"
-				data-cycle-fx="scrollHorz"
-				data-cycle-swipe="true"
-			>
-				<div class="slide">
-					<img src="assets/img/anuncio.jpg" alt="">
-					<div class="info">
-						<p>Quod ea non occurrentia fingunt, vincunt Aristonem; Satisne ergo pudori consulat, si quis sine teste libidini pareat? Quippe: habes enim a rhetoribus;</p>
-					</div>
-				</div><!-- slide -->
-				<div class="slide">
-					<img src="assets/img/anuncio.jpg" alt="">
-					<div class="info">
-						<p>Quid est enim aliud esse versutum? In his igitur partibus duabus nihil erat, quod Zeno commutare gestiret. Tamen aberramus a proposito, et, ne longius, prorsus, inquam, Piso, si ista mala sunt, placet. Duo Reges: constructio interrete. Non igitur de improbo, sed de callido improbo quaerimus, qualis Q. Non laboro, inquit, de nomine. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. At ille non pertimuit saneque fidenter: Istis quidem ipsis verbis, inquit; Maximas vero virtutes iacere omnis necesse est voluptate dominante. Miserum hominem! Si dolor summum malum est, dici aliter non potest.</p>
-					</div>
-				</div><!-- slide -->
-				<div class="cycle-controls cycle-prev"><i class="fa fa-angle-left"></i></div>
-    			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
+		<section class="links clearfix">
+			<div class="columna xmall-6">
+				<a href="" class="block columna xmall-8 center">
+					<img src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+				</a>
+			</div>
+			<div class="columna xmall-6">
+				<a href="" class="block columna xmall-8 center">
+					<img src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+				</a>
 			</div>
 		</section>
+
 
 	</div><!-- width -->
 
