@@ -25,7 +25,6 @@
 					Tema
 				</a>
 			</div>
-
 		</section><!-- busqueda -->
 		<div class="clear"></div>
 		<hr class="columna xmall-6 center">
@@ -169,13 +168,13 @@
 		<div class="clear"></div>
 		<section class="links clearfix">
 			<div class="columna xmall-6">
-				<a href="" class="block columna xmall-8 center">
-					<img src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+				<a href="#" class="block columna xmall-8 center">
+					<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 				</a>
 			</div>
 			<div class="columna xmall-6">
-				<a href="" class="block columna xmall-8 center">
-					<img src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+				<a href="#" class="block columna xmall-8 center">
+					<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
 				</a>
 			</div>
 		</section>

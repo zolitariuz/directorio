@@ -8,6 +8,8 @@
 			callMasonry();
 		}
 
+		//Avisos
+		$('.mensaje p').removeClass('hide');
 		marqueeText('.mensaje p');
 
 		//*** CLICKS ***//
