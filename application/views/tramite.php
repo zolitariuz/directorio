@@ -178,9 +178,8 @@
 									$formato = $value->nombre;
 									$url = 'http://www14.df.gob.mx/virtual/sretys/statics/formatos/TCEJUR_ADP_1.pdf';
 									$numFormato = $key + 1;
-									echo '<p>Formato '.$numFormato.': ';
-									echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a>';
-									echo '</p>';
+									echo '<p>Formato '.$numFormato.': </p>';
+									echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a><br />';
 								} // end foreach
 							} else {
 								echo '<p>Este trámite o servicio no tiene formatos requeridos</p>';
@@ -195,9 +194,9 @@
 						<article class="" data-content="beneficio-documento">
 						<?php
 						if($ts->is_tramite){
-							echo '<h3 class="highlight">Documento a obtener</h3>';
+							echo '<h3 class="highlight">Documento(s) a obtener</h3>';
 						} else {
-							echo '<h3 class="highlight">Beneficio a obtener</h3>';
+							echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
 						}
 						?>
 
