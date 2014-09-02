@@ -246,20 +246,22 @@ function creaMapa(mapas){
     	var pedazos;
     	var coordenadas;
 
-    	if(url.indexOf('mapa:')>-1){
-    		pedazos = url.split('mapa:');
-    		coordenadas = pedazos[1] + ',' + pedazos[2];
+    	if(typeof url !== null) {
+    		if(url.indexOf('mapa:')>-1){
+	    		pedazos = url.split('mapa:');
+	    		coordenadas = pedazos[1] + ',' + pedazos[2];
 
-    	} else {
-    		pedazos = url.split('&');
+	    	} else {
+	    		pedazos = url.split('&');
 
-	    	$.each(pedazos, function(i, val){
-	    		if(val.indexOf('sll=')>-1){
-	    			coordenadas = val.replace('sll=', '');
+		    	$.each(pedazos, function(i, val){
+		    		if(val.indexOf('sll=')>-1){
+		    			coordenadas = val.replace('sll=', '');
 
-	    		}
-	    	});
-    	}
+		    		}
+		    	});
+	    	}
+    	} 
 
     	if(typeof coordenadas === 'undefined')
     		return -1

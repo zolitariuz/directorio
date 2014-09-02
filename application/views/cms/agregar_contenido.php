@@ -25,7 +25,7 @@
 				</fieldset>
 				<fieldset class="columna xmall-10 center"> 
 					<input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario'] ?>">
-					<input type="submit" value="Agregar aviso" class="columna xmall-3 block center boton">
+					<input type="submit" value="Agregar aviso" class="columna xmall-4 block center boton">
 				</fieldset>
 			</form>
 			
@@ -36,7 +36,7 @@
 				</fieldset>
 				<fieldset class="columna xmall-10 center"> 
 					<input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario'] ?>">
-					<input type="submit" value="Agregar pregunta" class="columna xmall-3 block center boton">
+					<input type="submit" value="Agregar pregunta" class="columna xmall-4 block center boton">
 				</fieldset>
 			</form>
 
@@ -64,7 +64,7 @@
 					</ul>
 					<input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario'] ?>">
 					<input type="file" name="userfile" size="20" />
-					<input type="submit" value="Agrega anuncio" class="columna xmall-3 block center boton" />
+					<input type="submit" value="Agrega anuncio" class="columna xmall-4 block center boton" />
 				</fieldset>				
 			</form>
 		</div>

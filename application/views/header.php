@@ -79,7 +79,7 @@
 
 										// ¿el aviso tiene link?
 										if(trim($value['tipo_contenido']) == 'link') {
-											echo '<a href="http://'.$value['url'].'">';
+											echo '<a href="'.$value['url'].'">';
 											echo $value['contenido'];
 											echo '</a>';
 										} else {

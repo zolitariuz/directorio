@@ -3,12 +3,14 @@
 <div class="main">
 	<div class="width">
 		
-		<a href="<?php echo base_url().'index.php/gestor_contenidos/panel_admin/'.$usuario["id_usuario"]; ?>">Regresar a panel de administración</a>
+		<a href="<?php echo base_url().'index.php/gestor_contenidos/panel_admin/' ?>">Regresar a panel de administración</a>
 	
 		<div class="full">
 			<?php 
 				if(isset($success)){
 					echo '<p class="success">'.$success.'</p>';
+				} else if(isset($error)){
+					echo '<p class="error">'.$error.'</p>';
 				}
 			?>
 			<div class="editar-avisos" class="columna xmall-12">
