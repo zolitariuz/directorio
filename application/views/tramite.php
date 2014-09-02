@@ -73,8 +73,11 @@
 						?>
 					</div>
 				</article>
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
 				<article>
-					<?php 
+					<?php
 					// Cargar requisitos específicos si existen
 					if($procedimiento != ''){
 						echo '<h2 class="highlight">Procedimiento</h2>';
@@ -88,10 +91,16 @@
 					}
 					?>
 				</article>
-				<article class="" data-content="area-atencion">
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
+				<article class="" data-seccion="area-atencion">
 					<h2 class="highlight">Áreas de atención</h2>
 					<div id="map"></div>
 				</article>
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
 				<article>
 					<h2 class="highlight">Danos tu opinión</h2>
 					<form class="feedback" action="#">
@@ -115,6 +124,9 @@
 						<input type="submit" class="boton" value="Enviar">
 					</form>
 				</article>
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
 				<article>
 					<h2 class="highlight">Compártelo</h2>
 					<div class="share block columna xmall-2">
@@ -127,7 +139,7 @@
 			</section><!-- content -->
 			<aside class="columna xmall-3">
 				<section>
-					<a href="#" data-seccion="" class="block boton margin-bottom">
+					<a href="#" data-seccion="area-atencion" class="block boton margin-bottom scrollTo">
 						<i class="fa fa-map-marker"></i> ¿Dónde se realiza?
 					</a>
 					<div class="quick-info">
@@ -157,26 +169,27 @@
 					<div class="clear"></div>
 					<hr>
 					<div class="clear"></div>
-					
+
 					<div class="quick-info">
-						<h3 class="highlight">Costo</h3>
 						<?php
 						$indicePrecio = 0;
 						// Costo o costos del trámite o servicio
 						if($costo != ''){
 							foreach ($costo as $key => $value) {
 								if($value->concepto == 1){
+									echo '<h3 class="highlight">Costo</h3>';
 									echo '<p>$'.$value->monto.'</p>';
 								} else {
 									if($indicePrecio == 0){
+										echo '<h3 class="highlight">Costos</h3>';
 										echo '<div class="tabla-precio">';
 									}
-									echo '<div class="costo clearfix">';
-									echo '<div class="nombre-costo columna xmall-8">';
-									echo '<p>'.$value->concepto.'</p>';
-									echo '</div>';
-									echo '<div class="nombre-costo columna xmall-4">';
+									echo '<div class="costo">';
+									echo '<div class="numero-costo">';
 									echo '<p>$'.$value->monto.'</p>';
+									echo '</div>';
+									echo '<div class="nombre-costo">';
+									echo '<p>En los proyectos que incluyan oficinas, comercios, industrias, servicios o equipamientos, por más de 5,000 metros cuadrados de construcción, así como las estaciones de servicio de combustibles y crematorios En los proyectos que incluyan oficinas, comercios, industrias, servicios o equipamientos, por más de 5,000 metros cuadrados de construcción, así como las estaciones de servicio de combustibles y crematorios En los proyectos que incluyan oficinas, comercios, industrias, servicios o equipamientos, por más de 5,000 metros cuadrados de construcción, así como las estaciones de servicio de combustibles y crematorios</p>';
 									echo '</div>';
 									echo '</div>';
 
@@ -185,7 +198,7 @@
 										echo '</div>';
 								}
 							} // end foreach
-						} 
+						}
 						?>
 					</div><!-- quick-info -->
 
