@@ -2,10 +2,17 @@
 	<div class="width clearfix">
 		<div class="main-content clearfix">
 			<div class="header-single clearfix">
-				<div class="quick-info">
-					<p><i class="fa fa-asterisk"></i> <?php echo $ts->materia ?></p>
-				</div><!-- quick-info -->
-				<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
+				<div class="columna xmall-9">
+					<div class="quick-info">
+						<p><i class="fa fa-asterisk"></i> <?php echo $ts->materia ?></p>
+					</div><!-- quick-info -->
+					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
+				</div>
+				<div class="columna xmall-3">
+					<a href="#" class="block boton horizontal">
+						<i class="fa fa-search"></i> Busca tu trámite
+					</a>
+				</div>
 			</div><!-- header-single -->
 			<section class="content columna xmall-9">
 				<article class="consiste">
@@ -76,10 +83,11 @@
 				<div class="clear"></div>
 				<hr>
 				<div class="clear"></div>
-				<article>
+				<?php
+				// Cargar requisitos específicos si existen
+				if($procedimiento != ''){ ?>
+					<article>
 					<?php
-					// Cargar requisitos específicos si existen
-					if($procedimiento != ''){
 						echo '<h2 class="highlight">Procedimiento</h2>';
 						foreach ($procedimiento as $key => $value) {
 							echo '<div class="paso clearfix">';
@@ -88,12 +96,12 @@
 							echo '</div>';
 							echo '<div class="clear"></div>';
 						} // end foreach
-					}
 					?>
-				</article>
-				<div class="clear"></div>
-				<hr>
-				<div class="clear"></div>
+					</article>
+					<div class="clear"></div>
+					<hr>
+					<div class="clear"></div>
+				<?php } ?>
 				<article class="" data-seccion="area-atencion">
 					<h2 class="highlight">Áreas de atención</h2>
 					<div id="map"></div>
@@ -121,7 +129,7 @@
 							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
 							<textarea name="" id="" rows="8"></textarea>
 						</fieldset>
-						<input type="submit" class="boton" value="Enviar">
+						<input type="submit" class="boton chico horizontal" value="Enviar">
 					</form>
 				</article>
 				<div class="clear"></div>
@@ -189,7 +197,7 @@
 									echo '<p>$'.$value->monto.'</p>';
 									echo '</div>';
 									echo '<div class="nombre-costo">';
-									echo '<p>En los proyectos que incluyan oficinas, comercios, industrias, servicios o equipamientos, por más de 5,000 metros cuadrados de construcción, así como las estaciones de servicio de combustibles y crematorios En los proyectos que incluyan oficinas, comercios, industrias, servicios o equipamientos, por más de 5,000 metros cuadrados de construcción, así como las estaciones de servicio de combustibles y crematorios En los proyectos que incluyan oficinas, comercios, industrias, servicios o equipamientos, por más de 5,000 metros cuadrados de construcción, así como las estaciones de servicio de combustibles y crematorios</p>';
+									echo '<p>'.$value->concepto.'</p>';
 									echo '</div>';
 									echo '</div>';
 
@@ -207,15 +215,17 @@
 					<div class="clear"></div>
 					<div class="quick-info">
 						<h3 class="highlight">Formatos requeridos</h3>
-						<div class="">
+						<div class="formatos">
 							<?php
 							if($formatos != ''){
 								foreach ($formatos as $key => $value) {
 									$formato = $value->nombre;
 									$url = 'http://www14.df.gob.mx/virtual/sretys/statics/formatos/TCEJUR_ADP_1.pdf';
 									$numFormato = $key + 1;
+									echo '<div class="margin-bottom">';
 									echo '<p>Formato '.$numFormato.'</p>';
-									echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a><br /><br />';
+									echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a>';
+									echo '</div>';
 								} // end foreach
 							} else {
 								echo '<p>Este trámite o servicio no tiene formatos requeridos</p>';
