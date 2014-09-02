@@ -11,7 +11,6 @@ class Gestor_contenidos extends CI_Controller {
 
 
 		$this->load->helper(array('form', 'url'));
-		$this->load->library('session');
 
 	} // constructor
 
@@ -19,8 +18,12 @@ class Gestor_contenidos extends CI_Controller {
 	 * Descripción: Panel de administración de contenidos
 	 * Input:		ninguno
 	 */
-	function panel_admin($id)
+	function panel_admin()
 	{
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
 		// datos usuario
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id);
@@ -60,26 +63,21 @@ class Gestor_contenidos extends CI_Controller {
 		$existe_usuario = $this->usuario->valida_usuario($usuario, $password);
 
 		// Carga vista de login o index en caso de credenciales correctas
-		$this->load->view('cms/header', $data);
 		if(!$this->form_validation->run() || $existe_usuario == 0){
 			if($existe_usuario == 0){
 				$data['error'] = 'Nombre de usuario o contraseña incorrectos';
 			}
+			$this->load->view('cms/header', $data);
 			$this->load->view('cms/login', $data);
 		} else {
 			// guarda datos de usuario en sesión
 			$data['usuario'] = $existe_usuario;
-			$datos_usuario = array(
-				'id'		=> $data['usuario']['id_usuario'], 
-				'usuario'	=> $data['usuario']['usuario'], 
-				'nombre'	=> $data['usuario']['nombre'], 
-				'apellidos'	=> $data['usuario']['apellidos'], 
-				'is_admin'	=> $data['usuario']['is_admin'], 
-				
-				);
-			$this->session->set_userdata($datos_usuario);
-
-			$data['usuario'] = $existe_usuario;
+			session_start();
+			$_SESSION['id_usuario'] =  $data['usuario']['id_usuario'];
+			$_SESSION['usuario'] =  $data['usuario']['usuario'];
+			$_SESSION['is_admin'] =  $data['usuario']['is_admin'];
+			
+			$this->load->view('cms/header', $data);
 			$this->load->view('cms/panel_admin', $data);
 		}
 		
@@ -87,20 +85,69 @@ class Gestor_contenidos extends CI_Controller {
 
 	}// login
 
-	function agregar_contenido(){
+	function logout(){
+		// destruye sesión actual
+		session_destroy();
+		// muestra login
+		$this->login();
+	}// logout
+
+	function agregar_usuario(){
 		// datos usuario
-		$id_usuario = $this->session->userdata('id');
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
 
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
 
+		// Cacha datos al hacer update
+		if(isset($_POST['usuario'])){
+			$usuario = $_POST['usuario'];
+			$password = $_POST['password'];
+			$nombre = $_POST['nombre'];
+			$apellidos = $_POST['apellidos'];
+			$rol = $_POST['rol'];
+
+			// ¿es administrador?
+			if($rol == 'admin')
+				$is_admin = 't';
+			else
+				$is_admin = 'f';
+
+			// agrega usuario a base de datos
+			if($this->usuario->agrega_usuario($usuario, $password, $nombre, $apellidos, $is_admin)){
+				$data['success'] = '¡Se agregó el usuario con éxito!';
+			} else {
+				$data['error'] = 'No se pudo agregar el usuario.';
+			}
+		}
+
+		// Carga vista de login o index en caso de credenciales correctas
+		$this->load->view('cms/header', $data);
+		$this->load->view('cms/agregar_usuario', $data);
+		$this->load->view('cms/footer');
+	}// agregar_usuario
+
+	function agregar_contenido(){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
+		$this->load->model('usuario');
+		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
+		$data['seccion'] = 'Agregar contenido';
+
 		// Carga vista de login o index en caso de credenciales correctas
 		$this->load->view('cms/header', $data);
 		$this->load->view('cms/agregar_contenido', $data);
-		$this->load->view('cms/footer');
+		$this->load->view('cms/footer', $data);
 	}// agregar_contenido
 
 	function editar_contenido($id){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
 		// datos usuario
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id);
@@ -124,12 +171,13 @@ class Gestor_contenidos extends CI_Controller {
 	}// editar_contenido
 
 	function agregar_aviso(){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
 
-		// datos a insertar
-		$id_usuario = $_POST['id_usuario'];
 		$aviso = $_POST['aviso'];
 		$url_aviso = $_POST['url_aviso'];
-		if($url_aviso == ''){
+		if($url_aviso == '-'){
 			$tipo = 'texto';
 		} else {
 			$tipo = 'link';
@@ -142,15 +190,17 @@ class Gestor_contenidos extends CI_Controller {
 		// inserta aviso a bd
 		$this->load->model('aviso');
 		if($this->aviso->agrega_aviso($aviso, $url_aviso, $tipo, $id_usuario)){
-			$data['sucess'] = 'Se agrego el aviso con éxito.';
+			$data['success'] = '¡Se agregó el aviso con éxito!';
 		} else {
 			$data['error'] = 'No se pudo agregar el aviso.';
 		}
 
+		$data['seccion'] = 'Agregar contenido';
+
 		// Carga vista de login o index en caso de credenciales correctas
 		$this->load->view('cms/header');
-		$this->load->view('cms/index', $data);
-		$this->load->view('cms/footer');
+		$this->load->view('cms/agregar_contenido', $data);
+		$this->load->view('cms/footer', $data);
 	}// agregar_aviso
 
 	/**
@@ -179,9 +229,46 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->view('cms/footer');
 	}// editar_aviso
 
+	/**
+	 * Descripción: Eliminar un aviso existente
+	 * @param integer $id_aviso
+	 * @return nada	
+	 */
+	function eliminar_aviso($id_aviso){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
+		// usuario que elimina el aviso 
+		$this->load->model('usuario');
+		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
+
+		// carga modelo 
+		$this->load->model('aviso');
+
+		// ¿se está editando el aviso?
+		if(isset($_POST['id_usuario'])){
+			$aviso = $_POST['aviso'];
+			$tipo = $_POST['tipo'];
+			$url = $_POST['url_aviso'];
+			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo);
+		} 
+
+		// busca aviso
+		$data['aviso'] = $this->aviso->dame_aviso($id_aviso);
+		
+		// Carga vista con información del aviso
+		$this->load->view('cms/header', $data);
+		$this->load->view('cms/editar_aviso', $data);
+		$this->load->view('cms/footer');
+	}// eliminar_aviso
+
 	function agregar_pregunta(){
+		// inicia sesisón activa
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
 		// datos a insertar
-		$id_usuario = $_POST['id_usuario'];
 		$pregunta = $_POST['pregunta'];
 
 		// usuario que agrega el aviso
@@ -191,15 +278,17 @@ class Gestor_contenidos extends CI_Controller {
 		// inserta pregunta a bd
 		$this->load->model('pregunta');
 		if($this->pregunta->agrega_pregunta($pregunta, $id_usuario)){
-			$data['sucess'] = 'Se agrego la pregunta con éxito.';
+			$data['success'] = '¡Se agregó la pregunta con éxito!';
 		} else {
 			$data['error'] = 'No se pudo agregar la pregunta.';
 		}
 
+		$data['seccion'] = 'Agregar contenido';
+
 		// Carga vista de login o index en caso de credenciales correctas
 		$this->load->view('cms/header');
-		$this->load->view('cms/index', $data);
-		$this->load->view('cms/footer');
+		$this->load->view('cms/agregar_contenido', $data);
+		$this->load->view('cms/footer', $data);
 	}// agregar_pregunta
 
 	/**
@@ -224,24 +313,29 @@ class Gestor_contenidos extends CI_Controller {
 	}// editar_pregunta
 
 	function agregar_anuncio(){
+		// inicia sesión activa
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
 		// ruta para guardar archivos de slider
 		$config['upload_path'] = '../directorio/assets/img/anuncios';
 		
 		// limitaciones de archivo a subir
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1000';
+		$config['max_size']	= '500';
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';
 
 		// datos a insertar
-		$id_usuario = $this->session->userdata('id');
 		$anuncio = $_POST['anuncio'];
 		$url_anuncio = $_POST['url_anuncio'];
-		if($url_anuncio == ''){
+		if($url_anuncio == '-'){
 			$tipo = 'texto';
 		} else {
 			$tipo = 'link';
 		}
+
+		$data['seccion'] = 'Agregar contenido';
 
 		// usuario que agrega el aviso 
 		$this->load->model('usuario');
@@ -254,8 +348,6 @@ class Gestor_contenidos extends CI_Controller {
 		{
 			// No se pudo subir el archivo, manda errores a la vista
 			$data['error'] = $this->upload->display_errors();
-			
-			$this->load->view('cms/index');
 		}
 		else
 		{
@@ -263,22 +355,20 @@ class Gestor_contenidos extends CI_Controller {
 			$data['upload'] = $this->upload->data();
 
 			// url relativa de la imagen
-			$img_url = explode('directorio', $data['upload']['full_path']);
+			$img_url = explode('directorio/', $data['upload']['full_path']);
 
 			// inserta anuncio a bd
 			$this->load->model('anuncio');
 			if($this->anuncio->agrega_anuncio($anuncio, $id_usuario, $tipo, $url_anuncio, $img_url[1])){
-				$data['sucess'] = 'Se agrego el anuncio con éxito.';
+				$data['success'] = '¡Se agregó el anuncio con éxito!';
 			} else {
 				$data['error'] = 'No se pudo agregar el anuncio.';
 			}
-			
-			
 		}
 		// carga vistas
 		$this->load->view('cms/header');
-		$this->load->view('cms/index', $data);
-		$this->load->view('cms/footer');
+		$this->load->view('cms/agregar_contenido', $data);
+		$this->load->view('cms/footer', $data);
 
 	}// agregar_anuncio
 

@@ -39,6 +39,10 @@ class Temas extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos();
+
 		// Cargar vista inicio
 		$this->load->view('header', $data);
 		$this->load->view('temas', $data);
@@ -60,6 +64,10 @@ class Temas extends CI_Controller {
 			$data['nombres_ts'] = '';
 		else
 			$data['nombres_ts'] = $nombres_ts;
+
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos();
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);

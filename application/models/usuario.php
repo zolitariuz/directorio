@@ -26,7 +26,7 @@ class Usuario extends CI_Model {
 			return $usuario;
 		} else
 			return 0;
-	}// validaUsuario
+	}// valida_usuario
 
 	public function dame_usuario($id){
 		$condiciones = array('id_usuario' => $id);
@@ -48,7 +48,36 @@ class Usuario extends CI_Model {
 			return $usuario;
 		} else
 			return 0;
-	}// validaUsuario
+	}// dame_usuario
+
+	public function agrega_usuario($usuario, $password, $nombre, $apellidos, $is_admin){
+		$data = array(
+		   'usuario' 	=> $usuario,
+		   'nombre' 	=> $nombre,
+		   'apellidos' 	=> $apellidos,
+		   'password' 	=> $password,
+		   'is_admin' 	=> $is_admin
+		);
+		
+		if($this->db->insert('usuarios', $data))
+			return 1;
+		else
+			return 0;
+
+	}// agrega_usuario
+
+	public function agrega_pregunta($pregunta, $id_usuario){
+		$data = array(
+		   'id_usuario' 	=> $id_usuario,
+		   'pregunta' 		=> $pregunta
+		);
+
+		if($this->db->insert('preguntas', $data)){
+			return 1;
+		} else {
+			return 0;
+		} 
+	}// agregar_pregunta
 
 	
 		

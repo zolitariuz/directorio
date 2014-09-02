@@ -306,7 +306,34 @@ function busquedaTS(dataTS){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
 		window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_self');
-
 	});
-}
+} // busquedaTS
+
+function toggleUrlAviso(){
+	$('.crea-aviso input[name="link_aviso"]').change(function(){
+		if($(this).is(":checked")) {
+			$('.url_aviso').removeClass('hide');
+			$('.url_aviso input').val('');
+			$('.url_aviso input').focus();
+		}
+		else {
+			$('.url_aviso').addClass('hide');
+			$('.url_aviso input').val('-');
+		}
+	});
+} // toggleUrlAviso
+
+function toggleUrlAnuncio(){
+	$('.crea-anuncio input[name="link_anuncio"]').change(function(){
+		if($(this).is(":checked")) {
+			$('.url_anuncio').removeClass('hide');
+			$('.url_anuncio input').val('');
+			$('.url_anuncio input').focus();
+		}
+		else {
+			$('.url_anuncio').addClass('hide');
+			$('.url_anuncio input').val('-');
+		}
+	});
+} // toggleUrlAnuncio
 

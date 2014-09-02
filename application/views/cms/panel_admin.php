@@ -2,18 +2,30 @@
 
 <div class="main">
 	<div class="width">
-		<p>Usuario: <?php echo $usuario['nombre']; ?></p>
+		<h2 class="text-center">Panel de administración de contenidos</h2>
 
-		<?php if($usuario['is_admin'] == 't') { ?>
-			<p>Usuario administrador</p>
-		<?php } ?>
-	
-		<h2>Panel de administración</h2>
-		<p>Aquí podrás agregar, modificar y eliminar los avisos, anuncios y preguntas del portal</p>
+		<div class="columna xmall-12 large-10 xlarge-8 center">
+			<?php if($_SESSION['is_admin'] == 't') { ?>
+			<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_contenido/'?>" class="block boton vertical columna xmall-6 margin-bottom">
+				<i class="fa fa-plus"></i>
+				Agregar contenido
+			</a>
+			<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_usuario/'?>" class="block boton vertical columna xmall-6 margin-bottom">
+				<i class="fa fa-user"></i>
+				Agregar usuario
+			</a>
+			<?php } ?>
+			<div class="clear"></div>
+			<a href="<?php echo base_url().'index.php/gestor_contenidos/editar_contenido/'?>" class="block boton vertical columna xmall-6 margin-bottom">
+				<i class="fa fa-pencil"></i>
+				Editar contenido
+			</a>
+			<a href="<?php echo base_url().'index.php/gestor_contenidos/ver_contenido/'?>" class="block boton vertical columna xmall-6 margin-bottom">
+				<i class="fa fa-eye"></i>
+				Ver contenido
+			</a>
+		</div>
 
-		<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_contenido/'; ?>">Agregar contenido</a>
-		<a href="<?php echo base_url().'index.php/gestor_contenidos/editar_contenido/'.$usuario["id_usuario"]; ?>">Editar contenido</a>
-		<a href="<?php echo base_url().'index.php/gestor_contenidos/ver_contenido/'.$usuario["id_usuario"]; ?>">Ver contenido</a>
 	</div>
 </div>
 
