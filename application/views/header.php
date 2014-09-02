@@ -72,7 +72,7 @@
 						<div class="barra avisos clearfix">
 							<h3 class="blok obscuro columna xmall-2 text-center">Avisos</h3>
 							<div class="mensaje columna xmall-10">
-								<p class="highlight">
+								<p class="hide highlight">
 									<?php
 									foreach ($avisos as $key => $value) {
 										echo '<span>';
@@ -90,7 +90,7 @@
 										echo '|';
 									}// foreach anuncio
 									?>
-									
+
 								</p>
 							</div>
 						</div>

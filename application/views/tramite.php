@@ -104,6 +104,15 @@
 						<input type="submit" class="boton" value="Enviar">
 					</form>
 				</article>
+				<article>
+					<h2 class="highlight">Compártelo</h2>
+					<div class="share block columna xmall-2">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="zolitariuz">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<div class="clear"></div>
+						<div class="fb-share-button" data-layout="button" data-href="#"></div>
+					</div><!-- share -->
+				</article>
 			</section><!-- content -->
 			<aside class="columna xmall-3">
 				<section>
@@ -178,8 +187,8 @@
 									$formato = $value->nombre;
 									$url = 'http://www14.df.gob.mx/virtual/sretys/statics/formatos/TCEJUR_ADP_1.pdf';
 									$numFormato = $key + 1;
-									echo '<p>Formato '.$numFormato.': </p>';
-									echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a><br />';
+									echo '<p>Formato '.$numFormato.'</p>';
+									echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a><br /><br />';
 								} // end foreach
 							} else {
 								echo '<p>Este trámite o servicio no tiene formatos requeridos</p>';

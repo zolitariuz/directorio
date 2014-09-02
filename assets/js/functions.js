@@ -8,6 +8,8 @@
 			callMasonry();
 		}
 
+		//Avisos
+		$('.mensaje p').removeClass('hide');
 		marqueeText('.mensaje p');
 
 		//*** CLICKS ***//
@@ -172,13 +174,6 @@ function getMapas(data){
 
 function creaMapa(mapas){
 	// Estilos mapa
-	var styles = [
-			{
-			  stylers: [
-				{ hue: "#ec2383" }
-			  ]
-			}
-		];
 
 	// Jalar coordenadas de areas de atención
 	var locations = [];
@@ -203,7 +198,7 @@ function creaMapa(mapas){
       mapTypeControl: false,
       streetViewControl: false,
       panControl: false,
-      styles: styles,
+      scrollwheel: false,
       zoomControlOptions: {
          position: google.maps.ControlPosition.LEFT_BOTTOM
       }
