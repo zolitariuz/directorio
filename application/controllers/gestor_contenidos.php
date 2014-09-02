@@ -209,6 +209,10 @@ class Gestor_contenidos extends CI_Controller {
 	 * @return nada	
 	 */
 	function editar_aviso($id_aviso){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
 		// carga modelo 
 		$this->load->model('aviso');
 
@@ -218,6 +222,7 @@ class Gestor_contenidos extends CI_Controller {
 			$tipo = $_POST['tipo'];
 			$url = $_POST['url_aviso'];
 			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo);
+			$data['success'] = '¡Aviso actualizado!';
 		} 
 
 		// busca aviso

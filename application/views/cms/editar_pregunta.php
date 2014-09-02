@@ -9,6 +9,8 @@
 			<?php 
 				if(isset($success)){
 					echo '<p class="success">'.$success.'</p>';
+				} else if(isset($error)){
+					echo '<p class="error">'.$error.'</p>';
 				}
 			?>
 			<div class="editar-preguntas" class="columna xmall-12">
@@ -17,10 +19,9 @@
 				<form method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/editar_pregunta' ?>" class="columna xmall-12">
 				<fieldset class="columna xmall-12"> 
 					<label for="pregunta" >Pregunta</label>
-					<input type="text" name="pregunta" value="<?php echo $pregunta['pregunta']; ?>">
+					<input type="text" name="pregunta" value="<?php echo $pregunta['pregunta']; ?>" class="columna xmall-12">
 				</fieldset>
-				<?php $id_usuario = $this->session->userdata('id'); ?>
-				<input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
+				<input type="hidden" name="id_usuario" value="<?php echo $pregunta['id_usuario']; ?>">
 				<input type="submit" value="Modificar pregunta">
 			</form>
 				
