@@ -168,7 +168,7 @@ figure {margin: 0;}
 
 //layout
 .container{ min-width: 300px; }
-.width{ width: 90%; min-width: 300px; max-width: 1008px; margin-left: auto; margin-right: auto; }
+.width{ width: 90%; min-width: 300px; max-width: 1200px; margin-left: auto; margin-right: auto; }
 .full{ width: 100%;
   //img{ width: 100%; height: auto; }
 }
@@ -557,7 +557,7 @@ span[role="status"]{ display: none !important; }
 	}
 
 	.quick-info{ margin-bottom: @margen;
-		h3{ margin-bottom: (@margen/2); .font(1.4em, 1.4em) }
+		h3{ margin-bottom: (@margen/2); .font(1.4em, 1.4em); }
 		i{ color: @highlight; font-size: 1em; }
 		p{ margin: 0; color: @obscuro; font-size: 1.2em; }
 		.tabla-precio{ width: 100%; margin-top: (@margen/2); padding: (@margen/2); background: lighten(@obscuro, 40%);
@@ -565,10 +565,10 @@ span[role="status"]{ display: none !important; }
 				&:first-child{ padding-top: 0; }
 				&:last-child{ padding-bottom: 0; border-bottom: 0; }
 			}
-			p{ color: @obscuro; }
 			.numero-costo{
-				p{ text-align: right; }
+				p{ text-align: center; .font(2em, 2.1em); }
 			}
+			p{ color: @obscuro; .font(0.9em, 1.2em, 400); }
 		}
 	}
 
@@ -576,7 +576,7 @@ span[role="status"]{ display: none !important; }
 	.content{
 		h2{ margin-bottom: @margen; }
 		ul, p{ .font(1em, 1.4em); color: @obscuro; }
-		ul{ margin: 0 0 0 50px; list-style: disc; list-style-position: inside; }
+		ul{ margin: 0 0 0 50px; list-style: lower-roman; list-style-position: inside; }
 		p{
 			&.hero{ .font(1.1em, 1.4em, 600); }
 		}
