@@ -147,7 +147,7 @@ class Gestor_contenidos extends CI_Controller {
 		// datos usuario
 		session_start();
 		$id_usuario = $_SESSION['id_usuario'];
-		
+
 		// datos usuario
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id);
@@ -228,6 +228,40 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->view('cms/editar_aviso', $data);
 		$this->load->view('cms/footer');
 	}// editar_aviso
+
+	/**
+	 * Descripción: Eliminar un aviso existente
+	 * @param integer $id_aviso
+	 * @return nada	
+	 */
+	function eliminar_aviso($id_aviso){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
+		// usuario que elimina el aviso 
+		$this->load->model('usuario');
+		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
+
+		// carga modelo 
+		$this->load->model('aviso');
+
+		// ¿se está editando el aviso?
+		if(isset($_POST['id_usuario'])){
+			$aviso = $_POST['aviso'];
+			$tipo = $_POST['tipo'];
+			$url = $_POST['url_aviso'];
+			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo);
+		} 
+
+		// busca aviso
+		$data['aviso'] = $this->aviso->dame_aviso($id_aviso);
+		
+		// Carga vista con información del aviso
+		$this->load->view('cms/header', $data);
+		$this->load->view('cms/editar_aviso', $data);
+		$this->load->view('cms/footer');
+	}// eliminar_aviso
 
 	function agregar_pregunta(){
 		// inicia sesisón activa

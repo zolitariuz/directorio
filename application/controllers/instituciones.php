@@ -38,6 +38,10 @@ class Instituciones extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos();
+
 		// Cargar vista inicio
 		$this->load->view('header', $data);
 		$this->load->view('instituciones', $data);
@@ -51,6 +55,10 @@ class Instituciones extends CI_Controller {
 			$data['ts_institucion'] = '';
 		else
 			$data['ts_institucion'] = json_decode($ts_institucion);
+
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos();
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);

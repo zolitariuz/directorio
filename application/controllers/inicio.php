@@ -110,10 +110,14 @@ class Inicio extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos();
+
 
 		// Carga la vista que muestra información de trámites o servicios
 		// en caso de error, redirecciona al inicio
-		$this->load->view('header');
+		$this->load->view('header', $data);
 		if($ts != '')
 			$this->load->view('tramite', $data);
 		else

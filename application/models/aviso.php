@@ -35,6 +35,10 @@ class Aviso extends CI_Model {
 		return 1;
 	} // actualiza_aviso
 
+	public function elimina_aviso($id_aviso){
+		$this->db->where('id_aviso', $id_aviso);
+		$this->db->delete('avisos', $data);
+	} // elimina_aviso
 
 	public function dame_avisos(){
 		$query = $this->db->get('avisos');
