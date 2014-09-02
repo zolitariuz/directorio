@@ -124,7 +124,7 @@
 						<p>
 							<?php
 							// Parsear tiempo de respuesta si existe
-							if(is_null($ts->tiempo_respuesta)){
+							if(!is_null($ts->tiempo_respuesta)){
 								$tiempo_respuesta = explode('_', $ts->tiempo_respuesta);
 								$dias = $tiempo_respuesta[0];
 
@@ -146,35 +146,38 @@
 					<div class="clear"></div>
 					<hr>
 					<div class="clear"></div>
+					
 					<div class="quick-info">
 						<h3 class="highlight">Costo</h3>
-						<p>$ 100</p>
+						<?php
+						$indicePrecio = 0;
+						// Costo o costos del trámite o servicio
+						if($costo != ''){
+							foreach ($costo as $key => $value) {
+								if($value->concepto == 1){
+									echo '<p>$'.$value->monto.'</p>';
+								} else {
+									if($indicePrecio == 0){
+										echo '<div class="tabla-precio">';
+									}
+									echo '<div class="costo clearfix">';
+									echo '<div class="nombre-costo columna xmall-8">';
+									echo '<p>'.$value->concepto.'</p>';
+									echo '</div>';
+									echo '<div class="nombre-costo columna xmall-4">';
+									echo '<p>$'.$value->monto.'</p>';
+									echo '</div>';
+									echo '</div>';
+
+									$indicePrecio = $indicePrecio + 1;
+									if(sizeOf($costo) == $indicePrecio)
+										echo '</div>';
+								}
+							} // end foreach
+						} 
+						?>
 					</div><!-- quick-info -->
-					<div class="clear"></div>
-					<hr>
-					<div class="clear"></div>
-					<div class="quick-info">
-						<h3 class="highlight">Costo</h3>
-						<div class="tabla-precio">
-							<div class="costo clearfix">
-								<div class="nombre-costo columna xmall-8">
-									<p>Registro</p>
-								</div>
-								<div class="numero-costo columna xmall-4">
-									<p>$256</p>
-								</div>
-							</div>
-							<div class="clear"></div>
-							<div class="costo clearfix">
-								<div class="nombre-costo columna xmall-8">
-									<p>Registro</p>
-								</div>
-								<div class="numero-costo columna xmall-4">
-									<p>$256</p>
-								</div>
-							</div>
-						</div>
-					</div> <!--quick-info -->
+
 					<div class="clear"></div>
 					<hr>
 					<div class="clear"></div>

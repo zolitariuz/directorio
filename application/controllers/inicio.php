@@ -102,6 +102,14 @@ class Inicio extends CI_Controller {
 		else
 			$data['documento'] = $this->dameDocumentos(json_decode($documento));
 
+		// Carga documento / beneficio de un trámite o servicio
+		$costo =  file_get_contents($url_ws.'/costo/id/'.$id_tramite.'/format/json');
+		if(is_null($costo))
+			$data['costo'] = '';
+		else
+			$data['costo'] = json_decode($costo);
+
+
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
 		$nombres_ts = file_get_contents($url_ws.'/nombres_ts/format/json');
@@ -109,6 +117,7 @@ class Inicio extends CI_Controller {
 			$data['nombres_ts'] = '';
 		else
 			$data['nombres_ts'] = $nombres_ts;
+
 
 		// carga avisos
 		$this->load->model('aviso');

@@ -6,6 +6,11 @@ class Aviso extends CI_Model {
 		$this->load->database();
 	}
 
+	/**
+	 * Descripción: Agrega un aviso a la base de datos
+	 * @param string $id_aviso, string $url, string $tipo, integer $id_usuario
+	 * @return true	o false
+	 */
 	public function agrega_aviso($aviso, $url, $tipo, $id_usuario){
 		$data = array(
 		   'id_usuario' => 		$id_usuario,
@@ -21,6 +26,11 @@ class Aviso extends CI_Model {
 		} 
 	} // agrega_aviso
 
+	/**
+	 * Descripción: Actualiza un aviso de la base de datos
+	 * @param integer $id_aviso, string $aviso, string $url, string $tipo
+	 * @return true	
+	 */
 	public function actualiza_aviso($id_aviso, $aviso, $url, $tipo){
 		$data = array(
 		   'contenido' => 		$aviso,
@@ -35,6 +45,11 @@ class Aviso extends CI_Model {
 		return 1;
 	} // actualiza_aviso
 
+	/**
+	 * Descripción: Eliminar un aviso de la base de datos
+	 * @param integer $id_aviso
+	 * @return nada	
+	 */
 	public function elimina_aviso($id_aviso){
 		$this->db->where('id_aviso', $id_aviso);
 		$this->db->delete('avisos', $data);

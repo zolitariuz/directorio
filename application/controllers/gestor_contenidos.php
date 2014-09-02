@@ -245,22 +245,11 @@ class Gestor_contenidos extends CI_Controller {
 
 		// carga modelo 
 		$this->load->model('aviso');
+		// elimina aviso
+		$this->aviso->elimina_aviso($id_aviso);
 
-		// ¿se está editando el aviso?
-		if(isset($_POST['id_usuario'])){
-			$aviso = $_POST['aviso'];
-			$tipo = $_POST['tipo'];
-			$url = $_POST['url_aviso'];
-			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo);
-		} 
+		$this->editar_contenido();
 
-		// busca aviso
-		$data['aviso'] = $this->aviso->dame_aviso($id_aviso);
-		
-		// Carga vista con información del aviso
-		$this->load->view('cms/header', $data);
-		$this->load->view('cms/editar_aviso', $data);
-		$this->load->view('cms/footer');
 	}// eliminar_aviso
 
 	function agregar_pregunta(){
@@ -311,6 +300,29 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->view('cms/editar_pregunta', $data);
 		$this->load->view('cms/footer');
 	}// editar_pregunta
+
+	/**
+	 * Descripción: Eliminar una pregunta existente
+	 * @param integer $id_pregunta
+	 * @return nada	
+	 */
+	function eliminar_pregunta($id_pregunta){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
+		// usuario que elimina el pregunta 
+		$this->load->model('usuario');
+		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
+
+		// carga modelo 
+		$this->load->model('pregunta');
+		// elimina pregunta
+		$this->pregunta->elimina_pregunta($id_pregunta);
+
+		$this->editar_contenido();
+
+	}// eliminar_pregunta
 
 	function agregar_anuncio(){
 		// inicia sesión activa
@@ -390,5 +402,28 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->view('cms/editar_anuncio', $data);
 		$this->load->view('cms/footer');
 	}// editar_anuncio
+
+	/**
+	 * Descripción: Eliminar un anuncio existente
+	 * @param integer $id_anuncio
+	 * @return nada	
+	 */
+	function eliminar_anuncio($id_anuncio){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+
+		// usuario que elimina el anuncio 
+		$this->load->model('usuario');
+		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
+
+		// carga modelo 
+		$this->load->model('anuncio');
+		// elimina anuncio
+		$this->anuncio->elimina_anuncio($id_anuncio);
+
+		$this->editar_contenido();
+
+	}// eliminar_anuncio
 
 }// Gestor_contenidos
