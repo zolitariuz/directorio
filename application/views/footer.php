@@ -1,5 +1,5 @@
 		</div><!-- container -->
-
+		.
 		<footer>
 			<section class="map">
 				<div class="width clearfix">
@@ -50,7 +50,9 @@
 				</div><!-- width -->
 			</section>
 		</footer>
-
+		<div class="overlay-opener">
+			<i class="fa fa-search"></i>
+		</div>
 		<div class="modal-wrapper hide">
 			<div class="modal">
 				<div class="cerrar">
@@ -61,6 +63,34 @@
 				</div>
 				<div class="modal-content">
 				</div>
+			</div>
+		</div>
+		<div class="overlay-wrapper hide">
+			<div class="overlay">
+				<div class="overlay-content">
+					<section class="busqueda clearfix">
+						<h2 class="text-center">Busca tu trámite o servicio</h2>
+						<form class="main-search hero clearfix main-search-home" action="#">
+							<input type="search" class="span xmall-11">
+							<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
+							<button type="submit" class="span xmall-1"><i class="fa fa-search"></i></button>
+						</form>
+						<h3 class="text-center">O ve trámites y servicios por:</h3>
+						<div class="columna xmall-8 center">
+							<a href="<?php echo base_url().'index.php/instituciones' ?>" class="block boton vertical columna xmall-6">
+								<i class="fa fa-asterisk"></i>
+								Institución
+							</a>
+							<a href="<?php echo base_url().'index.php/temas' ?>" class="block boton vertical columna xmall-6">
+								<i class="fa fa-asterisk"></i>
+								Tema
+							</a>
+						</div>
+					</section><!-- busqueda -->
+				</div>
+			</div>
+			<div class="cerrar">
+				<i class="fa fa-times"></i>
 			</div>
 		</div>
 	</body>

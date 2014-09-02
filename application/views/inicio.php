@@ -130,6 +130,7 @@
 		<div class="clear"></div>
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
+
 		<section class="links clearfix">
 			<div class="columna xmall-6">
 				<a href="" class="block columna xmall-8 center">
@@ -154,9 +155,11 @@
 				<a href="#" class="block boton columna xmall-6 grande" data-respuesta="no" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
 			</div>
 		</section>
+
 		<div class="clear"></div>
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
+
 		<section class="anuncios clearfix">
 			<h2 class="text-center highlight">Anuncios</h2>
 			<div class="slider clearfix cycle-slideshow"
@@ -180,6 +183,33 @@
     			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
 			</div>
 		</section>
+		<div class="clear"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
+		<section class="pregunta clearfix">
+			<h2 class="text-center highlight">Pregunta de la semana</h2>
+			<h4 class="text-center">¿Posee usted un teléfono celular?</h4>
+			<div class="columna xmall-5 center clearfix">
+				<a href="#" class="block boton columna xmall-6 grande">Sí</a>
+				<a href="#" class="block boton columna xmall-6 grande">No</a>
+			</div>
+		</section>
+		<div class="clear"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
+		<section class="links clearfix">
+			<div class="columna xmall-6">
+				<a href="" class="block columna xmall-8 center">
+					<img src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+				</a>
+			</div>
+			<div class="columna xmall-6">
+				<a href="" class="block columna xmall-8 center">
+					<img src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+				</a>
+			</div>
+		</section>
+
 
 	</div><!-- width -->
 

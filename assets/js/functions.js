@@ -18,18 +18,24 @@
 
 		//Modals
 		$('body').on('click', '.transform .boton', function(){
-			abrirModal( $(this) );;
+			abrirModal( $(this) );
 		});
 
 		$('body').on('click', '.modal .cerrar', function(){
-			cerrarModal( $(this) );;
+			cerrarModal( $(this) );
+		});
+
+		//Overlays
+		$('body').on('click', '.overlay-opener', function(){
+			abrirOverlay( $(this) );
+		});
+
+		$('body').on('click', '.overlay-wrapper .cerrar', function(){
+			cerrarOverlay( $(this) );
 		});
 
 		//Header aparece cuando el scroll oculta la sección de búsqueda
-		paddingMain();
-		$(window).scroll(function() {
-			scrollHeader();
-		});
+		//paddingMain();
 
 		//***RESPONSIVE***//
 
@@ -93,6 +99,19 @@
 
 	function cerrarModal(elemento){
 		var aCerrar = elemento.parent().parent();
+		aCerrar.fadeOut('fast', function(){
+			$(this).addClass('hide');
+		});
+	}
+
+	function abrirOverlay(){
+		$('.overlay-wrapper').fadeIn('fast', function(){
+			$(this).removeClass('hide');
+		});
+	}
+
+	function cerrarOverlay(elemento){
+		var aCerrar = elemento.parent();
 		aCerrar.fadeOut('fast', function(){
 			$(this).addClass('hide');
 		});
@@ -273,7 +292,7 @@ function busquedaTS(dataTS){
 		select: function(event, ui) {
 	        $('#ts_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_id').attr('value');
-			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_blank');
+			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_self');
 
 	    },
 		appendTo: '.main-search-header'
@@ -283,7 +302,7 @@ function busquedaTS(dataTS){
 		select: function(event, ui) {
 	        $('#ts_home_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_home_id').attr('value');
-			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_blank');
+			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_self');
 
 	    },
 		appendTo: '.main-search-home'
@@ -291,7 +310,7 @@ function busquedaTS(dataTS){
 	$('.main-search button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
-		window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_blank');
+		window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_self');
 	});
 } // busquedaTS
 
