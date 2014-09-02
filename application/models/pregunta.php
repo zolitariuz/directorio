@@ -58,5 +58,29 @@ class Pregunta extends CI_Model {
 		} else
 			return 0;
 	}// dame_pregunta
+
+	/**
+	 * Descripción: Jala una pregunta de base de datos
+	 * @param integer $id
+	 * @return array $pregunta 	
+	 */
+	public function dame_ultima_pregunta(){
+		$this->db->order_by("id_pregunta", "desc"); 
+		$this->db->limit(1);
+		$query = $this->db->get('preguntas');
+		$pregunta = array();
+
+		if($query->num_rows() > 0){
+			foreach ($query->result() as $row)
+			{
+			    $pregunta = array(
+			    	'id_pregunta' 			=> $row->id_pregunta,
+			    	'pregunta'	  			=> $row->pregunta,
+			    	);
+			}
+			return $pregunta;
+		} else
+			return 0;
+	}// dame_pregunta
 		
 }// clase Pregunta

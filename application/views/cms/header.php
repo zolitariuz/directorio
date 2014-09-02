@@ -28,9 +28,34 @@
 
 		<div class="container">
 			<header class="clearfix">
-				<p>Usuario: <?php echo $this->session->userdata('nombre'); ?></p>
-
-				<?php if($this->session->userdata('is_admin') == 't') { ?>
-					<p>Usuario administrador</p>
-				<?php } ?>
+				<div class="full">
+					<h1 class="block columna xmall-6">
+						<a href="<?php echo base_url() ?>">
+							Trámites CD<strong>MX</strong>
+						</a>
+					</h1>
+					<div class="columna xmall-6">
+						<?php 
+						// ¿Ya existe una sesión?
+						if(isset($_SESSION['id_usuario'])){
+							// Jala datos de usuario activo
+							$nombre_usuario = $_SESSION['usuario'];
+							$is_admin = $_SESSION['is_admin'];
+						?>
+							<p class="columna xmall-5">Usuario: <?php echo $nombre_usuario ?></p>
+						<?php 
+							if($is_admin == 't') 
+								$rol = 'administrador';
+							else if ($is_admin == 'f') 
+								$rol = 'editor';
+						?>
+							<p class="columna xmall-4">Rol: <?php echo $rol ?></p>
+							<a href="<?php echo base_url().'index.php/gestor_contenidos/logout/'?>" class="columna xmall-3"><i class="fa fa-sign-out"></i></a>
+						<?php 
+						} // end if
+						?>
+						
+					</div>	
+				</div>
 			</header>
+

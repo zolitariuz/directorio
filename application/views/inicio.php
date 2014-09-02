@@ -147,10 +147,11 @@
 		<div class="clear"></div>
 		<section class="pregunta clearfix">
 			<h2 class="text-center highlight">Pregunta de la semana</h2>
-			<h4 class="text-center">¿Posee usted un teléfono celular?</h4>
+			
+			<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
 			<div class="columna xmall-5 center clearfix">
-				<a href="#" class="block boton columna xmall-6 grande">Sí</a>
-				<a href="#" class="block boton columna xmall-6 grande">No</a>
+				<a href="#" class="block boton columna xmall-6 grande" data-respuesta="si" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
+				<a href="#" class="block boton columna xmall-6 grande" data-respuesta="no" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
 			</div>
 		</section>
 		<div class="clear"></div>
@@ -163,18 +164,18 @@
 				data-cycle-fx="scrollHorz"
 				data-cycle-swipe="true"
 			>
-				<div class="slide">
-					<img src="assets/img/anuncio.jpg" alt="">
-					<div class="info">
-						<p>Quod ea non occurrentia fingunt, vincunt Aristonem; Satisne ergo pudori consulat, si quis sine teste libidini pareat? Quippe: habes enim a rhetoribus;</p>
-					</div>
-				</div><!-- slide -->
-				<div class="slide">
-					<img src="assets/img/anuncio.jpg" alt="">
-					<div class="info">
-						<p>Quid est enim aliud esse versutum? In his igitur partibus duabus nihil erat, quod Zeno commutare gestiret. Tamen aberramus a proposito, et, ne longius, prorsus, inquam, Piso, si ista mala sunt, placet. Duo Reges: constructio interrete. Non igitur de improbo, sed de callido improbo quaerimus, qualis Q. Non laboro, inquit, de nomine. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. At ille non pertimuit saneque fidenter: Istis quidem ipsis verbis, inquit; Maximas vero virtutes iacere omnis necesse est voluptate dominante. Miserum hominem! Si dolor summum malum est, dici aliter non potest.</p>
-					</div>
-				</div><!-- slide -->
+				<?php 
+					// contenido del slider
+					foreach ($anuncios as $key => $value) {
+						echo '<div class="slide">';
+						echo '<img src="'.$value['url_img'].'" alt="">';
+						echo '<div class="info">';
+						echo '<p>'.$value['contenido'].'</p>';
+						echo '</div>';
+						echo '</div>';
+					}// foreach anuncio
+				?>
+
 				<div class="cycle-controls cycle-prev"><i class="fa fa-angle-left"></i></div>
     			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
 			</div>

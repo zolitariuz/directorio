@@ -34,9 +34,19 @@ class Inicio extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
-		
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos();
 
-		// Cargar vista inicio con header y footer
+		// carga anuncios
+		$this->load->model('anuncio');
+		$data['anuncios'] = $this->anuncio->dame_anuncios();
+
+		// carga pregunta de la semana
+		$this->load->model('pregunta');
+		$data['pregunta'] = $this->pregunta->dame_ultima_pregunta();
+
+		// Cargar vista de inicio con header y footer
 		$this->load->view('header', $data);
 		$this->load->view('inicio', $data);
 		$this->load->view('footer', $data);

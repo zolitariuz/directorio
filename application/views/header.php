@@ -72,7 +72,26 @@
 						<div class="barra avisos clearfix">
 							<h3 class="blok obscuro columna xmall-2 text-center">Avisos</h3>
 							<div class="mensaje columna xmall-10">
-								<p class="highlight"><span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span> | <span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span> | <span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span> | <span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span> | <span><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus in ante pretium blandit. Aliquam erat volutpat. Nulla libero lectus.</a></span></p>
+								<p class="highlight">
+									<?php
+									foreach ($avisos as $key => $value) {
+										echo '<span>';
+
+										// ¿el aviso tiene link?
+										if(trim($value['tipo_contenido']) == 'link') {
+											echo '<a href="http://'.$value['url'].'">';
+											echo $value['contenido'];
+											echo '</a>';
+										} else {
+											echo $value['contenido'];
+										}
+
+										echo '</span>';
+										echo '|';
+									}// foreach anuncio
+									?>
+									
+								</p>
 							</div>
 						</div>
 					</div><!-- header-top -->
