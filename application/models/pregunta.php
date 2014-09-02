@@ -19,6 +19,16 @@ class Pregunta extends CI_Model {
 		} 
 	}// agregar_pregunta
 
+	/**
+	 * Descripción: Eliminar una pregunta de la base de datos
+	 * @param integer $id_pregunta
+	 * @return nada	
+	 */
+	public function elimina_pregunta($id_pregunta){
+		$this->db->where('id_pregunta', $id_pregunta);
+		$this->db->delete('preguntas', $data);
+	} // elimina_pregunta
+
 	public function dame_preguntas(){
 		$query = $this->db->get('preguntas');
 		$anuncios = array();

@@ -22,6 +22,16 @@ class Anuncio extends CI_Model {
 		} 
 	}
 
+	/**
+	 * Descripción: Eliminar un anuncio de la base de datos
+	 * @param integer $id_anuncio
+	 * @return nada	
+	 */
+	public function elimina_anuncio($id_anuncio){
+		$this->db->where('id_anuncio', $id_anuncio);
+		$this->db->delete('anuncios', $data);
+	} // elimina_anuncio
+
 	public function dame_anuncios(){
 		$query = $this->db->get('anuncios');
 		$anuncios = array();
