@@ -11,12 +11,13 @@ class Aviso extends CI_Model {
 	 * @param string $id_aviso, string $url, string $tipo, integer $id_usuario
 	 * @return true	o false
 	 */
-	public function agrega_aviso($aviso, $url, $tipo, $id_usuario){
+	public function agrega_aviso($aviso, $url, $tipo, $id_usuario, $vigencia){
 		$data = array(
-		   'id_usuario' => 		$id_usuario,
-		   'contenido' => 		$aviso,
+		   'id_usuario' 	=> $id_usuario,
+		   'contenido' 		=> $aviso,
 		   'tipo_contenido' => 	$tipo,
-		   'url' => 			$url
+		   'url' 			=> 	$url,
+		   'vigencia'		=> $vigencia
 		);
 
 		if($this->db->insert('avisos', $data)){

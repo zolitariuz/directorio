@@ -11,6 +11,7 @@
 		<?php if($seccion == 'Agregar contenido') { ?>
 				toggleUrlAviso();
 				toggleUrlAnuncio();
+				$('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
 		<?php } ?>
 	</script>
 </html>
