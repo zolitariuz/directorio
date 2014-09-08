@@ -17,6 +17,10 @@
 					<textarea type="text" name="aviso" class="columna xmall-12"></textarea>
 				</fieldset>
 				<fieldset class="columna xmall-10 center"> 
+					<label for="vigencia" >Vigencia</label>
+					<input type="text" name="vigencia" class="datepicker columna xmall-12">
+				</fieldset>
+				<fieldset class="columna xmall-10 center"> 
 					<input type="checkbox" name="link_aviso"> ¿Tiene link?
 				</fieldset>
 				<fieldset class="columna xmall-10 center url_aviso hide"> 
@@ -35,6 +39,10 @@
 					<input type="text" name="pregunta" class="columna xmall-12">
 				</fieldset>
 				<fieldset class="columna xmall-10 center"> 
+					<label for="vigencia" >Vigencia</label>
+					<input type="text" name="vigencia" class="datepicker columna xmall-12">
+				</fieldset>
+				<fieldset class="columna xmall-10 center"> 
 					<input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario'] ?>">
 					<input type="submit" value="Agregar pregunta" class="columna xmall-4 block center boton">
 				</fieldset>
@@ -47,6 +55,10 @@
 				<fieldset class="columna xmall-10 center">
 					<label for="pregunta" >Anuncio nuevo</label>
 					<input type="text" name="anuncio" class="columna xmall-12">
+				</fieldset>
+				<fieldset class="columna xmall-10 center"> 
+					<label for="vigencia" >Vigencia</label>
+					<input type="text" name="vigencia" class="datepicker columna xmall-12">
 				</fieldset>
 				<fieldset class="columna xmall-10 center"> 
 					<input type="checkbox" name="link_anuncio"> ¿Tiene link?

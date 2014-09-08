@@ -6,13 +6,14 @@ class Anuncio extends CI_Model {
 		$this->load->database();
 	}
 
-	public function agrega_anuncio($anuncio, $id_usuario, $tipo_contenido, $url, $url_img){
+	public function agrega_anuncio($anuncio, $id_usuario, $tipo_contenido, $url, $url_img, $vigencia){
 		$data = array(
 		   'id_usuario' 		=> $id_usuario,
 		   'tipo_contenido' 	=> $tipo_contenido,
 		   'contenido' 			=> $anuncio,
 		   'url' 				=> $url,
-		   'url_img' 			=> $url_img
+		   'url_img' 			=> $url_img,
+		   'vigencia'			=> $vigencia
 		);
 
 		if($this->db->insert('anuncios', $data)){

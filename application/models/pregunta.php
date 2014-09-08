@@ -6,10 +6,11 @@ class Pregunta extends CI_Model {
 		$this->load->database();
 	}
 
-	public function agrega_pregunta($pregunta, $id_usuario){
+	public function agrega_pregunta($pregunta, $id_usuario, $vigencia){
 		$data = array(
 		   'id_usuario' 	=> $id_usuario,
-		   'pregunta' 		=> $pregunta
+		   'pregunta' 		=> $pregunta,
+		   'vigencia'		=> $vigencia
 		);
 
 		if($this->db->insert('preguntas', $data)){
