@@ -12,6 +12,8 @@
 			callMasonry();
 		}
 
+		contarItems( $('.letra'), 'li');
+
 		//Botones de busqueda y back to top
 		scrollHeader();
 
@@ -19,6 +21,12 @@
 		//Tabs
 		$('.tabs a').on('click', function(){
 			cambiarTab( $(this) );
+		});
+
+		//Acordion
+		$('body').on('click', '.directorio-item > .boton', function(e){
+			e.preventDefault();
+			abrirDirectorio( $(this) );
 		});
 
 		//Modals
@@ -55,10 +63,9 @@
 		});
 
 
-		//Header aparece cuando el scroll oculta la sección de búsqueda
-		//paddingMain();
-
+		//****************//
 		//***RESPONSIVE***//
+		//****************//
 
 		//** CLICKS **//
 
@@ -90,6 +97,24 @@
 		elemento.addClass('active');
 		$('.tab-content').addClass('hide');
 		$('.'+tabAAbrir).removeClass('hide');
+	}
+
+	function abrirDirectorio(elemento){
+		var ul = elemento.parent('.directorio-item').find('ul');
+		if( ul.hasClass('hide') ){
+			$('.directorio-item').find('ul').addClass('hide');
+			ul.removeClass('hide');
+		} else {
+			$('.directorio-item').find('ul').addClass('hide');
+		}
+	}
+
+	function contarItems(papa, items){
+		$.each(papa, function(){
+			var cuantosItems = $(this).find(items).length;
+			console.log(cuantosItems);
+			$(this).find('h2').find('span').html('('+cuantosItems+')');
+		})
 	}
 
 	function mayorQueLarge(){
