@@ -1,5 +1,4 @@
 		</div><!-- container -->
-		.
 		<footer>
 			<section class="logos">
 				<div class="width clearfix">
@@ -47,7 +46,10 @@
 				</div><!-- width -->
 			</section>
 		</footer>
-		<div class="overlay-opener">
+		<div class="back-to-top when-scrolled">
+			<i class="fa fa-chevron-up"></i>
+		</div>
+		<div class="overlay-opener when-scrolled">
 			<i class="fa fa-search"></i>
 		</div>
 		<div class="modal-wrapper hide">

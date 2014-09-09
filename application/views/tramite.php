@@ -1,20 +1,13 @@
 <div class="main">
 	<div class="width clearfix">
 		<div class="main-content clearfix">
-			<div class="header-single clearfix">
-				<div class="columna xmall-9">
+			<section class="content columna xmall-9">
+				<article class="header-single clearfix">
 					<div class="quick-info">
 						<p><i class="fa fa-asterisk"></i> <?php echo $ts->materia ?></p>
 					</div><!-- quick-info -->
 					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
-				</div>
-				<div class="columna xmall-3">
-					<a href="#" class="block boton horizontal">
-						<i class="fa fa-search"></i> Busca tu trámite
-					</a>
-				</div>
-			</div><!-- header-single -->
-			<section class="content columna xmall-9">
+				</article><!-- header-single -->
 				<article class="consiste">
 					<?php if(is_null($ts->descripcion_ts)) { ?>
 						<p class="hero">Este trámite no tiene descripción.</p>
@@ -146,130 +139,131 @@
 				</article>
 			</section><!-- content -->
 			<aside class="columna xmall-3">
-				<section>
-					<a href="#" data-seccion="area-atencion" class="block boton margin-bottom scrollTo">
-						<i class="fa fa-map-marker"></i> ¿Dónde se realiza?
-					</a>
-					<div class="quick-info">
-						<h3 class="highlight">Tiempo de respuesta</h3>
-						<p>
-							<?php
-							// Parsear tiempo de respuesta si existe
-							if(!is_null($ts->tiempo_respuesta)){
-								$tiempo_respuesta = explode('_', $ts->tiempo_respuesta);
-								$dias = $tiempo_respuesta[0];
-
-								if($tiempo_respuesta[1] == 1){
-									$tipo = ' días hábiles';
-									echo $dias.$tipo;
-								} else if ($tiempo_respuesta[1] == 2){
-									$tipo = ' días naturales';
-									echo $dias.$tipo;
-								} else {
-									$tipo = 'inmediato';
-									echo $tipo;
-								}
-							} else
-								echo 'Tiempo de respuesta no definido';
-							?>
-						</p>
-					</div><!-- quick-info -->
-					<div class="clear"></div>
-					<hr>
-					<div class="clear"></div>
-
-					<div class="quick-info">
+				<a href="#" class="block boton horizontal margin-bottom busqueda">
+					<i class="fa fa-search"></i> Busca tu trámite
+				</a>
+				<a href="#" data-seccion="area-atencion" class="block boton margin-bottom scrollTo">
+					<i class="fa fa-map-marker"></i> ¿Dónde se realiza?
+				</a>
+				<div class="quick-info">
+					<h3 class="highlight">Tiempo de respuesta</h3>
+					<p>
 						<?php
-						$indicePrecio = 0;
-						// Costo o costos del trámite o servicio
-						if($costo != ''){
-							foreach ($costo as $key => $value) {
-								if($value->concepto == 1){
-									echo '<h3 class="highlight">Costo</h3>';
-									echo '<p>$'.$value->monto.'</p>';
-								} else {
-									if($indicePrecio == 0){
-										echo '<h3 class="highlight">Costos</h3>';
-										echo '<div class="tabla-precio">';
-									}
-									echo '<div class="costo">';
-									echo '<div class="numero-costo">';
-									echo '<p>$'.$value->monto.'</p>';
-									echo '</div>';
-									echo '<div class="nombre-costo">';
-									echo '<p>'.$value->concepto.'</p>';
-									echo '</div>';
-									echo '</div>';
+						// Parsear tiempo de respuesta si existe
+						if(!is_null($ts->tiempo_respuesta)){
+							$tiempo_respuesta = explode('_', $ts->tiempo_respuesta);
+							$dias = $tiempo_respuesta[0];
 
-									$indicePrecio = $indicePrecio + 1;
-									if(sizeOf($costo) == $indicePrecio)
-										echo '</div>';
+							if($tiempo_respuesta[1] == 1){
+								$tipo = ' días hábiles';
+								echo $dias.$tipo;
+							} else if ($tiempo_respuesta[1] == 2){
+								$tipo = ' días naturales';
+								echo $dias.$tipo;
+							} else {
+								$tipo = 'inmediato';
+								echo $tipo;
+							}
+						} else
+							echo 'Tiempo de respuesta no definido';
+						?>
+					</p>
+				</div><!-- quick-info -->
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
+
+				<div class="quick-info">
+					<?php
+					$indicePrecio = 0;
+					// Costo o costos del trámite o servicio
+					if($costo != ''){
+						foreach ($costo as $key => $value) {
+							if($value->concepto == 1){
+								echo '<h3 class="highlight">Costo</h3>';
+								echo '<p>$'.$value->monto.'</p>';
+							} else {
+								if($indicePrecio == 0){
+									echo '<h3 class="highlight">Costos</h3>';
+									echo '<div class="tabla-precio">';
+								}
+								echo '<div class="costo">';
+								echo '<div class="numero-costo">';
+								echo '<p>$'.$value->monto.'</p>';
+								echo '</div>';
+								echo '<div class="nombre-costo">';
+								echo '<p>'.$value->concepto.'</p>';
+								echo '</div>';
+								echo '</div>';
+
+								$indicePrecio = $indicePrecio + 1;
+								if(sizeOf($costo) == $indicePrecio)
+									echo '</div>';
+							}
+						} // end foreach
+					}
+					?>
+				</div><!-- quick-info -->
+
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
+				<div class="quick-info">
+					<h3 class="highlight">Formatos requeridos</h3>
+					<div class="formatos">
+						<?php
+						if($formatos != ''){
+							foreach ($formatos as $key => $value) {
+								$formato = $value->nombre;
+								$url = 'http://www14.df.gob.mx/virtual/sretys/statics/formatos/TCEJUR_ADP_1.pdf';
+								$numFormato = $key + 1;
+								echo '<div class="margin-bottom">';
+								echo '<p>Formato '.$numFormato.'</p>';
+								echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a>';
+								echo '</div>';
+							} // end foreach
+						} else {
+							echo '<p>Este trámite o servicio no tiene formatos requeridos</p>';
+						}
+						?>
+					</div>
+				</div> <!--quick-info -->
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
+				<div class="quick-info">
+					<article class="" data-content="beneficio-documento">
+					<?php
+					if($ts->is_tramite){
+						echo '<h3 class="highlight">Documento(s) a obtener</h3>';
+					} else {
+						echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
+					}
+					?>
+
+					<div class="no-xmall large modal-to-be">
+						<?php
+
+						if($documento != ''){
+							$sinDocumento = true;
+							foreach ($documento as $key => $value) {
+								$nombreDocumento = $value['nombreDocumento'];
+								$vigencia = $value['vigencia'];
+								$vigenciaArray = explode('_', $vigencia);
+								echo '<p><strong>'.$nombreDocumento.'</strong></p>';
+								if($vigencia != -1) {
+									echo '<p>Vigencia: '.$vigencia.'</p>';
+									$sinDocumento = false;
 								}
 							} // end foreach
-						}
-						?>
-					</div><!-- quick-info -->
-
-					<div class="clear"></div>
-					<hr>
-					<div class="clear"></div>
-					<div class="quick-info">
-						<h3 class="highlight">Formatos requeridos</h3>
-						<div class="formatos">
-							<?php
-							if($formatos != ''){
-								foreach ($formatos as $key => $value) {
-									$formato = $value->nombre;
-									$url = 'http://www14.df.gob.mx/virtual/sretys/statics/formatos/TCEJUR_ADP_1.pdf';
-									$numFormato = $key + 1;
-									echo '<div class="margin-bottom">';
-									echo '<p>Formato '.$numFormato.'</p>';
-									echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a>';
-									echo '</div>';
-								} // end foreach
-							} else {
-								echo '<p>Este trámite o servicio no tiene formatos requeridos</p>';
-							}
-							?>
-						</div>
-					</div> <!--quick-info -->
-					<div class="clear"></div>
-					<hr>
-					<div class="clear"></div>
-					<div class="quick-info">
-						<article class="" data-content="beneficio-documento">
-						<?php
-						if($ts->is_tramite){
-							echo '<h3 class="highlight">Documento(s) a obtener</h3>';
+							if($sinDocumento)
+								echo '<p>No se obtiene documento alguno</p>';
 						} else {
-							echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
+							echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
 						}
 						?>
-
-						<div class="no-xmall large modal-to-be">
-							<?php
-
-							if($documento != ''){
-								$sinDocumento = true;
-								foreach ($documento as $key => $value) {
-									$nombreDocumento = $value['nombreDocumento'];
-									$vigencia = $value['vigencia'];
-									$vigenciaArray = explode('_', $vigencia);
-									echo '<p><strong>'.$nombreDocumento.'</strong></p>';
-									if($vigencia != -1) {
-										echo '<p>Vigencia: '.$vigencia.'</p>';
-										$sinDocumento = false;
-									}
-								} // end foreach
-								if($sinDocumento)
-									echo '<p>No se obtiene documento alguno</p>';
-							} else {
-								echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
-							}
-							?>
-						</div>
-					</div><!--quick-info -->
-				</section>
+					</div>
+				</div><!--quick-info -->
 			</aside>
 		</div><!-- main-content -->
 	</div><!-- width -->

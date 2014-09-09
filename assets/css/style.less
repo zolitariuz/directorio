@@ -275,7 +275,18 @@ section{ margin-bottom: (@margen*3); }
 hr{ height: 1px; border: none; margin: (@margen*2) 0; background: lighten(@obscuro, 45%); }
 article{ margin-bottom: @margen; }
 
-.overlay-opener{ width: 60px; height: 60px; background: @highlight; position: fixed; right: @margen; bottom: @margen; cursor: pointer; z-index: 2000; opacity: 0.5; .transition();
+.when-scrolled{ opacity: 0.0;
+	&.after-scrolled{ opacity: 0.5; }
+}
+
+.back-to-top{ width: 60px; height: 60px; background: @highlight; position: fixed; right: @margen+60; bottom: @margen; cursor: pointer; z-index: 2000; .transition();
+	i{ width: 100%; height: 100%; text-align: center; font-size: 1.8em; line-height: 60px; color: @claro; }
+	&:hover{ width: 80px; height: 80px; opacity: 1;
+		i{ font-size: 2em; line-height: 80px; }
+	}
+}
+
+.overlay-opener{ width: 60px; height: 60px; background: @highlight; position: fixed; right: @margen; bottom: @margen; cursor: pointer; z-index: 2000; .transition();
 	i{ width: 100%; height: 100%; text-align: center; font-size: 1.8em; line-height: 60px; color: @claro; }
 	&:hover{ width: 80px; height: 80px; opacity: 1;
 		i{ font-size: 2em; line-height: 80px; }
@@ -518,9 +529,9 @@ span[role="status"]{ display: none !important; }
 	nav{ margin-top: (@margen/2); padding: (@margen/2) 0 (@margen/3) 0; border-top: 1px solid lighten(@obscuro, 45%); background: none; position: relative;
 		a{ display: inline-block; vertical-align: top; width: 31%; margin: 0 1%; padding: 0; border: none; text-align: left; color: @obscuro; background: none; }
 	}
-	.avisos{ padding: (@margen/2) 0 (@margen/4) 0; background: lighten(@obscuro, 40%);
-		h3{ color: @claro; border-right: 1px solid @obscuro; }
-		p{ margin: 0; line-height: 1.7em; }
+	.avisos{ padding: (@margen/2) 0 (@margen/4) 0; background: lighten(@obscuro, 45%);
+		h3{ color: @highlight; border-right: 1px solid @obscuro; }
+		p{ margin: 0; color: @obscuro; line-height: 1.7em; }
 		span{ margin: 0 20px; }
 	}
 	.mensaje{ overflow: hidden; }
