@@ -10,9 +10,6 @@
 				<h3>Editar avisos</h3>
 				<div class="tabla">
 					<div class="fila header">
-						<div class="columna xmall-2 text-center">
-							Id usuario
-						</div>
 						<div class="columna xmall-4 text-center">
 							Contenido
 						</div>
@@ -20,17 +17,21 @@
 							URL
 						</div>
 						<div class="columna xmall-2 text-center">
+							Vigencia
+						</div>
+						<div class="columna xmall-2 text-center">
 							Opciones
 						</div>
 					</div>
+					<div class="clear"></div>
 				<?php 
 					foreach ($avisos as $key => $value) {
 						$link_editar = '<a href="'.base_url().'index.php/gestor_contenidos/editar_aviso/'.$value['id_aviso'].'">Editar</a>';
 						$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_aviso/'.$value['id_aviso'].'">Eliminar</a>';
 						echo '<div class="fila header">';
-						echo '<div class="columna xmall-2 text-center">'.$value['id_usuario'].'</div>';
 						echo '<div class="columna xmall-4 ">'.$value['contenido'].'</div>';
 						echo '<div class="columna xmall-4 text-center">'.$value['url'].'</div>';
+						echo '<div class="columna xmall-2 text-center">'.$value['vigencia'].'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
 						echo '</div">';
@@ -45,24 +46,29 @@
 				<h3>Editar preguntas</h3>
 				<div class="tabla">
 					<div class="fila header">
-						<div class="columna xmall-2 text-center">
-							Id usuario
-						</div>
-						<div class="columna xmall-8 text-center">
+						<div class="columna xmall-6 text-center">
 							Pregunta
+						</div>
+						<div class="columna xmall-2 text-center">
+							Respuestas
+						</div>
+						<div class="columna xmall-2 text-center">
+							Vigencia
 						</div>
 						<div class="columna xmall-2 text-center">
 							Opciones
 						</div>
 					</div>
+					<div class="clear"></div>
 				<?php 
 
 					foreach ($preguntas as $key => $value) {
 						$link_editar = '<a href="'.base_url().'index.php/gestor_contenidos/editar_pregunta/'.$value['id_pregunta'].'">Editar</a>';
 						$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_pregunta/'.$value['id_pregunta'].'">Eliminar</a>';
 						echo '<div class="fila header">';
-						echo '<div class="columna xmall-2 text-center">'.$value['id_usuario'].'</div>';
-						echo '<div class="columna xmall-8">'.$value['pregunta'].'</div>';
+						echo '<div class="columna xmall-6 text-center">'.$value['pregunta'].'</div>';
+						echo '<div class="columna xmall-2 text-center">0</div>';
+						echo '<div class="columna xmall-2 text-center">'.$value['vigencia'].'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
 						echo '</div">';
@@ -77,9 +83,6 @@
 				<h3>Editar anuncios</h3>
 				<div class="tabla">
 					<div class="fila header">
-						<div class="columna xmall-2 text-center">
-							Id Usuario
-						</div>
 						<div class="columna xmall-3 text-center">
 							Texto slide
 						</div>
@@ -88,6 +91,9 @@
 						</div>
 						<div class="columna xmall-3 text-center">
 							URL imagen
+						</div>
+						<div class="columna xmall-2 text-center">
+							Vigencia
 						</div>
 						<div class="columna xmall-2 text-center">
 							Opciones
@@ -99,10 +105,10 @@
 						$link_editar = '<a href="'.base_url().'index.php/gestor_contenidos/editar_anuncio/'.$value['id_anuncio'].'">Editar</a>';
 						$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_anuncio/'.$value['id_anuncio'].'">Eliminar</a>';
 						echo '<div class="fila header">';
-						echo '<div class="columna xmall-2 text-center">'.$value['id_usuario'].'</div>';
 						echo '<div class="columna xmall-3">'.$value['contenido'].'</div>';
 						echo '<div class="columna xmall-2 text-center">'.$value['url'].'</div>';
 						echo '<div class="columna xmall-3 text-center">'.$value['url_img'].'</div>';
+						echo '<div class="columna xmall-2 text-center">'.$value['vigencia'].'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
 						echo '</div">';

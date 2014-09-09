@@ -69,6 +69,7 @@ class Aviso extends CI_Model {
 			    	'tipo_contenido' 	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
+			    	'vigencia'			=> $row->vigencia
 			    	);
 			}
 			return $avisos;
@@ -94,6 +95,7 @@ class Aviso extends CI_Model {
 			    	'tipo_contenido' 	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
+			    	'vigencia'			=> $row->vigencia
 			    	);
 			}
 			return $aviso;

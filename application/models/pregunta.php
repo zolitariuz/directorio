@@ -38,9 +38,10 @@ class Pregunta extends CI_Model {
 			foreach ($query->result() as $key=>$row)
 			{
 			    $anuncios[$key] = array(
-			    	'id_pregunta' 		=> $row->id_pregunta,
-			    	'id_usuario' 		=> $row->id_usuario,
-			    	'pregunta' 			=> $row->pregunta,
+			    	'id_pregunta'	=> $row->id_pregunta,
+			    	'id_usuario'	=> $row->id_usuario,
+			    	'pregunta' 		=> $row->pregunta,
+			    	'vigencia'		=> $row->vigencia
 			    	);
 			}
 			return $anuncios;
@@ -61,8 +62,9 @@ class Pregunta extends CI_Model {
 			foreach ($query->result() as $row)
 			{
 			    $pregunta = array(
-			    	'id_pregunta' 			=> $row->id_pregunta,
-			    	'pregunta'	  			=> $row->pregunta,
+			    	'id_pregunta'	=> $row->id_pregunta,
+			    	'pregunta'	  	=> $row->pregunta,
+			    	'vigencia'		=> $row->vigencia
 			    	);
 			}
 			return $pregunta;

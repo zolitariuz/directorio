@@ -16,10 +16,10 @@
 			</div><!-- header-single -->
 			<section class="content columna xmall-9">
 				<article class="consiste">
-					<?php if(is_null($ts->descripcion_ts)) { ?>
+					<?php if(is_null($ts->descripcion)) { ?>
 						<p class="hero">Este trámite no tiene descripción.</p>
 					<?php } else {  ?>
-						<p class="hero"><?php echo $ts->descripcion_ts; ?></p>
+						<p class="hero"><?php echo $ts->descripcion; ?></p>
 					<?php } ?>
 				</article>
 				<article class="transform" data-content="requisitos">

@@ -43,10 +43,11 @@ class Anuncio extends CI_Model {
 			    $anuncios[$key] = array(
 			    	'id_anuncio' 		=> $row->id_anuncio,
 			    	'id_usuario' 		=> $row->id_usuario,
-			    	'tipo_contenido' 	=> $row->tipo_contenido,
+			    	'tipo_contenido'	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
-			    	'url_img'	 	=> $row->url_img,
+			    	'url_img'	 		=> $row->url_img,
+			    	'vigencia'			=> $row->vigencia
 			    	);
 			}
 			return $anuncios;
@@ -72,7 +73,8 @@ class Anuncio extends CI_Model {
 			    	'tipo_contenido' 	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
-			    	'url_img'	  			=> $row->url_img,
+			    	'url_img'	  		=> $row->url_img,
+			    	'vigencia'			=> $row->vigencia
 			    	);
 			}
 			return $anuncio;
