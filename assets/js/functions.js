@@ -316,6 +316,9 @@ function creaMapa(mapas){
     	else
     		return coordenadas;
     } // dameCoordenadas
+
+
+
 }
 
 function busquedaTS(dataTS){
@@ -359,6 +362,37 @@ function busquedaTS(dataTS){
 	});
 } // busquedaTS
 
+function agregarTS(dataTS, base_url){
+	var nombreTS = $.parseJSON(dataTS);
+	var srcNombreTS  = [ ];
+	var mapNombreTS = { };
+	var idTS;
+
+	// Llena arreglo con nombres y ids de trámites y servicios
+	$.each(nombreTS, function(i, val){
+		srcNombreTS.push(val.nombre_ts);
+		mapNombreTS[val.nombre_ts] = val.id_tramite_servicio;
+	});
+
+	// Autocompletado carga página en blanco con trámite o servicio
+	// al seleccionar opción o dar <Enter>
+	$('.main-search-cms input[type="search"]').autocomplete({
+		source: srcNombreTS,
+		select: function(event, ui) {
+	        $('#ts_cms_id').val(mapNombreTS[ui.item.value]);
+			idTS = $('#ts_cms_id').attr('value');
+
+			agregarTSSolicitado(idTS, base_url);
+	    },
+		appendTo: '.main-search-cms'
+	});
+	$('.main-search button').on('click', function(e){
+		e.preventDefault();
+		idTS = $('#ts_cms_id').val();
+		agregarTSSolicitado(idTS, base_url);
+	});
+} // agregarTS
+
 function toggleUrlAviso(){
 	$('.crea-aviso input[name="link_aviso"]').change(function(){
 		if($(this).is(":checked")) {
@@ -386,4 +420,37 @@ function toggleUrlAnuncio(){
 		}
 	});
 } // toggleUrlAnuncio
+
+function votoPregunta(base_url){
+	$('.pregunta a').on('click', function(e){
+		e.preventDefault();
+		console.log(base_url);
+		var jsonVoto = {};
+		jsonVoto['pregunta'] = $(this).data('pregunta');
+		jsonVoto['respuesta'] = $(this).data('respuesta');
+
+		$.post(
+			base_url + "index.php/inicio/set_voto",
+			jsonVoto,
+			function(response){
+				$('.pregunta').empty();
+				$('.pregunta').html('<h2 class="text-center highlight">¡Gracias!</h2><h4 class="text-center">Tu opinión es muy importante para nosotros.</h4>');
+			}
+		);
+	});
+}// votoPregunta
+
+function agregarTSSolicitado(id_ts, base_url){
+	var jsonSolicitado = {};
+		jsonSolicitado['id_ts'] = id_ts;
+
+		$.post(
+			base_url + "index.php/gestor_contenidos/agregar_ts_solicitado",
+			jsonSolicitado,
+			function(response){
+				console.log('success');
+			}
+		);
+}
+
 

@@ -107,5 +107,9 @@
 		<?php if($nombres_ts != '') { ?>
 			busquedaTS('<?php echo $nombres_ts ?>');
 		<?php } ?>
+
+		<?php if($seccion == 'Inicio') { ?>
+			votoPregunta('<?php echo base_url() ?>');
+		<?php } ?>
 	</script>
 </html>

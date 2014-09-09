@@ -12,7 +12,7 @@
 		<meta http-equiv="cleartype" content="on">
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<script type="text/javascript" src="//use.typekit.net/jro5mkt.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>

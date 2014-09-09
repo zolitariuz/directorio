@@ -302,14 +302,12 @@ class Gestor_contenidos extends CI_Controller {
 	 * @return nada	
 	 */
 	function editar_pregunta($id_pregunta){
-		// datos de usuario
-		//$id_usuario = $this->session->userdata('id');
-
-		$data['usuario'] = $this->session;
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
 
 		// busca pregunta
 		$this->load->model('pregunta');
-		$data['pregunta'] = $this->pregunta->dame_pregunta($id_pregunta);
 
 		// ¿se está editando el aviso?
 		if(isset($_POST['id_usuario'])){
@@ -323,6 +321,7 @@ class Gestor_contenidos extends CI_Controller {
 			$this->pregunta->actualiza_pregunta($id_pregunta, $pregunta, $vigencia, $activo);
 			$data['success'] = '¡Pregunta actualizada!';
 		} 
+		$data['pregunta'] = $this->pregunta->dame_pregunta($id_pregunta);
 
 		// seccion actual
 		$data['seccion'] = 'Editar pregunta';
@@ -423,17 +422,74 @@ class Gestor_contenidos extends CI_Controller {
 	 * @return nada	
 	 */
 	function editar_anuncio($id_anuncio){
-		// datos a insertar
-		$id_usuario = $this->session->userdata('id');
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
 
 		// busca anuncio
 		$this->load->model('anuncio');
+
+		// ¿se está editando el anuncio?
+		if(isset($_POST['id_usuario'])){
+			// datos a actualizar
+			$anuncio = $_POST['anuncio'];
+			$url_anuncio = $_POST['url_anuncio'];
+			$vigencia = $_POST['vigencia'];
+			if(trim($url_anuncio) == ''){
+				$url_anuncio = '-';
+				$tipo = 'texto';
+			} else {
+				$tipo = 'link';
+			}
+			if ($_POST['activo'] == 'on')
+				$activo = 't';
+			else 
+				$activo = 'f';
+
+			// ruta para guardar archivos de slider
+			$config['upload_path'] = '../directorio/assets/img/anuncios';
+			
+			// limitaciones de archivo a subir
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '500';
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+
+			// sube archivos 
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config); 		
+			if ( ! $this->upload->do_upload())
+			{
+				// No se pudo subir el archivo, manda errores a la vista
+				$data['error'] = $this->upload->display_errors();
+			}
+			else
+			{
+				// guardar imagen de slider
+				$data['upload'] = $this->upload->data();
+
+				// url relativa de la imagen
+				$img_url = explode('directorio/', $data['upload']['full_path']);
+
+				// inserta anuncio a bd
+				$this->load->model('anuncio');
+				if($this->anuncio->actualiza_anuncio($id_anuncio, $anuncio, $url_anuncio, $img_url[1], $tipo, $vigencia, $activo)){
+					$data['success'] = '¡Se actualizó el anuncio con éxito!';
+				} else {
+					$data['error'] = 'No se pudo actualizar el anuncio.';
+				} // if upload con éxito
+			}// if upload
+		}// if POST
+
 		$data['anuncio'] = $this->anuncio->dame_anuncio($id_anuncio);
 		
+		// sección actual
+		$data['seccion'] = 'Editar anuncio';
+		
 		// Carga vista con información del anuncio
-		$this->load->view('cms/header');
+		$this->load->view('cms/header', $data);
 		$this->load->view('cms/editar_anuncio', $data);
-		$this->load->view('cms/footer');
+		$this->load->view('cms/footer', $data);
 	}// editar_anuncio
 
 	/**
@@ -458,5 +514,61 @@ class Gestor_contenidos extends CI_Controller {
 		$this->editar_contenido();
 
 	}// eliminar_anuncio
+
+	/**
+	 * Descripción: Método para trámites y servicios mas solicitados
+	 * @param 
+	 * @return 	
+	 */
+	function mas_solicitados(){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+		$this->load->model('usuario');
+		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
+
+		// Variable de conexión a web services
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
+		// Carga nombre y id de todos los trámites y servicios
+		// para la función de autocompletar
+		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
+		if(is_null($nombres_ts))
+			$data['nombres_ts'] = '';
+		else
+			$data['nombres_ts'] = $nombres_ts;
+
+		// Obtener id de trámites y servicios mas comunes
+		$this->load->model('ts_comun');
+		$id_ts = $this->ts_comun->dame_ts_comunes();
+
+		// Obtener nombres de trámites y servicios via WS
+		
+
+		// Carga vista con información del anuncio
+		$this->load->view('cms/header', $data);
+		$this->load->view('cms/mas_solicitados', $data);
+		$this->load->view('cms/footer', $data);
+
+	}// mas_solicitados
+
+	function agregar_ts_solicitado(){
+		// respuesta JSON para AJAX
+		$respuesta = array();
+		$id_ts = $_POST['id_ts'];
+
+		// carga modelo 
+		$this->load->model('ts_comun');
+		// Revisar si hay mas de 15 trámites/servicios
+		$total =  $this->ts_comun->total_ts_comunes();
+		if($total >= 15){
+			$respuesta['msg'] = 'Ya hay 15 trámites y/o servicios';
+		} else {
+			$this->ts_comun->agrega_ts_comun($id_ts, 't');
+			$respuesta['msg'] = 'Se agregó el trámite y servicio con éxito';
+		}
+
+		$this->output->set_output(json_encode($respuesta));
+	}// agregar_ts_solicitado
 
 }// Gestor_contenidos

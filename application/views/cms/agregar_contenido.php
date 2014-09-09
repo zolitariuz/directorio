@@ -50,7 +50,7 @@
 
 			<?php 
 			$atributos = array('class' => 'columna xmall-10 center crea-anuncio');
-			echo form_open_multipart('index.php/gestor_contenidos/agregar_anuncio', $atributos);
+			echo form_open_multipart('index.php/gestor_contenidos/agregar_anuncio/'.$aviso['id_aviso'], $atributos);
 			?>
 				<fieldset class="columna xmall-10 center">
 					<label for="pregunta" >Anuncio nuevo</label>

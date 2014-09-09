@@ -46,6 +46,8 @@ class Inicio extends CI_Controller {
 		$this->load->model('pregunta');
 		$data['pregunta'] = $this->pregunta->dame_ultima_pregunta();
 
+		$data['seccion'] = 'Inicio';
+
 		// Cargar vista de inicio con header y footer
 		$this->load->view('header', $data);
 		$this->load->view('inicio', $data);
@@ -141,7 +143,20 @@ class Inicio extends CI_Controller {
 		$this->load->view('footer', $data);
 	} // muestraTramiteServicio
 
+	/**
+	 * Descripción: Cuenta voto de la pregunta actual
+	 * @param 
+	 * @return 
+	 */
+	public function set_voto(){
+		$pregunta = $_POST['pregunta'];
+		$respuesta = $_POST['respuesta'];
+		$hora = date('Y-m-d H:i:s');
 
+		// carga modelo y agrega respuesta
+		$this->load->model('respuesta');
+		$this->respuesta->agrega_respuesta($pregunta, $respuesta, $hora);
+	}// setVoto
 
 	/**
 	 * Descripción: Busca datos de áreas de atención pertenecientes a un 
@@ -255,5 +270,7 @@ class Inicio extends CI_Controller {
 		}
 		return $documentos;
 	} // dameDocumentos
+
+
 
 }

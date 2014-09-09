@@ -108,5 +108,27 @@ class Anuncio extends CI_Model {
 		} else
 			return 0;
 	}// dame_anuncio
+
+	/**
+	 * Descripción: Actualiza un anuncio de la base de datos
+	 * @param integer $id_anuncio, string $anuncio, string $url, string $tipo
+	 * @return true	
+	 */
+	public function actualiza_anuncio($id_anuncio, $anuncio, $url, $url_img, $tipo, $vigencia, $activo){
+		$data = array(
+		   'contenido' 		=> 	$anuncio,
+		   'tipo_contenido' => 	$tipo,
+		   'vigencia'   	=>	$vigencia,
+		   'url' 			=> 	$url, 
+		   'url_img' 		=> 	$url_img, 
+		   'is_activo' 		=> 	$activo
+		);
+
+		// actualizar registro
+		$this->db->where('id_anuncio', $id_anuncio);
+		$this->db->update('anuncios', $data);
+
+		return 1;
+	} // actualiza_anuncio
 		
 }// clase Anuncio

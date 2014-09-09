@@ -20,9 +20,14 @@
 				<i class="fa fa-pencil"></i>
 				Editar contenido
 			</a>
+			<a href="<?php echo base_url().'index.php/gestor_contenidos/mas_solicitados/'?>" class="block boton vertical columna xmall-6 margin-bottom">
+				<i class="fa fa-file"></i>
+				Trámites y servicios mas solicitados
+			</a>
+			<div class="clear"></div>
 			<a href="<?php echo base_url().'index.php/gestor_contenidos/ver_contenido/'?>" class="block boton vertical columna xmall-6 margin-bottom">
-				<i class="fa fa-eye"></i>
-				Ver contenido
+				<i class="fa fa-area-chart"></i>
+				Reportes
 			</a>
 		</div>
 

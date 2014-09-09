@@ -177,8 +177,8 @@
 				<h2 class="text-center highlight">Pregunta de la semana</h2>
 				<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
 				<div class="columna xmall-5 center clearfix">
-					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="si" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
-					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="no" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
+					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
+					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
 				</div>
 			</section>
 		<?php } ?>
