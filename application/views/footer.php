@@ -49,7 +49,7 @@
 		<div class="back-to-top when-scrolled">
 			<i class="fa fa-chevron-up"></i>
 		</div>
-		<div class="overlay-opener when-scrolled">
+		<div class="overlay-opener js-overlay-opener when-scrolled">
 			<i class="fa fa-search"></i>
 		</div>
 		<div class="modal-wrapper hide">

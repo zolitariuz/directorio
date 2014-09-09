@@ -15,7 +15,9 @@
 		contarItems( $('.letra'), 'li');
 
 		//Botones de busqueda y back to top
-		scrollHeader();
+		//scrollHeader('.main-search');
+		scrollHeader('aside .busqueda');
+		//scrollHeader('.main-search');
 
 		//*** CLICKS ***//
 		//Tabs
@@ -39,7 +41,7 @@
 		});
 
 		//Overlays
-		$('body').on('click', '.overlay-opener', function(){
+		$('body').on('click', '.js-overlay-opener', function(){
 			abrirOverlay( $(this) );
 		});
 
@@ -59,7 +61,9 @@
 
 		//*** ON SCROLL ***//
 		$(window).scroll(function() {
-			scrollHeader();
+			scrollHeader('.main-search');
+			scrollHeader('aside .busqueda');
+			//scrollHeader('.main-search');
 		});
 
 
@@ -170,17 +174,15 @@
     	});
 	}
 
-	function scrollHeader(){
+	function scrollHeader(selector){
 		var scrolled = $(window).scrollTop();
-		if( $('aside .busqueda').length > 0 ){
-			var topBusqueda 	= $('aside .busqueda').offset().top;
-			var alturaBusqueda 	= $('aside .busqueda').height();
+		if( $(selector).length > 0 ){
+			var topBusqueda 	= $(selector).offset().top;
+			var alturaBusqueda 	= $(selector).height();
 			var bottomBusqueda 	= topBusqueda+alturaBusqueda;
 			if( scrolled > bottomBusqueda ){
-				console.log('ya');
 				$('.when-scrolled').addClass('after-scrolled');
 			} else{
-				console.log('ya no');
 				$('.when-scrolled').removeClass('after-scrolled');
 			}
 		}

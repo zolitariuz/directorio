@@ -17,7 +17,7 @@
 			<h3 class="text-center">O ve trámites y servicios por:</h3>
 			<div class="columna xmall-8 center">
 				<a href="<?php echo base_url().'index.php/instituciones' ?>" class="block boton vertical columna xmall-6">
-					<i class="fa fa-asterisk"></i>
+					<i class="icon-ts-icon-filled-agraria"></i>
 					Institución
 				</a>
 				<a href="<?php echo base_url().'index.php/temas' ?>" class="block boton vertical columna xmall-6">
@@ -52,75 +52,164 @@
 					data-cycle-fx="scrollHorz"
 					data-cycle-swipe="true"
 					data-cycle-timeout="0"
+					data-cycle-log="false"
 				>
 				<div class="slide">
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Asesoría y asistencia social y condominal
+						<i class="icon-ts-icon-filled-agraria"></i>
+						Agraria
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Deporte
+						<i class="icon-ts-icon-filled-aguapotable"></i>
+						Agua potable
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Asesoría y asistencia social y condominal
+						<i class="icon-ts-icon-filled-anuncio"></i>
+						Anuncio
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Deporte
+						<i class="icon-ts-icon-filled-asesoriatelefonica"></i>
+						Asesoría telefónica
 					</a>
 					<div class="clear"></div>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Asesoría y asistencia social y condominal
+						<i class="icon-ts-icon-filled-asesoriayasistenciasocial"></i>
+						Asesoría y Asistencia Social y Condominal
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Deporte
+						<i class="icon-ts-icon-filled-auxiliodelafuerzapublica"></i>
+						Auxilio de la fuerza pública y vialidad
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Asesoría y asistencia social y condominal
+						<i class="icon-ts-icon-filled-construccionesyobras"></i>
+						Construcciones y obras
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Deporte
+						<i class="icon-ts-icon-filled-culturayrecreacion"></i>
+						Cultura y recreación
 					</a>
 				</div><!-- slide -->
 				<div class="slide">
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Asesoría y asistencia social y condominal
+						<i class="icon-ts-icon-filled-deportes"></i>
+						Deportes
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Deporte
+						<i class="icon-ts-icon-filled-espectaculospublicos"></i>
+						Espectaculos públicos
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Asesoría y asistencia social y condominal
+						<i class="icon-ts-icon-filled-establecimientosmercantiles"></i>
+						Establecimientos mercantiles
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Deporte
+						<i class="icon-ts-icon-filled-fomentoeconomico"></i>
+						Fomento económico
 					</a>
 					<div class="clear"></div>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Asesoría y asistencia social y condominal
+						<i class="icon-ts-icon-filled-funerarios"></i>
+						Funerarios
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Deporte
+						<i class="icon-ts-icon-filled-industria"></i>
+						Industria
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Asesoría y asistencia social y condominal
+						<i class="icon-ts-icon-filled-mantenimientoainfraestructura"></i>
+						Mantenimiento a infraestructura urbana y habitacional
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="fa fa-asterisk"></i>
-						Deporte
+						<i class="icon-ts-icon-filled-medioambiente"></i>
+						Medio Ambiente
+					</a>
+				</div><!-- slide -->
+				<div class="slide">
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-mercadospublicos"></i>
+						Mercados públicos y mercados sobre ruedas
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-patrimonioculturalurbano"></i>
+						Patrimonio cultural urbano
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-proteccioncivil"></i>
+						Protección civil
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-quejasydemandasvecinales"></i>
+						Quejas y demandas vecinales
+					</a>
+					<div class="clear"></div>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-registrocivil"></i>
+						Registro civil
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-registropublicodelapropiedad"></i>
+						Registro público de la propiedad y de comercio
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-regularizacionterritorial"></i>
+						Regularización territorial
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-regularizaciondelatierra"></i>
+						Regularización de la tierra y apoyo a predios
+					</a>
+				</div><!-- slide -->
+				<div class="slide">
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-salud"></i>
+						Salud
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-servicioslegalesyarchivos"></i>
+						Servicios legales y archivo de notarias
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-serviciosurbanoslimpiaeinfraestructura"></i>
+						Servicios urbanos
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-serviciosurbanoslimpiaeinfraestructura"></i>
+						Servicios urbanos, limpia e infraestructura urbana
+					</a>
+					<div class="clear"></div>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-taxis"></i>
+						Taxis
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-trabajo"></i>
+						Trabajo
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-turismo"></i>
+						Turismo
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-usodesuelo"></i>
+						Uso de suelo
+					</a>
+				</div><!-- slide -->
+				<div class="slide">
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-vehiculosautomotoresdepasajerosycarga"></i>
+						Vehículos automotores de pasajeros y carga
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-vehiculosautomotores"></i>
+						Vehículos automotores particulares
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-videojuegos"></i>
+						Videojuegos
+					</a>
+					<a href="#" class="boton columna xmall-3 cuadrado chico">
+						<i class="icon-ts-icon-filled-vivienda"></i>
+						Vivienda
 					</a>
 				</div><!-- slide -->
 				<div class="cycle-pager"></div>
@@ -137,6 +226,7 @@
 				data-cycle-slides=".slide"
 				data-cycle-fx="scrollHorz"
 				data-cycle-swipe="true"
+				data-cycle-log="false"
 			>
 				<div class="slide">
 					<img src="assets/img/anuncios/anuncio.jpg">
