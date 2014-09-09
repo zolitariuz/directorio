@@ -79,7 +79,6 @@
 									} else {
 										echo $value['contenido'];
 									}
-
 									echo '</span>';
 									echo '|';
 								}// foreach anuncio

@@ -341,7 +341,9 @@ nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @ob
 /*** FOOTER ***/
 footer{
 	section{ margin: 0; padding: @margen; }
-	.map{ background: lighten(@obscuro, 40%); }
+	.logos{ background: lighten(@obscuro, 40%);
+		> div > div{ display: inline-block; vertical-align: middle; width: 25%; }
+	}
 	.emergencia{ background: @obscuro;
 		h4{ margin-bottom: @margen; color: @claro;}
 		p{ color: @claro;}

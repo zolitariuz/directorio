@@ -1,18 +1,15 @@
 		</div><!-- container -->
 		.
 		<footer>
-			<section class="map">
+			<section class="logos">
 				<div class="width clearfix">
-					<div class="columna xmall-3">
+					<div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
-					</div>
-					<div class="columna xmall-3">
+					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
-					</div>
-					<div class="columna xmall-3">
+					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
-					</div>
-					<div class="columna xmall-3">
+					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
 					</div>
 				</div><!-- width -->
