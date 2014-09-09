@@ -86,6 +86,13 @@
 							echo '<div class="paso clearfix">';
 							echo '<span>'.$value->paso.'</span>';
 							echo '<p>'.$value->accion.'</p>';
+							if ($value->actor == CIUDADANO){
+								echo '<p>Actor: Ciudadano</p>';
+							} else if ($value->actor == SERVIDOR_PUBLICO){
+								echo '<p>Actor: Servidor público</p>';
+							} else if($value->actor == SISTEMA){
+								echo '<p>Actor: Sistema informático</p>';
+							}
 							echo '</div>';
 							echo '<div class="clear"></div>';
 						} // end foreach

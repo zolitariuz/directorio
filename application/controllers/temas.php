@@ -41,7 +41,7 @@ class Temas extends CI_Controller {
 
 		// carga avisos
 		$this->load->model('aviso');
-		$data['avisos'] = $this->aviso->dame_avisos();
+		$data['avisos'] = $this->aviso->dame_avisos_activos();
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);
@@ -67,7 +67,7 @@ class Temas extends CI_Controller {
 
 		// carga avisos
 		$this->load->model('aviso');
-		$data['avisos'] = $this->aviso->dame_avisos();
+		$data['avisos'] = $this->aviso->dame_avisos_activos();
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);

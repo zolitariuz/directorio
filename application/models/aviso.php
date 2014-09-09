@@ -11,13 +11,14 @@ class Aviso extends CI_Model {
 	 * @param string $id_aviso, string $url, string $tipo, integer $id_usuario
 	 * @return true	o false
 	 */
-	public function agrega_aviso($aviso, $url, $tipo, $id_usuario, $vigencia){
+	public function agrega_aviso($aviso, $url, $tipo, $id_usuario, $vigencia, $activo){
 		$data = array(
 		   'id_usuario' 	=> $id_usuario,
 		   'contenido' 		=> $aviso,
 		   'tipo_contenido' => 	$tipo,
 		   'url' 			=> 	$url,
-		   'vigencia'		=> $vigencia
+		   'vigencia'		=> $vigencia,
+		   'is_activo'		=> $activo
 		);
 
 		if($this->db->insert('avisos', $data)){
@@ -32,11 +33,13 @@ class Aviso extends CI_Model {
 	 * @param integer $id_aviso, string $aviso, string $url, string $tipo
 	 * @return true	
 	 */
-	public function actualiza_aviso($id_aviso, $aviso, $url, $tipo){
+	public function actualiza_aviso($id_aviso, $aviso, $url, $tipo, $vigencia, $activo){
 		$data = array(
-		   'contenido' => 		$aviso,
+		   'contenido' 		=> 	$aviso,
 		   'tipo_contenido' => 	$tipo,
-		   'url' => 			$url
+		   'vigencia'   	=>	$vigencia,
+		   'url' 			=> 	$url, 
+		   'is_activo' 		=> 	$activo
 		);
 
 		// actualizar registro
@@ -69,13 +72,38 @@ class Aviso extends CI_Model {
 			    	'tipo_contenido' 	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
-			    	'vigencia'			=> $row->vigencia
+			    	'vigencia'			=> $row->vigencia,
+			    	'activo'			=> $row->is_activo
 			    	);
 			}
 			return $avisos;
 		} else
 			return 0;
 	}// dame_avisos
+
+	public function dame_avisos_activos(){
+		//$ayer = date('d.m.Y',strtotime("-1 days"));
+		$this->db->where("vigencia > DATE 'yesterday' AND is_activo = 't'");
+		$query = $this->db->get('avisos');
+		$avisos = array();
+
+		if($query->num_rows() > 0){
+			foreach ($query->result() as $key=>$row)
+			{
+			    $avisos[$key] = array(
+			    	'id_aviso' 			=> $row->id_aviso,
+			    	'id_usuario' 		=> $row->id_usuario,
+			    	'tipo_contenido' 	=> $row->tipo_contenido,
+			    	'contenido' 		=> $row->contenido,
+			    	'url'	  			=> $row->url,
+			    	'vigencia'			=> $row->vigencia,
+			    	'activo'			=> $row->is_activo
+			    	);
+			}
+			return $avisos;
+		} else
+			return 0;
+	}// dame_avisos_activos
 
 	/**
 	 * Descripción: Jala un aviso de base de datos
@@ -95,7 +123,8 @@ class Aviso extends CI_Model {
 			    	'tipo_contenido' 	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
-			    	'vigencia'			=> $row->vigencia
+			    	'vigencia'			=> $row->vigencia,
+			    	'activo'			=> $row->is_activo
 			    	);
 			}
 			return $aviso;

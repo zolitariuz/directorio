@@ -19,7 +19,10 @@
 						<div class="columna xmall-2 text-center">
 							Vigencia
 						</div>
-						<div class="columna xmall-2 text-center">
+						<div class="columna xmall-1 text-center">
+							¿Activo?
+						</div>
+						<div class="columna xmall-1 text-center">
 							Opciones
 						</div>
 					</div>
@@ -32,8 +35,13 @@
 						echo '<div class="columna xmall-4 ">'.$value['contenido'].'</div>';
 						echo '<div class="columna xmall-4 text-center">'.$value['url'].'</div>';
 						echo '<div class="columna xmall-2 text-center">'.$value['vigencia'].'</div>';
+						if ($value['activo'] == 't') 
+							$activo = 'Si';
+						else
+							$activo = 'No';
+						echo '<div class="columna xmall-1 text-center">'.$activo.'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
-						echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
+						/*echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';*/
 						echo '</div">';
 						echo '<div class="clear"></div>';
 					}// foreach anuncio
@@ -55,7 +63,10 @@
 						<div class="columna xmall-2 text-center">
 							Vigencia
 						</div>
-						<div class="columna xmall-2 text-center">
+						<div class="columna xmall-1 text-center">
+							¿Activo?
+						</div>
+						<div class="columna xmall-1 text-center">
 							Opciones
 						</div>
 					</div>
@@ -69,8 +80,13 @@
 						echo '<div class="columna xmall-6 text-center">'.$value['pregunta'].'</div>';
 						echo '<div class="columna xmall-2 text-center">0</div>';
 						echo '<div class="columna xmall-2 text-center">'.$value['vigencia'].'</div>';
+						if ($value['activo'] == 't') 
+							$activo = 'Si';
+						else
+							$activo = 'No';
+						echo '<div class="columna xmall-1 text-center">'.$activo.'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
-						echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
+						/*echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';*/
 						echo '</div">';
 						echo '<div class="clear"></div>';
 					}// foreach anuncio
@@ -95,7 +111,10 @@
 						<div class="columna xmall-2 text-center">
 							Vigencia
 						</div>
-						<div class="columna xmall-2 text-center">
+						<div class="columna xmall-1 text-center">
+							¿Activo?
+						</div>
+						<div class="columna xmall-1 text-center">
 							Opciones
 						</div>
 					</div>
@@ -109,8 +128,13 @@
 						echo '<div class="columna xmall-2 text-center">'.$value['url'].'</div>';
 						echo '<div class="columna xmall-3 text-center">'.$value['url_img'].'</div>';
 						echo '<div class="columna xmall-2 text-center">'.$value['vigencia'].'</div>';
+						if ($value['activo'] == 't') 
+							$activo = 'Si';
+						else
+							$activo = 'No';
+						echo '<div class="columna xmall-1 text-center">'.$activo.'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
-						echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
+						/*echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';*/
 						echo '</div">';
 						echo '<div class="clear"></div>';
 					}// foreach anuncio

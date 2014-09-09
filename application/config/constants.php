@@ -37,5 +37,43 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+/*
+|--------------------------------------------------------------------------
+| Constantes del usuario
+|--------------------------------------------------------------------------
+*/
+
+// Datos de conexión a los web services
+define('USUARIO_WS', 'admin_ts');
+define('PASSWORD_WS', '@dm1n_TS_123');
+define('URL_WS', 'localhost:8888/tramites_cdmx_ws/index.php/api/');
+
+
+// Tipo de duración de vigencia
+define('SERVICIO', -1);
+define('OTRA_DURACION', 0); 
+define('DE_DURACION', 1); 
+define('RANGO_DURACION', 2);
+ 
+// Duración de vigencia
+define('AÑO_FISCAL', 3); 
+define('PERIODO_RESTANTE', 4); 
+define('PERMANENTE', 5); 
+define('MAYORIA_EDAD', 6); 
+define('NO_APLICA', 7); 
+define('INDETERMINADA', 8); 
+define('HORAS', 9); 
+define('DIAS_NATURALES', 10); 
+define('DIAS_HABILES', 11); 
+define('SEMANAS', 12); 
+define('MESES', 13); 
+define('AÑOS', 14); 
+
+// Actores de procedimiento
+define('CIUDADANO', 1); 
+define('SERVIDOR_PUBLICO', 2); 
+define('SISTEMA', 3); 
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
