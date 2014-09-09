@@ -5,6 +5,7 @@
 
 		<link rel="shortcut icon" href="images/favicon.ico">
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/font.css">
 
 		<meta name="description" content="">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

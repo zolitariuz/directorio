@@ -15,6 +15,7 @@
 						<p class="hero"><?php echo $ts->descripcion; ?></p>
 					<?php } ?>
 				</article>
+				<hr>
 				<article class="transform" data-content="requisitos">
 					<h2 class="highlight">Requisitos</h2>
 					<div class="no-xmall large">
@@ -72,9 +73,7 @@
 						?>
 					</div>
 				</article>
-				<div class="clear"></div>
 				<hr>
-				<div class="clear"></div>
 				<?php
 				// Cargar requisitos específicos si existen
 				if($procedimiento != ''){ ?>
@@ -83,15 +82,16 @@
 						echo '<h2 class="highlight">Procedimiento</h2>';
 						foreach ($procedimiento as $key => $value) {
 							echo '<div class="paso clearfix">';
-							echo '<span>'.$value->paso.'</span>';
-							echo '<p>'.$value->accion.'</p>';
-							if ($value->actor == CIUDADANO){
-								echo '<p>Actor: Ciudadano</p>';
-							} else if ($value->actor == SERVIDOR_PUBLICO){
-								echo '<p>Actor: Servidor público</p>';
-							} else if($value->actor == SISTEMA){
-								echo '<p>Actor: Sistema informático</p>';
-							}
+								echo '<span>'.$value->paso.'</span>';
+								if ($value->actor == CIUDADANO){
+									echo '<p class="highlight">Actor: Ciudadano</p>';
+								} else if ($value->actor == SERVIDOR_PUBLICO){
+									echo '<p class="highlight">Actor: Servidor público</p>';
+								} else if($value->actor == SISTEMA){
+									echo '<p class="highlight">Actor: Sistema informático</p>';
+								}
+
+								echo '<p>'.$value->accion.'</p>';
 							echo '</div>';
 						} // end foreach
 					?>
@@ -104,9 +104,7 @@
 					<h2 class="highlight">Áreas de atención</h2>
 					<div id="map"></div>
 				</article>
-				<div class="clear"></div>
 				<hr>
-				<div class="clear"></div>
 				<article>
 					<h2 class="highlight">Danos tu opinión</h2>
 					<form class="feedback" action="#">
@@ -130,9 +128,7 @@
 						<input type="submit" class="boton chico horizontal" value="Enviar">
 					</form>
 				</article>
-				<div class="clear"></div>
 				<hr>
-				<div class="clear"></div>
 				<article>
 					<h2 class="highlight">Compártelo</h2>
 					<div class="share block columna xmall-2">
@@ -144,7 +140,7 @@
 				</article>
 			</section><!-- content -->
 			<aside class="columna xmall-3">
-				<a href="#" class="block boton horizontal margin-bottom busqueda">
+				<a href="#" class="block boton horizontal margin-bottom busqueda js-overlay-opener">
 					<i class="fa fa-search"></i> Busca tu trámite
 				</a>
 				<a href="#" data-seccion="area-atencion" class="block boton margin-bottom scrollTo">
@@ -174,9 +170,7 @@
 						?>
 					</p>
 				</div><!-- quick-info -->
-				<div class="clear"></div>
 				<hr>
-				<div class="clear"></div>
 
 				<div class="quick-info">
 					<?php
@@ -210,9 +204,7 @@
 					?>
 				</div><!-- quick-info -->
 
-				<div class="clear"></div>
 				<hr>
-				<div class="clear"></div>
 				<div class="quick-info">
 					<h3 class="highlight">Formatos requeridos</h3>
 					<div class="formatos">
@@ -233,9 +225,7 @@
 						?>
 					</div>
 				</div> <!--quick-info -->
-				<div class="clear"></div>
 				<hr>
-				<div class="clear"></div>
 				<div class="quick-info">
 					<article class="" data-content="beneficio-documento">
 					<?php
