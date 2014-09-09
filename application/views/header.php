@@ -68,6 +68,7 @@
 						<h3 class="blok obscuro span xmall-1 text-center">Avisos</h3>
 						<div class="mensaje columna xmall-11">
 							<p class="hide highlight">
+								<span>Este es un aviso default.</span>|
 								<?php
 								foreach ($avisos as $key => $value) {
 									echo '<span>';

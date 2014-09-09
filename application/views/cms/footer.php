@@ -12,6 +12,8 @@
 				toggleUrlAviso();
 				toggleUrlAnuncio();
 				$('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
+		<?php } else if ($seccion == 'Editar aviso' || $seccion == 'Editar anuncio' || $seccion == 'Editar pregunta') {  ?>
+				$('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
 		<?php } ?>
 	</script>
 </html>

@@ -9,10 +9,10 @@
 					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
 				</article><!-- header-single -->
 				<article class="consiste">
-					<?php if(is_null($ts->descripcion_ts)) { ?>
+					<?php if(is_null($ts->descripcion)) { ?>
 						<p class="hero">Este trámite no tiene descripción.</p>
 					<?php } else {  ?>
-						<p class="hero"><?php echo $ts->descripcion_ts; ?></p>
+						<p class="hero"><?php echo $ts->descripcion; ?></p>
 					<?php } ?>
 				</article>
 				<article class="transform" data-content="requisitos">
@@ -86,6 +86,13 @@
 							echo '<div class="paso clearfix">';
 							echo '<span>'.$value->paso.'</span>';
 							echo '<p>'.$value->accion.'</p>';
+							if ($value->actor == CIUDADANO){
+								echo '<p>Actor: Ciudadano</p>';
+							} else if ($value->actor == SERVIDOR_PUBLICO){
+								echo '<p>Actor: Servidor público</p>';
+							} else if($value->actor == SISTEMA){
+								echo '<p>Actor: Sistema informático</p>';
+							}
 							echo '</div>';
 							echo '<div class="clear"></div>';
 						} // end foreach

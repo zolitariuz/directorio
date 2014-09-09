@@ -138,6 +138,12 @@
 				data-cycle-fx="scrollHorz"
 				data-cycle-swipe="true"
 			>
+				<div class="slide">
+					<img src="assets/img/anuncios/anuncio.jpg">
+					<div class="info">
+						<p>Este es un anuncio default.</p>
+					</div>
+				</div>
 				<?php
 					// contenido del slider
 					foreach ($anuncios as $key => $value) {
@@ -164,16 +170,18 @@
 			</div>
 		</section>
 		<div class="clear"></div>
-		<hr class="columna xmall-6 center">
-		<div class="clear"></div>
-		<section class="pregunta clearfix">
-			<h2 class="text-center highlight">Pregunta de la semana</h2>
-			<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
-			<div class="columna xmall-5 center clearfix">
-				<a href="#" class="block boton columna xmall-6 grande" data-respuesta="si" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
-				<a href="#" class="block boton columna xmall-6 grande" data-respuesta="no" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
-			</div>
-		</section>
+		<?php  if(!is_null($pregunta['pregunta'])){ ?>
+			<hr class="columna xmall-6 center">
+			<div class="clear"></div>
+			<section class="pregunta clearfix">
+				<h2 class="text-center highlight">Pregunta de la semana</h2>
+				<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
+				<div class="columna xmall-5 center clearfix">
+					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="si" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
+					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="no" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
+				</div>
+			</section>
+		<?php } ?>
 		<div class="clear"></div>
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>

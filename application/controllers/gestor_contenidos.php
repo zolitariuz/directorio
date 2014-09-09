@@ -190,7 +190,7 @@ class Gestor_contenidos extends CI_Controller {
 
 		// inserta aviso a bd
 		$this->load->model('aviso');
-		if($this->aviso->agrega_aviso($aviso, $url_aviso, $tipo, $id_usuario, $vigencia)){
+		if($this->aviso->agrega_aviso($aviso, $url_aviso, $tipo, $id_usuario, $vigencia, 't')){
 			$data['success'] = '¡Se agregó el aviso con éxito!';
 		} else {
 			$data['error'] = 'No se pudo agregar el aviso.';
@@ -222,12 +222,21 @@ class Gestor_contenidos extends CI_Controller {
 			$aviso = $_POST['aviso'];
 			$tipo = $_POST['tipo'];
 			$url = $_POST['url_aviso'];
-			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo);
+			$vigencia = $_POST['vigencia'];
+			if ($_POST['activo'] == 'on')
+				$activo = 't';
+			else 
+				$activo = 'f';
+
+			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo, $vigencia, $activo);
 			$data['success'] = '¡Aviso actualizado!';
 		} 
 
 		// busca aviso
 		$data['aviso'] = $this->aviso->dame_aviso($id_aviso);
+
+		// seccion actual
+		$data['seccion'] = 'Editar aviso';
 		
 		// Carga vista con información del aviso
 		$this->load->view('cms/header', $data);
@@ -273,7 +282,7 @@ class Gestor_contenidos extends CI_Controller {
 
 		// inserta pregunta a bd
 		$this->load->model('pregunta');
-		if($this->pregunta->agrega_pregunta($pregunta, $id_usuario, $vigencia)){
+		if($this->pregunta->agrega_pregunta($pregunta, $id_usuario, $vigencia, 't')){
 			$data['success'] = '¡Se agregó la pregunta con éxito!';
 		} else {
 			$data['error'] = 'No se pudo agregar la pregunta.';
@@ -301,6 +310,22 @@ class Gestor_contenidos extends CI_Controller {
 		// busca pregunta
 		$this->load->model('pregunta');
 		$data['pregunta'] = $this->pregunta->dame_pregunta($id_pregunta);
+
+		// ¿se está editando el aviso?
+		if(isset($_POST['id_usuario'])){
+			$pregunta = $_POST['pregunta'];
+			$vigencia = $_POST['vigencia'];
+			if ($_POST['activo'] == 'on')
+				$activo = 't';
+			else 
+				$activo = 'f';
+
+			$this->pregunta->actualiza_pregunta($id_pregunta, $pregunta, $vigencia, $activo);
+			$data['success'] = '¡Pregunta actualizada!';
+		} 
+
+		// seccion actual
+		$data['seccion'] = 'Editar pregunta';
 		
 		// Carga vista con información de la pregunta
 		$this->load->view('cms/header');
@@ -379,7 +404,7 @@ class Gestor_contenidos extends CI_Controller {
 
 			// inserta anuncio a bd
 			$this->load->model('anuncio');
-			if($this->anuncio->agrega_anuncio($anuncio, $id_usuario, $tipo, $url_anuncio, $img_url[1], $vigencia)){
+			if($this->anuncio->agrega_anuncio($anuncio, $id_usuario, $tipo, $url_anuncio, $img_url[1], $vigencia, 't')){
 				$data['success'] = '¡Se agregó el anuncio con éxito!';
 			} else {
 				$data['error'] = 'No se pudo agregar el anuncio.';

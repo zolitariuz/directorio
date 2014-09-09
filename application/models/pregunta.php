@@ -6,11 +6,12 @@ class Pregunta extends CI_Model {
 		$this->load->database();
 	}
 
-	public function agrega_pregunta($pregunta, $id_usuario, $vigencia){
+	public function agrega_pregunta($pregunta, $id_usuario, $vigencia, $activo){
 		$data = array(
 		   'id_usuario' 	=> $id_usuario,
 		   'pregunta' 		=> $pregunta,
-		   'vigencia'		=> $vigencia
+		   'vigencia'		=> $vigencia,
+		   'is_activo'		=> $activo
 		);
 
 		if($this->db->insert('preguntas', $data)){
@@ -31,6 +32,7 @@ class Pregunta extends CI_Model {
 	} // elimina_pregunta
 
 	public function dame_preguntas(){
+		$this->db->where("vigencia > DATE 'yesterday'");
 		$query = $this->db->get('preguntas');
 		$anuncios = array();
 
@@ -38,9 +40,11 @@ class Pregunta extends CI_Model {
 			foreach ($query->result() as $key=>$row)
 			{
 			    $anuncios[$key] = array(
-			    	'id_pregunta' 		=> $row->id_pregunta,
-			    	'id_usuario' 		=> $row->id_usuario,
-			    	'pregunta' 			=> $row->pregunta,
+			    	'id_pregunta'	=> $row->id_pregunta,
+			    	'id_usuario'	=> $row->id_usuario,
+			    	'pregunta' 		=> $row->pregunta,
+			    	'vigencia'		=> $row->vigencia,
+			    	'activo'		=> $row->is_activo
 			    	);
 			}
 			return $anuncios;
@@ -61,8 +65,10 @@ class Pregunta extends CI_Model {
 			foreach ($query->result() as $row)
 			{
 			    $pregunta = array(
-			    	'id_pregunta' 			=> $row->id_pregunta,
-			    	'pregunta'	  			=> $row->pregunta,
+			    	'id_pregunta'	=> $row->id_pregunta,
+			    	'pregunta'	  	=> $row->pregunta,
+			    	'vigencia'		=> $row->vigencia,
+			    	'activo'		=> $row->is_activo
 			    	);
 			}
 			return $pregunta;
@@ -78,7 +84,7 @@ class Pregunta extends CI_Model {
 	public function dame_ultima_pregunta(){
 		$this->db->order_by("id_pregunta", "desc"); 
 		$this->db->limit(1);
-		$query = $this->db->get('preguntas');
+		$query = $this->db->get_where('preguntas', array('is_activo' => 't'));
 		$pregunta = array();
 
 		if($query->num_rows() > 0){
@@ -93,5 +99,24 @@ class Pregunta extends CI_Model {
 		} else
 			return 0;
 	}// dame_pregunta
+
+	/**
+	 * Descripción: Actualiza una pregunta de la base de datos
+	 * @param integer $id_aviso, string $aviso, string $url, string $tipo
+	 * @return true	
+	 */
+	public function actualiza_pregunta($id_pregunta, $pregunta, $vigencia, $activo){
+		$data = array(
+		   'pregunta' 	=> 	$pregunta,
+		   'vigencia'	=> 	$vigencia,
+		   'is_activo' 	=> 	$activo
+		);
+
+		// actualizar registro
+		$this->db->where('id_pregunta', $id_pregunta);
+		$this->db->update('preguntas', $data);
+
+		return 1;
+	} // actualiza_aviso
 		
 }// clase Pregunta

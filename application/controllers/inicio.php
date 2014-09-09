@@ -36,11 +36,11 @@ class Inicio extends CI_Controller {
 
 		// carga avisos
 		$this->load->model('aviso');
-		$data['avisos'] = $this->aviso->dame_avisos();
+		$data['avisos'] = $this->aviso->dame_avisos_activos();
 
 		// carga anuncios
 		$this->load->model('anuncio');
-		$data['anuncios'] = $this->anuncio->dame_anuncios();
+		$data['anuncios'] = $this->anuncio->dame_anuncios_activos();
 
 		// carga pregunta de la semana
 		$this->load->model('pregunta');
@@ -128,7 +128,7 @@ class Inicio extends CI_Controller {
 
 		// carga avisos
 		$this->load->model('aviso');
-		$data['avisos'] = $this->aviso->dame_avisos();
+		$data['avisos'] = $this->aviso->dame_avisos_activos();
 
 
 		// Carga la vista que muestra información de trámites o servicios

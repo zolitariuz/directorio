@@ -21,13 +21,21 @@
 					<label for="aviso" >Contenido aviso (máximo 140 caracteres)</label>
 					<textarea type="text" name="aviso" class="columna xmall-12"><?php echo $aviso['contenido']; ?></textarea>
 				</fieldset>
-				<fieldset class="columna xmall-12"> 
-					<label for="tipo" >Tipo contenido: </label>
-					<input type="text" name="tipo" value="<?php echo $aviso['tipo_contenido']; ?>">
+				<fieldset class="columna xmall-12 center"> 
+					<label for="vigencia" >Vigencia</label>
+					<input type="text" name="vigencia" class="datepicker columna xmall-12" value="<?php echo $aviso['vigencia']; ?>">
 				</fieldset>
 				<fieldset class="columna xmall-12"> 
 					<label for="url_aviso" >URL de aviso</label><br />
 					<input type="text" name="url_aviso" value="<?php echo $aviso['url']; ?>">
+				</fieldset>
+				<fieldset class="columna xmall-12"> 
+					<label for="activo" >¿Está activo?</label><br />
+					<?php if ($aviso['activo'] == 't') { ?>
+						<input type="checkbox" name="activo" checked>
+					<?php } else { ?>
+						<input type="checkbox" name="activo">
+					<?php } ?>
 				</fieldset>
 				<input type="hidden" name="id_usuario" value="<?php echo $aviso['id_usuario'] ?>">
 				<input type="submit" value="Modificar aviso">
