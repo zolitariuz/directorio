@@ -1,8 +1,6 @@
 <!doctype html>
 	<head>
-
 		<meta charset="utf-8">
-
 		<title>Trámites</title>
 
 		<link rel="shortcut icon" href="images/favicon.ico">
@@ -35,7 +33,6 @@
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
 
-
 		<div class="container">
 			<header class="clearfix">
 				<div class="width clearfix">
@@ -43,60 +40,53 @@
 						<i class="fa fa-bars"></i>
 					</div>
 					<div class="header-top">
-						<a href="#" class="block columna xmall-1">
+						<a href="#" class="logo-bloque">
 							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
-						</a>
-						<a href="#" class="block columna xmall-1 tramites-logo">
-							<img src="<?php echo base_url() ?>assets/img/tramites-logo.png" alt="">
-						</a>
-						<div class="columna xmall-10 clearfix">
-							<h1 class="block columna xmall-4">
-								<a href="<?php echo base_url() ?>">
-									Trámites CD<strong>MX</strong>
-								</a>
-							</h1>
-							<div class="clear"></div>
-							<nav class="large">
-								<a href="#">
-									Anuncios
-								</a><a href="#">
-									Oficinas de atención ciudadana
-								</a><a href="#">
-									Trámites y servicios en línea
-								</a><a href="#">
-									Modelo integral de atención ciudadana
-								</a>
-							</nav>
-						</div>
-						<div class="clear"></div>
-						<div class="barra avisos clearfix">
-							<h3 class="blok obscuro columna xmall-2 text-center">Avisos</h3>
-							<div class="mensaje columna xmall-10">
-								<p class="hide highlight">
-									<?php
-									foreach ($avisos as $key => $value) {
-										echo '<span>';
-										// ¿el aviso tiene link?
-										if(trim($value['tipo_contenido']) == 'link') {
-											echo '<a href="'.$value['url'].'">';
-											echo $value['contenido'];
-											echo '</a>';
-										} else {
-											echo $value['contenido'];
-										}
-
-										echo '</span>';
-										echo '|';
-									}// foreach anuncio
-									?>
-								</p>
-							</div>
-						</div>
+						</a><h1 class="">
+							<a href="<?php echo base_url() ?>">
+								<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
+							</a>
+						</h1>
 					</div><!-- header-top -->
 					<div class="search no-large">
 						<i class="hide fa fa-search"></i>
 					</div>
 				</div><!-- width -->
+				<nav class="large">
+					<div class="width">
+						<a class="text-center" href="#">
+							Oficinas de atención ciudadana
+						</a><a class="text-center" href="#">
+							Trámites y servicios en línea
+						</a><a class="text-center" href="#">
+							Ayuda
+						</a>
+					</div><!-- width -->
+				</nav>
+				<div class="barra avisos">
+					<div class="width clearfix">
+						<h3 class="blok obscuro span xmall-1 text-center">Avisos</h3>
+						<div class="mensaje columna xmall-11">
+							<p class="hide highlight">
+								<?php
+								foreach ($avisos as $key => $value) {
+									echo '<span>';
+									// ¿el aviso tiene link?
+									if(trim($value['tipo_contenido']) == 'link') {
+										echo '<a href="'.$value['url'].'">';
+										echo $value['contenido'];
+										echo '</a>';
+									} else {
+										echo $value['contenido'];
+									}
+									echo '</span>';
+									echo '|';
+								}// foreach anuncio
+								?>
+							</p>
+						</div>
+					</div><!-- width -->
+				</div>
 				<nav class="no-large">
 					<a href="#">Trámites más buscados</a>
 					<a href="#">Trámites y servicios en línea</a>

@@ -138,7 +138,7 @@
 				data-cycle-fx="scrollHorz"
 				data-cycle-swipe="true"
 			>
-				<?php 
+				<?php
 					// contenido del slider
 					foreach ($anuncios as $key => $value) {
 						echo '<div class="slide">';
@@ -168,7 +168,6 @@
 		<div class="clear"></div>
 		<section class="pregunta clearfix">
 			<h2 class="text-center highlight">Pregunta de la semana</h2>
-			
 			<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
 			<div class="columna xmall-5 center clearfix">
 				<a href="#" class="block boton columna xmall-6 grande" data-respuesta="si" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
@@ -181,17 +180,14 @@
 		<section class="links clearfix">
 			<div class="columna xmall-6">
 				<a href="#" class="block columna xmall-8 center">
-					<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+					<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
 				</a>
 			</div>
 			<div class="columna xmall-6">
 				<a href="#" class="block columna xmall-8 center">
-					<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
+					<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 				</a>
 			</div>
 		</section>
-
-
 	</div><!-- width -->
-
 </div><!-- main -->

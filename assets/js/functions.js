@@ -3,14 +3,17 @@
 	$(function(){
 
 		//*** ON LOAD ***//
+		//Avisos
+		$('.mensaje p').removeClass('hide');
+		marqueeText('.mensaje p');
+
 		//Trámites más comúnes
 		if ( $('.masonry-container').length > 0) {
 			callMasonry();
 		}
 
-		//Avisos
-		$('.mensaje p').removeClass('hide');
-		marqueeText('.mensaje p');
+		//Botones de busqueda y back to top
+		scrollHeader();
 
 		//*** CLICKS ***//
 		//Tabs
@@ -40,6 +43,17 @@
 		$('body').on('click', '.scrollTo', function(){
 			scrollTop( $(this) );
 		});
+
+		//Back to top
+		$('body').on('click', '.back-to-top', function(){
+			backToTop();
+		});
+
+		//*** ON SCROLL ***//
+		$(window).scroll(function() {
+			scrollHeader();
+		});
+
 
 		//Header aparece cuando el scroll oculta la sección de búsqueda
 		//paddingMain();
@@ -132,22 +146,17 @@
 	}
 
 	function scrollHeader(){
-		var scrolled 		= $(window).scrollTop();
-		if( $('section.busqueda').length > 0 ){
-			var topBusqueda 	= $('section.busqueda').offset().top;
-			var alturaBusqueda 	= $('section.busqueda').height();
+		var scrolled = $(window).scrollTop();
+		if( $('aside .busqueda').length > 0 ){
+			var topBusqueda 	= $('aside .busqueda').offset().top;
+			var alturaBusqueda 	= $('aside .busqueda').height();
 			var bottomBusqueda 	= topBusqueda+alturaBusqueda;
 			if( scrolled > bottomBusqueda ){
-				$('header').addClass('scroll');
+				console.log('ya');
+				$('.when-scrolled').addClass('after-scrolled');
 			} else{
-				$('header').removeClass('scroll');
-			}
-		} else {
-			var topMain 	= $('.main').offset().top;
-			if( scrolled > topMain ){
-				$('header, aside').addClass('scroll');
-			} else{
-				$('header, aside').removeClass('scroll');
+				console.log('ya no');
+				$('.when-scrolled').removeClass('after-scrolled');
 			}
 		}
 	}
@@ -159,6 +168,10 @@
 		divPosicion = divPosicion - 100;
 
 		$('html, body').animate({scrollTop: divPosicion}, 400);
+	}
+
+	function backToTop(){
+		$('html, body').animate({scrollTop: 0}, 400);
 	}
 
 	function paddingMain(){
@@ -271,7 +284,7 @@ function creaMapa(mapas){
 		    		}
 		    	});
 	    	}
-    	} 
+    	}
 
     	if(typeof coordenadas === 'undefined')
     		return -1

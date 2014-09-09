@@ -1,18 +1,14 @@
 		</div><!-- container -->
-		.
 		<footer>
-			<section class="map">
+			<section class="logos">
 				<div class="width clearfix">
-					<div class="columna xmall-3">
+					<div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
-					</div>
-					<div class="columna xmall-3">
+					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
-					</div>
-					<div class="columna xmall-3">
+					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
-					</div>
-					<div class="columna xmall-3">
+					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
 					</div>
 				</div><!-- width -->
@@ -50,7 +46,10 @@
 				</div><!-- width -->
 			</section>
 		</footer>
-		<div class="overlay-opener">
+		<div class="back-to-top when-scrolled">
+			<i class="fa fa-chevron-up"></i>
+		</div>
+		<div class="overlay-opener when-scrolled">
 			<i class="fa fa-search"></i>
 		</div>
 		<div class="modal-wrapper hide">
