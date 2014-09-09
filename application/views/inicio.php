@@ -52,6 +52,7 @@
 					data-cycle-fx="scrollHorz"
 					data-cycle-swipe="true"
 					data-cycle-timeout="0"
+					data-cycle-log="false"
 				>
 				<div class="slide">
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
@@ -137,6 +138,7 @@
 				data-cycle-slides=".slide"
 				data-cycle-fx="scrollHorz"
 				data-cycle-swipe="true"
+				data-cycle-log="false"
 			>
 				<div class="slide">
 					<img src="assets/img/anuncios/anuncio.jpg">

@@ -38,7 +38,7 @@
 										$documentoOficial = $value->documento_oficial;
 										echo '<div class="paso clearfix">';
 										echo '<span>'.$numReq.'</span>';
-										echo '<p><strong>'.$documentoOficial.': </strong></p><ul>';
+										echo '<p><strong>'.$documentoOficial.': </strong></p><ul class="inside">';
 										$numReq = $numReq + 1;
 										$numReqAcr = 1;
 									}
@@ -64,7 +64,6 @@
 										echo '<span>'.$numReq.'</span>';
 										echo '<p>'.$requisitoEsp.'</p>';
 										echo '</div>';
-										echo '<div class="clear"></div>';
 										$numReq = $numReq + 1;
 									} // end foreach
 								}
@@ -94,7 +93,6 @@
 								echo '<p>Actor: Sistema informático</p>';
 							}
 							echo '</div>';
-							echo '<div class="clear"></div>';
 						} // end foreach
 					?>
 					</article>
