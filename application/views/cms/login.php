@@ -10,7 +10,7 @@
 				<?php
 				// Mostrar error en caso de credenciales inválidas
 				// o campos vacíos
-				if ($this->form_validation->run()) {
+				if (!is_null($error)) {
 					echo '<p class="margin-bottom">'.$error.'</p>';
 				}
 				?>
