@@ -11,7 +11,7 @@ class Inicio extends CI_Controller {
 
 	/**
 	 * Descripción: Página de inicio
-	 * Input:		ninguno	
+	 * Input:		ninguno
 	 */
 	function index()
 	{
@@ -56,7 +56,7 @@ class Inicio extends CI_Controller {
 
 	/**
 	 * Descripción: Muestra detalle de trámite o servicio
-	 * Input:		$id_tramite - id de trámite o servicio	
+	 * Input:		$id_tramite - id de trámite o servicio
 	 */
 	function muestraTramiteServicio($id_tramite){
 
@@ -132,6 +132,7 @@ class Inicio extends CI_Controller {
 		$this->load->model('aviso');
 		$data['avisos'] = $this->aviso->dame_avisos_activos();
 
+		$data['seccion'] = 'Tramite';
 
 		// Carga la vista que muestra información de trámites o servicios
 		// en caso de error, redirecciona al inicio
@@ -145,8 +146,8 @@ class Inicio extends CI_Controller {
 
 	/**
 	 * Descripción: Cuenta voto de la pregunta actual
-	 * @param 
-	 * @return 
+	 * @param
+	 * @return
 	 */
 	public function set_voto(){
 		$pregunta = $_POST['pregunta'];
@@ -159,7 +160,7 @@ class Inicio extends CI_Controller {
 	}// setVoto
 
 	/**
-	 * Descripción: Busca datos de áreas de atención pertenecientes a un 
+	 * Descripción: Busca datos de áreas de atención pertenecientes a un
 	 *              trámite o servicio
 	 * Input:		$area_atencion - arreglo con info de áreas de atención
 	 * Output:		$areas_atencion_json - JSON con info de áreas de atención

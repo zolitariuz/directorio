@@ -43,6 +43,8 @@ class Temas extends CI_Controller {
 		$this->load->model('aviso');
 		$data['avisos'] = $this->aviso->dame_avisos_activos();
 
+		$data['seccion'] = 'Temas';
+
 		// Cargar vista inicio
 		$this->load->view('header', $data);
 		$this->load->view('temas', $data);

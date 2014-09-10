@@ -14,11 +14,6 @@
 
 		contarItems( $('.letra'), 'li');
 
-		//Botones de busqueda y back to top
-		//scrollHeader('.main-search');
-		scrollHeader('aside .busqueda');
-		//scrollHeader('.main-search');
-
 		//*** CLICKS ***//
 		//Tabs
 		$('.tabs a').on('click', function(){
@@ -57,13 +52,6 @@
 		//Back to top
 		$('body').on('click', '.back-to-top', function(){
 			backToTop();
-		});
-
-		//*** ON SCROLL ***//
-		$(window).scroll(function() {
-			scrollHeader('.main-search');
-			scrollHeader('aside .busqueda');
-			//scrollHeader('.main-search');
 		});
 
 
@@ -172,20 +160,6 @@
     	var msnry = new Masonry( container[0], {
     		itemSelector: '.item'
     	});
-	}
-
-	function scrollHeader(selector){
-		var scrolled = $(window).scrollTop();
-		if( $(selector).length > 0 ){
-			var topBusqueda 	= $(selector).offset().top;
-			var alturaBusqueda 	= $(selector).height();
-			var bottomBusqueda 	= topBusqueda+alturaBusqueda;
-			if( scrolled > bottomBusqueda ){
-				$('.when-scrolled').addClass('after-scrolled');
-			} else{
-				$('.when-scrolled').removeClass('after-scrolled');
-			}
-		}
 	}
 
 	function scrollTop(elemento){
@@ -318,9 +292,6 @@ function creaMapa(mapas){
     	else
     		return coordenadas;
     } // dameCoordenadas
-
-
-
 }
 
 function busquedaTS(dataTS){
@@ -454,5 +425,19 @@ function agregarTSSolicitado(id_ts, base_url){
 			}
 		);
 }
+
+function scrollHeader(selector){
+	var scrolled = $(window).scrollTop();
+	if( $(selector).length > 0 ){
+		var topBusqueda 	= $(selector).offset().top;
+		var alturaBusqueda 	= $(selector).height();
+		var bottomBusqueda 	= topBusqueda+alturaBusqueda;
+		if( scrolled > bottomBusqueda ){
+			$('.when-scrolled').addClass('after-scrolled');
+		} else{
+			$('.when-scrolled').removeClass('after-scrolled');
+		}
+	}
+}//scrollHeader
 
 
