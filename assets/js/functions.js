@@ -2,7 +2,14 @@
 	"use strict";
 	$(function(){
 
+
+
+
+
+		//***************//
 		//*** ON LOAD ***//
+		//***************//
+
 		//Avisos
 		$('.mensaje p').removeClass('hide');
 		marqueeText('.mensaje p');
@@ -14,12 +21,13 @@
 
 		contarItems( $('.letra'), 'li');
 
-		//Botones de busqueda y back to top
-		//scrollHeader('.main-search');
-		scrollHeader('aside .busqueda');
-		//scrollHeader('.main-search');
 
-		//*** CLICKS ***//
+
+
+
+		//***************//
+		//*** CLICKS ****//
+		//***************//
 		//Tabs
 		$('.tabs a').on('click', function(){
 			cambiarTab( $(this) );
@@ -59,12 +67,16 @@
 			backToTop();
 		});
 
-		//*** ON SCROLL ***//
-		$(window).scroll(function() {
-			scrollHeader('.main-search');
-			scrollHeader('aside .busqueda');
-			//scrollHeader('.main-search');
-		});
+
+
+
+		//****************//
+		//****** CMS *****//
+		//****************//
+		$('.js-login-form').validate();
+
+
+
 
 
 		//****************//
@@ -172,20 +184,6 @@
     	var msnry = new Masonry( container[0], {
     		itemSelector: '.item'
     	});
-	}
-
-	function scrollHeader(selector){
-		var scrolled = $(window).scrollTop();
-		if( $(selector).length > 0 ){
-			var topBusqueda 	= $(selector).offset().top;
-			var alturaBusqueda 	= $(selector).height();
-			var bottomBusqueda 	= topBusqueda+alturaBusqueda;
-			if( scrolled > bottomBusqueda ){
-				$('.when-scrolled').addClass('after-scrolled');
-			} else{
-				$('.when-scrolled').removeClass('after-scrolled');
-			}
-		}
 	}
 
 	function scrollTop(elemento){
@@ -318,9 +316,6 @@ function creaMapa(mapas){
     	else
     		return coordenadas;
     } // dameCoordenadas
-
-
-
 }
 
 function busquedaTS(dataTS){
@@ -415,39 +410,6 @@ function toggleUrlAviso(){
 	});
 } // toggleUrlAviso
 
-function toggleUrlAnuncio(){
-	$('.crea-anuncio input[name="link_anuncio"]').change(function(){
-		if($(this).is(":checked")) {
-			$('.url_anuncio').removeClass('hide');
-			$('.url_anuncio input').val('');
-			$('.url_anuncio input').focus();
-		}
-		else {
-			$('.url_anuncio').addClass('hide');
-			$('.url_anuncio input').val('-');
-		}
-	});
-} // toggleUrlAnuncio
-
-function votoPregunta(base_url){
-	$('.pregunta a').on('click', function(e){
-		e.preventDefault();
-		console.log(base_url);
-		var jsonVoto = {};
-		jsonVoto['pregunta'] = $(this).data('pregunta');
-		jsonVoto['respuesta'] = $(this).data('respuesta');
-
-		$.post(
-			base_url + "index.php/inicio/set_voto",
-			jsonVoto,
-			function(response){
-				$('.pregunta').empty();
-				$('.pregunta').html('<h2 class="text-center highlight">¡Gracias!</h2><h4 class="text-center">Tu opinión es muy importante para nosotros.</h4>');
-			}
-		);
-	});
-}// votoPregunta
-
 function agregarTSSolicitado(id_ts, ts, base_url){
 	var jsonSolicitado = {};
 		jsonSolicitado['id_ts'] = id_ts;
@@ -502,5 +464,53 @@ function eliminarTSSolicitado(base_url){
 	});
 
 }// eliminarTSSolicitado
+
+function toggleUrlAnuncio(){
+	$('.crea-anuncio input[name="link_anuncio"]').change(function(){
+		if($(this).is(":checked")) {
+			$('.url_anuncio').removeClass('hide');
+			$('.url_anuncio input').val('');
+			$('.url_anuncio input').focus();
+		}
+		else {
+			$('.url_anuncio').addClass('hide');
+			$('.url_anuncio input').val('-');
+		}
+	});
+} // toggleUrlAnuncio
+
+function votoPregunta(base_url){
+	$('.pregunta a').on('click', function(e){
+		e.preventDefault();
+		console.log(base_url);
+		var jsonVoto = {};
+		jsonVoto['pregunta'] = $(this).data('pregunta');
+		jsonVoto['respuesta'] = $(this).data('respuesta');
+
+		$.post(
+			base_url + "index.php/inicio/set_voto",
+			jsonVoto,
+			function(response){
+				$('.pregunta').empty();
+				$('.pregunta').html('<h2 class="text-center highlight">¡Gracias!</h2><h4 class="text-center">Tu opinión es muy importante para nosotros.</h4>');
+			}
+		);
+	});
+}// votoPregunta
+
+function scrollHeader(selector){
+	var scrolled = $(window).scrollTop();
+	if( $(selector).length > 0 ){
+		var topBusqueda 	= $(selector).offset().top;
+		var alturaBusqueda 	= $(selector).height();
+		var bottomBusqueda 	= topBusqueda+alturaBusqueda;
+		if( scrolled > bottomBusqueda ){
+			$('.when-scrolled').addClass('after-scrolled');
+		} else{
+			$('.when-scrolled').removeClass('after-scrolled');
+		}
+	}
+}//scrollHeader
+
 
 

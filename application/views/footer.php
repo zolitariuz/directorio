@@ -110,6 +110,39 @@
 
 		<?php if($seccion == 'Inicio') { ?>
 			votoPregunta('<?php echo base_url() ?>');
+			scrollHeader('.main-search');
+
+			//*** ON SCROLL ***//
+			$(window).scroll(function() {
+				scrollHeader('.main-search');
+			});
+		<?php }
+
+		if($seccion == 'Tramite') { ?>
+			scrollHeader('aside .busqueda');
+
+			//*** ON SCROLL ***//
+			$(window).scroll(function() {
+				scrollHeader('aside .busqueda');
+			});
+		<?php }
+
+		if($seccion == 'Temas') { ?>
+			scrollHeader('header');
+
+			//*** ON SCROLL ***//
+			$(window).scroll(function() {
+				scrollHeader('header');
+			});
+		<?php }
+
+		if($seccion == 'Instituciones') { ?>
+			scrollHeader('header');
+
+			//*** ON SCROLL ***//
+			$(window).scroll(function() {
+				scrollHeader('header');
+			});
 		<?php } ?>
 	</script>
 </html>

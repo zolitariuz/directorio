@@ -5,7 +5,6 @@
 		<section class="columna xmall-8 center directorio">
 			<?php
 				$primeraLetraAnt = '';
-
 				foreach ($ts_tema as $key => $value) {
 					$tramite = $value->tramite_servicio;
 					$idTS = $value->id_tramite_servicio;
@@ -27,7 +26,7 @@
 				?>
 				<li>
 					<a class="highligth" href="<?php echo $urlTramite; ?>">
-					<?php echo $tramite; ?>
+						<?php echo $tramite; ?>
 					</a>
 				</li>
 			<?php
