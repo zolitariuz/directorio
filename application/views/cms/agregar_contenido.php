@@ -10,14 +10,14 @@
 					echo '<p class="error">'.$error.'</p>';
 				}
 			?>
-			<form class="crea-aviso js-validate" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_aviso' ?>">
+			<form class="crea-aviso js-validate-aviso" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_aviso' ?>">
 				<fieldset class="">
 					<label for="aviso" >Aviso nuevo (máximo 140 caracteres)</label>
 					<textarea type="text" name="aviso" class="full" required></textarea>
 				</fieldset>
 				<fieldset class="">
 					<label for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker full required">
+					<input type="text" name="vigencia" class="datepicker full" required>
 				</fieldset>
 				<fieldset class="">
 					<input type="checkbox" name="link_aviso"> ¿Tiene link?
@@ -32,14 +32,14 @@
 				</fieldset>
 			</form>
 			<hr>
-			<form class="crea-pregunta js-validate" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_pregunta' ?>">
+			<form class="crea-pregunta js-validate-pregunta" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_pregunta' ?>">
 				<fieldset class="">
 					<label for="pregunta" >Pregunta nueva</label><br />
-					<input type="text" name="pregunta" class="full">
+					<input type="text" name="pregunta" class="full" required>
 				</fieldset>
 				<fieldset class="">
 					<label for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker full">
+					<input type="text" name="vigencia" class="datepicker full" required>
 				</fieldset>
 				<fieldset class="">
 					<input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario'] ?>">
@@ -48,16 +48,16 @@
 			</form>
 			<hr>
 			<?php
-			$atributos = array('class' => 'crea-anuncio js-validate');
+			$atributos = array('class' => 'crea-anuncio js-validate-anuncio');
 			echo form_open_multipart('index.php/gestor_contenidos/agregar_anuncio/'.$aviso['id_aviso'], $atributos);
 			?>
 				<fieldset class="">
 					<label for="pregunta" >Anuncio nuevo</label>
-					<input type="text" name="anuncio" class="full">
+					<input type="text" name="anuncio" class="full" required>
 				</fieldset>
 				<fieldset class="">
 					<label for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker full">
+					<input type="text" name="vigencia" class="datepicker full" required>
 				</fieldset>
 				<fieldset class="">
 					<input type="checkbox" name="link_anuncio"> ¿Tiene link?

@@ -74,11 +74,25 @@
 		//****** CMS *****//
 		//****************//
 		$('.js-login-form').validate();
-		$('.js-validate').validate({
+		$('.js-validate-aviso').validate({
 			rules: {
 				aviso: {
 					maxlength: 140
 				},
+				vigencia: {
+					date: true
+				}
+			}
+		});
+		$('.js-validate-pregunta').validate({
+			rules: {
+				vigencia: {
+					date: true
+				}
+			}
+		});
+		$('.js-validate-anuncio').validate({
+			rules: {
 				vigencia: {
 					date: true
 				}
