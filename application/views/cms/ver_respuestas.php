@@ -11,10 +11,10 @@
 				<p><?php echo $pregunta['pregunta'] ?></p>
 				<h3>Respuestas</h3>
 				<p>Respuestas totales: <?php echo $num_respuestas ?></p>
-				<div class="columna xmall-12">
+				<div class="columna xmall-6">
 					<canvas id="chartRespuestas"></canvas>
 				</div>
-				<div class="columna xmall-12">
+				<div class="columna xmall-6">
 					<canvas id="donaRespuestas"></canvas>
 				</div>
 
