@@ -36,6 +36,7 @@
 		<?php } else if ($seccion == 'Editar aviso' || $seccion == 'Editar anuncio' || $seccion == 'Editar pregunta') {  ?>
 				$('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
 		<?php } else if ($seccion == 'Ver respuestas') {  ?>
+			Chart.defaults.global.responsive = true;
 			numRespuestasSiNo('<?php echo $num_si ?>', '<?php echo $num_no ?>');
 			porcentajeRespuestasSiNo('<?php echo $si_porcentaje ?>', '<?php echo $no_porcentaje ?>');
 		<?php } ?>

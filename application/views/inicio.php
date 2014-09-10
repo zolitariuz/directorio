@@ -46,7 +46,7 @@
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
 		<section class="categorias clearfix">
-			<h2 class="text-center highlight">Categorías</h2>
+			<h2 class="text-center highlight">Temas</h2>
 			<div class="slider clearfix cycle-slideshow"
 					data-cycle-slides=".slide"
 					data-cycle-fx="scrollHorz"

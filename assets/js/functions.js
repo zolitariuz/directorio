@@ -581,13 +581,13 @@ function porcentajeRespuestasSiNo(si, no){
 	console.log(no);
 	var data = [
 	    {
-	        value: parseInt(si),
+	        value: parseFloat(si),
 	        color:"rgba(236, 35, 131, 0.2)",
 	        highlight: "rgba(236, 35, 131, 0.3)",
 	        label: "Si(%)"
 	    },
 	    {
-	        value: parseInt(20),
+	        value: parseFloat(no),
 	        color:"rgba(236, 35, 131, 0.7)",
 	        highlight: "rgba(236, 35, 131, 0.8)",
 	        label: "No(%)"

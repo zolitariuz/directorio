@@ -8,9 +8,8 @@
 		<div class="full">
 			<div class="columna xmall-12">
 				<h3>Pregunta</h3>
-				<p><?php echo $pregunta['pregunta'] ?></p>
-				<h3>Respuestas</h3>
-				<p>Respuestas totales: <?php echo $num_respuestas ?></p>
+				<h4><?php echo $pregunta['pregunta'] ?></h4>
+				<h4>Respuestas totales: <?php echo $num_respuestas ?></h4>
 				<div class="columna xmall-6">
 					<canvas id="chartRespuestas"></canvas>
 				</div>
