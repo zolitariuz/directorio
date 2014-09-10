@@ -20,13 +20,12 @@
 
 		<div class="container">
 			<header class="clearfix">
-				<div class="width">
-					<h1 class="block columna xmall-2">
-						<a href="<?php echo base_url() ?>">
-							<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
+				<div class="width clearfix">
+					<h1>
+						<a class="block" href="<?php echo base_url() ?>">
+							<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites-blanco.png" alt="">
 						</a>
-					</h1>
-					<div class="columna xmall-6">
+					</h1><nav>
 						<?php
 						// ¿Ya existe una sesión?
 						if(isset($_SESSION['id_usuario'])){
@@ -34,20 +33,18 @@
 							$nombre_usuario = $_SESSION['usuario'];
 							$is_admin = $_SESSION['is_admin'];
 						?>
-							<p class="columna xmall-5">Usuario: <?php echo $nombre_usuario ?></p>
+							<p class=""><i class="fa fa-user"></i> <?php echo $nombre_usuario ?></p>
 						<?php
 							if($is_admin == 't')
 								$rol = 'administrador';
 							else if ($is_admin == 'f')
 								$rol = 'editor';
 						?>
-							<p class="columna xmall-4">Rol: <?php echo $rol ?></p>
-							<a href="<?php echo base_url().'index.php/gestor_contenidos/logout/'?>" class="columna xmall-3"><i class="fa fa-sign-out"></i></a>
+							<p class=""><i class="fa fa-random"></i> <?php echo $rol ?></p>
+							<a class="" href="<?php echo base_url().'index.php/gestor_contenidos/logout/'?>"><i class="fa fa-sign-out"></i></a>
 						<?php
 						} // end if
 						?>
-
-					</div>
+					</nav>
 				</div>
 			</header>
-
