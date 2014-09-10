@@ -74,6 +74,35 @@
 		//****** CMS *****//
 		//****************//
 		$('.js-login-form').validate();
+		$('.js-validate').validate({
+			rules: {
+				aviso: {
+					maxlength: 140
+				},
+				vigencia: {
+					date: true
+				}
+			}
+		});
+
+		$.datepicker.regional['es'] = {
+			closeText: 'Cerrar',
+			prevText: '<',
+			nextText: '>',
+			currentText: 'Hoy',
+			monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+			monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+			dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+			dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+			dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+			weekHeader: 'Sm',
+			dateFormat: 'dd/mm/yy',
+			firstDay: 1,
+			isRTL: false,
+			showMonthAfterYear: false,
+			yearSuffix: ''
+		};
+		$.datepicker.setDefaults($.datepicker.regional['es']);
 
 
 
@@ -391,7 +420,7 @@ function agregarTS(dataTS, base_url, ts_omitir){
 		e.preventDefault();
 		var idTS = $('#ts_cms_id').val();
 		var ts = $('input[type="search"]').val();
-		
+
 		agregarTSSolicitado(idTS, ts, base_url);
 	});
 } // agregarTS
@@ -435,7 +464,7 @@ function agregarTSSolicitado(id_ts, ts, base_url){
 					$('.error').removeClass('hide');
 				}
 
-				
+
 			}
 		);
 }

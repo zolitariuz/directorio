@@ -261,7 +261,10 @@ p{ margin-bottom: 1em; }
 ::selection{ background: @highlight; color: @claro; }
 ::-moz-selection { background: @highlight; color: @claro; }
 
-body{ background: #fff; .font; }
+body{ background: #fff; .font;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 
 h1{ margin: 0; .font(2em, 0.8em, 300); text-transform: uppercase;
 	a{ color: @highlight; text-decoration: none; }
@@ -435,24 +438,35 @@ span[role="status"]{ display: none !important; }
 body.cms{
 
 	//General
+	.main{ padding-bottom: 60px; }
+
 	h1{ width: 26%; margin: 0; padding: 0; }
 
-	form{
-		input{ height: 30px; padding: (@margen/2) (@margen/2) 0 (@margen/2); border: none; border-bottom: 1px solid @highlight; background: none;  }
-		label.error{ width: 100%; color: @warning; .font(0.9em, 0.9em) !important; position: relative; top: -@margen; }
+	form{ margin-bottom: (@margen*2);
+		input, textarea{ padding: (@margen/2); border: 1px solid @highlight;
+			&:focus{ outline-color: @highlight; }
+		}
+		input{
+			&[type="text"], &[type="number"], &[type="password"], &[type="email"]{ height: 30px; }
+			&[type="file"]{ padding: 0; border: none; }
+		}
+		textarea{ height: 80px; }
+		label.error{ width: 100%; color: @warning; .font(0.9em, 0.9em) !important; position: relative; }
 	}
 
 	//Log in
 	.modal-wrapper{ background: lighten(@obscuro, 40%);}
 	.modal{ width: 300px; border: 1px solid @highlight;
 		h1{ margin: 0 0 (@margen*2) 0; }
-		form{
-			label{ .font(1.4em, 1.4em, 600); }
-			input{ .font(1.3em); text-align: center;
+		form{ margin: 0;
+			label{ .font(1.4em, 1.4em, 600);
+				&.error{ top: -@margen; }
+			}
+			input{ padding: (@margen/2) (@margen/2) 0 (@margen/2); border: none; border-bottom: 1px solid @highlight; .font(1.3em); text-align: center; background: none;
 				&:focus{ outline: none; }
 			}
+
 		}
-		.warning{  }
 	}
 
 	//Header
@@ -463,8 +477,21 @@ body.cms{
 	h1, nav{ display: inline-block; vertical-align: middle; height: 100%; }
 	h1{ line-height: 47px; }
 	nav{ width: 34%; margin: 0 0 0 40%; padding: 0; border: none; position: static;
-		> *{ display: inline-block; vertical-align: middle; width: auto; height: 100%; margin: 0; padding: 0 3%; line-height: 42px; color: @claro; }
-		a{ background: darken(@highlight, 20%); }
+		> *{ display: inline-block; vertical-align: middle; width: auto; height: 100%; margin: 0; padding: 0 3%; border-left: 1px solid @claro; line-height: 42px; color: @claro; }
+		a{ background: darken(@highlight, 20%); .transition;
+			&:hover{ background: @claro;
+				i{ color: @highlight; }
+			}
+		}
+	}
+
+	//Footer
+	footer{ width: 100%; height: 40px; border-top: 1px solid @highlight; background: @claro; position: fixed; bottom: 0; z-index: 9;
+		.width > a{ display: inline-block; vertical-align: middle; width: auto; height: 100%; margin: 0; padding: 0 2%; border-left: 1px solid @highlight; line-height: 42px; color: @highlight; .transition;
+			&:hover{ background: @highlight; color: @claro; }
+			&:last-child{ border-right: 1px solid @highlight; }
+		}
+		i{ font-size: 30px; }
 	}
 }
 
@@ -804,7 +831,7 @@ button.ui-button::-moz-focus-inner {
 	border: 0;
 	padding: 0;
 }
-.ui-datepicker {
+.ui-datepicker { background: @claro; border: 1px solid @highlight;
 	width: 17em;
 	padding: .2em .2em 0;
 	display: none;
