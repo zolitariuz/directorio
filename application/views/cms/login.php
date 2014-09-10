@@ -8,11 +8,11 @@
 					</a>
 				</h1>
 				<?php
-				// Mostrar error en caso de credenciales inválidas
-				// o campos vacíos
-				if ($this->form_validation->run()) {
-					echo '<p class="margin-bottom">'.$error.'</p>';
-				}
+					// Mostrar error en caso de credenciales inválidas
+					// o campos vacíos
+					if ($this->form_validation->run()) {
+						echo '<p class="margin-bottom">'.$error.'</p>';
+					}
 				?>
 				<form action="" method="POST" class="js-login-form">
 					<label for="usuario" class="block text-center highlight">Usuario</label>

@@ -435,7 +435,7 @@ span[role="status"]{ display: none !important; }
 body.cms{
 
 	//General
-	h1{ margin: 0 0 (@margen*2) 0; }
+	h1{ width: 26%; margin: 0; padding: 0; }
 
 	form{
 		input{ height: 30px; padding: (@margen/2) (@margen/2) 0 (@margen/2); border: none; border-bottom: 1px solid @highlight; background: none;  }
@@ -445,6 +445,7 @@ body.cms{
 	//Log in
 	.modal-wrapper{ background: lighten(@obscuro, 40%);}
 	.modal{ width: 300px; border: 1px solid @highlight;
+		h1{ margin: 0 0 (@margen*2) 0; }
 		form{
 			label{ .font(1.4em, 1.4em, 600); }
 			input{ .font(1.3em); text-align: center;
@@ -452,6 +453,18 @@ body.cms{
 			}
 		}
 		.warning{  }
+	}
+
+	//Header
+	header{ height: 40px; padding: 0; background: @highlight;
+		> .width{ height: 100%; }
+		i{ display: initial; }
+	}
+	h1, nav{ display: inline-block; vertical-align: middle; height: 100%; }
+	h1{ line-height: 47px; }
+	nav{ width: 34%; margin: 0 0 0 40%; padding: 0; border: none; position: static;
+		> *{ display: inline-block; vertical-align: middle; width: auto; height: 100%; margin: 0; padding: 0 3%; line-height: 42px; color: @claro; }
+		a{ background: darken(@highlight, 20%); }
 	}
 }
 
