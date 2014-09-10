@@ -36,24 +36,7 @@ class Gestor_contenidos extends CI_Controller {
 	} // panel_admin
 
 	function login(){
-		// Validar forma de autenticación usando CI
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules(array(
-			array(
-				'field'	=> 'usuario',
-				'label' => 'Usuario',
-				'rules' => 'required',
-			),
-			array(
-				'field'	=> 'password',
-				'label' => 'Contraseña',
-				'rules' => 'required',
-			)
-		));
-
-		// Se utiliza en caso de que las credenciales sean inválidas
-		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-
+		
 		// recibe credenciales
 		$usuario = $_POST['usuario'];
 		$password = $_POST['password'];
@@ -63,10 +46,8 @@ class Gestor_contenidos extends CI_Controller {
 		$existe_usuario = $this->usuario->valida_usuario($usuario, $password);
 
 		// Carga vista de login o index en caso de credenciales correctas
-		if(!$this->form_validation->run() || $existe_usuario == 0){
-			if($existe_usuario == 0){
-				$data['error'] = 'Nombre de usuario o contraseña incorrectos';
-			}
+		if($existe_usuario == 0){
+			$data['error'] = 'Nombre de usuario o contraseña incorrectos';
 			$this->load->view('cms/header', $data);
 			$this->load->view('cms/login', $data);
 		} else {
@@ -88,7 +69,6 @@ class Gestor_contenidos extends CI_Controller {
 	function logout(){
 		// destruye sesión actual
 		session_destroy();
-		// muestra login
 		$this->login();
 	}// logout
 
@@ -527,6 +507,7 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
 
+
 		// Variable de conexión a web services
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
 
@@ -538,12 +519,25 @@ class Gestor_contenidos extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
+
 		// Obtener id de trámites y servicios mas comunes
 		$this->load->model('ts_comun');
 		$id_ts = $this->ts_comun->dame_ts_comunes();
 
 		// Obtener nombres de trámites y servicios via WS
-		
+		$nombres_ts_comunes =  file_get_contents($url_ws.'/nombres_ts_comunes/id/'.$id_ts.'/format/json');
+		if(is_null($nombres_ts_comunes))
+			$data['nombres_ts_comunes'] = '';
+		else
+			$data['nombres_ts_comunes'] = json_decode($nombres_ts_comunes);
+
+		// Omitir de la búsqueda avanzada los trámites y servicios 
+		// que ya existen entre los mas comunes para evitar duplicados
+		$ts_a_omitir = array();
+		foreach ($data['nombres_ts_comunes'] as $key => $value) {
+			$ts_a_omitir[$key] = $value->id_tramite_servicio; 
+		}
+		$data['ts_a_omitir'] = json_encode($ts_a_omitir);
 
 		// Carga vista con información del anuncio
 		$this->load->view('cms/header', $data);
@@ -552,6 +546,11 @@ class Gestor_contenidos extends CI_Controller {
 
 	}// mas_solicitados
 
+	/**
+	 * Descripción: Agregar trámite/servicio mas solicitado
+	 * @param 
+	 * @return 	
+	 */
 	function agregar_ts_solicitado(){
 		// respuesta JSON para AJAX
 		$respuesta = array();
@@ -562,13 +561,34 @@ class Gestor_contenidos extends CI_Controller {
 		// Revisar si hay mas de 15 trámites/servicios
 		$total =  $this->ts_comun->total_ts_comunes();
 		if($total >= 15){
-			$respuesta['msg'] = 'Ya hay 15 trámites y/o servicios';
+			$respuesta['estatus'] = 'error';
+			$respuesta['msg'] = '¡Ya hay 15 trámites/servicios mas comunes! Elimina un registro para poder agregar más.';
 		} else {
 			$this->ts_comun->agrega_ts_comun($id_ts, 't');
-			$respuesta['msg'] = 'Se agregó el trámite y servicio con éxito';
+			$respuesta['estatus'] = 'success';
+			$respuesta['msg'] = '¡Se agregó el trámite/servicio con éxito!';
 		}
 
 		$this->output->set_output(json_encode($respuesta));
 	}// agregar_ts_solicitado
+
+	/**
+	 * Descripción: Agregar trámite/servicio mas solicitado
+	 * @param 
+	 * @return 	
+	 */
+	function eliminar_ts_solicitado(){
+		// respuesta JSON para AJAX
+		$respuesta = array();
+		$id_ts = $_POST['id_ts'];
+
+		// carga modelo 
+		$this->load->model('ts_comun');
+		// Eliminar trámite servicio común
+		$this->ts_comun->elimina_ts_comun($id_ts);
+		$respuesta['msg'] = 'Trámite/servicio eliminado.';
+
+		$this->output->set_output(json_encode($respuesta));
+	}// eliminar_ts_solicitado
 
 }// Gestor_contenidos

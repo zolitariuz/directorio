@@ -34,6 +34,16 @@ class Ts_comun extends CI_Model {
 	} // agrega_ts_comun
 
 	/**
+	 * Descripción: Elimina un ts_comun a la base de datos
+	 * @param string $id_ts_comun
+	 * @return 
+	 */
+	public function elimina_ts_comun($id_tramite_servicio){
+		$this->db->where('id_tramite_servicio', $id_tramite_servicio);
+		$this->db->delete('ts_comunes', $data);
+	} // elimina_ts_comun
+
+	/**
 	 * Descripción: Obtener los trámites/servicios mas comunes
 	 * @param 
 	 * @return array $ts_comunes
@@ -41,15 +51,14 @@ class Ts_comun extends CI_Model {
 	public function dame_ts_comunes(){
 		//$ayer = date('d.m.Y',strtotime("-1 days"));
 		$query = $this->db->get('ts_comunes');
-		$ts_comunes = array();
+		$ts_comunes = '';
 
 		if($query->num_rows() > 0){
 			foreach ($query->result() as $key=>$row)
 			{
-			    $ts_comunes[$key] = array(
-			    	'id_tramite_servicio'	=> $row->id_tramite_servicio
-			    	);
+				$ts_comunes = $ts_comunes.$row->id_tramite_servicio.'-';
 			}
+			$ts_comunes = rtrim($ts_comunes, "-");
 			return $ts_comunes;
 		} else
 			return 0;
