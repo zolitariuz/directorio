@@ -591,4 +591,46 @@ class Gestor_contenidos extends CI_Controller {
 		$this->output->set_output(json_encode($respuesta));
 	}// eliminar_ts_solicitado
 
+	/**
+	 * Descripción: Ver respuestas de pregutnas
+	 * @param integer $id_pregunta
+	 * @return 	
+	 */
+	function ver_respuestas($id_pregunta){
+		// carga pregunta
+		$this->load->model('pregunta');
+		$data['pregunta'] = $this->pregunta->dame_pregunta($id_pregunta);
+
+		// carga respuestas
+		$this->load->model('respuesta');
+		$respuestas = $this->respuesta->dame_respuestas($id_pregunta);
+
+		// Calcular total de respuestas si y no
+		$num_respuestas = 0;
+		$num_si = 0;
+		$num_no = 0;
+		foreach ($respuestas as $key => $value) {
+			$num_respuestas = $num_respuestas + 1; 
+			if($value['respuesta'] == 't')
+				$num_si = $num_si + 1;
+			else
+				$num_no = $num_no + 1;
+		}
+		$si_porcentaje = $num_si/$num_respuestas*100;
+		$no_porcentaje = $num_no/$num_respuestas*100;
+
+		$data['num_respuestas'] = $num_respuestas;
+		$data['num_si'] = $num_si;
+		$data['num_no'] = $num_no;
+		$data['si_porcentaje'] = $si_porcentaje;
+		$data['no_porcentaje'] = $no_porcentaje;
+
+		$data['seccion'] = 'Ver respuestas';
+
+		// Carga vista con información del anuncio
+		$this->load->view('cms/header', $data);
+		$this->load->view('cms/ver_respuestas', $data);
+		$this->load->view('cms/footer', $data);
+	}// eliminar_ts_solicitado
+
 }// Gestor_contenidos

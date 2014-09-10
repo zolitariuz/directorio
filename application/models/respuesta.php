@@ -24,5 +24,29 @@ class Respuesta extends CI_Model {
 			return 0;
 		} 
 	} // agrega_respuesta
+
+	/**
+	 * Descripción: Regresa total de respuestas de una pregunta
+	 * @param string $id_pregunta
+	 * @return integer
+	 */
+	public function dame_respuestas($id_pregunta){
+		$query = $this->db->get_where('respuestas', array('id_pregunta' => $id_pregunta));
+		$respuestas = array();
+
+		if($query->num_rows() > 0){
+			foreach ($query->result() as $key => $row)
+			{
+			    $respuestas[$key] = array(
+			    	'id_respuesta' 	=> $row->id_respuesta,
+			    	'id_pregunta' 	=> $row->id_pregunta,
+			    	'respuesta' 	=> $row->respuesta,
+			    	'hora' 			=> $row->hora
+			    	);
+			}
+			return $respuestas;
+		} else
+			return 0;
+	} // dame_num_respuestas
 		
 }// clase Anuncio

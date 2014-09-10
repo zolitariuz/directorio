@@ -40,7 +40,7 @@
 							else if ($is_admin == 'f')
 								$rol = 'editor';
 						?>
-							<p class=""><i class="fa fa-random"></i> <?php echo $rol ?></p>
+							<p class=""><i class="fa fa-male"></i> <?php echo $rol ?></p>
 							<a class="" href="<?php echo base_url().'index.php/gestor_contenidos/logout/'?>"><i class="fa fa-sign-out"></i></a>
 						<?php
 						} // end if
