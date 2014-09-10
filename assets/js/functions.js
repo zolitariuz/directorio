@@ -2,7 +2,14 @@
 	"use strict";
 	$(function(){
 
+
+
+
+
+		//***************//
 		//*** ON LOAD ***//
+		//***************//
+
 		//Avisos
 		$('.mensaje p').removeClass('hide');
 		marqueeText('.mensaje p');
@@ -14,7 +21,13 @@
 
 		contarItems( $('.letra'), 'li');
 
-		//*** CLICKS ***//
+
+
+
+
+		//***************//
+		//*** CLICKS ****//
+		//***************//
 		//Tabs
 		$('.tabs a').on('click', function(){
 			cambiarTab( $(this) );
@@ -53,6 +66,17 @@
 		$('body').on('click', '.back-to-top', function(){
 			backToTop();
 		});
+
+
+
+
+		//****************//
+		//****** CMS *****//
+		//****************//
+		$('.js-login-form').validate();
+
+
+
 
 
 		//****************//
