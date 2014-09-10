@@ -17,11 +17,11 @@
 			<h3 class="text-center">O ve trámites y servicios por:</h3>
 			<div class="columna xmall-8 center">
 				<a href="<?php echo base_url().'index.php/instituciones' ?>" class="block boton vertical columna xmall-6">
-					<i class="icon-ts-icon-filled-agraria"></i>
+					<i class="icon-ts-icon-fill-institucion"></i>
 					Institución
 				</a>
 				<a href="<?php echo base_url().'index.php/temas' ?>" class="block boton vertical columna xmall-6">
-					<i class="fa fa-asterisk"></i>
+					<i class="icon-ts-icon-fill-tema"></i>
 					Tema
 				</a>
 			</div>
@@ -56,159 +56,159 @@
 				>
 				<div class="slide">
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-agraria"></i>
+						<i class="icon-ts-icon-fill-agraria"></i>
 						Agraria
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-aguapotable"></i>
-						Agua potable
+						<i class="icon-ts-icon-fill-agua-potable-y-servicios-hidraulicos"></i>
+						Agua potable y servicios hidráulicos
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-anuncio"></i>
-						Anuncio
+						<i class="icon-ts-icon-fill-anuncios"></i>
+						Anuncios
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-asesoriatelefonica"></i>
+						<i class="icon-ts-icon-fill-asesoria-telefonica"></i>
 						Asesoría telefónica
 					</a>
 					<div class="clear"></div>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-asesoriayasistenciasocial"></i>
+						<i class="icon-ts-icon-fill-asesoria-y-asistencia-social-y-condominal"></i>
 						Asesoría y Asistencia Social y Condominal
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-auxiliodelafuerzapublica"></i>
+						<i class="icon-ts-icon-fill-auxilio-de-la-fuerza-publica-y-vialidad"></i>
 						Auxilio de la fuerza pública y vialidad
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-construccionesyobras"></i>
+						<i class="icon-ts-icon-fill-construcciones-y-obras"></i>
 						Construcciones y obras
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-culturayrecreacion"></i>
+						<i class="icon-ts-icon-fill-cultura-y-recreacion"></i>
 						Cultura y recreación
 					</a>
 				</div><!-- slide -->
 				<div class="slide">
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-deportes"></i>
+						<i class="icon-ts-icon-fill-deportes"></i>
 						Deportes
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-espectaculospublicos"></i>
+						<i class="icon-ts-icon-fill-espectaculos-publicos"></i>
 						Espectaculos públicos
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-establecimientosmercantiles"></i>
+						<i class="icon-ts-icon-fill-establecimientos-mercantiles"></i>
 						Establecimientos mercantiles
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-fomentoeconomico"></i>
+						<i class="icon-ts-icon-fill-fomento-economico"></i>
 						Fomento económico
 					</a>
 					<div class="clear"></div>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-funerarios"></i>
+						<i class="icon-ts-icon-fill-funerarios"></i>
 						Funerarios
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-industria"></i>
+						<i class="icon-ts-icon-fill-industria"></i>
 						Industria
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-mantenimientoainfraestructura"></i>
+						<i class="icon-ts-icon-fill-mantenimiento-a-infraestructura-urbana-y-habitacional"></i>
 						Mantenimiento a infraestructura urbana y habitacional
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-medioambiente"></i>
+						<i class="icon-ts-icon-fill-medio-ambiente"></i>
 						Medio Ambiente
 					</a>
 				</div><!-- slide -->
 				<div class="slide">
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-mercadospublicos"></i>
+						<i class="icon-ts-icon-fill-mercados-publicos-y-mercados-sobre-ruedas"></i>
 						Mercados públicos y mercados sobre ruedas
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-patrimonioculturalurbano"></i>
+						<i class="icon-ts-icon-fill-patrimonio-cultural-urbano"></i>
 						Patrimonio cultural urbano
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-proteccioncivil"></i>
+						<i class="icon-ts-icon-fill-proteccion-civil"></i>
 						Protección civil
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-quejasydemandasvecinales"></i>
+						<i class="icon-ts-icon-fill-quejas-y-demandas-vecinales"></i>
 						Quejas y demandas vecinales
 					</a>
 					<div class="clear"></div>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-registrocivil"></i>
+						<i class="icon-ts-icon-fill-registro-civil"></i>
 						Registro civil
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-registropublicodelapropiedad"></i>
+						<i class="icon-ts-icon-fill-registro-publico-de-la-propiedad-y-de-comercio"></i>
 						Registro público de la propiedad y de comercio
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-regularizacionterritorial"></i>
+						<i class="icon-ts-icon-fill-regularizacion-territorial"></i>
 						Regularización territorial
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-regularizaciondelatierra"></i>
+						<i class="icon-ts-icon-fill-regularizacion-de-la-tierra-y-apoyo-a-predios"></i>
 						Regularización de la tierra y apoyo a predios
 					</a>
 				</div><!-- slide -->
 				<div class="slide">
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-salud"></i>
+						<i class="icon-ts-icon-fill-salud"></i>
 						Salud
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-servicioslegalesyarchivos"></i>
+						<i class="icon-ts-icon-fill-servicios-legales-y-archivos-de-notarias"></i>
 						Servicios legales y archivo de notarias
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-serviciosurbanoslimpiaeinfraestructura"></i>
+						<i class="icon-ts-icon-fill-servicios-urbanos"></i>
 						Servicios urbanos
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-serviciosurbanoslimpiaeinfraestructura"></i>
+						<i class="icon-ts-icon-fill-servicios-urbanos-limpia-e-infraestructura-urbana"></i>
 						Servicios urbanos, limpia e infraestructura urbana
 					</a>
 					<div class="clear"></div>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-taxis"></i>
+						<i class="icon-ts-icon-fill-taxis"></i>
 						Taxis
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-trabajo"></i>
+						<i class="icon-ts-icon-fill-trabajo"></i>
 						Trabajo
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-turismo"></i>
+						<i class="icon-ts-icon-fill-turismo"></i>
 						Turismo
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-usodesuelo"></i>
+						<i class="icon-ts-icon-fill-uso-de-suelo"></i>
 						Uso de suelo
 					</a>
 				</div><!-- slide -->
 				<div class="slide">
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-vehiculosautomotoresdepasajerosycarga"></i>
+						<i class="icon-ts-icon-fill-vehiculos-automotores-de-pasajeros-y-carga"></i>
 						Vehículos automotores de pasajeros y carga
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-vehiculosautomotores"></i>
+						<i class="icon-ts-icon-fill-vehiculos-automotores-particulares"></i>
 						Vehículos automotores particulares
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-videojuegos"></i>
+						<i class="icon-ts-icon-fill-videojuegos"></i>
 						Videojuegos
 					</a>
 					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-vivienda"></i>
+						<i class="icon-ts-icon-fill-vivienda"></i>
 						Vivienda
 					</a>
 				</div><!-- slide -->
