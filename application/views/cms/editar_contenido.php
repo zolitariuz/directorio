@@ -58,15 +58,12 @@
 							Pregunta
 						</div>
 						<div class="columna xmall-2 text-center">
-							Respuestas
-						</div>
-						<div class="columna xmall-2 text-center">
 							Vigencia
 						</div>
-						<div class="columna xmall-1 text-center">
+						<div class="columna xmall-2 text-center">
 							¿Activo?
 						</div>
-						<div class="columna xmall-1 text-center">
+						<div class="columna xmall-2 text-center">
 							Opciones
 						</div>
 					</div>
@@ -75,16 +72,17 @@
 
 					foreach ($preguntas as $key => $value) {
 						$link_editar = '<a href="'.base_url().'index.php/gestor_contenidos/editar_pregunta/'.$value['id_pregunta'].'">Editar</a>';
+						$link_ver = '<a href="'.base_url().'index.php/gestor_contenidos/ver_respuestas/'.$value['id_pregunta'].'">Ver</a>';
 						$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_pregunta/'.$value['id_pregunta'].'">Eliminar</a>';
 						echo '<div class="fila header">';
 						echo '<div class="columna xmall-6 text-center">'.$value['pregunta'].'</div>';
-						echo '<div class="columna xmall-2 text-center">0</div>';
 						echo '<div class="columna xmall-2 text-center">'.$value['vigencia'].'</div>';
 						if ($value['activo'] == 't') 
 							$activo = 'Si';
 						else
 							$activo = 'No';
-						echo '<div class="columna xmall-1 text-center">'.$activo.'</div>';
+						echo '<div class="columna xmall-2 text-center">'.$activo.'</div>';
+						echo '<div class="columna xmall-1 text-center">'.$link_ver.'</div>';
 						echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
 						/*echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';*/
 						echo '</div">';

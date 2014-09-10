@@ -555,5 +555,47 @@ function scrollHeader(selector){
 	}
 }//scrollHeader
 
+function numRespuestasSiNo(si, no){
+	console.log('chart');
+	var data = {
+	    labels: ['Si', 'No'],
+	    datasets: [
+	        {
+	            label: "Respuestas",
+	            fillColor: "rgba(236, 35, 131, 0.5)",
+	            strokeColor: "rgba(236, 35, 131, 1)",
+	            pointColor: "rgba(162, 43, 56, 1)",
+	            pointStrokeColor: "#fff",
+	            pointHighlightFill: "#fff",
+	            pointHighlightStroke: "rgba(162, 43, 56, 1)",
+	            data: [si, no]
+	        }
+	    ]
+	};
+	var ctx = $('#chartRespuestas').get(0).getContext('2d');
+	new Chart(ctx).Bar(data);
+}
+
+function porcentajeRespuestasSiNo(si, no){
+	console.log(si);
+	console.log(no);
+	var data = [
+	    {
+	        value: si,
+	        color:"rgba(236, 35, 131, 0.2)",
+	        highlight: "rgba(236, 35, 131, 0.3)",
+	        label: "Si(%)"
+	    },
+	    {
+	        value: no,
+	        color:"rgba(236, 35, 131, 0.7)",
+	        highlight: "rgba(236, 35, 131, 0.8)",
+	        label: "No(%)"
+	    }
+	];
+	var ctx = $('#donaRespuestas').get(0).getContext('2d');
+	new Chart(ctx).Doughnut(data);
+}
+
 
 
