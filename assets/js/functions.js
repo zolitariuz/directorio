@@ -364,16 +364,19 @@ function busquedaTS(dataTS){
 	});
 } // busquedaTS
 
-function agregarTS(dataTS, base_url){
+function agregarTS(dataTS, base_url, ts_omitir){
 	var nombreTS = $.parseJSON(dataTS);
 	var srcNombreTS  = [ ];
 	var mapNombreTS = { };
 	var idTS;
 
 	// Llena arreglo con nombres y ids de trámites y servicios
+	// omitiendo los que ya existen
 	$.each(nombreTS, function(i, val){
-		srcNombreTS.push(val.nombre_ts);
-		mapNombreTS[val.nombre_ts] = val.id_tramite_servicio;
+		if(ts_omitir.indexOf(val.id_tramite_servicio) < 0){
+			srcNombreTS.push(val.nombre_ts);
+			mapNombreTS[val.nombre_ts] = val.id_tramite_servicio;
+		}
 	});
 
 	// Autocompletado carga página en blanco con trámite o servicio
@@ -382,16 +385,19 @@ function agregarTS(dataTS, base_url){
 		source: srcNombreTS,
 		select: function(event, ui) {
 	        $('#ts_cms_id').val(mapNombreTS[ui.item.value]);
-			idTS = $('#ts_cms_id').attr('value');
+			var idTS = $('#ts_cms_id').attr('value');
+			var ts = ui.item.value;
 
-			agregarTSSolicitado(idTS, base_url);
+			agregarTSSolicitado(idTS, ts, base_url);
 	    },
 		appendTo: '.main-search-cms'
 	});
 	$('.main-search button').on('click', function(e){
 		e.preventDefault();
-		idTS = $('#ts_cms_id').val();
-		agregarTSSolicitado(idTS, base_url);
+		var idTS = $('#ts_cms_id').val();
+		var ts = $('input[type="search"]').val();
+		
+		agregarTSSolicitado(idTS, ts, base_url);
 	});
 } // agregarTS
 
@@ -442,7 +448,7 @@ function votoPregunta(base_url){
 	});
 }// votoPregunta
 
-function agregarTSSolicitado(id_ts, base_url){
+function agregarTSSolicitado(id_ts, ts, base_url){
 	var jsonSolicitado = {};
 		jsonSolicitado['id_ts'] = id_ts;
 
@@ -450,9 +456,51 @@ function agregarTSSolicitado(id_ts, base_url){
 			base_url + "index.php/gestor_contenidos/agregar_ts_solicitado",
 			jsonSolicitado,
 			function(response){
-				console.log('success');
+				var respuesta = $.parseJSON(response);
+				$('.success, .error').addClass('hide');
+
+				if(respuesta.estatus == 'success'){
+
+					$('.success').text(respuesta.msg);
+					$('.success').removeClass('hide');
+					var fila = '<div class="fila"> \
+									<p class="columna xmall-10">'+ts+'</p> \
+									<a href="" data-ts="'+id_ts+'" class="text-center block columna xmall-2">Eliminar</a> \
+								</div>';
+					$(fila).appendTo('.tabla-ts');
+				} else {
+					$('.error').text(respuesta.msg);
+					$('.error').removeClass('hide');
+				}
+
+				
 			}
 		);
 }
+
+function eliminarTSSolicitado(base_url){
+
+	$('.fila a').on('click', function(e){
+		e.preventDefault();
+
+		var id_ts = $(this).data('ts');
+		var jsonEliminado = {};
+		jsonEliminado['id_ts'] = id_ts;
+
+		$.post(
+			base_url + "index.php/gestor_contenidos/eliminar_ts_solicitado",
+			jsonEliminado,
+			function(response){
+				var respuesta = $.parseJSON(response);
+				$('.success, .error').addClass('hide');
+
+				$('.success').text(respuesta.msg);
+				$('.success').removeClass('hide');
+			}
+		);
+		$(this).parent().remove();
+	});
+
+}// eliminarTSSolicitado
 
 
