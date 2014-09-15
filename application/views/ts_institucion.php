@@ -9,7 +9,7 @@
 				foreach ($ts_institucion as $key => $value) {
 					$tramite = $value->tramite_servicio;
 					$idTS = $value->id_tramite_servicio;
-					$urlTramite = base_url().'index.php/inicio/muestraTramiteServicio/'.$idTS;
+					$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$idTS;
 					$primeraLetra = substr($tramite, 0, 1);
 
 					if($primeraLetra != $primeraLetraAnt){

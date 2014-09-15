@@ -29,18 +29,30 @@
 						<input type="text" name="url_anuncio" value="<?php echo $anuncio['url']; ?>">
 					</fieldset>
 					<fieldset class="columna xmall-12 center"> 
-						<label for="vigencia" >Vigencia</label>
-						<input type="text" name="vigencia" class="datepicker columna xmall-12" value="<?php echo $anuncio['vigencia']; ?>">
+						<label for="fecha_inicial" >Fecha inicial</label>
+						<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_inicial']; ?>">
+					</fieldset>
+					<fieldset class="columna xmall-12 center"> 
+						<label for="fecha_final" >Fecha final</label>
+						<input type="text" name="fecha_final" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_final']; ?>">
 					</fieldset>
 					<fieldset class="columna xmall-12"> 
-						<label for="activo" >¿Está activo?</label><br />
 						<?php if ($anuncio['activo'] == 't') { ?>
 							<input type="checkbox" name="activo" checked>
 						<?php } else { ?>
 							<input type="checkbox" name="activo">
 						<?php } ?>
+						<label for="activo" >¿Está activo?</label>
+						
 					</fieldset>
-					<fieldset class="columna xmall-6">
+					<fieldset class="columna xmall-12"> 
+						<label for="url_img" >Imagen actual: <?php echo $anuncio['url_img']; ?></label><br />
+						<input type="hidden" name="url_img_anterior" value="<?php echo $anuncio['url_img']; ?>">
+						<input type="checkbox" name="subir_img">
+						<label for="subir_img" >¿Subir otra imagen?</label><br />
+						<img src="<?php echo base_url().$anuncio['url_img']; ?>" class="columna xmall-12 img_actual">
+					</fieldset>
+					<fieldset class="columna xmall-6 cargar_img hide">
 						<p>Restricciones de imagen</p>
 						<ul>
 							<li>Los formatos permitidos son JPEG y PNG</li>
@@ -51,10 +63,7 @@
 						<input type="hidden" name="id_usuario" value="<?php echo $anuncio['id_usuario'] ?>">
 						
 					</fieldset>	
-					<fieldset class="columna xmall-6"> 
-						<label for="url_img" >Imagen actual: <?php echo $anuncio['url_img']; ?></label>
-						<img src="<?php echo base_url().$anuncio['url_img']; ?>" class="columna xmall-12">
-					</fieldset>
+					<div class="clear"></div>
 					<input type="submit" value="Modificar anuncio" class="columna xmall-4 block center boton" />
 				</form>
 				

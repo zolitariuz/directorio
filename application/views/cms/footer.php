@@ -34,7 +34,10 @@
 			toggleUrlAnuncio();
 			$('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
 		<?php } else if ($seccion == 'Editar aviso' || $seccion == 'Editar anuncio' || $seccion == 'Editar pregunta') {  ?>
-				$('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
+
+			$('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
+		<?php if ($seccion == 'Editar anuncio') ?>
+				toggleSubirImagen();
 		<?php } else if ($seccion == 'Ver respuestas') {  ?>
 			Chart.defaults.global.responsive = true;
 			numRespuestasSiNo('<?php echo $num_si ?>', '<?php echo $num_no ?>');

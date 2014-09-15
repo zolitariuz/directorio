@@ -4,16 +4,18 @@ class Anuncio extends CI_Model {
 	public function __construct()
 	{
 		$this->load->database();
+		$this->actualizaStatus();
 	}
 
-	public function agrega_anuncio($anuncio, $id_usuario, $tipo_contenido, $url, $url_img, $vigencia, $activo){
+	public function agrega_anuncio($anuncio, $id_usuario, $tipo_contenido, $url, $url_img, $fecha_inicial, $fecha_final, $activo){
 		$data = array(
 		   'id_usuario' 		=> $id_usuario,
 		   'tipo_contenido' 	=> $tipo_contenido,
 		   'contenido' 			=> $anuncio,
 		   'url' 				=> $url,
 		   'url_img' 			=> $url_img,
-		   'vigencia'			=> $vigencia,
+		   'fecha_inicial'		=> $fecha_inicial,
+		   'fecha_final'		=> $fecha_final,
 		   'is_activo'			=> $activo
 		);
 
@@ -48,7 +50,8 @@ class Anuncio extends CI_Model {
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
 			    	'url_img'	 		=> $row->url_img,
-			    	'vigencia'			=> $row->vigencia,
+			    	'fecha_inicial'		=> $row->fecha_inicial,
+			    	'fecha_final'		=> $row->fecha_final,
 			    	'activo'			=> $row->is_activo
 			    	);
 			}
@@ -58,7 +61,7 @@ class Anuncio extends CI_Model {
 	}// dame_anuncios
 
 	public function dame_anuncios_activos(){
-		$this->db->where("vigencia > DATE 'yesterday' AND is_activo = 't'");
+		$this->db->where("fecha_inicial <= DATE 'today' AND fecha_final >= DATE 'today' AND is_activo = 't'");
 		$query = $this->db->get('anuncios');
 		$anuncios = array();
 
@@ -72,7 +75,8 @@ class Anuncio extends CI_Model {
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
 			    	'url_img'	 		=> $row->url_img,
-			    	'vigencia'			=> $row->vigencia,
+			    	'fecha_inicial'		=> $row->fecha_inicial,
+			    	'fecha_final'		=> $row->fecha_final,
 			    	'activo'			=> $row->is_activo
 			    	);
 			}
@@ -100,7 +104,8 @@ class Anuncio extends CI_Model {
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
 			    	'url_img'	  		=> $row->url_img,
-			    	'vigencia'			=> $row->vigencia,
+			    	'fecha_inicial'		=> $row->fecha_inicial,
+			    	'fecha_final'		=> $row->fecha_final,
 			    	'activo'			=> $row->is_activo
 			    	);
 			}
@@ -114,11 +119,12 @@ class Anuncio extends CI_Model {
 	 * @param integer $id_anuncio, string $anuncio, string $url, string $tipo
 	 * @return true	
 	 */
-	public function actualiza_anuncio($id_anuncio, $anuncio, $url, $url_img, $tipo, $vigencia, $activo){
+	public function actualiza_anuncio($id_anuncio, $anuncio, $url, $url_img, $tipo, $fecha_inicial, $fecha_final,  $activo){
 		$data = array(
 		   'contenido' 		=> 	$anuncio,
 		   'tipo_contenido' => 	$tipo,
-		   'vigencia'   	=>	$vigencia,
+		   'fecha_inicial'  =>	$fecha_inicial,
+		   'fecha_final'	=>	$fecha_final,	
 		   'url' 			=> 	$url, 
 		   'url_img' 		=> 	$url_img, 
 		   'is_activo' 		=> 	$activo
@@ -130,5 +136,20 @@ class Anuncio extends CI_Model {
 
 		return 1;
 	} // actualiza_anuncio
+
+	/**
+	 * Descripción: Revisa la vigencia y desactiva anuncios caducados
+	 * @param 
+	 * @return 	
+	 */
+	private function actualizaStatus(){
+		$data = array(
+		   'is_activo' => 'f'
+		);
+
+		// actualizar registro
+		$this->db->where("fecha_final < DATE 'today' AND is_activo = 't'");
+		$this->db->update('anuncios', $data);
+	}
 		
 }// clase Anuncio

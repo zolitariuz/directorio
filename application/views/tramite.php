@@ -125,7 +125,7 @@
 							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
 							<textarea name="" id="" rows="8"></textarea>
 						</fieldset>
-						<input type="submit" class="boton chico horizontal" value="Enviar">
+						<input type="submit" class="boton chico horizontal right" value="Enviar">
 					</form>
 				</article>
 				<hr>

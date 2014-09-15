@@ -202,13 +202,14 @@ class Gestor_contenidos extends CI_Controller {
 			$aviso = $_POST['aviso'];
 			$tipo = $_POST['tipo'];
 			$url = $_POST['url_aviso'];
-			$vigencia = $_POST['vigencia'];
+			$fecha_inicial = $_POST['fecha_inicial'];
+			$fecha_final = $_POST['fecha_final'];
 			if ($_POST['activo'] == 'on')
 				$activo = 't';
 			else 
 				$activo = 'f';
 
-			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo, $vigencia, $activo);
+			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo, $fecha_inicial,$fecha_final, $activo);
 			$data['success'] = '¡Aviso actualizado!';
 		} 
 
@@ -292,13 +293,14 @@ class Gestor_contenidos extends CI_Controller {
 		// ¿se está editando el aviso?
 		if(isset($_POST['id_usuario'])){
 			$pregunta = $_POST['pregunta'];
-			$vigencia = $_POST['vigencia'];
+			$fecha_inicial = $_POST['fecha_inicial'];
+			$fecha_final = $_POST['fecha_final'];
 			if ($_POST['activo'] == 'on')
 				$activo = 't';
 			else 
 				$activo = 'f';
 
-			$this->pregunta->actualiza_pregunta($id_pregunta, $pregunta, $vigencia, $activo);
+			$this->pregunta->actualiza_pregunta($id_pregunta, $pregunta, $fecha_inicial, $fecha_final, $activo);
 			$data['success'] = '¡Pregunta actualizada!';
 		} 
 		$data['pregunta'] = $this->pregunta->dame_pregunta($id_pregunta);
@@ -414,7 +416,12 @@ class Gestor_contenidos extends CI_Controller {
 			// datos a actualizar
 			$anuncio = $_POST['anuncio'];
 			$url_anuncio = $_POST['url_anuncio'];
-			$vigencia = $_POST['vigencia'];
+			$fecha_inicial = $_POST['fecha_inicial'];
+			$fecha_final = $_POST['fecha_final'];
+			$cambiar_img = $_POST['subir_img'];
+			$url_img_anterior = $_POST['url_img_anterior'];
+			$img_url = $url_img_anterior;
+
 			if(trim($url_anuncio) == ''){
 				$url_anuncio = '-';
 				$tipo = 'texto';
@@ -426,39 +433,45 @@ class Gestor_contenidos extends CI_Controller {
 			else 
 				$activo = 'f';
 
-			// ruta para guardar archivos de slider
-			$config['upload_path'] = '../directorio/assets/img/anuncios';
-			
-			// limitaciones de archivo a subir
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '500';
-			$config['max_width']  = '1024';
-			$config['max_height']  = '768';
+			// ¿hay que volver a subir la imagen?
+			if($cambiar_img == 'on'){
+				// ruta para guardar archivos de slider
+				$config['upload_path'] = '../directorio/assets/img/anuncios';
+				
+				// limitaciones de archivo a subir
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']	= '500';
+				$config['max_width']  = '1024';
+				$config['max_height']  = '768';
 
-			// sube archivos 
-			$this->load->library('upload', $config);
-			$this->upload->initialize($config); 		
-			if ( ! $this->upload->do_upload())
-			{
-				// No se pudo subir el archivo, manda errores a la vista
-				$data['error'] = $this->upload->display_errors();
-			}
-			else
-			{
-				// guardar imagen de slider
-				$data['upload'] = $this->upload->data();
+				// sube archivos 
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config); 
 
-				// url relativa de la imagen
-				$img_url = explode('directorio/', $data['upload']['full_path']);
+				if ( ! $this->upload->do_upload())
+				{
+					// No se pudo subir el archivo, manda errores a la vista
+					$data['error'] = $this->upload->display_errors();
+				}
+				else
+				{
+					// guardar imagen de slider
+					$data['upload'] = $this->upload->data();
 
-				// inserta anuncio a bd
-				$this->load->model('anuncio');
-				if($this->anuncio->actualiza_anuncio($id_anuncio, $anuncio, $url_anuncio, $img_url[1], $tipo, $vigencia, $activo)){
-					$data['success'] = '¡Se actualizó el anuncio con éxito!';
-				} else {
-					$data['error'] = 'No se pudo actualizar el anuncio.';
-				} // if upload con éxito
-			}// if upload
+					// url relativa de la imagen
+					$img_url_arr = explode('directorio/', $data['upload']['full_path']);
+					$img_url = $img_url_arr[1];
+				}// if 
+			}// if 
+
+			// inserta anuncio a bd
+			$this->load->model('anuncio');
+			if($this->anuncio->actualiza_anuncio($id_anuncio, $anuncio, $url_anuncio, $img_url, $tipo, $fecha_inicial, $fecha_final, $activo)){
+				$data['success'] = '¡Se actualizó el anuncio con éxito!';
+			} else {
+				$data['error'] = 'No se pudo actualizar el anuncio.';
+			} // if upload con éxito
+					
 		}// if POST
 
 		$data['anuncio'] = $this->anuncio->dame_anuncio($id_anuncio);

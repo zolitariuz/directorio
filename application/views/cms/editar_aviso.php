@@ -22,8 +22,12 @@
 					<textarea type="text" name="aviso" class="columna xmall-12"><?php echo $aviso['contenido']; ?></textarea>
 				</fieldset>
 				<fieldset class="columna xmall-12 center"> 
-					<label for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker columna xmall-12" value="<?php echo $aviso['vigencia']; ?>">
+					<label for="fecha_inicial" >Fecha inicial</label>
+					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" value="<?php echo $aviso['fecha_inicial']; ?>">
+				</fieldset>
+				<fieldset class="columna xmall-12 center"> 
+					<label for="fecha_final" >Fecha final</label>
+					<input type="text" name="fecha_final" class="datepicker columna xmall-12" value="<?php echo $aviso['fecha_final']; ?>">
 				</fieldset>
 				<fieldset class="columna xmall-12"> 
 					<label for="url_aviso" >URL de aviso</label><br />

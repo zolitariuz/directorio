@@ -380,7 +380,7 @@ function busquedaTS(dataTS){
 		select: function(event, ui) {
 	        $('#ts_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_id').attr('value');
-			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_self');
+			window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 
 	    },
 		appendTo: '.main-search-header'
@@ -390,7 +390,7 @@ function busquedaTS(dataTS){
 		select: function(event, ui) {
 	        $('#ts_home_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_home_id').attr('value');
-			window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_self');
+			window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 
 	    },
 		appendTo: '.main-search-home'
@@ -398,7 +398,7 @@ function busquedaTS(dataTS){
 	$('.main-search button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
-		window.open('http://localhost:8888/directorio/index.php/inicio/muestraTramiteServicio/' + idTS , '_self');
+		window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
 } // busquedaTS
 
@@ -521,6 +521,19 @@ function toggleUrlAnuncio(){
 		}
 	});
 } // toggleUrlAnuncio
+
+function toggleSubirImagen(){
+	$('input[name="subir_img"]').change(function(){
+		if($(this).is(":checked")) {
+			$('.cargar_img').removeClass('hide');
+			$('.img_actual').addClass('hide');
+		}
+		else {
+			$('.cargar_img').addClass('hide');
+			$('.img_actual').removeClass('hide');
+		}
+	});
+} // toggleSubirImagen
 
 function votoPregunta(base_url){
 	$('.pregunta a').on('click', function(e){

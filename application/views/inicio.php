@@ -36,7 +36,7 @@
 					<?php foreach ($nombres_ts_comunes as $key => $value) {
 						$tramite = $value->nombre_ts;
 						$idTS = $value->id_tramite_servicio;
-						$urlTramite = base_url().'index.php/inicio/muestraTramiteServicio/'.$idTS; ?>
+						$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$idTS; ?>
 						<a href="<?php echo $urlTramite; ?>" class="item boton columna large-4">
 							<?php echo $tramite; ?>
 						</a></a>
@@ -230,12 +230,6 @@
 				data-cycle-swipe="true"
 				data-cycle-log="false"
 			>
-				<div class="slide">
-					<img src="assets/img/anuncios/anuncio.jpg">
-					<div class="info">
-						<p>Este es un anuncio default.</p>
-					</div>
-				</div>
 				<?php
 					// contenido del slider
 					foreach ($anuncios as $key => $value) {

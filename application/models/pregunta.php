@@ -6,11 +6,12 @@ class Pregunta extends CI_Model {
 		$this->load->database();
 	}
 
-	public function agrega_pregunta($pregunta, $id_usuario, $vigencia, $activo){
+	public function agrega_pregunta($pregunta, $id_usuario, $fecha_inicial, $fecha_final, $activo){
 		$data = array(
 		   'id_usuario' 	=> $id_usuario,
 		   'pregunta' 		=> $pregunta,
-		   'vigencia'		=> $vigencia,
+		   'fecha_inicial'	=> $fecha_inicial,
+		   'fecha_final'	=> $fecha_final,
 		   'is_activo'		=> $activo
 		);
 
@@ -31,26 +32,57 @@ class Pregunta extends CI_Model {
 		$this->db->delete('preguntas', $data);
 	} // elimina_pregunta
 
+	/**
+	 * Descripción: Regresa todas las preguntas
+	 * @param 
+	 * @return mixed array $preguntas	
+	 */
 	public function dame_preguntas(){
-		$this->db->where("vigencia > DATE 'yesterday'");
 		$query = $this->db->get('preguntas');
-		$anuncios = array();
+		$preguntas = array();
 
 		if($query->num_rows() > 0){
 			foreach ($query->result() as $key=>$row)
 			{
-			    $anuncios[$key] = array(
+			    $preguntas[$key] = array(
 			    	'id_pregunta'	=> $row->id_pregunta,
 			    	'id_usuario'	=> $row->id_usuario,
 			    	'pregunta' 		=> $row->pregunta,
-			    	'vigencia'		=> $row->vigencia,
+			    	'fecha_inicial'	=> $row->fecha_inicial,
+			    	'fecha_final'	=> $row->fecha_final,
 			    	'activo'		=> $row->is_activo
 			    	);
 			}
-			return $anuncios;
+			return $preguntas;
 		} else
 			return 0;
 	}// dame_preguntas
+
+	/**
+	 * Descripción: Regresa todas las preguntas activas
+	 * @param 
+	 * @return mixed array $preguntas	
+	 */
+	public function dame_preguntas_activas(){
+		$query = $this->db->get('preguntas');
+		$preguntas = array();
+
+		if($query->num_rows() > 0){
+			foreach ($query->result() as $key=>$row)
+			{
+			    $preguntas[$key] = array(
+			    	'id_pregunta'	=> $row->id_pregunta,
+			    	'id_usuario'	=> $row->id_usuario,
+			    	'pregunta' 		=> $row->pregunta,
+			    	'fecha_inicial'	=> $row->fecha_inicial,
+			    	'fecha_final'	=> $row->fecha_final,
+			    	'activo'		=> $row->is_activo
+			    	);
+			}
+			return $preguntas;
+		} else
+			return 0;
+	}// dame_preguntas_activas
 
 	/**
 	 * Descripción: Jala una pregunta de base de datos
@@ -67,7 +99,8 @@ class Pregunta extends CI_Model {
 			    $pregunta = array(
 			    	'id_pregunta'	=> $row->id_pregunta,
 			    	'pregunta'	  	=> $row->pregunta,
-			    	'vigencia'		=> $row->vigencia,
+			    	'fecha_inicial'	=> $row->fecha_inicial,
+			    	'fecha_final'	=> $row->fecha_final,
 			    	'activo'		=> $row->is_activo
 			    	);
 			}
@@ -77,7 +110,7 @@ class Pregunta extends CI_Model {
 	}// dame_pregunta
 
 	/**
-	 * Descripción: Jala una pregunta de base de datos
+	 * Descripción: Jala la última pregunta de base de datos
 	 * @param integer $id
 	 * @return array $pregunta 	
 	 */
@@ -105,11 +138,12 @@ class Pregunta extends CI_Model {
 	 * @param integer $id_aviso, string $aviso, string $url, string $tipo
 	 * @return true	
 	 */
-	public function actualiza_pregunta($id_pregunta, $pregunta, $vigencia, $activo){
+	public function actualiza_pregunta($id_pregunta, $pregunta, $fecha_inicial,  $fecha_final, $activo){
 		$data = array(
-		   'pregunta' 	=> 	$pregunta,
-		   'vigencia'	=> 	$vigencia,
-		   'is_activo' 	=> 	$activo
+		   'pregunta' 		=> 	$pregunta,
+		   'fecha_inicial'	=> 	$fecha_inicial,
+		   'fecha_final'	=> 	$fecha_final,
+		   'is_activo' 		=> 	$activo
 		);
 
 		// actualizar registro

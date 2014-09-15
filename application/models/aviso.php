@@ -11,13 +11,14 @@ class Aviso extends CI_Model {
 	 * @param string $id_aviso, string $url, string $tipo, integer $id_usuario
 	 * @return true	o false
 	 */
-	public function agrega_aviso($aviso, $url, $tipo, $id_usuario, $vigencia, $activo){
+	public function agrega_aviso($aviso, $url, $tipo, $id_usuario, $fecha_inicial, $fecha_final, $activo){
 		$data = array(
 		   'id_usuario' 	=> $id_usuario,
 		   'contenido' 		=> $aviso,
 		   'tipo_contenido' => 	$tipo,
 		   'url' 			=> 	$url,
-		   'vigencia'		=> $vigencia,
+		   'fecha_inicial'	=> $fecha_inicial,
+		   'fecha_final'	=> $fecha_final,
 		   'is_activo'		=> $activo
 		);
 
@@ -33,11 +34,12 @@ class Aviso extends CI_Model {
 	 * @param integer $id_aviso, string $aviso, string $url, string $tipo
 	 * @return true	
 	 */
-	public function actualiza_aviso($id_aviso, $aviso, $url, $tipo, $vigencia, $activo){
+	public function actualiza_aviso($id_aviso, $aviso, $url, $tipo, $fecha_inicial, $fecha_final, $activo){
 		$data = array(
 		   'contenido' 		=> 	$aviso,
 		   'tipo_contenido' => 	$tipo,
-		   'vigencia'   	=>	$vigencia,
+		   'fecha_inicial'   =>	$fecha_inicial,
+		   'fecha_final'   	=>	$fecha_final,
 		   'url' 			=> 	$url, 
 		   'is_activo' 		=> 	$activo
 		);
@@ -72,7 +74,8 @@ class Aviso extends CI_Model {
 			    	'tipo_contenido' 	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
-			    	'vigencia'			=> $row->vigencia,
+			    	'fecha_inicial'		=> $row->fecha_inicial,
+			    	'fecha_final'		=> $row->fecha_final,
 			    	'activo'			=> $row->is_activo
 			    	);
 			}
@@ -82,8 +85,7 @@ class Aviso extends CI_Model {
 	}// dame_avisos
 
 	public function dame_avisos_activos(){
-		//$ayer = date('d.m.Y',strtotime("-1 days"));
-		$this->db->where("vigencia > DATE 'yesterday' AND is_activo = 't'");
+		$this->db->where("fecha_inicial <= DATE 'today' AND fecha_final >= DATE 'today' AND is_activo = 't'");
 		$query = $this->db->get('avisos');
 		$avisos = array();
 
@@ -96,7 +98,8 @@ class Aviso extends CI_Model {
 			    	'tipo_contenido' 	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
-			    	'vigencia'			=> $row->vigencia,
+			    	'fecha_inicial'		=> $row->fecha_inicial,
+			    	'fecha_final'		=> $row->fecha_final,
 			    	'activo'			=> $row->is_activo
 			    	);
 			}
@@ -123,7 +126,8 @@ class Aviso extends CI_Model {
 			    	'tipo_contenido' 	=> $row->tipo_contenido,
 			    	'contenido' 		=> $row->contenido,
 			    	'url'	  			=> $row->url,
-			    	'vigencia'			=> $row->vigencia,
+			    	'fecha_inicial'		=> $row->fecha_inicial,
+			    	'fecha_final'		=> $row->fecha_final,
 			    	'activo'			=> $row->is_activo
 			    	);
 			}
@@ -131,5 +135,20 @@ class Aviso extends CI_Model {
 		} else
 			return 0;
 	}// dame_aviso
+
+	/**
+	 * Descripción: Revisa la vigencia y desactiva avisos caducados
+	 * @param 
+	 * @return 
+	 */
+	private function actualizaStatus(){
+		$data = array(
+		   'is_activo' => 'f'
+		);
+
+		// actualizar registro
+		$this->db->where("fecha_final < DATE 'today' AND is_activo = 't'");
+		$this->db->update('avisos', $data);
+	}
 		
 }// clase Usuario

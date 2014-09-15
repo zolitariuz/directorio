@@ -22,8 +22,12 @@
 					<input type="text" name="pregunta" value="<?php echo $pregunta['pregunta']; ?>" class="columna xmall-12">
 				</fieldset>
 				<fieldset class="columna xmall-12 center"> 
-					<label for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker columna xmall-12" value="<?php echo $pregunta['vigencia']; ?>">
+					<label for="fecha_inicial" >Fecha inicial</label>
+					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" value="<?php echo $pregunta['fecha_inicial']; ?>">
+				</fieldset>
+				<fieldset class="columna xmall-12 center"> 
+					<label for="fecha_final" >Fecha final</label>
+					<input type="text" name="fecha_final" class="datepicker columna xmall-12" value="<?php echo $pregunta['fecha_final']; ?>">
 				</fieldset>
 				<fieldset class="columna xmall-12"> 
 					<label for="activo" >¿Está activo?</label><br />
