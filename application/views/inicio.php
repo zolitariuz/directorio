@@ -26,21 +26,23 @@
 				</a>
 			</div>
 		</section><!-- busqueda -->
-		<div class="clear large"></div>
-		<hr class="columna large large-6 center">
-		<div class="clear large"></div>
+		<div class="clear"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
 		<section class="mas-comunes clearfix transform">
-			<h2 class="text-center highlight">Trámites y servicios más solicitados</h2>
-			<div class="masonry-container modal-to-be">
-				<?php foreach ($ts_mas_populares as $key => $value) {
-					$tramite = $value->nombre_ts;
-					$idTS = $value->id_tramite_servicio;
-					$urlTramite = base_url().'index.php/inicio/muestraTramiteServicio/'.$idTS; ?>
-					<a href="<?php echo $urlTramite; ?>" class="item boton columna large-4">
-						<?php echo $tramite; ?>
-					</a></a>
-				<?php } // end foreach ?>
-			</div>
+			<?php if ($nombres_ts_comunes != '') { ?>
+				<h2 class="text-center highlight">Trámites y servicios más solicitados</h2>
+				<div class="masonry-container modal-to-be">
+					<?php foreach ($nombres_ts_comunes as $key => $value) {
+						$tramite = $value->nombre_ts;
+						$idTS = $value->id_tramite_servicio;
+						$urlTramite = base_url().'index.php/inicio/muestraTramiteServicio/'.$idTS; ?>
+						<a href="<?php echo $urlTramite; ?>" class="item boton columna large-4">
+							<?php echo $tramite; ?>
+						</a></a>
+					<?php } // end foreach ?>
+				</div>
+			<?php } ?>
 		</section>
 		<div class="clear large"></div>
 		<hr class="columna large xmall-6 center">
@@ -262,7 +264,11 @@
 			<hr class="columna xmall-6 center">
 			<div class="clear"></div>
 			<section class="pregunta clearfix">
+<<<<<<< HEAD
 				<h2 class="text-center highlight">Nos interesa tu opinión</h2>
+=======
+				<h2 class="text-center highlight">Pregunta</h2>
+>>>>>>> 31bc275e14720800f1a8199574fa00f53ebc0d18
 				<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
 				<div class="columna full large-5 center clearfix">
 					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>

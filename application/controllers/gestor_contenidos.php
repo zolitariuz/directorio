@@ -519,7 +519,6 @@ class Gestor_contenidos extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
-
 		// Obtener id de trámites y servicios mas comunes
 		$this->load->model('ts_comun');
 		$id_ts = $this->ts_comun->dame_ts_comunes();

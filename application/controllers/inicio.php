@@ -21,10 +21,16 @@ class Inicio extends CI_Controller {
 		// Se utiliza en caso de que exista error en alguna consulta
 		$data['error'] = $_GET['error'];
 
-		// Muestra trámites y servicios mas buscados usando WS
-		$data['ts_mas_populares'] = json_decode(
-		    file_get_contents($url_ws.'/tramites_servicios/format/json')
-		);
+		// Obtener id de trámites y servicios mas comunes
+		$this->load->model('ts_comun');
+		$id_ts = $this->ts_comun->dame_ts_comunes();
+
+		// Obtener nombres de trámites y servicios via WS
+		$nombres_ts_comunes =  file_get_contents($url_ws.'/nombres_ts_comunes/id/'.$id_ts.'/format/json');
+		if(is_null($nombres_ts_comunes))
+			$data['nombres_ts_comunes'] = '';
+		else
+			$data['nombres_ts_comunes'] = json_decode($nombres_ts_comunes);
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
@@ -61,6 +67,11 @@ class Inicio extends CI_Controller {
 	function muestraTramiteServicio($id_tramite){
 
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
+		// Suma el número de visitas del trámite/servicio
+		$this->load->model('visitas_ts');
+		$fecha_visita = date("Y-m-d");  
+		$this->visitas_ts->agrega_num_visita($id_tramite, $fecha_visita);
 
 		// Carga info de un trámite o servicio
 		$ts =  file_get_contents($url_ws.'/info_tramite/id/'.$id_tramite.'/format/json');
