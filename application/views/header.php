@@ -39,17 +39,15 @@
 				<div class="width clearfix">
 					<div class="menu no-large">
 						<i class="fa fa-bars"></i>
-					</div>
-					<div class="header-top">
-						<a href="#" class="logo-bloque">
+					</div><div class="header-top">
+						<a href="#" class="logo-bloque large">
 							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
 						</a><h1 class="">
 							<a href="<?php echo base_url() ?>">
 								<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
 							</a>
 						</h1>
-					</div><!-- header-top -->
-					<div class="search no-large">
+					</div><!-- header-top --><div class="search no-large">
 						<i class="hide fa fa-search"></i>
 					</div>
 				</div><!-- width -->
@@ -64,7 +62,7 @@
 						</a>
 					</div><!-- width -->
 				</nav>
-				<div class="barra avisos">
+				<div class="barra avisos large">
 					<div class="width clearfix">
 						<h3 class="blok obscuro span xmall-1 text-center">Avisos</h3>
 						<div class="mensaje columna xmall-11">
@@ -90,8 +88,14 @@
 					</div><!-- width -->
 				</div>
 				<nav class="no-large">
-					<a href="#">Trámites más buscados</a>
-					<a href="#">Trámites y servicios en línea</a>
-					<a href="#">Modelo integral de atención ciudadana</a>
+					<a class="text-center" href="#">
+							Oficinas de atención ciudadana
+					</a>
+					<a class="text-center" href="#">
+						Trámites y servicios en línea
+					</a>
+					<a class="text-center" href="#">
+						Ayuda
+					</a>
 				</nav>
 			</header>

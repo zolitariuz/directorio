@@ -19,6 +19,7 @@
 			callMasonry();
 		}
 
+		//Agregar cantidad de trámites a resultados alfabéticos
 		contarItems( $('.letra'), 'li');
 
 
@@ -70,6 +71,31 @@
 
 
 
+
+		//****************//
+		//***RESPONSIVE***//
+		//****************//
+
+		//** CLICKS **//
+
+		$('.menu').on('click', function(){
+			abrirMenu( $(this), $('nav') );
+		});
+
+		mediaCheck({
+			media: '(min-width: 1025px)',
+			entry: function() {
+				mayorQueLarge();
+			},
+			exit: function() {
+				menorQueLarge();
+			},
+			both: function() {
+			}
+		});
+
+
+
 		//****************//
 		//****** CMS *****//
 		//****************//
@@ -118,32 +144,6 @@
 		};
 		$.datepicker.setDefaults($.datepicker.regional['es']);
 
-
-
-
-
-		//****************//
-		//***RESPONSIVE***//
-		//****************//
-
-		//** CLICKS **//
-
-		$('.menu').on('click', function(){
-			abrirMenu( $(this), $('nav') );
-		});
-
-		mediaCheck({
-			media: '(min-width: 1025px)',
-			entry: function() {
-				mayorQueLarge();
-			},
-			exit: function() {
-				menorQueLarge();
-			},
-			both: function() {
-			}
-		});
-
 	});
 
 	function abrirMenu(elemento, menu){
@@ -178,10 +178,12 @@
 
 	function mayorQueLarge(){
 		undoH2ABotones();
+		callMasonry();
 	}
 
 	function menorQueLarge(){
 		h2ABotones();
+		destroyMasonry();
 	}
 
 	function h2ABotones(){
@@ -227,6 +229,12 @@
     	var msnry = new Masonry( container[0], {
     		itemSelector: '.item'
     	});
+	}
+
+	function destroyMasonry(){
+		var container = $('.masonry-container');
+		var msnry = new Masonry( container[0] );
+		msnry.destroy();
 	}
 
 	function scrollTop(elemento){
@@ -484,7 +492,6 @@ function agregarTSSolicitado(id_ts, ts, base_url){
 }
 
 function eliminarTSSolicitado(base_url){
-
 	$('.fila a').on('click', function(e){
 		e.preventDefault();
 
