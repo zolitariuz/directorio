@@ -15,23 +15,23 @@
 			</section>
 			<section class="emergencia">
 				<div class="width clearfix">
-					<div class="columna xmall-2">
+					<div class="columna xmall-6 large-2">
 						<h4 class="text-center">066</h4>
 						<p class="text-center">Emergencias Secretaría de Seguridad Pública </p>
 					</div>
-					<div class="columna xmall-2">
+					<div class="columna xmall-6 large-2">
 						<h4 class="text-center">061</h4>
 						<p class="text-center">Emergencias Procuradoría General de Justicia</p>
 					</div>
-					<div class="columna xmall-2">
+					<div class="columna xmall-6 large-2">
 						<h4 class="text-center">065</h4>
 						<p class="text-center">Cruz Roja</p>
 					</div>
-					<div class="columna xmall-2">
+					<div class="columna xmall-6 large-2">
 						<h4 class="text-center">068</h4>
 						<p class="text-center">Bomberos</p>
 					</div>
-					<div class="columna xmall-2">
+					<div class="columna xmall-6 large-2">
 						<h4 class="text-center">
 							5683 1154
 							<br/>
@@ -39,17 +39,17 @@
 						</h4>
 						<p class="text-center">Secretaría de Protección Civil</p>
 					</div>
-					<div class="columna xmall-2">
+					<div class="columna xmall-6 large-2">
 						<h4 class="text-center">5658 1111</h4>
 						<p class="text-center">LOCATEL</p>
 					</div>
 				</div><!-- width -->
 			</section>
 		</footer>
-		<div class="back-to-top when-scrolled">
+		<div class="large back-to-top when-scrolled">
 			<i class="fa fa-chevron-up"></i>
 		</div>
-		<div class="overlay-opener js-overlay-opener when-scrolled">
+		<div class="large overlay-opener js-overlay-opener when-scrolled">
 			<i class="fa fa-search"></i>
 		</div>
 		<div class="modal-wrapper hide">

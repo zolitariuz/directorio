@@ -10,12 +10,12 @@
 		<section class="busqueda clearfix">
 			<h2 class="text-center">Busca tu trámite o servicio</h2>
 			<form class="main-search hero clearfix main-search-home" action="#">
-				<input type="search" class="span xmall-11">
+				<input type="search" class="span large-11 full">
 				<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
-				<button type="submit" class="span xmall-1"><i class="fa fa-search"></i></button>
+				<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
 			</form>
-			<h3 class="text-center">O ve trámites y servicios por:</h3>
-			<div class="columna xmall-8 center">
+			<h3 class="text-center large">O ve trámites y servicios por:</h3>
+			<div class="columna large large-8 center">
 				<a href="<?php echo base_url().'index.php/instituciones' ?>" class="block boton vertical columna xmall-6">
 					<i class="icon-ts-icon-fill-institucion"></i>
 					Institución
@@ -29,10 +29,10 @@
 		<div class="clear"></div>
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
-		<section class="mas-comunes clearfix">
+		<section class="mas-comunes clearfix transform">
 			<?php if ($nombres_ts_comunes != '') { ?>
 				<h2 class="text-center highlight">Trámites y servicios más solicitados</h2>
-				<div class="masonry-container">
+				<div class="masonry-container modal-to-be">
 					<?php foreach ($nombres_ts_comunes as $key => $value) {
 						$tramite = $value->nombre_ts;
 						$idTS = $value->id_tramite_servicio;
@@ -44,10 +44,10 @@
 				</div>
 			<?php } ?>
 		</section>
-		<div class="clear"></div>
-		<hr class="columna xmall-6 center">
-		<div class="clear"></div>
-		<section class="categorias clearfix">
+		<div class="clear large"></div>
+		<hr class="columna large xmall-6 center">
+		<div class="clear large"></div>
+		<section class="categorias clearfix transform">
 			<h2 class="text-center highlight">Temas</h2>
 			<div class="slider clearfix cycle-slideshow"
 					data-cycle-slides=".slide"
@@ -217,12 +217,10 @@
 				<div class="cycle-pager"></div>
 			</div>
 		</section>
-
-		<div class="clear"></div>
-		<hr class="columna xmall-6 center">
-		<div class="clear"></div>
-
-		<section class="anuncios clearfix">
+		<div class="clear large"></div>
+		<hr class="columna large large-6 center">
+		<div class=" large"></div>
+		<section class="anuncios clearfix large">
 			<h2 class="text-center highlight">Anuncios</h2>
 			<div class="slider clearfix cycle-slideshow"
 				data-cycle-slides=".slide"
@@ -255,23 +253,27 @@
     			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
 			</div>
 		</section>
-		<div class="clear"></div>
 		<?php  if(!is_null($pregunta['pregunta'])){ ?>
+			<div class="clear"></div>
 			<hr class="columna xmall-6 center">
 			<div class="clear"></div>
 			<section class="pregunta clearfix">
+<<<<<<< HEAD
+				<h2 class="text-center highlight">Nos interesa tu opinión</h2>
+=======
 				<h2 class="text-center highlight">Pregunta</h2>
+>>>>>>> 31bc275e14720800f1a8199574fa00f53ebc0d18
 				<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
-				<div class="columna xmall-5 center clearfix">
+				<div class="columna full large-5 center clearfix">
 					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
 					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
 				</div>
 			</section>
 		<?php } ?>
-		<div class="clear"></div>
-		<hr class="columna xmall-6 center">
-		<div class="clear"></div>
-		<section class="links clearfix">
+		<div class="clear large"></div>
+		<hr class="columna large large-6 center">
+		<div class="large"></div>
+		<section class="links clearfix large">
 			<div class="columna xmall-6">
 				<a href="#" class="block columna xmall-8 center">
 					<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
