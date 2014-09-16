@@ -558,15 +558,147 @@ function muestraReporteTS(id_ts, ts, base_url){
 	var jsonReporte = {};
 	jsonReporte['id_ts'] = id_ts;
 
+	escondeReportes();
+
 	$.post(
 		base_url + "index.php/gestor_contenidos/muestra_reporte_ts",
 		jsonReporte,
 		function(response){
 			var respuesta = $.parseJSON(response);
-			console.log(respuesta);
+			var visitas_ar;
+			var feedback_ar;
+
+			// parte la respuesta en visitas y feedback
+			$.each(respuesta, function(i, val) {
+				if(i == 'visitas')
+					visitas_ar = val;
+				else
+					feedback_ar = val;
+			});
+
+			// guarda fechas y visitas
+			var meses = [];
+			var visitas = [];
+			var visitas_totales = 0;
+			$.each(visitas_ar, function(i, val){
+				fecha_ar = val.fecha.split('-');
+				ano = fecha_ar[0];
+				mes = dameMes(fecha_ar[1]);
+
+				meses.push(mes + ' ' + ano);
+				visitas.push(val.num_visitas);
+
+				visitas_totales = visitas_totales + parseInt(val.num_visitas);
+			});
+
+			// guarda feedback
+			var num_comentarios = 0; 
+			var calificaciones = 0;
+			var promedio_calificacion;
+			$.each(feedback_ar, function(i, val){
+				var util = val.ayuda == 't' ? 'Si' : 'No';
+				var fila = '<div class="fila"> \
+								<div class="columna xmall-6"> \
+									' + val.comentarios + '\
+								</div> \
+								<div class="columna xmall-2 text-center"> \
+									' + val.calificacion + '\
+								</div> \
+								<div class="columna xmall-4 text-center"> \
+									' + util + '\
+								</div> \
+							</div>';
+
+				$(fila).appendTo('.feedback .tabla');
+				num_comentarios = num_comentarios + 1;
+				calificaciones = calificaciones + parseInt(val.calificacion)
+			});
+			promedio_calificacion = parseInt(calificaciones) / parseInt(num_comentarios);
+
+			// muestra info y reportes
+			console.log(visitas_totales);
+			if(visitas_totales != 0){
+				$('.visitas-mensuales span').text(visitas_totales);
+				$('.visitas-mensuales').removeClass('hide');
+				$('#chartVisitasMensuales').removeClass('hide');
+				visitasMensuales(visitas,meses);
+			} else{
+				$('.visitas-mensuales').removeClass('hide');
+				$('.visitas-mensuales span').text('Este trámite/servicio no tiene visitas.');
+			}
+			
+			if(num_comentarios != 0){
+				$('.feedback #comentarios span').text(num_comentarios);
+				$('.feedback #promedio span').text(promedio_calificacion);
+				$('.feedback #promedio').removeClass('hide');
+				$('.feedback .tabla').removeClass('hide');
+				$('.feedback').removeClass('hide');
+			} else {
+				$('.feedback #comentarios span').text('Este trámite/servicio no tiene comentarios.');
+				$('.feedback #promedio span').text('-');
+				$('.feedback').removeClass('hide');
+			}
+			
 		}
 	);
+
+	function escondeReportes(){
+		$('.visitas-mensuales').addClass('hide');
+		$('.feedback').addClass('hide');
+		$('.fila').not('.header').remove();
+		$('.feedback .tabla').addClass('hide');
+		$('.feedback #promedio').addClass('hide');
+      	$('#chartVisitasMensuales').addClass('hide');
+
+	}
+
+	function dameMes(num_mes){
+		var mes;
+
+		switch (num_mes){
+			case '01':
+				mes = "Enero"
+				break;
+			case '02':
+				mes = "Febrero"
+				break;
+			case '03':
+				mes = "Marzo"
+				break;
+			case '04':
+				mes = "Abril"
+				break;
+			case '05':
+				mes = "Mayo"
+				break;
+			case '06':
+				mes = "Junio"
+				break;
+			case '07':
+				mes = "Julio"
+				break;
+			case '08':
+				mes = "Agosto"
+				break;
+			case '09':
+				mes = "Septiembre"
+				break;
+			case '10':
+				mes = "Octubre"
+				break;
+			case '11':
+				mes = "Noviembre"
+				break;
+			case '12':
+				mes = "Diciembre"
+				break;
+		}
+		return mes;
+	}// dameMes
+
 }
+
+
 
 function toggleUrlAviso(){
 	$('.crea-aviso input[name="link_aviso"]').change(function(){
@@ -643,7 +775,6 @@ function scrollHeader(selector){
 }//scrollHeader
 
 function numRespuestasSiNo(si, no){
-	console.log('chart');
 	var data = {
 		labels: ['Si', 'No'],
 		datasets: [
@@ -682,6 +813,26 @@ function porcentajeRespuestasSiNo(si, no){
 	];
 	var ctx = $('#donaRespuestas').get(0).getContext('2d');
 	new Chart(ctx).Doughnut(data);
+}
+
+function visitasMensuales(visitas, meses){
+	var data = {
+	    labels: meses,
+	    datasets: [
+	        {
+	            label: "Respuestas",
+	            fillColor: "rgba(236, 35, 131, 0.5)",
+	            strokeColor: "rgba(236, 35, 131, 1)",
+	            pointColor: "rgba(162, 43, 56, 1)",
+	            pointStrokeColor: "#fff",
+	            pointHighlightFill: "#fff",
+	            pointHighlightStroke: "rgba(162, 43, 56, 1)",
+	            data: visitas
+	        }
+	    ]
+	};
+	var ctx = $('#chartVisitasMensuales').get(0).getContext('2d');
+	new Chart(ctx).Bar(data);
 }
 
 

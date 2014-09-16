@@ -28,7 +28,6 @@
 							echo '</div>';
 						} // end foreach
 					?>
-
 				</div>
 			</section>
 
