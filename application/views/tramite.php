@@ -132,7 +132,7 @@
 					</form>
 				</article>
 				<hr>
-				<article>
+				<article class="compartelo">
 					<h2 class="highlight">Compártelo</h2>
 					<div class="share block columna xmall-2">
 						<a href="https://twitter.com/share" class="twitter-share-button" data-via="zolitariuz">Tweet</a>

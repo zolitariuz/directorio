@@ -853,6 +853,65 @@ body.cms{
 	//========================//
 }
 
+@media print {
+	header, footer, nav, .feedback, .compartelo { display: none !important; }
+
+	/*** SINGLE ***/
+	.header-single{ margin-bottom: @margen;
+		h2{ .font(1.4em); }
+		.quick-info{ margin: 0 0 @margen 0;
+			p{ margin: 0; font-style: italic; }
+		}
+	}
+
+	aside{
+		hr{ margin-bottom: (@margen*2); }
+		.boton{ display: none !important; }
+	}
+
+	.quick-info{ margin-bottom: (@margen*2);
+		h3{ margin-bottom: (@margen/2); .font(1.4em, 1.4em); }
+		i{ color: @highlight; font-size: 1em; }
+		p{ margin: 0; color: @obscuro; font-size: 1.2em; }
+		.tabla-precio{ width: 100%; margin-top: (@margen/2); padding: (@margen/2); background: lighten(@obscuro, 40%);
+			.costo{ padding: (@margen/4) 0; border-bottom: 1px solid @obscuro;
+				&:first-child{ padding-top: 0; }
+				&:last-child{ padding-bottom: 0; border-bottom: 0; }
+			}
+			.numero-costo{
+				p{ text-align: center; .font(2em, 2.1em); }
+			}
+			p{ color: @obscuro; .font(0.9em, 1.2em, 400); }
+		}
+		.formatos{
+			>div:last-child{ margin-bottom: 0 !important; }
+		}
+	}
+
+	//Map
+	#map { width:100%; height: 400px; }
+
+	//Contenido
+	.content{
+		h2{ .font(1.4em); }
+		ul, p{ margin-left: 55px; .font(1.2em, 1.5em); color: @obscuro; }
+		p{
+			&.hero{ margin-left: 0; .font(1em, 1.4em); }
+			&.highlight{ margin-bottom: 0; }
+			strong{ .font(1.3em, 1.5em, 600); }
+
+		}
+	}
+
+	.paso{ margin: 0 0 (@margen*2) 0;
+		&:last-child{ margin-bottom: 0; }
+		span{ display: block; width: (@margen*2); height: (@margen*2); margin: 0 (@margen/2) 0 0; .font(1.1em, (@margen*2)+2, 600); background: @highlight; color: @claro; text-align: center; position: relative; float: left; .transition; z-index: 2;}
+		p{
+			&:last-child{ margin-bottom: 0; }
+		}
+	}
+}
+
 // jquery UI datepicker
 input.ui-button::-moz-focus-inner,
 button.ui-button::-moz-focus-inner {
