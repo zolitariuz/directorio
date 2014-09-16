@@ -258,11 +258,7 @@
 			<hr class="columna xmall-6 center">
 			<div class="clear"></div>
 			<section class="pregunta clearfix">
-<<<<<<< HEAD
 				<h2 class="text-center highlight">Nos interesa tu opinión</h2>
-=======
-				<h2 class="text-center highlight">Pregunta</h2>
->>>>>>> 31bc275e14720800f1a8199574fa00f53ebc0d18
 				<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
 				<div class="columna full large-5 center clearfix">
 					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>

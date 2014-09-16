@@ -1,7 +1,6 @@
 <?php if(isset($usuario)) { ?>
 
 <div class="main">
-	<a href="<?php echo base_url().'index.php/gestor_contenidos/panel_admin/' ?>" class="margin-bottom">Regresar a panel de administración</a>
 	<div class="width">
 		<div class="full">
 			<section class="busqueda clearfix">
@@ -15,7 +14,7 @@
 			</section><!-- busqueda -->
 			<p class="success hide"></p>
 			<p class="error hide"></p>
-			<section>
+			<section class="clearfix">
 				<div class="tabla-ts columna xmall-12">
 					<div class="fila header">
 						<p class="columna xmall-10 text-center">Nombre de trámite o servicio</p>
@@ -24,22 +23,23 @@
 					<?php 
 					if($nombres_ts_comunes != ''){ 
 					?>
+
 					<?php
 						foreach ($nombres_ts_comunes as $key => $value) {
-							echo '<div class="fila">';
+							echo '<div class="fila clearfix">';
 							echo '<p class="columna xmall-10">'.$value->nombre_ts.'</p>';
 							echo '<a href="" data-ts="'.$value->id_tramite_servicio.'" class="text-center columna xmall-2">Eliminar</a>';
-							echo '</div>';		
+							echo '</div>';
 						} // end foreach
 					}// if nombres_ts_comunes no existe
 
 					?>
-					
+
 				</div>
 			</section>
-			
-			
-			
+
+
+
 		</div>
 	</div>
 </div>
