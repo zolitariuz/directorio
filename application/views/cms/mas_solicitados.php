@@ -17,13 +17,13 @@
 			<p class="error hide"></p>
 			<section>
 				<div class="tabla-ts columna xmall-12">
+					<div class="fila header">
+						<p class="columna xmall-10 text-center">Nombre de trámite o servicio</p>
+						<p class="text-center columna xmall-2">Eliminar</p>
+					</div>
 					<?php 
 					if($nombres_ts_comunes != ''){ 
 					?>
-						<div class="fila header">
-							<p class="columna xmall-10 text-center">Nombre de trámite o servicio</p>
-							<p class="text-center columna xmall-2">Eliminar</p>
-						</div>
 					<?php
 						foreach ($nombres_ts_comunes as $key => $value) {
 							echo '<div class="fila">';
@@ -32,6 +32,7 @@
 							echo '</div>';		
 						} // end foreach
 					}// if nombres_ts_comunes no existe
+
 					?>
 					
 				</div>

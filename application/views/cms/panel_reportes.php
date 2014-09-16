@@ -12,32 +12,28 @@
 					<button type="submit" class="span xmall-1"><i class="fa fa-plus"></i></button>
 				</form>
 			</section><!-- busqueda -->
-			<p class="success hide"></p>
-			<p class="error hide"></p>
-			<section>
-				<div class="tabla-ts columna xmall-12">
-					<?php 
-					if($nombres_ts_comunes != ''){ 
-					?>
-						<div class="fila header">
-							<p class="columna xmall-10 text-center">Nombre de trámite o servicio</p>
-							<p class="text-center columna xmall-2">Eliminar</p>
+			<div class="clear"></div>
+			<section class="columna xmall-6 visitas-mensuales hide">
+				<h4>Visitas totales: <span></span></h4>
+				<canvas id="chartVisitasMensuales"></canvas>
+			</section>
+			<section class="columna xmall-6 feedback hide">
+				<h4 id="comentarios">Comentarios totales: <span></span></h4>
+				<h4 id="promedio">Calificación promedio: <span></span></h4>
+				<div class="columna xmall-12 tabla">
+					<div class="fila header">
+						<div class="columna xmall-6">
+							Comentarios
 						</div>
-					<?php
-						foreach ($nombres_ts_comunes as $key => $value) {
-							echo '<div class="fila">';
-							echo '<p class="columna xmall-10">'.$value->nombre_ts.'</p>';
-							echo '<a href="" data-ts="'.$value->id_tramite_servicio.'" class="text-center columna xmall-2">Eliminar</a>';
-							echo '</div>';		
-						} // end foreach
-					}// if nombres_ts_comunes no existe
-					?>
-					
+						<div class="columna xmall-2">
+							Calificación
+						</div>
+						<div class="columna xmall-4">
+							¿Sirvió la información?
+						</div>
+					</div>
 				</div>
 			</section>
-			
-			
-			
 		</div>
 	</div>
 </div>
