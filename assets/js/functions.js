@@ -477,22 +477,21 @@ function agregarTSSolicitado(id_ts, ts, base_url){
 		function(response){
 			var respuesta = $.parseJSON(response);
 			$('.success, .error').addClass('hide');
-
 			if(respuesta.estatus == 'success'){
-
 				$('.success').text(respuesta.msg);
 				$('.success').removeClass('hide');
-				var fila = '<div class="fila"> \
+				var fila = '<div class="fila clearfix highlight"> \
 								<p class="columna xmall-10">'+ts+'</p> \
 								<a href="" data-ts="'+id_ts+'" class="text-center block columna xmall-2">Eliminar</a> \
 							</div>';
 				$(fila).insertAfter('.tabla-ts .header');
+				setTimeout(function(){
+					$('.fila').removeClass('highlight');
+				}, 700);
 			} else {
 				$('.error').text(respuesta.msg);
 				$('.error').removeClass('hide');
 			}
-
-
 		}
 	);
 }

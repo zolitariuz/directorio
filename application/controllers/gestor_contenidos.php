@@ -28,7 +28,7 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id);
 
-		// Cargar vista login 
+		// Cargar vista login
 		$this->load->view('cms/header', $data);
 		$this->load->view('cms/panel_admin', $data);
 		$this->load->view('cms/footer', $data);
@@ -36,7 +36,7 @@ class Gestor_contenidos extends CI_Controller {
 	} // panel_admin
 
 	function login(){
-		
+
 		// recibe credenciales
 		$usuario = $_POST['usuario'];
 		$password = $_POST['password'];
@@ -57,11 +57,11 @@ class Gestor_contenidos extends CI_Controller {
 			$_SESSION['id_usuario'] =  $data['usuario']['id_usuario'];
 			$_SESSION['usuario'] =  $data['usuario']['usuario'];
 			$_SESSION['is_admin'] =  $data['usuario']['is_admin'];
-			
+
 			$this->load->view('cms/header', $data);
 			$this->load->view('cms/panel_admin', $data);
 		}
-		
+
 		$this->load->view('cms/footer', $data);
 
 	}// login
@@ -164,7 +164,7 @@ class Gestor_contenidos extends CI_Controller {
 			$tipo = 'link';
 		}
 
-		// usuario que agrega el aviso 
+		// usuario que agrega el aviso
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
 
@@ -187,14 +187,14 @@ class Gestor_contenidos extends CI_Controller {
 	/**
 	 * Descripción: Editar un aviso existente
 	 * @param integer $id_aviso
-	 * @return nada	
+	 * @return nada
 	 */
 	function editar_aviso($id_aviso){
 		// datos usuario
 		session_start();
 		$id_usuario = $_SESSION['id_usuario'];
 
-		// carga modelo 
+		// carga modelo
 		$this->load->model('aviso');
 
 		// ¿se está editando el aviso?
@@ -206,19 +206,19 @@ class Gestor_contenidos extends CI_Controller {
 			$fecha_final = $_POST['fecha_final'];
 			if ($_POST['activo'] == 'on')
 				$activo = 't';
-			else 
+			else
 				$activo = 'f';
 
 			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo, $fecha_inicial,$fecha_final, $activo);
 			$data['success'] = '¡Aviso actualizado!';
-		} 
+		}
 
 		// busca aviso
 		$data['aviso'] = $this->aviso->dame_aviso($id_aviso);
 
 		// seccion actual
 		$data['seccion'] = 'Editar aviso';
-		
+
 		// Carga vista con información del aviso
 		$this->load->view('cms/header', $data);
 		$this->load->view('cms/editar_aviso', $data);
@@ -228,18 +228,18 @@ class Gestor_contenidos extends CI_Controller {
 	/**
 	 * Descripción: Eliminar un aviso existente
 	 * @param integer $id_aviso
-	 * @return nada	
+	 * @return nada
 	 */
 	function eliminar_aviso($id_aviso){
 		// datos usuario
 		session_start();
 		$id_usuario = $_SESSION['id_usuario'];
 
-		// usuario que elimina el aviso 
+		// usuario que elimina el aviso
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
 
-		// carga modelo 
+		// carga modelo
 		$this->load->model('aviso');
 		// elimina aviso
 		$this->aviso->elimina_aviso($id_aviso);
@@ -280,7 +280,7 @@ class Gestor_contenidos extends CI_Controller {
 	/**
 	 * Descripción: Editar una pregunta existente
 	 * @param integer $id_pregunta
-	 * @return nada	
+	 * @return nada
 	 */
 	function editar_pregunta($id_pregunta){
 		// datos usuario
@@ -297,17 +297,17 @@ class Gestor_contenidos extends CI_Controller {
 			$fecha_final = $_POST['fecha_final'];
 			if ($_POST['activo'] == 'on')
 				$activo = 't';
-			else 
+			else
 				$activo = 'f';
 
 			$this->pregunta->actualiza_pregunta($id_pregunta, $pregunta, $fecha_inicial, $fecha_final, $activo);
 			$data['success'] = '¡Pregunta actualizada!';
-		} 
+		}
 		$data['pregunta'] = $this->pregunta->dame_pregunta($id_pregunta);
 
 		// seccion actual
 		$data['seccion'] = 'Editar pregunta';
-		
+
 		// Carga vista con información de la pregunta
 		$this->load->view('cms/header');
 		$this->load->view('cms/editar_pregunta', $data);
@@ -317,18 +317,18 @@ class Gestor_contenidos extends CI_Controller {
 	/**
 	 * Descripción: Eliminar una pregunta existente
 	 * @param integer $id_pregunta
-	 * @return nada	
+	 * @return nada
 	 */
 	function eliminar_pregunta($id_pregunta){
 		// datos usuario
 		session_start();
 		$id_usuario = $_SESSION['id_usuario'];
 
-		// usuario que elimina el pregunta 
+		// usuario que elimina el pregunta
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
 
-		// carga modelo 
+		// carga modelo
 		$this->load->model('pregunta');
 		// elimina pregunta
 		$this->pregunta->elimina_pregunta($id_pregunta);
@@ -344,7 +344,7 @@ class Gestor_contenidos extends CI_Controller {
 
 		// ruta para guardar archivos de slider
 		$config['upload_path'] = '../directorio/assets/img/anuncios';
-		
+
 		// limitaciones de archivo a subir
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '500';
@@ -363,13 +363,13 @@ class Gestor_contenidos extends CI_Controller {
 
 		$data['seccion'] = 'Agregar contenido';
 
-		// usuario que agrega el aviso 
+		// usuario que agrega el aviso
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
 
-		// sube archivos 
+		// sube archivos
 		$this->load->library('upload', $config);
-		$this->upload->initialize($config); 		
+		$this->upload->initialize($config);
 		if ( ! $this->upload->do_upload())
 		{
 			// No se pudo subir el archivo, manda errores a la vista
@@ -401,7 +401,7 @@ class Gestor_contenidos extends CI_Controller {
 	/**
 	 * Descripción: Editar un anuncio existente
 	 * @param integer $id_anuncio
-	 * @return nada	
+	 * @return nada
 	 */
 	function editar_anuncio($id_anuncio){
 		// datos usuario
@@ -430,23 +430,23 @@ class Gestor_contenidos extends CI_Controller {
 			}
 			if ($_POST['activo'] == 'on')
 				$activo = 't';
-			else 
+			else
 				$activo = 'f';
 
 			// ¿hay que volver a subir la imagen?
 			if($cambiar_img == 'on'){
 				// ruta para guardar archivos de slider
 				$config['upload_path'] = '../directorio/assets/img/anuncios';
-				
+
 				// limitaciones de archivo a subir
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']	= '500';
 				$config['max_width']  = '1024';
 				$config['max_height']  = '768';
 
-				// sube archivos 
+				// sube archivos
 				$this->load->library('upload', $config);
-				$this->upload->initialize($config); 
+				$this->upload->initialize($config);
 
 				if ( ! $this->upload->do_upload())
 				{
@@ -461,8 +461,8 @@ class Gestor_contenidos extends CI_Controller {
 					// url relativa de la imagen
 					$img_url_arr = explode('directorio/', $data['upload']['full_path']);
 					$img_url = $img_url_arr[1];
-				}// if 
-			}// if 
+				}// if
+			}// if
 
 			// inserta anuncio a bd
 			$this->load->model('anuncio');
@@ -471,14 +471,14 @@ class Gestor_contenidos extends CI_Controller {
 			} else {
 				$data['error'] = 'No se pudo actualizar el anuncio.';
 			} // if upload con éxito
-					
+
 		}// if POST
 
 		$data['anuncio'] = $this->anuncio->dame_anuncio($id_anuncio);
-		
+
 		// sección actual
 		$data['seccion'] = 'Editar anuncio';
-		
+
 		// Carga vista con información del anuncio
 		$this->load->view('cms/header', $data);
 		$this->load->view('cms/editar_anuncio', $data);
@@ -488,18 +488,18 @@ class Gestor_contenidos extends CI_Controller {
 	/**
 	 * Descripción: Eliminar un anuncio existente
 	 * @param integer $id_anuncio
-	 * @return nada	
+	 * @return nada
 	 */
 	function eliminar_anuncio($id_anuncio){
 		// datos usuario
 		session_start();
 		$id_usuario = $_SESSION['id_usuario'];
 
-		// usuario que elimina el anuncio 
+		// usuario que elimina el anuncio
 		$this->load->model('usuario');
 		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
 
-		// carga modelo 
+		// carga modelo
 		$this->load->model('anuncio');
 		// elimina anuncio
 		$this->anuncio->elimina_anuncio($id_anuncio);
@@ -510,8 +510,8 @@ class Gestor_contenidos extends CI_Controller {
 
 	/**
 	 * Descripción: Método para trámites y servicios mas solicitados
-	 * @param 
-	 * @return 	
+	 * @param
+	 * @return
 	 */
 	function mas_solicitados(){
 		// datos usuario
@@ -543,11 +543,11 @@ class Gestor_contenidos extends CI_Controller {
 		else
 			$data['nombres_ts_comunes'] = json_decode($nombres_ts_comunes);
 
-		// Omitir de la búsqueda avanzada los trámites y servicios 
+		// Omitir de la búsqueda avanzada los trámites y servicios
 		// que ya existen entre los mas comunes para evitar duplicados
 		$ts_a_omitir = array();
 		foreach ($data['nombres_ts_comunes'] as $key => $value) {
-			$ts_a_omitir[$key] = $value->id_tramite_servicio; 
+			$ts_a_omitir[$key] = $value->id_tramite_servicio;
 		}
 		$data['ts_a_omitir'] = json_encode($ts_a_omitir);
 
@@ -560,15 +560,15 @@ class Gestor_contenidos extends CI_Controller {
 
 	/**
 	 * Descripción: Agregar trámite/servicio mas solicitado
-	 * @param 
-	 * @return 	
+	 * @param
+	 * @return
 	 */
 	function agregar_ts_solicitado(){
 		// respuesta JSON para AJAX
 		$respuesta = array();
 		$id_ts = $_POST['id_ts'];
 
-		// carga modelo 
+		// carga modelo
 		$this->load->model('ts_comun');
 		// Revisar si hay mas de 15 trámites/servicios
 		$total =  $this->ts_comun->total_ts_comunes();
@@ -578,7 +578,7 @@ class Gestor_contenidos extends CI_Controller {
 		} else {
 			$this->ts_comun->agrega_ts_comun($id_ts, 't');
 			$respuesta['estatus'] = 'success';
-			$respuesta['msg'] = '¡Se agregó el trámite/servicio con éxito!';
+			#$respuesta['msg'] = '¡Se agregó el trámite/servicio con éxito!';
 		}
 
 		$this->output->set_output(json_encode($respuesta));
@@ -586,19 +586,19 @@ class Gestor_contenidos extends CI_Controller {
 
 	/**
 	 * Descripción: Agregar trámite/servicio mas solicitado
-	 * @param 
-	 * @return 	
+	 * @param
+	 * @return
 	 */
 	function eliminar_ts_solicitado(){
 		// respuesta JSON para AJAX
 		$respuesta = array();
 		$id_ts = $_POST['id_ts'];
 
-		// carga modelo 
+		// carga modelo
 		$this->load->model('ts_comun');
 		// Eliminar trámite servicio común
 		$this->ts_comun->elimina_ts_comun($id_ts);
-		$respuesta['msg'] = 'Trámite/servicio eliminado.';
+		#$respuesta['msg'] = 'Trámite/servicio eliminado.';
 
 		$this->output->set_output(json_encode($respuesta));
 	}// eliminar_ts_solicitado
@@ -606,7 +606,7 @@ class Gestor_contenidos extends CI_Controller {
 	/**
 	 * Descripción: Ver respuestas de pregutnas
 	 * @param integer $id_pregunta
-	 * @return 	
+	 * @return
 	 */
 	function ver_respuestas($id_pregunta){
 		// carga pregunta
@@ -622,7 +622,7 @@ class Gestor_contenidos extends CI_Controller {
 		$num_si = 0;
 		$num_no = 0;
 		foreach ($respuestas as $key => $value) {
-			$num_respuestas = $num_respuestas + 1; 
+			$num_respuestas = $num_respuestas + 1;
 			if($value['respuesta'] == 't')
 				$num_si = $num_si + 1;
 			else
@@ -647,8 +647,8 @@ class Gestor_contenidos extends CI_Controller {
 
 	/**
 	 * Descripción: Muestra panel de reportes
-	 * @param 
-	 * @return 
+	 * @param
+	 * @return
 	 */
 	function panel_reportes(){
 		// datos usuario
@@ -679,8 +679,8 @@ class Gestor_contenidos extends CI_Controller {
 
 	/**
 	 * Descripción: Muestra reporte de trámite o servicio
-	 * @param 
-	 * @return 	
+	 * @param
+	 * @return
 	 */
 	function muestra_reporte_ts(){
 		// respuesta JSON para AJAX

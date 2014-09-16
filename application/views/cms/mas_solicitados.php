@@ -16,13 +16,10 @@
 			<p class="error hide"></p>
 			<section class="clearfix">
 				<div class="tabla-ts columna xmall-12">
-					<?php
-					if($nombres_ts_comunes != ''){
-					?>
-						<div class="fila header clearfix">
-							<p class="columna xmall-10 text-center">Nombre de trámite o servicio</p>
-							<p class="text-center columna xmall-2">Eliminar</p>
-						</div>
+					<div class="fila header clearfix">
+						<p class="columna xmall-10 text-center">Nombre de trámite o servicio</p>
+						<p class="text-center columna xmall-2">Eliminar</p>
+					</div>
 					<?php
 						foreach ($nombres_ts_comunes as $key => $value) {
 							echo '<div class="fila clearfix">';
@@ -30,7 +27,6 @@
 							echo '<a href="" data-ts="'.$value->id_tramite_servicio.'" class="text-center columna xmall-2">Eliminar</a>';
 							echo '</div>';
 						} // end foreach
-					}// if nombres_ts_comunes no existe
 					?>
 
 				</div>
