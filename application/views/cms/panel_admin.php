@@ -25,9 +25,9 @@
 				Trámites y servicios mas solicitados
 			</a>
 			<div class="clear"></div>
-			<a href="<?php echo base_url().'index.php/gestor_contenidos/ver_contenido/'?>" class="block boton vertical columna xmall-6 margin-bottom">
+			<a href="<?php echo base_url().'index.php/gestor_contenidos/panel_reportes/'?>" class="block boton vertical columna xmall-6 margin-bottom">
 				<i class="icon-ts-icon-fill-reportes"></i>
-				Reportes
+				Reportes de trámites/servicios 
 			</a>
 		</div>
 	</div>

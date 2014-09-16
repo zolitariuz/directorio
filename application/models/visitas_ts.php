@@ -39,12 +39,35 @@ class Visitas_ts extends CI_Model {
 	}// agrega_num_visita
 
 	/**
+	 * Descripción: Regresa el número de visitas de un trámite
+	 * @param integer $id_tramite_servicio
+	 * @return mixed $visitas
+	 */
+	public function dame_visitas($id_tramite_servicio){
+		$query = $this->db->get_where('visitas_ts', array('id_tramite_servicio' => $id_tramite_servicio));
+		$visitas = array();
+
+		if($query->num_rows() > 0){
+			foreach ($query->result() as $key => $row)
+			{
+			    $visitas[$key] = array(
+			    	'id_tramite_servicio'	=> $row->id_tramite_servicio,
+			    	'fecha' 				=> $row->fecha,
+			    	'num_visitas' 		=> $row->num_visitas,
+			    	);
+			}
+			return $visitas;
+		} else
+			return 0;
+	}// dame_visitas
+
+	/**
 	 * Descripción: Revisa si existe registro de trámite/servicio 
 	 * en el mes actual.
 	 * @param integer $id_tramite_servicio, date $fecha
 	 * @return mixed $visitas
 	 */
-	public function existeVisitaMes($id_tramite_servicio, $fecha){
+	private function existeVisitaMes($id_tramite_servicio, $fecha){
 		$visitas = 0;
 		// Parte la fecha para obtener mes y año
 		$fecha_ar = explode('-', $fecha);

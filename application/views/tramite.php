@@ -107,11 +107,11 @@
 				<hr>
 				<article>
 					<h2 class="highlight">Danos tu opinión</h2>
-					<form class="feedback" action="#">
+					<form class="feedback" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
 						<fieldset>
 							<label>¿Te ha sido de ayuda?</label>
-							<input name="ayuda" type="radio"> Sí
-							<input name="ayuda" type="radio"> No
+							<input name="ayuda" type="radio" value="t"> Sí
+							<input name="ayuda" type="radio" value="f"> No
 						</fieldset>
 						<fieldset>
 							<label>¿Qué tanto?</label>
@@ -123,8 +123,9 @@
 						</fieldset>
 						<fieldset>
 							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
-							<textarea name="" id="" rows="8"></textarea>
+							<textarea name="comentarios" rows="8"></textarea>
 						</fieldset>
+						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
 						<input type="submit" class="boton chico horizontal right" value="Enviar">
 					</form>
 				</article>

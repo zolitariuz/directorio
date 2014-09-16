@@ -6,6 +6,12 @@ class Pregunta extends CI_Model {
 		$this->load->database();
 	}
 
+	/**
+	 * Descripción: Agrega pregunta a la base de datos
+	 * @param string $pregunta, integer $id_usuario, date $fecha_inicial, 
+	 * date $fecha_final, char $activo
+	 * @return boolean
+	 */
 	public function agrega_pregunta($pregunta, $id_usuario, $fecha_inicial, $fecha_final, $activo){
 		$data = array(
 		   'id_usuario' 	=> $id_usuario,
@@ -25,7 +31,7 @@ class Pregunta extends CI_Model {
 	/**
 	 * Descripción: Eliminar una pregunta de la base de datos
 	 * @param integer $id_pregunta
-	 * @return nada	
+	 * @return 	
 	 */
 	public function elimina_pregunta($id_pregunta){
 		$this->db->where('id_pregunta', $id_pregunta);

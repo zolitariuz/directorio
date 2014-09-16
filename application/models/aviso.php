@@ -8,15 +8,16 @@ class Aviso extends CI_Model {
 
 	/**
 	 * Descripción: Agrega un aviso a la base de datos
-	 * @param string $id_aviso, string $url, string $tipo, integer $id_usuario
-	 * @return true	o false
+	 * @param string $aviso, string $tipo, integer $id_usuario, 
+	 * date $fecha_inicial, date $fecha_inicial, string $activo, 
+	 * @return true	o false 
 	 */
 	public function agrega_aviso($aviso, $url, $tipo, $id_usuario, $fecha_inicial, $fecha_final, $activo){
 		$data = array(
 		   'id_usuario' 	=> $id_usuario,
 		   'contenido' 		=> $aviso,
-		   'tipo_contenido' => 	$tipo,
-		   'url' 			=> 	$url,
+		   'tipo_contenido' => $tipo,
+		   'url' 			=> $url,
 		   'fecha_inicial'	=> $fecha_inicial,
 		   'fecha_final'	=> $fecha_final,
 		   'is_activo'		=> $activo

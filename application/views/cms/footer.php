@@ -42,6 +42,9 @@
 			Chart.defaults.global.responsive = true;
 			numRespuestasSiNo('<?php echo $num_si ?>', '<?php echo $num_no ?>');
 			porcentajeRespuestasSiNo('<?php echo $si_porcentaje ?>', '<?php echo $no_porcentaje ?>');
+		<?php } else if ($seccion == 'Panel reportes') {  ?>
+			//Chart.defaults.global.responsive = true;
+			agregarTSReportes('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
 		<?php } ?>
 
 		<?php if($nombres_ts != '') { ?>

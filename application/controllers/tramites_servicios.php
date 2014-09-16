@@ -116,8 +116,8 @@ class Tramites_servicios extends CI_Controller {
 	/**
 	 * Descripción: Busca datos de áreas de atención pertenecientes a un
 	 *              trámite o servicio
-	 * Input:		$area_atencion - arreglo con info de áreas de atención
-	 * Output:		$areas_atencion_json - JSON con info de áreas de atención
+	 * @param mixed array $area_atencion 
+	 * @return json $areas_atencion_json
 	 */
 	private function dameAreasAtencion($area_atencion){
 		$areas_atencion_json = array();
@@ -137,8 +137,8 @@ class Tramites_servicios extends CI_Controller {
 
 	/**
 	 * Descripción: Le da tratamiento a la cadena de documentos
-	 * Input:		$docs - arreglo con info de documentos
-	 * Output:		$documentos - arreglo con info de documentos formateada
+	 * @param mixed array $docs 
+	 * @return mixed array $documentos
 	 */
 	private function dameDocumentos($docs){
 		$documentos = array();
@@ -226,5 +226,26 @@ class Tramites_servicios extends CI_Controller {
 		return $documentos;
 	} // dameDocumentos
 
-	
+	/**
+	 * Descripción: Agrega feedback sobre un trámite/servicio
+	 * @param 
+	 * @return 
+	 */
+	public function agregar_feedback(){
+		// Carga modelo
+		$this->load->model('feedback');
+
+		// Datos a insertar
+		$id_tramite_servicio = $_POST['id_ts'];
+		$ayuda = $_POST['ayuda'];
+		$comentarios = $_POST['comentarios'];
+		$calificacion = 5;
+
+		$this->feedback->agrega_feedback($id_tramite_servicio, $comentarios, $calificacion, $ayuda);
+
+		// Carga trámite/servicio
+		$this->muestraInfo($id_tramite_servicio);
+	} // dameAreasAtencion
+
+
 }// class Tramites_servicios

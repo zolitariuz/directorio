@@ -645,4 +645,62 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->view('cms/footer', $data);
 	}// eliminar_ts_solicitado
 
+	/**
+	 * Descripción: Muestra panel de reportes
+	 * @param 
+	 * @return 
+	 */
+	function panel_reportes(){
+		// datos usuario
+		session_start();
+		$id_usuario = $_SESSION['id_usuario'];
+		$this->load->model('usuario');
+		$data['usuario'] = $this->usuario->dame_usuario($id_usuario);
+
+		// Variable de conexión a web services
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
+		// Carga nombre y id de todos los trámites y servicios
+		// para la función de autocompletar
+		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
+		if(is_null($nombres_ts))
+			$data['nombres_ts'] = '';
+		else
+			$data['nombres_ts'] = $nombres_ts;
+
+		// sección actual
+		$data['seccion'] = 'Panel reportes';
+
+		// Carga vista de login o index en caso de credenciales correctas
+		$this->load->view('cms/header', $data);
+		$this->load->view('cms/panel_reportes', $data);
+		$this->load->view('cms/footer', $data);
+	}// panel_reportes
+
+	/**
+	 * Descripción: Muestra reporte de trámite o servicio
+	 * @param 
+	 * @return 	
+	 */
+	function muestra_reporte_ts(){
+		// respuesta JSON para AJAX
+		$respuesta = array();
+		$visitas = array();
+		$id_ts = $_POST['id_ts'];
+
+		// carga consultas
+		$this->load->model('visitas_ts');
+		$visitas = $this->visitas_ts->dame_visitas($id_ts);
+
+		// carga feedback
+		$this->load->model('feedback');
+		$feedback = $this->feedback->dame_feedback($id_ts);
+
+		// JSON de respuesta
+		$respuesta['visitas'] = $visitas;
+		$respuesta['feedback'] = $feedback;
+
+		$this->output->set_output(json_encode($respuesta));
+	}// muestra_reporte_ts
+
 }// Gestor_contenidos
