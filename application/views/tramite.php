@@ -1,7 +1,7 @@
 <div class="main">
 	<div class="width clearfix">
 		<div class="main-content clearfix">
-			<section class="content columna xmall-9">
+			<section class="content columna medium-8 large-9">
 				<article class="header-single clearfix">
 					<div class="quick-info">
 						<p><i class="fa fa-asterisk"></i> <?php echo $ts->materia ?></p>
@@ -107,19 +107,21 @@
 				<hr>
 				<article>
 					<h2 class="highlight">Danos tu opinión</h2>
-					<form class="feedback" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
+					<form class="feedback clearfix" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
 						<fieldset>
 							<label>¿Te ha sido de ayuda?</label>
 							<input name="ayuda" type="radio" value="t"> Sí
 							<input name="ayuda" type="radio" value="f"> No
 						</fieldset>
-						<fieldset>
+						<fieldset class="rating-f">
 							<label>¿Qué tanto?</label>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star-half-o"></i>
-							<i class="fa fa-star-o"></i>
-							<i class="fa fa-star-o"></i>
+				            <select id="example-f" name="rating">
+				                <option value="1">1</option>
+				                <option value="2">2</option>
+				                <option value="3">3</option>
+				                <option value="4">4</option>
+				                <option value="5">5</option>
+				            </select>
 						</fieldset>
 						<fieldset>
 							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
@@ -140,7 +142,7 @@
 					</div><!-- share -->
 				</article>
 			</section><!-- content -->
-			<aside class="columna xmall-3">
+			<aside class="columna medium-4 large-3">
 				<a href="#" class="block boton horizontal margin-bottom busqueda js-overlay-opener">
 					<i class="fa fa-search"></i> Busca tu trámite
 				</a>

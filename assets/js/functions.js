@@ -41,7 +41,7 @@
 		});
 
 		//Modals
-		$('body').on('click', '.transform .boton', function(){
+		$('body').on('click', '.transform h2.boton', function(){
 			abrirModal( $(this) );
 		});
 
@@ -68,6 +68,8 @@
 			backToTop();
 		});
 
+		//Rating
+		$('#example-f').barrating({ showSelectedRating:false });
 
 
 
@@ -82,13 +84,27 @@
 			abrirMenu( $(this), $('nav') );
 		});
 
+		//Large
 		mediaCheck({
-			media: '(min-width: 1025px)',
+			media: '(min-width: 64.063em)',
 			entry: function() {
-				mayorQueLarge();
+				//mayorQueLarge();
 			},
 			exit: function() {
-				menorQueLarge();
+				//menorQueLarge();
+			},
+			both: function() {
+			}
+		});
+
+		//Medium
+		mediaCheck({
+			media: '(min-width: 40.063em)',
+			entry: function() {
+				mayorQueMedium();
+			},
+			exit: function() {
+				menorQueMedium();
 			},
 			both: function() {
 			}
@@ -176,12 +192,12 @@
 		})
 	}
 
-	function mayorQueLarge(){
+	function mayorQueMedium(){
 		undoH2ABotones();
 		callMasonry();
 	}
 
-	function menorQueLarge(){
+	function menorQueMedium(){
 		h2ABotones();
 		destroyMasonry();
 	}
@@ -225,16 +241,20 @@
 	}
 
 	function callMasonry(){
-		var container = $('.masonry-container');
-    	var msnry = new Masonry( container[0], {
-    		itemSelector: '.item'
-    	});
+		if ( $('.masonry-container').length > 0 ){
+			var container = $('.masonry-container');
+			var msnry = new Masonry( container[0], {
+				itemSelector: '.item'
+			});
+		}
 	}
 
 	function destroyMasonry(){
-		var container = $('.masonry-container');
-		var msnry = new Masonry( container[0] );
-		msnry.destroy();
+		if ( $('.masonry-container').length > 0 ){
+			var container = $('.masonry-container');
+			var msnry = new Masonry( container[0] );
+			msnry.destroy();
+		}
 	}
 
 	function scrollTop(elemento){
@@ -291,82 +311,82 @@ function creaMapa(mapas){
 	});
 
 	// Crea Mapa
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 20,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      streetViewControl: false,
-      panControl: false,
-      scrollwheel: false,
-      zoomControlOptions: {
-         position: google.maps.ControlPosition.LEFT_BOTTOM
-      }
-    });
+	var map = new google.maps.Map(document.getElementById('map'), {
+	  zoom: 20,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP,
+	  mapTypeControl: false,
+	  streetViewControl: false,
+	  panControl: false,
+	  scrollwheel: false,
+	  zoomControlOptions: {
+		 position: google.maps.ControlPosition.LEFT_BOTTOM
+	  }
+	});
 
-    var infowindow = new google.maps.InfoWindow({
-      maxWidth: 400
-    });
+	var infowindow = new google.maps.InfoWindow({
+	  maxWidth: 400
+	});
 
-    var marker;
-    var markers = new Array();
+	var marker;
+	var markers = new Array();
 
-    // Agregar marcadores e InfoWindows al mapa
-    for (var i = 0; i < locations.length; i++) {
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map,
-      });
+	// Agregar marcadores e InfoWindows al mapa
+	for (var i = 0; i < locations.length; i++) {
+	  marker = new google.maps.Marker({
+		position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		map: map,
+	  });
 
-      markers.push(marker);
+	  markers.push(marker);
 
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
-    autoCenter();
+	  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+		return function() {
+		  infowindow.setContent(locations[i][0]);
+		  infowindow.open(map, marker);
+		}
+	  })(marker, i));
+	}
+	autoCenter();
 
-    // Autocentrar el mapa dependiendo de los marcadores
-    function autoCenter() {
-      //  Crea un nuevo limite
-      var bounds = new google.maps.LatLngBounds();
-      //  Itera todos los marcadores
-      $.each(markers, function (index, marker) {
-        bounds.extend(marker.position);
-      });
-      //  Mete los límites en el mapa
-      map.fitBounds(bounds);
-    } // autoCenter
+	// Autocentrar el mapa dependiendo de los marcadores
+	function autoCenter() {
+	  //  Crea un nuevo limite
+	  var bounds = new google.maps.LatLngBounds();
+	  //  Itera todos los marcadores
+	  $.each(markers, function (index, marker) {
+		bounds.extend(marker.position);
+	  });
+	  //  Mete los límites en el mapa
+	  map.fitBounds(bounds);
+	} // autoCenter
 
-    // obtiene coordenadas de url de base de datos
-    function dameCoordenadas(url){
-    	var pedazos;
-    	var coordenadas;
+	// obtiene coordenadas de url de base de datos
+	function dameCoordenadas(url){
+		var pedazos;
+		var coordenadas;
 
-    	if(typeof url !== null) {
-    		if(url.indexOf('mapa:')>-1){
-	    		pedazos = url.split('mapa:');
-	    		coordenadas = pedazos[1] + ',' + pedazos[2];
+		if(typeof url !== null) {
+			if(url.indexOf('mapa:')>-1){
+				pedazos = url.split('mapa:');
+				coordenadas = pedazos[1] + ',' + pedazos[2];
 
-	    	} else {
-	    		pedazos = url.split('&');
+			} else {
+				pedazos = url.split('&');
 
-		    	$.each(pedazos, function(i, val){
-		    		if(val.indexOf('sll=')>-1){
-		    			coordenadas = val.replace('sll=', '');
+				$.each(pedazos, function(i, val){
+					if(val.indexOf('sll=')>-1){
+						coordenadas = val.replace('sll=', '');
 
-		    		}
-		    	});
-	    	}
-    	}
+					}
+				});
+			}
+		}
 
-    	if(typeof coordenadas === 'undefined')
-    		return -1
-    	else
-    		return coordenadas;
-    } // dameCoordenadas
+		if(typeof coordenadas === 'undefined')
+			return -1
+		else
+			return coordenadas;
+	} // dameCoordenadas
 }
 
 function busquedaTS(dataTS){
@@ -386,21 +406,21 @@ function busquedaTS(dataTS){
 	$('.main-search-header input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
-	        $('#ts_id').val(mapNombreTS[ui.item.value]);
+			$('#ts_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_id').attr('value');
 			window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 
-	    },
+		},
 		appendTo: '.main-search-header'
 	});
 	$('.main-search-home input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
-	        $('#ts_home_id').val(mapNombreTS[ui.item.value]);
+			$('#ts_home_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_home_id').attr('value');
 			window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 
-	    },
+		},
 		appendTo: '.main-search-home'
 	});
 	$('.main-search button').on('click', function(e){
@@ -430,12 +450,12 @@ function agregarTS(dataTS, base_url, ts_omitir){
 	$('.main-search-cms input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
-	        $('#ts_cms_id').val(mapNombreTS[ui.item.value]);
+			$('#ts_cms_id').val(mapNombreTS[ui.item.value]);
 			var idTS = $('#ts_cms_id').attr('value');
 			var ts = ui.item.value;
 
 			agregarTSSolicitado(idTS, ts, base_url);
-	    },
+		},
 		appendTo: '.main-search-cms'
 	});
 	$('.main-search button').on('click', function(e){
@@ -518,12 +538,12 @@ function agregarTSReportes(dataTS, base_url){
 	$('.main-search-reportes input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
-	        $('#ts_cms_id').val(mapNombreTS[ui.item.value]);
+			$('#ts_cms_id').val(mapNombreTS[ui.item.value]);
 			var idTS = $('#ts_cms_id').attr('value');
 			var ts = ui.item.value;
 
 			muestraReporteTS(idTS, ts, base_url);
-	    },
+		},
 		appendTo: '.main-search-reportes'
 	});
 	$('.main-search button').on('click', function(e){
@@ -626,19 +646,19 @@ function scrollHeader(selector){
 function numRespuestasSiNo(si, no){
 	console.log('chart');
 	var data = {
-	    labels: ['Si', 'No'],
-	    datasets: [
-	        {
-	            label: "Respuestas",
-	            fillColor: "rgba(236, 35, 131, 0.5)",
-	            strokeColor: "rgba(236, 35, 131, 1)",
-	            pointColor: "rgba(162, 43, 56, 1)",
-	            pointStrokeColor: "#fff",
-	            pointHighlightFill: "#fff",
-	            pointHighlightStroke: "rgba(162, 43, 56, 1)",
-	            data: [si, no]
-	        }
-	    ]
+		labels: ['Si', 'No'],
+		datasets: [
+			{
+				label: "Respuestas",
+				fillColor: "rgba(236, 35, 131, 0.5)",
+				strokeColor: "rgba(236, 35, 131, 1)",
+				pointColor: "rgba(162, 43, 56, 1)",
+				pointStrokeColor: "#fff",
+				pointHighlightFill: "#fff",
+				pointHighlightStroke: "rgba(162, 43, 56, 1)",
+				data: [si, no]
+			}
+		]
 	};
 	var ctx = $('#chartRespuestas').get(0).getContext('2d');
 	new Chart(ctx).Bar(data);
@@ -648,18 +668,18 @@ function porcentajeRespuestasSiNo(si, no){
 	console.log(si);
 	console.log(no);
 	var data = [
-	    {
-	        value: parseFloat(si),
-	        color:"rgba(236, 35, 131, 0.2)",
-	        highlight: "rgba(236, 35, 131, 0.3)",
-	        label: "Si(%)"
-	    },
-	    {
-	        value: parseFloat(no),
-	        color:"rgba(236, 35, 131, 0.7)",
-	        highlight: "rgba(236, 35, 131, 0.8)",
-	        label: "No(%)"
-	    }
+		{
+			value: parseFloat(si),
+			color:"rgba(236, 35, 131, 0.2)",
+			highlight: "rgba(236, 35, 131, 0.3)",
+			label: "Si(%)"
+		},
+		{
+			value: parseFloat(no),
+			color:"rgba(236, 35, 131, 0.7)",
+			highlight: "rgba(236, 35, 131, 0.8)",
+			label: "No(%)"
+		}
 	];
 	var ctx = $('#donaRespuestas').get(0).getContext('2d');
 	new Chart(ctx).Doughnut(data);
