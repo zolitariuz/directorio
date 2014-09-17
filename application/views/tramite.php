@@ -1,6 +1,13 @@
 <div class="main">
 	<div class="width clearfix">
 		<div class="main-content clearfix">
+			<ul class="breadcrumbs">
+				<li><a href="#"><i class="fa fa-home"></i>Inicio</a></li>
+				<li>></li>
+				<li><a href="#">Una institución / Un tema</a></li>
+				<li>></li>
+				<li class="actual"><a href="#"><?php echo $ts->nombre_tramite; ?></a></li>
+			</ul>
 			<section class="content columna medium-8 large-9">
 				<article class="header-single clearfix">
 					<div class="quick-info">
@@ -135,7 +142,7 @@
 				<article class="compartelo">
 					<h2 class="highlight">Compártelo</h2>
 					<div class="share block columna xmall-2">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="zolitariuz">Tweet</a>
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 						<div class="clear"></div>
 						<div class="fb-share-button" data-layout="button" data-href="#"></div>

@@ -19,7 +19,7 @@
 							<a href="#" class="block boton margin-bottom">
 								<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
 							</a>
-							<ul class="hide">
+							<ul class="hide arabigos inside">
 						<?php
 						$primeraLetraAnt = $primeraLetra;
 					}

@@ -41,9 +41,9 @@
 		});
 
 		//Modals
-		$('body').on('click', '.transform h2.boton', function(){
-			abrirModal( $(this) );
-		});
+		// $('body').on('click', '.boton', function(){
+		// 	abrirModal( $(this) );
+		// });
 
 		$('body').on('click', '.modal .cerrar', function(){
 			cerrarModal( $(this) );
@@ -108,6 +108,11 @@
 			},
 			both: function() {
 			}
+		});
+
+		//Abrir secciones home
+		$('body').on('click', '.transform h2.boton', function(){
+			abrirSeccion( $(this) );
 		});
 
 
@@ -187,18 +192,17 @@
 	function contarItems(papa, items){
 		$.each(papa, function(){
 			var cuantosItems = $(this).find(items).length;
-			console.log(cuantosItems);
 			$(this).find('h2').find('span').html('('+cuantosItems+')');
 		})
 	}
 
 	function mayorQueMedium(){
-		undoH2ABotones();
+		//undoH2ABotones();
 		callMasonry();
 	}
 
 	function menorQueMedium(){
-		h2ABotones();
+		//h2ABotones();
 		destroyMasonry();
 	}
 
@@ -240,6 +244,10 @@
 		});
 	}
 
+	function abrirSeccion(elemento){
+		var aAbrir = elemento.parent()
+	}
+
 	function callMasonry(){
 		if ( $('.masonry-container').length > 0 ){
 			var container = $('.masonry-container');
@@ -259,7 +267,6 @@
 
 	function scrollTop(elemento){
 		var seccion 	= elemento.data('seccion');
-		console.log(seccion);
 		var divPosicion = $("article[data-seccion='"+seccion+"']").offset().top;
 		divPosicion = divPosicion - 100;
 
@@ -592,19 +599,19 @@ function muestraReporteTS(id_ts, ts, base_url){
 			});
 
 			// guarda feedback
-			var num_comentarios = 0; 
+			var num_comentarios = 0;
 			var calificaciones = 0;
 			var promedio_calificacion;
 			$.each(feedback_ar, function(i, val){
 				var util = val.ayuda == 't' ? 'Si' : 'No';
-				var fila = '<div class="fila"> \
-								<div class="columna xmall-6"> \
+				var fila = '<div class="fila clearfix"> \
+								<div class="columna xmall-5"> \
 									' + val.comentarios + '\
 								</div> \
 								<div class="columna xmall-2 text-center"> \
 									' + val.calificacion + '\
 								</div> \
-								<div class="columna xmall-4 text-center"> \
+								<div class="columna xmall-5 text-center"> \
 									' + util + '\
 								</div> \
 							</div>';
@@ -616,7 +623,6 @@ function muestraReporteTS(id_ts, ts, base_url){
 			promedio_calificacion = parseInt(calificaciones) / parseInt(num_comentarios);
 
 			// muestra info y reportes
-			console.log(visitas_totales);
 			if(visitas_totales != 0){
 				$('.visitas-mensuales span').text(visitas_totales);
 				$('.visitas-mensuales').removeClass('hide');
@@ -626,7 +632,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 				$('.visitas-mensuales').removeClass('hide');
 				$('.visitas-mensuales span').text('0');
 			}
-			
+
 			if(num_comentarios != 0){
 				$('.feedback #comentarios span').text(num_comentarios);
 				$('.feedback #promedio span').text(promedio_calificacion);
@@ -638,7 +644,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 				$('.feedback #promedio span').text('-');
 				$('.feedback').removeClass('hide');
 			}
-			
+
 		}
 	);
 
@@ -744,7 +750,6 @@ function toggleSubirImagen(){
 function votoPregunta(base_url){
 	$('.pregunta a').on('click', function(e){
 		e.preventDefault();
-		console.log(base_url);
 		var jsonVoto = {};
 		jsonVoto['pregunta'] = $(this).data('pregunta');
 		jsonVoto['respuesta'] = $(this).data('respuesta');
@@ -795,8 +800,6 @@ function numRespuestasSiNo(si, no){
 }
 
 function porcentajeRespuestasSiNo(si, no){
-	console.log(si);
-	console.log(no);
 	var data = [
 		{
 			value: parseFloat(si),

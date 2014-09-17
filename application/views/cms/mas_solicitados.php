@@ -15,15 +15,15 @@
 			<p class="success hide"></p>
 			<p class="error hide"></p>
 			<section class="clearfix">
-				<div class="tabla-ts columna xmall-12">
+				<div class="tabla tabla-ts columna xmall-12">
 					<div class="fila header clearfix">
-						<p class="columna xmall-10 text-center">Nombre de trámite o servicio</p>
-						<p class="text-center columna xmall-2">Eliminar</p>
+						<div class="columna xmall-10 text-center">Nombre de trámite o servicio</div>
+						<div class="text-center columna xmall-2">Eliminar</div>
 					</div>
 					<?php
 						foreach ($nombres_ts_comunes as $key => $value) {
 							echo '<div class="fila clearfix">';
-							echo '<p class="columna xmall-10">'.$value->nombre_ts.'</p>';
+							echo '<div class="columna xmall-10">'.$value->nombre_ts.'</div>';
 							echo '<a href="" data-ts="'.$value->id_tramite_servicio.'" class="text-center columna xmall-2">Eliminar</a>';
 							echo '</div>';
 						} // end foreach
