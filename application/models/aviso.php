@@ -20,7 +20,8 @@ class Aviso extends CI_Model {
 		   'url' 			=> $url,
 		   'fecha_inicial'	=> $fecha_inicial,
 		   'fecha_final'	=> $fecha_final,
-		   'is_activo'		=> $activo
+		   'is_activo'		=> $activo,
+		   'is_default'		=> 'f'
 		);
 
 		if($this->db->insert('avisos', $data)){
@@ -77,7 +78,8 @@ class Aviso extends CI_Model {
 			    	'url'	  			=> $row->url,
 			    	'fecha_inicial'		=> $row->fecha_inicial,
 			    	'fecha_final'		=> $row->fecha_final,
-			    	'activo'			=> $row->is_activo
+			    	'activo'			=> $row->is_activo,
+			    	'is_default'		=> $row->is_default
 			    	);
 			}
 			return $avisos;
@@ -101,7 +103,8 @@ class Aviso extends CI_Model {
 			    	'url'	  			=> $row->url,
 			    	'fecha_inicial'		=> $row->fecha_inicial,
 			    	'fecha_final'		=> $row->fecha_final,
-			    	'activo'			=> $row->is_activo
+			    	'activo'			=> $row->is_activo,
+			    	'is_default'		=> $row->is_default
 			    	);
 			}
 			return $avisos;
@@ -129,7 +132,8 @@ class Aviso extends CI_Model {
 			    	'url'	  			=> $row->url,
 			    	'fecha_inicial'		=> $row->fecha_inicial,
 			    	'fecha_final'		=> $row->fecha_final,
-			    	'activo'			=> $row->is_activo
+			    	'activo'			=> $row->is_activo,
+			    	'is_default'		=> $row->is_default
 			    	);
 			}
 			return $aviso;

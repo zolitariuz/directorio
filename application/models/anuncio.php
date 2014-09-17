@@ -16,7 +16,8 @@ class Anuncio extends CI_Model {
 		   'url_img' 			=> $url_img,
 		   'fecha_inicial'		=> $fecha_inicial,
 		   'fecha_final'		=> $fecha_final,
-		   'is_activo'			=> $activo
+		   'is_activo'			=> $activo,
+		   'is_default'			=> 'f'
 		);
 
 		if($this->db->insert('anuncios', $data)){
@@ -52,7 +53,8 @@ class Anuncio extends CI_Model {
 			    	'url_img'	 		=> $row->url_img,
 			    	'fecha_inicial'		=> $row->fecha_inicial,
 			    	'fecha_final'		=> $row->fecha_final,
-			    	'activo'			=> $row->is_activo
+			    	'activo'			=> $row->is_activo,
+			    	'is_default'		=> $row->is_default
 			    	);
 			}
 			return $anuncios;
@@ -77,7 +79,8 @@ class Anuncio extends CI_Model {
 			    	'url_img'	 		=> $row->url_img,
 			    	'fecha_inicial'		=> $row->fecha_inicial,
 			    	'fecha_final'		=> $row->fecha_final,
-			    	'activo'			=> $row->is_activo
+			    	'activo'			=> $row->is_activo,
+			    	'is_default'		=> $row->is_default
 			    	);
 			}
 			return $anuncios;
@@ -106,7 +109,8 @@ class Anuncio extends CI_Model {
 			    	'url_img'	  		=> $row->url_img,
 			    	'fecha_inicial'		=> $row->fecha_inicial,
 			    	'fecha_final'		=> $row->fecha_final,
-			    	'activo'			=> $row->is_activo
+			    	'activo'			=> $row->is_activo,
+			    	'is_default'		=> $row->is_default
 			    	);
 			}
 			return $anuncio;
