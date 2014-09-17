@@ -1,5 +1,4 @@
 <?php if(isset($usuario)) { ?>
-
 <div class="main">
 	<div class="width">
 		<div class="columna xmall-6 center">
@@ -12,24 +11,24 @@
 			?>
 			<form class="crea-aviso js-validate" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_usuario' ?>">
 				<fieldset class="">
-					<label for="usuario" >Nombre de usuario</label>
-					<input type="text" name="usuario" class="full">
+					<label class="block" for="usuario" >Nombre de usuario</label>
+					<input type="text" name="usuario" class=" columna xmall-12">
 				</fieldset>
 				<fieldset class="">
-					<label for="password" >Contraseña</label>
-					<input type="text" name="password" class="full">
+					<label class="block" for="password" >Contraseña</label>
+					<input type="text" name="password" class=" columna xmall-12">
 				</fieldset>
 				<fieldset class="">
-					<label for="nombre" >Nombre</label>
-					<input type="text" name="nombre" class="full">
+					<label class="block" for="nombre" >Nombre</label>
+					<input type="text" name="nombre" class=" columna xmall-12">
 				</fieldset>
 				<fieldset class="">
-					<label for="apellidos" >Apellidos</label>
-					<input type="text" name="apellidos" class="full">
+					<label class="block" for="apellidos" >Apellidos</label>
+					<input type="text" name="apellidos" class=" columna xmall-12">
 				</fieldset>
 				<fieldset class=" url_aviso">
-					<label for="nombre" >Tipo de usuario</label>
-					<select name="rol" class="full">
+					<label class="block" for="nombre" >Tipo de usuario</label>
+					<select name="rol" class=" columna xmall-12">
 						<option value="admin">Administrador</option>
 						<option value="editor">Editor</option>
 					</select>

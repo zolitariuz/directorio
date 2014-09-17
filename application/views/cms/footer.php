@@ -15,7 +15,7 @@
 				</a><a href="<?php echo base_url().'index.php/gestor_contenidos/mas_solicitados/'?>">
 					<i class="icon-ts-icon-fill-tramites-y-servicios-mas-solicitados"></i>
 					Trámites y servicios mas solicitados
-				</a><a href="<?php echo base_url().'index.php/gestor_contenidos/ver_contenido/'?>">
+				</a><a href="<?php echo base_url().'index.php/gestor_contenidos/panel_reportes/'?>">
 					<i class="icon-ts-icon-fill-reportes"></i>
 					Reportes
 				</a>
@@ -55,6 +55,6 @@
 			eliminarTSSolicitado('<?php echo base_url() ?>');
 		<?php } ?>
 
-		
+
 	</script>
 </html>

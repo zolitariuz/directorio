@@ -16,8 +16,8 @@
 					<textarea type="text" name="aviso" class="full" required></textarea>
 				</fieldset>
 				<fieldset class="">
-					<label for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker full" required>
+					<label class="block" for="vigencia" >Vigencia</label>
+					<input type="text" name="vigencia" class="datepicker columna xmall-12" required>
 				</fieldset>
 				<fieldset class="">
 					<input type="checkbox" name="link_aviso"> ¿Tiene link?
@@ -34,12 +34,12 @@
 			<hr>
 			<form class="crea-pregunta js-validate-pregunta" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_pregunta' ?>">
 				<fieldset class="">
-					<label for="pregunta" >Pregunta nueva</label><br />
-					<input type="text" name="pregunta" class="full" required>
+					<label class="block" for="pregunta">Pregunta nueva</label><br />
+					<input type="text" name="pregunta" class=" columna xmall-12" required>
 				</fieldset>
 				<fieldset class="">
-					<label for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker full" required>
+					<label class="block" for="vigencia" >Vigencia</label>
+					<input type="text" name="vigencia" class="datepicker  columna xmall-12" required>
 				</fieldset>
 				<fieldset class="">
 					<input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario'] ?>">
@@ -52,19 +52,19 @@
 			echo form_open_multipart('index.php/gestor_contenidos/agregar_anuncio/'.$aviso['id_aviso'], $atributos);
 			?>
 				<fieldset class="">
-					<label for="pregunta" >Anuncio nuevo</label>
-					<input type="text" name="anuncio" class="full" required>
+					<label class="block" for="pregunta" >Anuncio nuevo</label>
+					<input type="text" name="anuncio" class=" columna xmall-12" required>
 				</fieldset>
 				<fieldset class="">
-					<label for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker full" required>
+					<label class="block" for="vigencia" >Vigencia</label>
+					<input type="text" name="vigencia" class="datepicker  columna xmall-12" required>
 				</fieldset>
 				<fieldset class="">
 					<input type="checkbox" name="link_anuncio"> ¿Tiene link?
 				</fieldset>
 				<fieldset class=" url_anuncio hide">
-					<label for="url_anuncio" >URL de anuncio </label>
-					<input type="text" name="url_anuncio" value="-" class="full">
+					<label class="block" for="url_anuncio" >URL de anuncio </label>
+					<input type="text" name="url_anuncio" value="-" class=" columna xmall-12">
 				</fieldset>
 				<fieldset class="">
 					<p>Restricciones de imagen</p>
