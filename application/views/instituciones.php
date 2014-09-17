@@ -2,7 +2,11 @@
 
 	<div class="width">
 		<div class="clear"></div>
-		<div class="clear"></div>
+		<ul class="breadcrumbs">
+			<li><a href="#"><i class="fa fa-home"></i>Inicio</a></li>
+			<li>></li>
+			<li class="actual"><a href="#">Instituciones</a></li>
+		</ul>
 		<section class="mas-comunes clearfix">
 			<h2 class="text-center highlight">Instituciones</h2>
 			<div class="masonry-container">

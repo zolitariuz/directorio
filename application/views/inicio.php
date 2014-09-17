@@ -14,25 +14,25 @@
 				<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
 				<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
 			</form>
-			<h3 class="text-center large">O ve trámites y servicios por:</h3>
-			<div class="columna large large-8 center">
-				<a href="<?php echo base_url().'index.php/instituciones' ?>" class="block boton vertical columna xmall-6">
+			<h3 class="text-center">O ve trámites y servicios por:</h3>
+			<div class="columna xmall-12 medium-8 center">
+				<a href="<?php echo base_url().'index.php/instituciones' ?>" class="block boton vertical columna xmall-12 medium-6">
 					<i class="icon-ts-icon-fill-institucion"></i>
 					Institución
 				</a>
-				<a href="<?php echo base_url().'index.php/temas' ?>" class="block boton vertical columna xmall-6">
+				<a href="<?php echo base_url().'index.php/temas' ?>" class="block boton vertical columna xmall-12 medium-6">
 					<i class="icon-ts-icon-fill-tema"></i>
 					Tema
 				</a>
 			</div>
 		</section><!-- busqueda -->
 		<div class="clear"></div>
-		<hr class="columna xmall-6 center">
+		<hr class="columna xmall-6 center large">
 		<div class="clear"></div>
-		<section class="mas-comunes clearfix transform">
+		<section class="mas-comunes clearfix large">
 			<?php if ($nombres_ts_comunes != '') { ?>
 				<h2 class="text-center highlight">Trámites y servicios más solicitados</h2>
-				<div class="masonry-container modal-to-be">
+				<div class="masonry-container">
 					<?php foreach ($nombres_ts_comunes as $key => $value) {
 						$tramite = $value->nombre_ts;
 						$idTS = $value->id_tramite_servicio;
@@ -47,7 +47,7 @@
 		<div class="clear large"></div>
 		<hr class="columna large xmall-6 center">
 		<div class="clear large"></div>
-		<section class="categorias clearfix transform">
+		<section class="categorias clearfix large">
 			<h2 class="text-center highlight">Temas</h2>
 			<div class="slider clearfix cycle-slideshow"
 					data-cycle-slides=".slide"

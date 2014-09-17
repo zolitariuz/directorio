@@ -309,7 +309,15 @@ article{ margin-bottom: (@margen*3); }
 
 ul{ margin: 0; list-style: lower-roman; list-style-position: outside;
 	&.inside{ list-style-position: inside; }
+	&.arabigos{ list-style-type: decimal; }
 	li{ color: @obscuro; }
+}
+
+.breadcrumbs{ margin: 0 0 @margen 0; list-style: none;
+	i{ margin-right: 5px; }
+	li{ display: inline-block; font-style: italic; }
+	.actual{ font-weight: 600; }
+	a{ text-decoration: none; }
 }
 
 .when-scrolled{ opacity: 0.0; width: 60px; height: 60px; background: @highlight; position: fixed; bottom: -100px; cursor: pointer; z-index: 2000; .transition();
@@ -329,10 +337,9 @@ ul{ margin: 0; list-style: lower-roman; list-style-position: outside;
 	}
 }
 .modal-wrapper{ width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); position: fixed; top: 0; left: 0; z-index: 9999;
-	.modal{ width: 100%; height: 100%; padding: @margen; background: @claro; position: relative; top: 0; left: 0; }
-	.cerrar{ color: @highlight; position: absolute; top: (@margen/4); right: (@margen/4); cursor: pointer;
-		.fa-stack{ width: (@margen*2) - 0.5; height: (@margen*2) - 0.5; line-height: (@margen*2) - 0.5; }
-		.fa-stack-2x{ font-size: (@margen*2) - 0.5; line-height: 1.05em }
+	.modal{ width: 100%; height: 100%; padding: 0 @margen @margen @margen; background: @claro; position: relative; top: 0; left: 0; }
+	.cerrar{ color: @highlight; cursor: pointer;
+		i{ width: 100%; text-align: right; font-size: 1.6em; }
 	}
 	p:last-child, .paso:last-child{ margin-bottom: 0; }
 }

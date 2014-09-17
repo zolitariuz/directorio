@@ -58,7 +58,7 @@
 						</a><a class="text-center" href="#">
 							Trámites y servicios en línea
 						</a><a class="text-center" href="#">
-							Ayuda
+							Preguntas frecuentes
 						</a>
 					</div><!-- width -->
 				</nav>
@@ -94,7 +94,7 @@
 						Trámites y servicios en línea
 					</a>
 					<a class="text-center" href="#">
-						Ayuda
+						Preguntas frecuentes
 					</a>
 				</nav>
 			</header>

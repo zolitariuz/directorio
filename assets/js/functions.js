@@ -41,9 +41,9 @@
 		});
 
 		//Modals
-		$('body').on('click', '.transform h2.boton', function(){
-			abrirModal( $(this) );
-		});
+		// $('body').on('click', '.boton', function(){
+		// 	abrirModal( $(this) );
+		// });
 
 		$('body').on('click', '.modal .cerrar', function(){
 			cerrarModal( $(this) );
@@ -108,6 +108,11 @@
 			},
 			both: function() {
 			}
+		});
+
+		//Abrir secciones home
+		$('body').on('click', '.transform h2.boton', function(){
+			abrirSeccion( $(this) );
 		});
 
 
@@ -193,12 +198,12 @@
 	}
 
 	function mayorQueMedium(){
-		undoH2ABotones();
+		//undoH2ABotones();
 		callMasonry();
 	}
 
 	function menorQueMedium(){
-		h2ABotones();
+		//h2ABotones();
 		destroyMasonry();
 	}
 
@@ -238,6 +243,10 @@
 		aCerrar.fadeOut('fast', function(){
 			$(this).addClass('hide');
 		});
+	}
+
+	function abrirSeccion(elemento){
+		var aAbrir = elemento.parent()
 	}
 
 	function callMasonry(){
@@ -592,7 +601,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 			});
 
 			// guarda feedback
-			var num_comentarios = 0; 
+			var num_comentarios = 0;
 			var calificaciones = 0;
 			var promedio_calificacion;
 			$.each(feedback_ar, function(i, val){
@@ -626,7 +635,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 				$('.visitas-mensuales').removeClass('hide');
 				$('.visitas-mensuales span').text('Este trámite/servicio no tiene visitas.');
 			}
-			
+
 			if(num_comentarios != 0){
 				$('.feedback #comentarios span').text(num_comentarios);
 				$('.feedback #promedio span').text(promedio_calificacion);
@@ -638,7 +647,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 				$('.feedback #promedio span').text('-');
 				$('.feedback').removeClass('hide');
 			}
-			
+
 		}
 	);
 
