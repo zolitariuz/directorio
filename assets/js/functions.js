@@ -111,7 +111,8 @@
 		});
 
 		//Abrir secciones home
-		$('body').on('click', '.transform h2.boton', function(){
+		$('body').on('click', '.main-content.no-large .boton', function(e){
+			e.preventDefault();
 			abrirSeccion( $(this) );
 		});
 
@@ -245,7 +246,11 @@
 	}
 
 	function abrirSeccion(elemento){
-		var aAbrir = elemento.parent()
+		var aAbrir = elemento.parent().find('> div');
+		console.log(aAbrir);
+		aAbrir.removeClass('hide').slideDown('fast', function() {
+
+		});
 	}
 
 	function callMasonry(){
