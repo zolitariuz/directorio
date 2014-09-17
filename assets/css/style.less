@@ -344,8 +344,14 @@ ul{ margin: 0; list-style: lower-roman; list-style-position: outside;
 	p:last-child, .paso:last-child{ margin-bottom: 0; }
 }
 
-.transform {
-	> div{ display: none; }
+//TABLA
+.tabla{ margin-bottom: @margen;
+	.fila{ padding: (@margen/3) 0; border-bottom: 1px solid @highlight;
+		&.header{ border: none; background: @highlight;
+			div{ color: @claro; .font(1.2em, 1.2em); }
+		}
+		div{ .font(1em, 1); }
+	}
 }
 
 //Colores cosas
