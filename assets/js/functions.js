@@ -633,7 +633,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 				visitasMensuales(visitas,meses);
 			} else{
 				$('.visitas-mensuales').removeClass('hide');
-				$('.visitas-mensuales span').text('Este trámite/servicio no tiene visitas.');
+				$('.visitas-mensuales span').text('0');
 			}
 
 			if(num_comentarios != 0){
@@ -643,7 +643,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 				$('.feedback .tabla').removeClass('hide');
 				$('.feedback').removeClass('hide');
 			} else {
-				$('.feedback #comentarios span').text('Este trámite/servicio no tiene comentarios.');
+				$('.feedback #comentarios span').text('0');
 				$('.feedback #promedio span').text('-');
 				$('.feedback').removeClass('hide');
 			}

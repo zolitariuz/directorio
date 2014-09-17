@@ -18,8 +18,8 @@
 				<canvas id="chartVisitasMensuales"></canvas>
 			</section>
 			<section class="columna xmall-6 feedback hide">
-				<h4 id="comentarios">Comentarios totales: <span></span></h4>
-				<h4 id="promedio">Calificación promedio: <span></span></h4>
+				<h4 id="comentarios" class="columna xmall-6">Comentarios totales: <span></span></h4>
+				<h4 id="promedio" class="columna xmall-6">Calificación promedio: <span></span></h4>
 				<div class="columna xmall-12 tabla">
 					<div class="fila header">
 						<div class="columna xmall-6">
