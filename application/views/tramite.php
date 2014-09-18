@@ -1,8 +1,7 @@
 <div class="main">
 	<div class="width clearfix">
 		<div class="main-content clearfix no-large">
-			
-			<h1>Donde estoy</h1>
+
 			<article class="header-single clearfix">
 				<div class="quick-info">
 					<p><i class="<?php echo $clase_icono ?>"></i><?php echo $ts->materia ?></p>

@@ -708,7 +708,8 @@ function muestraReporteTS(id_ts, ts, base_url){
 			if(visitas_totales != 0){
 				$('.visitas-mensuales span').text(visitas_totales);
 				$('.visitas-mensuales').removeClass('hide');
-				$('#chartVisitasMensuales').removeClass('hide');
+				//$('#chartVisitasMensuales').removeClass('hide');
+				$('.visitas-mensuales').append('<canvas id="chartVisitasMensuales"></canvas>');
 				visitasMensuales(visitas,meses);
 			} else{
 				$('.visitas-mensuales').removeClass('hide');
@@ -736,7 +737,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 		$('.fila').not('.header').remove();
 		$('.feedback .tabla').addClass('hide');
 		$('.feedback #promedio').addClass('hide');
-      	$('#chartVisitasMensuales').addClass('hide');
+      	$('.visitas-mensuales canvas').remove();
 
 	}
 

@@ -15,7 +15,7 @@
 			<div class="clear"></div>
 			<section class="columna xmall-6 visitas-mensuales hide">
 				<h4>Visitas totales: <span></span></h4>
-				<canvas id="chartVisitasMensuales"></canvas>
+				<!--<canvas id="chartVisitasMensuales"></canvas>-->
 			</section>
 			<section class="columna xmall-6 feedback hide">
 				<h4 id="comentarios" class="columna xmall-6">Comentarios totales: <span></span></h4>
