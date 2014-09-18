@@ -93,7 +93,7 @@
 					<a class="text-center" href="#">Trámites y servicios en línea</a>
 					<a class="text-center" href="#">Preguntas frecuentes</a>
 				</nav>
-				<form class="main-search clearfix" action="#">
+				<form class="main-search main-search-movil clearfix" action="#">
 					<input type="search" class="span xmall-10">
 					<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
 					<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>

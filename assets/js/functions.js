@@ -412,7 +412,7 @@ function creaMapa(mapas){
 	} // dameCoordenadas
 }
 
-function busquedaTS(dataTS){
+function busquedaTS(dataTS, base_url){
 	var nombreTS = $.parseJSON(dataTS);
 	var srcNombreTS  = [ ];
 	var mapNombreTS = { };
@@ -426,12 +426,22 @@ function busquedaTS(dataTS){
 
 	// Autocompletado carga página en blanco con trámite o servicio
 	// al seleccionar opción o dar <Enter>
+	$('.main-search-movil input[type="search"]').autocomplete({
+		source: srcNombreTS,
+		select: function(event, ui) {
+			$('#ts_id').val(mapNombreTS[ui.item.value]);
+			idTS = $('#ts_id').attr('value');
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+
+		},
+		appendTo: '.main-search-movil'
+	});
 	$('.main-search-header input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 			$('#ts_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_id').attr('value');
-			window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 
 		},
 		appendTo: '.main-search-header'
@@ -441,7 +451,7 @@ function busquedaTS(dataTS){
 		select: function(event, ui) {
 			$('#ts_home_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_home_id').attr('value');
-			window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 
 		},
 		appendTo: '.main-search-home'
@@ -449,7 +459,7 @@ function busquedaTS(dataTS){
 	$('.main-search button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
-		window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
 } // busquedaTS
 

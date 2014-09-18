@@ -102,7 +102,7 @@
 		<?php } ?>
 
 		<?php if($nombres_ts != '') { ?>
-			busquedaTS('<?php echo $nombres_ts ?>');
+			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
 		<?php } ?>
 
 		<?php if($seccion == 'Inicio') { ?>
