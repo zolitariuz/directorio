@@ -56,164 +56,37 @@
 					data-cycle-timeout="0"
 					data-cycle-log="false"
 				>
-				<div class="slide">
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-agraria"></i>
-						Agraria
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-agua-potable-y-servicios-hidraulicos"></i>
-						Agua potable y servicios hidráulicos
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-anuncios"></i>
-						Anuncios
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-asesoria-telefonica"></i>
-						Asesoría telefónica
-					</a>
-					<div class="clear"></div>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-asesoria-y-asistencia-social-y-condominal"></i>
-						Asesoría y Asistencia Social y Condominal
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-auxilio-de-la-fuerza-publica-y-vialidad"></i>
-						Auxilio de la fuerza pública y vialidad
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-construcciones-y-obras"></i>
-						Construcciones y obras
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-cultura-y-recreacion"></i>
-						Cultura y recreación
-					</a>
-				</div><!-- slide -->
-				<div class="slide">
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-deportes"></i>
-						Deportes
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-espectaculos-publicos"></i>
-						Espectaculos públicos
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-establecimientos-mercantiles"></i>
-						Establecimientos mercantiles
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-fomento-economico"></i>
-						Fomento económico
-					</a>
-					<div class="clear"></div>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-funerarios"></i>
-						Funerarios
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-industria"></i>
-						Industria
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-mantenimiento-a-infraestructura-urbana-y-habitacional"></i>
-						Mantenimiento a infraestructura urbana y habitacional
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-medio-ambiente"></i>
-						Medio Ambiente
-					</a>
-				</div><!-- slide -->
-				<div class="slide">
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-mercados-publicos-y-mercados-sobre-ruedas"></i>
-						Mercados públicos y mercados sobre ruedas
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-patrimonio-cultural-urbano"></i>
-						Patrimonio cultural urbano
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-proteccion-civil"></i>
-						Protección civil
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-quejas-y-demandas-vecinales"></i>
-						Quejas y demandas vecinales
-					</a>
-					<div class="clear"></div>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-registro-civil"></i>
-						Registro civil
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-registro-publico-de-la-propiedad-y-de-comercio"></i>
-						Registro público de la propiedad y de comercio
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-regularizacion-territorial"></i>
-						Regularización territorial
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-regularizacion-de-la-tierra-y-apoyo-a-predios"></i>
-						Regularización de la tierra y apoyo a predios
-					</a>
-				</div><!-- slide -->
-				<div class="slide">
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-salud"></i>
-						Salud
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-servicios-legales-y-archivos-de-notarias"></i>
-						Servicios legales y archivo de notarias
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-servicios-urbanos"></i>
-						Servicios urbanos
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-servicios-urbanos-limpia-e-infraestructura-urbana"></i>
-						Servicios urbanos, limpia e infraestructura urbana
-					</a>
-					<div class="clear"></div>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-taxis"></i>
-						Taxis
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-trabajo"></i>
-						Trabajo
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-turismo"></i>
-						Turismo
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-uso-de-suelo"></i>
-						Uso de suelo
-					</a>
-				</div><!-- slide -->
-				<div class="slide">
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-vehiculos-automotores-de-pasajeros-y-carga"></i>
-						Vehículos automotores de pasajeros y carga
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-vehiculos-automotores-particulares"></i>
-						Vehículos automotores particulares
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-videojuegos"></i>
-						Videojuegos
-					</a>
-					<a href="#" class="boton columna xmall-3 cuadrado chico">
-						<i class="icon-ts-icon-filled-vivienda"></i>
-						Vivienda
-					</a>
-				</div><!-- slide -->
+				<?php
+					$temas_por_slide = 0;
+					$filas_por_slide = 0;
+
+					foreach ($temas as $key => $value) {
+						$clase_icono = $clases_iconos[$key];
+						$url_tema = base_url().'index.php/temas/muestraTS/'.$value->id_cat_materia;
+
+						if($filas_por_slide == 2){
+							echo '</div>';
+							$filas_por_slide = 0;
+						}
+						if($temas_por_slide % 8 == 0)
+							echo '<div class="slide">';
+
+						echo '<a href="'.$url_tema.'" class="boton columna xmall-3 cuadrado chico">';
+						echo '<i class="'.$clase_icono.'"></i>';
+						echo $value->materia;
+					
+						echo '</a>';
+						
+						// cada 4 elementos mete un clear
+						$temas_por_slide = $temas_por_slide + 1;
+						if($temas_por_slide % 4 == 0){
+							$filas_por_slide = $filas_por_slide + 1;
+							echo '<div class="clear"></div>';
+						}
+					}
+
+				?>
+				</div><!-- cierra último slide -->
 				<div class="cycle-pager"></div>
 			</div>
 		</section>
