@@ -718,7 +718,7 @@ body.cms{
 	}
 
 	.large{ display: block; }
-	.no-large{ display: none; }
+	.no-large{ display: none !important; }
 
 	//========================//
 
@@ -780,15 +780,10 @@ body.cms{
 			&.cycle-next{ right: 2%; }
 		}
 	}
-
-	//SINGLE
-
 }
 
  /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
-@media only screen and (min-width: 64.063em) and (max-width: 90em) {
-
-}
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {}
 
 /* min-width 1441px, xlarge screens */
 @media only screen and (min-width: 90.063em) {
@@ -875,7 +870,9 @@ body.cms{
 }
 
 @media print {
-	header, footer, nav, .feedback, .compartelo { display: none !important; }
+	header, footer, nav, .feedback, .compartelo, .main-content.no-large, .danos-tu-opinion { display: none !important; }
+	.main-content.large{ display: block; }
+
 
 	/*** SINGLE ***/
 	.header-single{ margin-bottom: @margen;
