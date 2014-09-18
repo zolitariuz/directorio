@@ -16,30 +16,36 @@
 			<section class="emergencia">
 				<div class="width clearfix">
 					<div class="columna xmall-6 large-2">
+						<i class="icon-ts-icon-filled-emergencias-secretaria-de-seguridad-publica"></i>
 						<h4 class="text-center">066</h4>
 						<p class="text-center">Emergencias Secretaría de Seguridad Pública </p>
 					</div>
 					<div class="columna xmall-6 large-2">
+						<i class="icon-ts-icon-filled-emergencias-procuradoria-general-de-justicia"></i>
 						<h4 class="text-center">061</h4>
 						<p class="text-center">Emergencias Procuradoría General de Justicia</p>
 					</div>
 					<div class="columna xmall-6 large-2">
+						<i class="icon-ts-icon-filled-cruzroja"></i>
 						<h4 class="text-center">065</h4>
 						<p class="text-center">Cruz Roja</p>
 					</div>
 					<div class="columna xmall-6 large-2">
+						<i class="icon-ts-icon-filled-bomberos"></i>
 						<h4 class="text-center">068</h4>
 						<p class="text-center">Bomberos</p>
 					</div>
 					<div class="columna xmall-6 large-2">
+						<i class="icon-ts-icon-filled-secretaria-de-proteccion-civil"></i>
 						<h4 class="text-center">
 							5683 1154
 							<br/>
-							5683 2222
+							<small>5683 2222</small>
 						</h4>
 						<p class="text-center">Secretaría de Protección Civil</p>
 					</div>
 					<div class="columna xmall-6 large-2">
+						<i class="icon-ts-icon-filled-locatel"></i>
 						<h4 class="text-center">5658 1111</h4>
 						<p class="text-center">LOCATEL</p>
 					</div>

@@ -54,7 +54,5 @@
 			agregarTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>', '<?php echo $ts_a_omitir ?>');
 			eliminarTSSolicitado('<?php echo base_url() ?>');
 		<?php } ?>
-
-
 	</script>
 </html>
