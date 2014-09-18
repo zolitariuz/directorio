@@ -13,7 +13,7 @@
 					<i class="icon-ts-icon-filled-editar-contenido"></i>
 					Editar contenido
 				</a><a href="<?php echo base_url().'index.php/gestor_contenidos/mas_solicitados/'?>">
-					<i class="icon-ts-icon-filled-tramites-y-servicios-mas-solicitados"></i>
+					<i class="icon-ts-icon-filled-tramites-mas-buscados"></i>
 					Trámites y servicios mas solicitados
 				</a><a href="<?php echo base_url().'index.php/gestor_contenidos/panel_reportes/'?>">
 					<i class="icon-ts-icon-filled-reportes"></i>

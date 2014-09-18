@@ -1,3 +1,9 @@
+.icon-ts-icon-filled-reportes:before {
+	content: "\e632";
+}
+.icon-ts-icon-filled-tramites-mas-buscados:before {
+	content: "\e633";
+}
 .icon-ts-icon-filled-locatel:before {
 	content: "\e631";
 }
@@ -124,7 +130,7 @@
 .icon-ts-icon-filled-editar-contenido:before {
 	content: "\e614";
 }
-.icon-ts-icon-filled-vercontenido:before {
+.icon-ts-icon-filled-ver-contenido:before {
 	content: "\e615";
 }
 .icon-ts-icon-filled-usuario:before {
