@@ -204,6 +204,12 @@ class Gestor_contenidos extends CI_Controller {
 			$url = $_POST['url_aviso'];
 			$fecha_inicial = $_POST['fecha_inicial'];
 			$fecha_final = $_POST['fecha_final'];
+			if(trim($url) == '' || trim($url) == '-'){
+				$url = '-';
+				$tipo = 'texto';
+			} else {
+				$tipo = 'link';
+			}
 			if ($_POST['activo'] == 'on')
 				$activo = 't';
 			else
@@ -422,7 +428,7 @@ class Gestor_contenidos extends CI_Controller {
 			$url_img_anterior = $_POST['url_img_anterior'];
 			$img_url = $url_img_anterior;
 
-			if(trim($url_anuncio) == ''){
+			if(trim($url_anuncio) == '' || trim($url_anuncio) == '-'){
 				$url_anuncio = '-';
 				$tipo = 'texto';
 			} else {

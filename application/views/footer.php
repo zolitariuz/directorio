@@ -66,9 +66,9 @@
 				<div class="overlay-content">
 					<section class="busqueda clearfix">
 						<h2 class="text-center">Busca tu trámite o servicio</h2>
-						<form class="main-search hero clearfix main-search-home" action="#">
+						<form class="main-search hero clearfix main-search-footer" action="#">
 							<input type="search" class="span xmall-11">
-							<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
+							<input type="hidden" name="tags_id" id="ts_footer_id" value="x" />
 							<button type="submit" class="span xmall-1"><i class="fa fa-search"></i></button>
 						</form>
 						<h3 class="text-center">O ve trámites y servicios por:</h3>
@@ -102,7 +102,7 @@
 		<?php } ?>
 
 		<?php if($nombres_ts != '') { ?>
-			busquedaTS('<?php echo $nombres_ts ?>');
+			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
 		<?php } ?>
 
 		<?php if($seccion == 'Inicio') { ?>

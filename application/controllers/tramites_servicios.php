@@ -239,7 +239,7 @@ class Tramites_servicios extends CI_Controller {
 		$id_tramite_servicio = $_POST['id_ts'];
 		$ayuda = $_POST['ayuda'];
 		$comentarios = $_POST['comentarios'];
-		$calificacion = 5;
+		$calificacion = $_POST['rating'];
 
 		$this->feedback->agrega_feedback($id_tramite_servicio, $comentarios, $calificacion, $ayuda);
 

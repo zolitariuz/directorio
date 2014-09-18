@@ -201,7 +201,6 @@
 	function contarItems(papa, items){
 		$.each(papa, function(){
 			var cuantosItems = $(this).find(items).length;
-			console.log(cuantosItems);
 			$(this).find('h2').find('span').html('('+cuantosItems+')');
 		})
 	}
@@ -284,7 +283,6 @@
 
 	function scrollTop(elemento){
 		var seccion 	= elemento.data('seccion');
-		console.log(seccion);
 		var divPosicion = $("article[data-seccion='"+seccion+"']").offset().top;
 		divPosicion = divPosicion - 100;
 
@@ -414,7 +412,7 @@ function creaMapa(mapas){
 	} // dameCoordenadas
 }
 
-function busquedaTS(dataTS){
+function busquedaTS(dataTS, base_url){
 	var nombreTS = $.parseJSON(dataTS);
 	var srcNombreTS  = [ ];
 	var mapNombreTS = { };
@@ -428,30 +426,48 @@ function busquedaTS(dataTS){
 
 	// Autocompletado carga página en blanco con trámite o servicio
 	// al seleccionar opción o dar <Enter>
-	$('.main-search-header input[type="search"]').autocomplete({
+	$('.main-search-movil input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
-			$('#ts_id').val(mapNombreTS[ui.item.value]);
-			idTS = $('#ts_id').attr('value');
-			window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
-
+			$('#ts_movil_id').val(mapNombreTS[ui.item.value]);
+			idTS = $('#ts_movil_id').attr('value');
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 		},
-		appendTo: '.main-search-header'
+		appendTo: '.main-search-movil'
+	});
+	$('.main-search-footer input[type="search"]').autocomplete({
+		source: srcNombreTS,
+		select: function(event, ui) {
+			$('#ts_footer_id').val(mapNombreTS[ui.item.value]);
+			idTS = $('#ts_footer_id').attr('value');
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+		},
+		appendTo: '.main-search-footer'
 	});
 	$('.main-search-home input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 			$('#ts_home_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_home_id').attr('value');
-			window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 
 		},
 		appendTo: '.main-search-home'
 	});
-	$('.main-search button').on('click', function(e){
+	$('.main-search-movil button').on('click', function(e){
+		e.preventDefault();
+		idTS = $('#ts_movil_id').val();
+		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+	});
+	$('.main-search-header button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
-		window.open('http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+	});
+	$('.main-search-home button').on('click', function(e){
+		e.preventDefault();
+		idTS = $('#ts_id').val();
+		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
 } // busquedaTS
 
@@ -622,14 +638,14 @@ function muestraReporteTS(id_ts, ts, base_url){
 			var promedio_calificacion;
 			$.each(feedback_ar, function(i, val){
 				var util = val.ayuda == 't' ? 'Si' : 'No';
-				var fila = '<div class="fila"> \
-								<div class="columna xmall-6"> \
+				var fila = '<div class="fila clearfix"> \
+								<div class="columna xmall-5"> \
 									' + val.comentarios + '\
 								</div> \
 								<div class="columna xmall-2 text-center"> \
 									' + val.calificacion + '\
 								</div> \
-								<div class="columna xmall-4 text-center"> \
+								<div class="columna xmall-5 text-center"> \
 									' + util + '\
 								</div> \
 							</div>';
@@ -641,7 +657,6 @@ function muestraReporteTS(id_ts, ts, base_url){
 			promedio_calificacion = parseInt(calificaciones) / parseInt(num_comentarios);
 
 			// muestra info y reportes
-			console.log(visitas_totales);
 			if(visitas_totales != 0){
 				$('.visitas-mensuales span').text(visitas_totales);
 				$('.visitas-mensuales').removeClass('hide');
@@ -769,7 +784,6 @@ function toggleSubirImagen(){
 function votoPregunta(base_url){
 	$('.pregunta a').on('click', function(e){
 		e.preventDefault();
-		console.log(base_url);
 		var jsonVoto = {};
 		jsonVoto['pregunta'] = $(this).data('pregunta');
 		jsonVoto['respuesta'] = $(this).data('respuesta');
@@ -820,8 +834,6 @@ function numRespuestasSiNo(si, no){
 }
 
 function porcentajeRespuestasSiNo(si, no){
-	console.log(si);
-	console.log(no);
 	var data = [
 		{
 			value: parseFloat(si),

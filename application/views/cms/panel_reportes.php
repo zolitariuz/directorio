@@ -21,14 +21,14 @@
 				<h4 id="comentarios" class="columna xmall-6">Comentarios totales: <span></span></h4>
 				<h4 id="promedio" class="columna xmall-6">Calificación promedio: <span></span></h4>
 				<div class="columna xmall-12 tabla">
-					<div class="fila header">
-						<div class="columna xmall-6">
+					<div class="fila header clearfix text-center">
+						<div class="columna xmall-5">
 							Comentarios
 						</div>
 						<div class="columna xmall-2">
 							Calificación
 						</div>
-						<div class="columna xmall-4">
+						<div class="columna xmall-5">
 							¿Sirvió la información?
 						</div>
 					</div>

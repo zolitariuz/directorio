@@ -28,6 +28,8 @@
 					<div class="clear"></div>
 					<?php
 						foreach ($avisos as $key => $value) {
+							if($value['is_default'] == 't')
+								echo '<strong>*</strong>';
 							$link_editar = '<a href="'.base_url().'index.php/gestor_contenidos/editar_aviso/'.$value['id_aviso'].'">Editar</a>';
 							$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_aviso/'.$value['id_aviso'].'">Eliminar</a>';
 							echo '<div class="fila clearfix">';
@@ -119,8 +121,11 @@
 							Opciones
 						</div>
 					</div>
+
 					<?php
 						foreach ($anuncios as $key => $value) {
+							if($value['is_default'] == 't')
+								echo '<strong>*</strong>';
 							$link_editar = '<a href="'.base_url().'index.php/gestor_contenidos/editar_anuncio/'.$value['id_anuncio'].'">Editar</a>';
 							$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_anuncio/'.$value['id_anuncio'].'">Eliminar</a>';
 							echo '<div class="fila clearfix">';
