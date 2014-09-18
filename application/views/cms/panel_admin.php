@@ -6,7 +6,7 @@
 		<div class="columna xmall-12 large-10 xlarge-8 center">
 			<?php if($_SESSION['is_admin'] == 't') { ?>
 			<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_contenido/'?>" class="block boton vertical columna xmall-6 margin-bottom">
-				<i class="icon-ts-icon-line-agregar-contenido"></i>
+				<i class="icon-ts-icon-filled-agregar-contenido"></i>
 				<!-- <i class="icon-ts-icon-filled-agregar-contenido"></i> -->
 				Agregar contenido
 			</a>

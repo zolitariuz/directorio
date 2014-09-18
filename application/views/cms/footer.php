@@ -3,7 +3,7 @@
 			<div class="width">
 				<?php if($_SESSION['is_admin'] == 't') { ?>
 					<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_contenido/'?>">
-						<i class="icon-ts-icon-line-agregar-contenido"></i>
+						<i class="icon-ts-icon-filled-agregar-contenido"></i>
 						<!-- <i class="icon-ts-icon-filled-agregar-contenido"></i> -->
 						Agregar contenido
 					</a><a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_usuario/'?>">

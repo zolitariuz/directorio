@@ -214,7 +214,7 @@
 					?>
 				</div>
 			</article><!--quick-info -->
-			<article>
+			<article >
 				<a href="#" class="block boton margin-bottom">Danos tu opinión</a>
 				<div class="hide">
 					<form class="feedback clearfix" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
@@ -225,7 +225,7 @@
 						</fieldset>
 						<fieldset class="rating-f">
 							<label>¿Qué tanto?</label>
-				            <select id="example-f" name="rating">
+				            <select class="example-f" id="example-f" name="rating">
 				                <option value="1">1</option>
 				                <option value="2">2</option>
 				                <option value="3">3</option>
@@ -275,7 +275,7 @@
 				} else { ?>
 					<article class="" data-content="requisitos">
 						<h2 class="highlight">Requisitos</h2>
-						<div class="no-xmall large">
+						<div>
 							<?php
 							if($requisitos != ''){
 								$documentoOficial = '';
@@ -356,7 +356,7 @@
 					<div id="map"></div>
 				</article>
 				<hr>
-				<article>
+				<article class="danos-tu-opinion">
 					<h2 class="highlight">Danos tu opinión</h2>
 					<form class="feedback clearfix" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
 						<fieldset>
@@ -366,7 +366,7 @@
 						</fieldset>
 						<fieldset class="rating-f">
 							<label>¿Qué tanto?</label>
-				            <select id="example-f" name="rating">
+				            <select class="example-f" id="example-f" name="rating">
 				                <option value="1">1</option>
 				                <option value="2">2</option>
 				                <option value="3">3</option>
@@ -488,8 +488,7 @@
 						echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
 					}
 					?>
-
-					<div class="no-xmall large modal-to-be">
+					<div>
 						<?php
 						if($documento != ''){
 							$sinDocumento = true;
