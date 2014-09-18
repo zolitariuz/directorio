@@ -23,6 +23,63 @@
 				<?php } ?>
 			</article>
 			<hr>
+			<article class="quick-info">
+				<?php
+				$indicePrecio = 0;
+				// Costo o costos del trámite o servicio
+				if($costo != ''){
+					foreach ($costo as $key => $value) {
+						if($value->concepto == 1){
+							echo '<h3 class="text-center highlight">Costo</h3>';
+							echo '<p class="text-center">$'.$value->monto.'</p>';
+						} else {
+							if($indicePrecio == 0){
+								echo '<a href="#" class="block boton margin-bottom">Costos</a>';
+								echo '<div class="tabla-precio hide">';
+							}
+							echo '<div class="costo">';
+							echo '<div class="numero-costo">';
+							echo '<p>$'.$value->monto.'</p>';
+							echo '</div>';
+							echo '<div class="nombre-costo">';
+							echo '<p>'.$value->concepto.'</p>';
+							echo '</div>';
+							echo '</div>';
+
+							$indicePrecio = $indicePrecio + 1;
+							if(sizeOf($costo) == $indicePrecio)
+								echo '</div>';
+						}
+					} // end foreach
+				}
+				?>
+			</article><!-- quick-info -->
+			<article class="quick-info">
+				<h3 class="text-center highlight">Tiempo de respuesta</h3>
+				<div class="">
+					<p class="text-center">
+						<?php
+						// Parsear tiempo de respuesta si existe
+						if(!is_null($ts->tiempo_respuesta)){
+							$tiempo_respuesta = explode('_', $ts->tiempo_respuesta);
+							$dias = $tiempo_respuesta[0];
+
+							if($tiempo_respuesta[1] == 1){
+								$tipo = ' días hábiles';
+								echo $dias.$tipo;
+							} else if ($tiempo_respuesta[1] == 2){
+								$tipo = ' días naturales';
+								echo $dias.$tipo;
+							} else {
+								$tipo = 'inmediato';
+								echo $tipo;
+							}
+						} else
+							echo 'Tiempo de respuesta no definido';
+						?>
+					</p>
+				</div>
+			</article><!-- quick-info -->
 			<?php
 			// Cargar requisitos si existen
 			$numReq = 1;
@@ -110,89 +167,6 @@
 				<a href="#" class="block boton margin-bottom">Áreas de atención</a>
 				<div class="hide" id="map"></div>
 			</article>
-			<article>
-				<a href="#" class="block boton margin-bottom">Danos tu opinión</a>
-				<form class="feedback clearfix hide" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
-					<fieldset>
-						<label>¿Te ha sido de ayuda?</label>
-						<input name="ayuda" type="radio" value="t"> Sí
-						<input name="ayuda" type="radio" value="f"> No
-					</fieldset>
-					<fieldset class="rating-f">
-						<label>¿Qué tanto?</label>
-			            <select id="example-f" name="rating">
-			                <option value="1">1</option>
-			                <option value="2">2</option>
-			                <option value="3">3</option>
-			                <option value="4">4</option>
-			                <option value="5">5</option>
-			            </select>
-					</fieldset>
-					<fieldset>
-						<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
-						<textarea name="comentarios" rows="8"></textarea>
-					</fieldset>
-					<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
-					<input type="submit" class="boton chico horizontal right" value="Enviar">
-				</form>
-			</article>
-			<article class="quick-info">
-				<a href="#" class="block boton margin-bottom">Tiempo de respuesta</a>
-				<div class="hide">
-					<p>
-						<?php
-						// Parsear tiempo de respuesta si existe
-						if(!is_null($ts->tiempo_respuesta)){
-							$tiempo_respuesta = explode('_', $ts->tiempo_respuesta);
-							$dias = $tiempo_respuesta[0];
-
-							if($tiempo_respuesta[1] == 1){
-								$tipo = ' días hábiles';
-								echo $dias.$tipo;
-							} else if ($tiempo_respuesta[1] == 2){
-								$tipo = ' días naturales';
-								echo $dias.$tipo;
-							} else {
-								$tipo = 'inmediato';
-								echo $tipo;
-							}
-						} else
-							echo 'Tiempo de respuesta no definido';
-						?>
-					</p>
-				</div>
-			</article><!-- quick-info -->
-			<article class="quick-info">
-				<?php
-				$indicePrecio = 0;
-				// Costo o costos del trámite o servicio
-				if($costo != ''){
-					foreach ($costo as $key => $value) {
-						if($value->concepto == 1){
-							echo '<h3 class="highlight">Costo</h3>';
-							echo '<p>$'.$value->monto.'</p>';
-						} else {
-							if($indicePrecio == 0){
-								echo '<a href="#" class="block boton margin-bottom">Costos</a>';
-								echo '<div class="tabla-precio hide">';
-							}
-							echo '<div class="costo">';
-							echo '<div class="numero-costo">';
-							echo '<p>$'.$value->monto.'</p>';
-							echo '</div>';
-							echo '<div class="nombre-costo">';
-							echo '<p>'.$value->concepto.'</p>';
-							echo '</div>';
-							echo '</div>';
-
-							$indicePrecio = $indicePrecio + 1;
-							if(sizeOf($costo) == $indicePrecio)
-								echo '</div>';
-						}
-					} // end foreach
-				}
-				?>
-			</article><!-- quick-info -->
 			<article class="quick-info">
 				<a href="#" class="block boton margin-bottom">Formatos requeridos</a>
 				<div class="formatos hide">
@@ -244,6 +218,34 @@
 					?>
 				</div>
 			</article><!--quick-info -->
+			<article>
+				<a href="#" class="block boton margin-bottom">Danos tu opinión</a>
+				<div class="hide">
+					<form class="feedback clearfix" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
+						<fieldset>
+							<label>¿Te ha sido de ayuda?</label>
+							<input name="ayuda" type="radio" value="t"> Sí
+							<input name="ayuda" type="radio" value="f"> No
+						</fieldset>
+						<fieldset class="rating-f">
+							<label>¿Qué tanto?</label>
+				            <select id="example-f" name="rating">
+				                <option value="1">1</option>
+				                <option value="2">2</option>
+				                <option value="3">3</option>
+				                <option value="4">4</option>
+				                <option value="5">5</option>
+				            </select>
+						</fieldset>
+						<fieldset>
+							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
+							<textarea name="comentarios" rows="8"></textarea>
+						</fieldset>
+						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
+						<input type="submit" class="boton chico horizontal right" value="Enviar">
+					</form>
+				</div>
+			</article>
 		</div><!-- main-content -->
 		<div class="main-content clearfix large">
 			<ul class="breadcrumbs">

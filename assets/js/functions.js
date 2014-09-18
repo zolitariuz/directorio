@@ -84,6 +84,10 @@
 			abrirMenu( $(this), $('nav') );
 		});
 
+		$('.search').on('click', function(){
+			abrirSearch( $(this), $('header .main-search') );
+		});
+
 		//Large
 		mediaCheck({
 			media: '(min-width: 64.063em)',
@@ -113,7 +117,7 @@
 		//Abrir secciones home
 		$('body').on('click', '.main-content.no-large .boton', function(e){
 			e.preventDefault();
-			abrirSeccion( $(this) );
+			toggleSeccion( $(this), '.main-content.no-large article > div' );
 		});
 
 
@@ -169,6 +173,10 @@
 	});
 
 	function abrirMenu(elemento, menu){
+		menu.slideToggle('fast');
+	}
+
+	function abrirSearch(elemento, menu){
 		menu.slideToggle('fast');
 	}
 
@@ -246,12 +254,15 @@
 		});
 	}
 
-	function abrirSeccion(elemento){
+	function toggleSeccion(elemento, hermanos){
 		var aAbrir = elemento.parent().find('> div');
-		console.log(aAbrir);
-		aAbrir.removeClass('hide').slideDown('fast', function() {
+		if ( aAbrir.hasClass('hide') ){
+			$(hermanos).slideUp('fast').addClass('hide');
+			aAbrir.removeClass('hide').slideDown('fast');
+		} else {
+			aAbrir.slideUp('fast').addClass('hide');
+		}
 
-		});
 	}
 
 	function callMasonry(){
