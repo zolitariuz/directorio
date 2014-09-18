@@ -429,22 +429,20 @@ function busquedaTS(dataTS, base_url){
 	$('.main-search-movil input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
-			$('#ts_id').val(mapNombreTS[ui.item.value]);
-			idTS = $('#ts_id').attr('value');
+			$('#ts_movil_id').val(mapNombreTS[ui.item.value]);
+			idTS = $('#ts_movil_id').attr('value');
 			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
-
 		},
 		appendTo: '.main-search-movil'
 	});
-	$('.main-search-header input[type="search"]').autocomplete({
+	$('.main-search-footer input[type="search"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
-			$('#ts_id').val(mapNombreTS[ui.item.value]);
-			idTS = $('#ts_id').attr('value');
+			$('#ts_footer_id').val(mapNombreTS[ui.item.value]);
+			idTS = $('#ts_footer_id').attr('value');
 			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
-
 		},
-		appendTo: '.main-search-header'
+		appendTo: '.main-search-footer'
 	});
 	$('.main-search-home input[type="search"]').autocomplete({
 		source: srcNombreTS,
@@ -456,7 +454,17 @@ function busquedaTS(dataTS, base_url){
 		},
 		appendTo: '.main-search-home'
 	});
-	$('.main-search button').on('click', function(e){
+	$('.main-search-movil button').on('click', function(e){
+		e.preventDefault();
+		idTS = $('#ts_movil_id').val();
+		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+	});
+	$('.main-search-header button').on('click', function(e){
+		e.preventDefault();
+		idTS = $('#ts_id').val();
+		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+	});
+	$('.main-search-home button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
 		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
