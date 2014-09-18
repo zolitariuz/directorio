@@ -348,7 +348,7 @@ function creaMapa(mapas){
 
 	// Crea mapa movil
 	var map_movil = new google.maps.Map(document.getElementById('map-movil'), {
-	  zoom: 20,
+	  zoom: 40,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP,
 	  mapTypeControl: false,
 	  streetViewControl: false,
@@ -361,6 +361,10 @@ function creaMapa(mapas){
 
 	var infowindow = new google.maps.InfoWindow({
 	  maxWidth: 400
+	});
+
+	var infowindowMovil = new google.maps.InfoWindow({
+	  maxWidth: 800
 	});
 
 	var marker;
@@ -392,29 +396,39 @@ function creaMapa(mapas){
 
 	  google.maps.event.addListener(marker_movil, 'click', (function(marker_movil, i) {
 		return function() {
-		  infowindow.setContent(locations[i][0]);
-		  infowindow.open(map_movil, marker_movil);
+		  infowindowMovil.setContent(locations[i][0]);
+		  infowindowMovil.open(map_movil, marker_movil);
 		}
 	  })(marker_movil, i));
 	}
 	autoCenter();
+	autoCenterMovil();
 
 	// Autocentrar el mapa dependiendo de los marcadores
 	function autoCenter() {
 	  //  Crea un nuevo limite
 	  var bounds = new google.maps.LatLngBounds();
-	  var bounds_movil = new google.maps.LatLngBounds();
+
 	  //  Itera todos los marcadores
 	  $.each(markers, function (index, marker) {
 		bounds.extend(marker.position);
 	  });
-	  $.each(markers_movil, function (index, marker) {
-		bounds_movil.extend(marker.position);
-	  });
 	  //  Mete los límites en el mapa
 	  map.fitBounds(bounds);
-	  map_movil.fitBounds(bounds_movil);
 	} // autoCenter
+	// Autocentrar el mapa dependiendo de los marcadores
+	function autoCenterMovil() {
+	  //  Crea un nuevo limite
+	  var bounds = new google.maps.LatLngBounds();
+
+	  //  Itera todos los marcadores
+	  $.each(markers_movil, function (index, marker_movil) {
+		bounds.extend(marker_movil.position);
+	  });
+	
+	  //  Mete los límites en el mapa
+	  map_movil.fitBounds(bounds);
+	} // autoCenterMovil
 
 	// obtiene coordenadas de url de base de datos
 	function dameCoordenadas(url){
@@ -687,7 +701,8 @@ function muestraReporteTS(id_ts, ts, base_url){
 				num_comentarios = num_comentarios + 1;
 				calificaciones = calificaciones + parseInt(val.calificacion)
 			});
-			promedio_calificacion = parseInt(calificaciones) / parseInt(num_comentarios);
+			promedio_calificacion = calificaciones / num_comentarios;
+			promedio_calificacion = promedio_calificacion.toFixed(2);
 
 			// muestra info y reportes
 			if(visitas_totales != 0){

@@ -9,14 +9,8 @@ class Tramites_servicios extends CI_Controller {
 		error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 	} // constructor
 
-	/**
-	 * Descripción: Página de inicio
-	 * Input:		ninguno
-	 */
 	function index($id_tramite)
-	{
-		
-	} // index
+	{} // index
 
 	/**
 	 * Descripción: Muestra detalle de trámite o servicio
