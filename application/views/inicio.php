@@ -108,7 +108,7 @@
 						echo '<img src="'.$value['url_img'].'" alt="">';
 						echo '<div class="info">';
 						echo '<p>';
-						
+
 						if(trim($value['tipo_contenido']) == 'link') {
 							echo '<a href="'.$value['url'].'">';
 							echo $value['contenido'];

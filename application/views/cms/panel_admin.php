@@ -21,7 +21,7 @@
 				Editar contenido
 			</a>
 			<a href="<?php echo base_url().'index.php/gestor_contenidos/mas_solicitados/'?>" class="block boton vertical columna xmall-6 margin-bottom">
-				<i class="icon-ts-icon-filled-tramites-y-servicios-mas-solicitados"></i>
+				<i class="icon-ts-icon-filled-tramites-mas-buscados"></i>
 				Trámites y servicios mas solicitados
 			</a>
 			<div class="clear"></div>
