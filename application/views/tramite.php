@@ -1,16 +1,12 @@
 <div class="main">
 	<div class="width clearfix">
 		<div class="main-content clearfix no-large">
-			<ul class="breadcrumbs">
-				<li><a href="#"><i class="fa fa-home"></i>Inicio</a></li>
-				<li>></li>
-				<li><a href="#">Una institución / Un tema</a></li>
-				<li>></li>
-				<li class="actual"><a href="#"><?php echo $ts->nombre_tramite; ?></a></li>
-			</ul>
+			
+			<h1>Donde estoy</h1>
 			<article class="header-single clearfix">
 				<div class="quick-info">
-					<p><i class="fa fa-asterisk"></i> <?php echo $ts->materia ?></p>
+					<p><i class="<?php echo $clase_icono ?>"></i><?php echo $ts->materia ?></p>
+					<p><?php echo $ts->id_cat_materia ?></p>
 				</div><!-- quick-info -->
 				<hr>
 				<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
@@ -165,7 +161,7 @@
 			<?php } ?>
 			<article class="" data-seccion="area-atencion">
 				<a href="#" class="block boton margin-bottom">Áreas de atención</a>
-				<div class="hide" id="map"></div>
+				<div class="hide" id="map-movil"></div>
 			</article>
 			<article class="quick-info">
 				<a href="#" class="block boton margin-bottom">Formatos requeridos</a>
@@ -247,18 +243,19 @@
 				</div>
 			</article>
 		</div><!-- main-content -->
+
 		<div class="main-content clearfix large">
 			<ul class="breadcrumbs">
-				<li><a href="#"><i class="fa fa-home"></i>Inicio</a></li>
+				<li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></li>
 				<li>></li>
 				<li><a href="#">Una institución / Un tema</a></li>
 				<li>></li>
-				<li class="actual"><a href="#"><?php echo $ts->nombre_tramite; ?></a></li>
+				<li class="actual"><?php echo $ts->nombre_tramite; ?></li>
 			</ul>
 			<section class="content columna medium-8 large-9">
 				<article class="header-single clearfix">
 					<div class="quick-info">
-						<p><i class="fa fa-asterisk"></i> <?php echo $ts->materia ?></p>
+						<p><i class="<?php echo $clase_icono ?>"></i><?php echo $ts->materia ?></p>
 					</div><!-- quick-info -->
 					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
 				</article><!-- header-single -->

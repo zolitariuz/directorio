@@ -346,12 +346,27 @@ function creaMapa(mapas){
 	  }
 	});
 
+	// Crea mapa movil
+	var map_movil = new google.maps.Map(document.getElementById('map-movil'), {
+	  zoom: 20,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP,
+	  mapTypeControl: false,
+	  streetViewControl: false,
+	  panControl: false,
+	  scrollwheel: false,
+	  zoomControlOptions: {
+		 position: google.maps.ControlPosition.LEFT_BOTTOM
+	  }
+	});
+
 	var infowindow = new google.maps.InfoWindow({
 	  maxWidth: 400
 	});
 
 	var marker;
 	var markers = new Array();
+	var marker_movil;
+	var markers_movil = new Array();
 
 	// Agregar marcadores e InfoWindows al mapa
 	for (var i = 0; i < locations.length; i++) {
@@ -360,7 +375,13 @@ function creaMapa(mapas){
 		map: map,
 	  });
 
+	  marker_movil = new google.maps.Marker({
+		position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		map: map_movil,
+	  });
+
 	  markers.push(marker);
+	  markers_movil.push(marker_movil);
 
 	  google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
@@ -368,6 +389,13 @@ function creaMapa(mapas){
 		  infowindow.open(map, marker);
 		}
 	  })(marker, i));
+
+	  google.maps.event.addListener(marker_movil, 'click', (function(marker_movil, i) {
+		return function() {
+		  infowindow.setContent(locations[i][0]);
+		  infowindow.open(map_movil, marker_movil);
+		}
+	  })(marker_movil, i));
 	}
 	autoCenter();
 
@@ -375,12 +403,17 @@ function creaMapa(mapas){
 	function autoCenter() {
 	  //  Crea un nuevo limite
 	  var bounds = new google.maps.LatLngBounds();
+	  var bounds_movil = new google.maps.LatLngBounds();
 	  //  Itera todos los marcadores
 	  $.each(markers, function (index, marker) {
 		bounds.extend(marker.position);
 	  });
+	  $.each(markers_movil, function (index, marker) {
+		bounds_movil.extend(marker.position);
+	  });
 	  //  Mete los límites en el mapa
 	  map.fitBounds(bounds);
+	  map_movil.fitBounds(bounds_movil);
 	} // autoCenter
 
 	// obtiene coordenadas de url de base de datos

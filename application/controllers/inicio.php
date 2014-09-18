@@ -52,6 +52,13 @@ class Inicio extends CI_Controller {
 		$this->load->model('pregunta');
 		$data['pregunta'] = $this->pregunta->dame_ultima_pregunta();
 
+		// Carga todos los temas (materias)
+		$temas = file_get_contents($this->urlWS.'/temas/format/json');
+		if(is_null($temas))
+			$data['temas'] = '';
+		else
+			$data['temas'] = json_decode($temas);
+
 		$data['seccion'] = 'Inicio';
 
 		// Cargar vista de inicio con header y footer
