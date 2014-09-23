@@ -15,11 +15,6 @@ class Temas extends CI_Controller {
 		// Esconde warnings
 		error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
-		// Datos de conexión para WS
-		$this->usuarioWS = 'admin_ts';
-		$this->passwordWS = '@dm1n_TS_123';
-		$this->urlPortalWS = 'localhost:8888/tramites_cdmx_ws/';
-		$this->urlWS = 'http://'.$this->usuarioWS.':'.$this->passwordWS.'@'.$this->urlPortalWS.'index.php/api/';
 	} // constructor
 
 	/**
@@ -29,8 +24,11 @@ class Temas extends CI_Controller {
 	 */
 	function index()
 	{
+		// Datos de conexión para WS
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
 		// Carga todos los temas (materias)
-		$temas = file_get_contents($this->urlWS.'/temas/format/json');
+		$temas = file_get_contents($url_ws.'/temas/format/json');
 		if(is_null($temas))
 			$data['temas'] = '';
 		else
@@ -38,7 +36,7 @@ class Temas extends CI_Controller {
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
-		$nombres_ts =  file_get_contents($this->urlWS.'/nombres_ts/format/json');
+		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
 		if(is_null($nombres_ts))
 			$data['nombres_ts'] = '';
 		else
@@ -67,12 +65,16 @@ class Temas extends CI_Controller {
 
 	/**
 	 * Descripción: Muestra trámites/servicios por tema
-	 * @param string $idTema
+	 * @param integer $idTema
 	 * @return 
 	 */
-	function muestraTS($idTema){
+	function muestraTS($idTema)
+	{
+		// Datos de conexión para WS
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
 		// Carga todos los trámites y servicios por tema
-		$ts_tema = file_get_contents($this->urlWS.'/ts_tema/id/'.$idTema.'/format/json');
+		$ts_tema = file_get_contents($url_ws.'/ts_tema/id/'.$idTema.'/format/json');
 		if(is_null($ts_tema))
 			$data['ts_tema'] = '';
 		else
@@ -80,7 +82,7 @@ class Temas extends CI_Controller {
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
-		$nombres_ts =  file_get_contents($this->urlWS.'/nombres_ts/format/json');
+		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
 		if(is_null($nombres_ts))
 			$data['nombres_ts'] = '';
 		else

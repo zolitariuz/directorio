@@ -322,8 +322,13 @@ function creaMapa(mapas){
 	$.each(mapas, function(i, item){
 		var l = [];
 		var coordenadas = dameCoordenadas(item.url_ubicacion);
+		var tel1 = item.telefono_1 == null ? '' : item.telefono_1;
+		var ext1 = item.ext_1 == null ? '' : ' ext: ' + item.ext_1;
+		var tel2 = item.telefono_2 == null ? '' : item.telefono_2;
+		var ext2 = item.ext_2 == null ? '' : ' ext: ' + item.ext_2;
+
 		var contenidoInfoWindow =
-			'<h3>'+item.nombre+'</h3><h3>Dirección</h3><br /><p>' + item.calle_numero + '<br />Col. ' + item.colonia + '<br />Del. ' + item.delegacion+', ' + item.cp + '</p><h3>Teléfonos</h3><p>' + item.telefonos + '</p>';
+			'<h3>'+item.nombre+'</h3><h3>Dirección</h3><br /><p>' + item.calle_numero + '<br />Col. ' + item.colonia + '<br />Del. ' + item.delegacion+', ' + item.cp + '</p><h3>Teléfonos</h3><p>' + tel1 + ext1 + '</p>' + '<p>' + tel2 + ext2 + '</p>';
 		if(coordenadas != -1){
 			var latLongArray = coordenadas.split(',');
 			l.push(contenidoInfoWindow);
@@ -332,6 +337,7 @@ function creaMapa(mapas){
 			locations.push(l);
 		}
 	});
+
 
 	// Crea Mapa
 	var map = new google.maps.Map(document.getElementById('map'), {

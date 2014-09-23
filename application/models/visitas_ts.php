@@ -44,6 +44,7 @@ class Visitas_ts extends CI_Model {
 	 * @return mixed $visitas
 	 */
 	public function dame_visitas($id_tramite_servicio){
+		$this->db->order_by("fecha", "asc"); 
 		$query = $this->db->get_where('visitas_ts', array('id_tramite_servicio' => $id_tramite_servicio));
 		$visitas = array();
 
@@ -53,7 +54,7 @@ class Visitas_ts extends CI_Model {
 			    $visitas[$key] = array(
 			    	'id_tramite_servicio'	=> $row->id_tramite_servicio,
 			    	'fecha' 				=> $row->fecha,
-			    	'num_visitas' 		=> $row->num_visitas,
+			    	'num_visitas' 			=> $row->num_visitas,
 			    	);
 			}
 			return $visitas;

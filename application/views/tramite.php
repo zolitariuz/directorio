@@ -90,7 +90,6 @@
 							$esDiferente = false;
 							$numReqAcr = -1;
 							foreach ($requisitos as $key => $value) {
-
 								if($documentoOficial != $value->documento_oficial){
 									if($numReqAcr > 1){
 										echo '</ul></div>';
@@ -280,6 +279,7 @@
 								$documentoOficial = '';
 								$esDiferente = false;
 								$numReqAcr = -1;
+
 								foreach ($requisitos as $key => $value) {
 
 									if($documentoOficial != $value->documento_oficial){
@@ -296,10 +296,16 @@
 									}
 
 									$documentoAcreditacion = $value->documento_acreditacion;
-									if($numReqAcr == 1){
-										if(substr($documentoAcreditacion, 0, 1) == 'y' || substr($documentoAcreditacion, 0, 1) == 'o' )
-											$documentoAcreditacion = substr($documentoAcreditacion, 2);
-									}
+
+									// Agregar (o no) conjunciones
+									switch($value->conjuncion){
+										case '1':
+											$documentoAcreditacion = 'y '.$documentoAcreditacion;
+											break;
+										case '2':
+											$documentoAcreditacion = 'o '.$documentoAcreditacion;
+											break;
+									}// switch
 
 									echo '<li>'.$documentoAcreditacion.'</li>';
 									$numReqAcr = $numReqAcr + 1;
@@ -350,6 +356,97 @@
 					<hr>
 					<div class="clear"></div>
 				<?php } ?>
+
+				<article>
+				<?php
+					$nivel = $ts->nvl_automatizacion;
+					$link = $ts->url_nvl_automatizacion;
+					if(is_null($nivel) || $nivel  == '1'){
+
+					} else{
+						echo '<h2 class="highlight">Nivel de automatización</h2>';
+					}
+
+					if($nivel == '2'){
+						echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
+					} else {
+						echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
+						echo '<ul>';
+
+						$nivel_arr = explode('_', $nivel);
+						foreach ($nivel_arr as $key => $value) {
+							switch($value){
+								case '1':
+									echo '<li>Solicitud en línea</li>';
+									break;
+								case '2':
+									echo '<li>Generación de línea de captura</li>';
+									break;
+								case '3':
+									echo '<li>Pago totalmente en línea</li>';
+									break;
+								case '4':
+									echo '<li>Entrega en línea</li>';
+									break;
+							}// switch
+						}// foreach
+
+						echo '</ul>';
+						echo '<p>El acceso al trámite/servicio es a través del <a href="'.$link.'">siguiente enlace.</a></p>';
+					}
+				?>
+				</article>
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
+
+				<article>
+				<?php
+
+					$forma = $ts->formasolicitud;
+					if(!is_null($forma)){
+						echo '<h2 class="highlight">Vía en que se realiza</h2>';
+
+						switch(trim($forma)){
+							case "Presencial":
+								echo '<p>Presencial</p>';
+								break;
+							case 'Electrónica':
+								echo '<p>Electrónica</p>';
+								break;
+							case 'Telefónica':
+								$tel_presentacion = $ts->tel_presentacion;
+								echo '<p>Telefónica: '.$tel_presentacion.'</p>';
+								break;
+							case 'Mixta':
+								echo '<p>Mixta</p>';
+								break;
+							default:
+								echo '<ul>';
+								$forma_arr = explode('_', $forma);
+								foreach ($forma_arr as $key => $value) {
+									switch(trim($value)){
+										case '1':
+											echo '<li>Presencial</li>';
+											break;
+										case '2':
+											echo '<li>Electrónica</li>';
+											break;
+										case '3':
+											$tel_presentacion = $ts->tel_presentacion;
+											echo '<li>Telefónica: '.$tel_presentacion.'</li>';
+											break;
+									}// switch
+								}// foreach
+								echo '</ul>';
+						}// switch
+					} 
+				?>
+				</article>
+				<div class="clear"></div>
+				<hr>
+				<div class="clear"></div>
+
 				<article class="" data-seccion="area-atencion">
 					<h2 class="highlight">Áreas de atención</h2>
 					<div id="map"></div>

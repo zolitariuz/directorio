@@ -55,7 +55,7 @@
 				</div><!-- width -->
 				<nav class="large">
 					<div class="width">
-						<a class="text-center" href="#">
+						<a class="text-center" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">
 							Oficinas de atención ciudadana
 						</a><a class="text-center" href="#">
 							Trámites y servicios en línea

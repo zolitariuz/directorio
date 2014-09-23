@@ -125,7 +125,10 @@ class Tramites_servicios extends CI_Controller {
 		    	'delegacion' 	=> $value->delegacion,
 		    	'colonia' 		=> $value->colonia,
 		    	'cp' 			=> $value->cp,
-		    	'telefonos' 	=> $value->telefonos,
+		    	'telefono_1' 	=> $value->telefono_1,
+		    	'ext_1' 		=> $value->ext_1,
+		    	'telefono_2' 	=> $value->telefono_2,
+		    	'ext_2' 		=> $value->ext_2,
 		    	'url_ubicacion'	=> $value->url_ubicacion,
 				);
 		}
