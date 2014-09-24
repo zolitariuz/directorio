@@ -8,7 +8,7 @@
 			<li class="actual">Instituciones</li>
 		</ul>
 		<section class="mas-comunes clearfix">
-			<h2 class="text-center highlight">Oficinas de atención ciudadana por instituciones</h2>
+			<h2 class="text-center highlight">Trámites y servicios en linea</h2>
 			<div class="masonry-container">
 			<?php foreach ($instituciones as $key => $value) {
 				$institucion = $value->institucion;

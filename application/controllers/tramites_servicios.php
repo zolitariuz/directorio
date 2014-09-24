@@ -115,16 +115,9 @@ class Tramites_servicios extends CI_Controller {
 	 * @param
 	 * @return
 	 */
-	public function tramites_y_servicios_en_linea(){
+	public function ts_en_linea(){
 		// Datos de conexión para WS
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
-
-		// Carga instituciones
-		$instituciones = file_get_contents($url_ws.'/instituciones/format/json');
-		if(is_null($instituciones))
-			$data['instituciones'] = '';
-		else
-			$data['instituciones'] = json_decode($instituciones);
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
@@ -138,10 +131,10 @@ class Tramites_servicios extends CI_Controller {
 		$this->load->model('aviso');
 		$data['avisos'] = $this->aviso->dame_avisos_activos();
 
-		$data['seccion'] = 'Oficinas atencion';
+		$data['seccion'] = 'Trámites y servicios en linea';
 
 		$this->load->view('header', $data);
-		$this->load->view('oficinas_atencion_ciudadana', $data);
+		$this->load->view('ts_en_linea', $data);
 		$this->load->view('footer', $data);
 	}// tramites_y_servicios_en_linea
 
