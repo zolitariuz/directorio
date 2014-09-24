@@ -30,7 +30,7 @@
 							<a href="#" class="block boton margin-bottom">
 								<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
 							</a>
-							<ul class="hide">
+							<ul class="hide none">
 						<?php
 						$primeraLetraAnt = $primeraLetra;
 					}
@@ -39,7 +39,7 @@
 					<address>
 				<?php
 					echo '<h3>'.$oficina.'</h3><br />';
-					echo '<h4>Dirección</h4>';
+					echo '<h4 class="no-margin">Dirección</h4>';
 					echo trim($calle_num).'<br />';
 					echo 'Col: '.$col.', '.$del.' '.$cp;
 					echo '<div class="clear"></div>';
@@ -57,7 +57,7 @@
 					}
 					echo $ubicacion;
 					echo '<hr>';
-				?>	
+				?>
 					</address>
 				</li>
 			<?php
