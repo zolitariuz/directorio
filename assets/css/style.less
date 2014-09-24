@@ -309,6 +309,7 @@ article{ margin-bottom: (@margen*3); }
 ul{ margin: 0; list-style: lower-roman; list-style-position: outside;
 	&.inside{ list-style-position: inside; }
 	&.arabigos{ list-style-type: decimal; }
+	&.none{ list-style: none; }
 	li{ color: @obscuro; }
 }
 
@@ -515,7 +516,10 @@ aside{
 //Contenido
 .content{
 	h2{ margin-bottom: @margen; }
-	ul, p{ margin-left: 55px; .font(1.2em, 1.5em); color: @obscuro; }
+	.paso{
+		ul, p{ margin-left: 55px; }
+	}
+	ul, p{ .font(1.2em, 1.5em); color: @obscuro; }
 	p{
 		&.hero{ margin-left: 0; .font(1.3em, 1.5em); }
 		&.highlight{ margin-bottom: 0; }
@@ -913,7 +917,6 @@ body.cms{
 	//Contenido
 	.content{
 		h2{ .font(1.4em); }
-		ul, p{ margin-left: 55px; .font(1.2em, 1.5em); color: @obscuro; }
 		p{
 			&.hero{ margin-left: 0; .font(1em, 1.4em); }
 			&.highlight{ margin-bottom: 0; }

@@ -364,14 +364,14 @@
 					if(is_null($nivel) || $nivel  == '1'){
 
 					} else{
-						echo '<h2 class="highlight">Nivel de automatización</h2>';
+						echo '<h2 class="highlight">Realízalo en linea</h2>';
 					}
 
 					if($nivel == '2'){
 						echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
 					} else {
 						echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
-						echo '<ul>';
+						echo '<ul class="inside margin-bottom">';
 
 						$nivel_arr = explode('_', $nivel);
 						foreach ($nivel_arr as $key => $value) {
@@ -392,7 +392,9 @@
 						}// foreach
 
 						echo '</ul>';
-						echo '<p>El acceso al trámite/servicio es a través del <a href="'.$link.'">siguiente enlace.</a></p>';
+						echo '<p>Puedes realizar esta parte en el siguinte enlace.</p>';
+						echo '<br />';
+						echo '<a class="boton" href="'.$link.'">realizar en linea</a>';
 					}
 				?>
 				</article>
@@ -405,24 +407,24 @@
 
 					$forma = $ts->formasolicitud;
 					if(!is_null($forma)){
-						echo '<h2 class="highlight">Vía en que se realiza</h2>';
+						echo '<h2 class="highlight">¿Cómo se realiza?</h2>';
 
 						switch(trim($forma)){
 							case "Presencial":
 								echo '<p>Presencial</p>';
 								break;
 							case 'Electrónica':
-								echo '<p>Electrónica</p>';
+								echo '<p>Vía electrónica</p>';
 								break;
 							case 'Telefónica':
 								$tel_presentacion = $ts->tel_presentacion;
-								echo '<p>Telefónica: '.$tel_presentacion.'</p>';
+								echo '<p>Vía telefónica: '.$tel_presentacion.'</p>';
 								break;
 							case 'Mixta':
 								echo '<p>Mixta</p>';
 								break;
 							default:
-								echo '<ul>';
+								echo '<ul class="inside">';
 								$forma_arr = explode('_', $forma);
 								foreach ($forma_arr as $key => $value) {
 									switch(trim($value)){
@@ -430,17 +432,17 @@
 											echo '<li>Presencial</li>';
 											break;
 										case '2':
-											echo '<li>Electrónica</li>';
+											echo '<li>Vía electrónica</li>';
 											break;
 										case '3':
 											$tel_presentacion = $ts->tel_presentacion;
-											echo '<li>Telefónica: '.$tel_presentacion.'</li>';
+											echo '<li>Vía telefónica: '.$tel_presentacion.'</li>';
 											break;
 									}// switch
 								}// foreach
 								echo '</ul>';
 						}// switch
-					} 
+					}
 				?>
 				</article>
 				<div class="clear"></div>

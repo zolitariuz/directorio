@@ -22,7 +22,7 @@ class Tramites_servicios extends CI_Controller {
 
 		// Suma el número de visitas del trámite/servicio
 		$this->load->model('visitas_ts');
-		$fecha_visita = date("Y-m-d");  
+		$fecha_visita = date("Y-m-d");
 		$this->visitas_ts->agrega_num_visita($id_tramite, $fecha_visita);
 
 		// Carga info de un trámite o servicio
@@ -91,7 +91,7 @@ class Tramites_servicios extends CI_Controller {
 
 		// Clase para el ícono de la materia
 		$materia_actual = $this->formateaMateria($data['ts']->materia);
-		$data['clase_icono'] = 'icon-ts-icon-filled-'.$materia_actual; 
+		$data['clase_icono'] = 'icon-ts-icon-filled-'.$materia_actual;
 
 
 		// carga avisos
@@ -111,9 +111,44 @@ class Tramites_servicios extends CI_Controller {
 	} // muestraTramiteServicio
 
 	/**
+	 * Descripción: Muestra trámites y servicios en linea
+	 * @param
+	 * @return
+	 */
+	public function tramites_y_servicios_en_linea(){
+		// Datos de conexión para WS
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
+		// Carga instituciones
+		$instituciones = file_get_contents($url_ws.'/instituciones/format/json');
+		if(is_null($instituciones))
+			$data['instituciones'] = '';
+		else
+			$data['instituciones'] = json_decode($instituciones);
+
+		// Carga nombre y id de todos los trámites y servicios
+		// para la función de autocompletar
+		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
+		if(is_null($nombres_ts))
+			$data['nombres_ts'] = '';
+		else
+			$data['nombres_ts'] = $nombres_ts;
+
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos_activos();
+
+		$data['seccion'] = 'Oficinas atencion';
+
+		$this->load->view('header', $data);
+		$this->load->view('oficinas_atencion_ciudadana', $data);
+		$this->load->view('footer', $data);
+	}// tramites_y_servicios_en_linea
+
+	/**
 	 * Descripción: Busca datos de áreas de atención pertenecientes a un
 	 *              trámite o servicio
-	 * @param mixed array $area_atencion 
+	 * @param mixed array $area_atencion
 	 * @return json $areas_atencion_json
 	 */
 	private function dameAreasAtencion($area_atencion){
@@ -137,7 +172,7 @@ class Tramites_servicios extends CI_Controller {
 
 	/**
 	 * Descripción: Le da tratamiento a la cadena de documentos
-	 * @param mixed array $docs 
+	 * @param mixed array $docs
 	 * @return mixed array $documentos
 	 */
 	private function dameDocumentos($docs){
@@ -228,8 +263,8 @@ class Tramites_servicios extends CI_Controller {
 
 	/**
 	 * Descripción: Agrega feedback sobre un trámite/servicio
-	 * @param 
-	 * @return 
+	 * @param
+	 * @return
 	 */
 	public function agregar_feedback(){
 		// Carga modelo
@@ -248,7 +283,7 @@ class Tramites_servicios extends CI_Controller {
 	} // dameAreasAtencion
 
 	/**
-	 * Descripción: Borra acentos de materias para 
+	 * Descripción: Borra acentos de materias para
 	 * armar el nombre del icono
 	 * @param string $str
 	 * @return string $materia_formateada
