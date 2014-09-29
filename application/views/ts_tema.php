@@ -2,7 +2,7 @@
 	<div class="width">
 		<div class="clear"></div>
 		<h2 class="text-center highlight">Trámites y servicios:  <?php echo $ts_tema[0]->materia; ?></h2>
-		<section class="columna xmall-8 center directorio">
+		<section class="columna full medium-8 center directorio">
 			<?php
 				$primeraLetraAnt = '';
 				foreach ($ts_tema as $key => $value) {

@@ -3,7 +3,7 @@
 		<div class="clear"></div>
 		<h2 class="text-center highlight">Trámites y servicios</h2>
 		<h2 class="text-center highlight"><?php echo $ts_institucion[0]->institucion; ?></h2>
-		<section class="columna xmall-8 center directorio">
+		<section class="columna full medium-8 center directorio">
 			<?php
 				$primeraLetraAnt = '';
 				foreach ($ts_institucion as $key => $value) {
