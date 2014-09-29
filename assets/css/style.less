@@ -389,18 +389,19 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @obscuro;
 }
 
 .menu, .header-top, .search{ display: inline-block; vertical-align: middle; padding: @margen 0; }
-.menu{ width: 14%; position: relative;
+.menu{ width: 13%; position: relative;
 	i{ font-size: 1.6em; text-align: left; }
 }
-.header-top{ width: 70%; margin-left: 1%; margin-right: 1%; }
+.header-top{ width: 72%; margin-left: 1%; margin-right: 1%; }
 nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @obscuro; position: absolute;
 	a{ display: block; padding: (@margen/2); text-align: center; border-bottom: 1px solid @claro; color: @claro; background: @obscuro; text-decoration: none; .transition;
 		&:hover, &.active{ color: @highlight; }
 	}
 }
 
-.search{ width: 14%;
+.search{ width: 13%;
 	i{ font-size: 1.6em; text-align: right; }
+	img{ width: 80%; float: right; }
 }
 
 /*** FOOTER ***/
@@ -410,7 +411,9 @@ footer{
 		> div > div{ display: inline-block; vertical-align: middle; width: 50%; }
 	}
 	.emergencia{ background: @obscuro;
-		h4{ margin-bottom: @margen; color: @claro;}
+		h4{ margin-bottom: @margen; color: @claro;
+			a{ color: inherit; }
+		}
 		p{ color: @claro;}
 		i{ display: block; width: 100%; color: @claro; text-align: center; font-size: 5em; }
 	}
@@ -535,6 +538,20 @@ aside{
 		&:last-child{ margin-bottom: 0; }
 	}
 }
+
+
+
+
+
+/*** LISTADOS ***/
+.directorio{
+	ul{ padding-left: 1em;
+		li{ margin-bottom: 0.5em; .font(1.2em); }
+	}
+}
+
+
+
 
 /************/
 /*** CMS ****/

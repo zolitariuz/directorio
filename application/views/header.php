@@ -50,6 +50,8 @@
 					</div><!-- header-top --><div class="search no-large">
 						<?php if ( $seccion !== 'Inicio' ) {?>
 							<i class="fa fa-search"></i>
+						<?php } else { ?>
+							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
 						<?php } ?>
 					</div>
 				</div><!-- width -->
