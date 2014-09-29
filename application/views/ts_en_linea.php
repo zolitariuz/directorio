@@ -5,7 +5,7 @@
 		<ul class="breadcrumbs">
 			<li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></li>
 			<li>></li>
-			<li class="actual">Instituciones</li>
+			<li class="actual">Trámites y servicios en línea</li>
 		</ul>
 		<section class="mas-comunes clearfix">
 			<h2 class="text-center highlight">Trámites y servicios en linea</h2>
