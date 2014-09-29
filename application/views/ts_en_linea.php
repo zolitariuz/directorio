@@ -13,9 +13,9 @@
 				foreach ($ts_en_linea as $key => $value) {
 					$nivel = $value->nvl_automatizacion;
 					$link = $value->url_nvl_automatizacion;
-					
+
 				}
-				
+
 
 				if($nivel == '2'){
 					echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
@@ -44,7 +44,7 @@
 					echo '</ul>';
 					echo '<p>Puedes realizar esta parte en el siguinte enlace.</p>';
 					echo '<br />';
-					echo '<a class="boton" href="'.$link.'">realizar en linea</a>';
+					echo '<a class="boton left" href="'.$link.'">realizar en linea</a>';
 				}
 			?>
 		</section>
