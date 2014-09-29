@@ -17,36 +17,46 @@
 				<div class="width clearfix">
 					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-emergencias-secretaria-de-seguridad-publica"></i>
-						<h4 class="text-center">066</h4>
+						<h4 class="text-center large">066</h4>
+						<h4 class="text-center no-large"><a href="tel: 066">066</a></h4>
 						<p class="text-center">Emergencias Secretaría de Seguridad Pública </p>
 					</div>
 					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-emergencias-procuradoria-general-de-justicia"></i>
-						<h4 class="text-center">061</h4>
+						<h4 class="text-center large">061</h4>
+						<h4 class="text-center no-large"><a href="tel: 061">061</a></h4>
 						<p class="text-center">Emergencias Procuradoría General de Justicia</p>
 					</div>
 					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-cruzroja"></i>
-						<h4 class="text-center">065</h4>
+						<h4 class="text-center large">065</h4>
+						<h4 class="text-center no-large"><a href="tel: 065">065</a></h4>
 						<p class="text-center">Cruz Roja</p>
 					</div>
 					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-bomberos"></i>
-						<h4 class="text-center">068</h4>
+						<h4 class="text-center large">068</h4>
+						<h4 class="text-center no-large"><a href="tel: 068">068</a></h4>
 						<p class="text-center">Bomberos</p>
 					</div>
 					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-secretaria-de-proteccion-civil"></i>
-						<h4 class="text-center">
+						<h4 class="text-center large">
 							5683 1154
 							<br/>
 							<small>5683 2222</small>
+						</h4>
+						<h4 class="text-center no-large">
+							<a href="tel: 5683-1154">5683 1154</a>
+							<br/>
+							<small><a href="tel: 5683-2222">5683 2222</a></small>
 						</h4>
 						<p class="text-center">Secretaría de Protección Civil</p>
 					</div>
 					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-locatel"></i>
-						<h4 class="text-center">5658 1111</h4>
+						<h4 class="text-center large">5658 1111</h4>
+						<h4 class="text-center no-large"><a href="tel: 5658-1111">5658 1111</a></h4>
 						<p class="text-center">LOCATEL</p>
 					</div>
 				</div><!-- width -->
