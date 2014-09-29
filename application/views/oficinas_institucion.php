@@ -2,7 +2,7 @@
 	<div class="width">
 		<div class="clear"></div>
 		<h2 class="text-center highlight">Oficinas por institución: <?php echo $institucion->institucion; ?></h2>
-		<section class="columna xmall-8 center directorio">
+		<section class="columna full medium-8 center directorio">
 			<?php
 				$primeraLetraAnt = '';
 				foreach ($area_atencion as $value) {
@@ -42,8 +42,8 @@
 					echo '<h4 class="no-margin">Dirección</h4>';
 					echo trim($calle_num).'<br />';
 					echo 'Col: '.$col.', '.$del.' '.$cp;
-					echo '<div class="clear"></div>';
-					echo '<h4>Teléfonos</h4>';
+					echo '<div class="clear margin-bottom"></div>';
+					echo '<h4 class="no-margin">Teléfonos</h4>';
 					if($telefono_1 != ''){
 						echo 'Teléfono 1: '.$telefono_1;
 						if($ext_1 != '')
@@ -56,7 +56,7 @@
 							echo ' ext. '.$ext_2;
 					}
 					echo $ubicacion;
-					echo '<hr>';
+					echo '<div class="clear margin-bottom"></div><hr>';
 				?>
 					</address>
 				</li>

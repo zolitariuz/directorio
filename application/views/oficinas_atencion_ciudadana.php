@@ -14,7 +14,7 @@
 				$idInstitucion = $value->id_cat_institucion;
 				$urlInstitucion = base_url().'index.php/instituciones/muestraOficinasInstitucion/'.$idInstitucion;
 			?>
-				<a href="<?php echo $urlInstitucion; ?>" class="item boton columna large-3 medium-4 margin-bottom">
+				<a href="<?php echo $urlInstitucion; ?>" class="item boton columna full medium-4 large-3 margin-bottom">
 					<?php echo $institucion; ?>
 				</a>
 			<?php } // end foreach ?>
