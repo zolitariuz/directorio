@@ -121,11 +121,11 @@ class Tramites_servicios extends CI_Controller {
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
-		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
-		if(is_null($nombres_ts))
-			$data['nombres_ts'] = '';
+		$ts_en_linea =  file_get_contents($url_ws.'/ts_en_linea/format/json');
+		if(is_null($ts_en_linea))
+			$data['ts_en_linea'] = '';
 		else
-			$data['nombres_ts'] = $nombres_ts;
+			$data['ts_en_linea'] = json_decode($ts_en_linea);
 
 		// carga avisos
 		$this->load->model('aviso');
