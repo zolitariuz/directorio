@@ -364,7 +364,7 @@
 					if(is_null($nivel) || $nivel  == '1'){
 
 					} else{
-						echo '<h2 class="highlight">Realízalo en linea</h2>';
+						echo '<h2 class="highlight" id="ts_en_linea">Realízalo en linea</h2>';
 					}
 
 					if($nivel == '2'){
