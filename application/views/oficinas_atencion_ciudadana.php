@@ -4,7 +4,7 @@
 		<ul class="breadcrumbs">
 			<li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></li>
 			<li>></li>
-			<li class="actual">Instituciones</li>
+			<li class="actual">Oficinas de atención ciudadana</li>
 		</ul>
 		<section class="mas-comunes clearfix">
 			<h2 class="text-center highlight">Oficinas de atención ciudadana por instituciones</h2>
