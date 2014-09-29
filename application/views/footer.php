@@ -88,13 +88,13 @@
 							<button type="submit" class="span xmall-1"><i class="fa fa-search"></i></button>
 						</form>
 						<h3 class="text-center">O ve trámites y servicios por:</h3>
-						<div class="columna xmall-8 center">
-							<a href="<?php echo base_url().'index.php/instituciones' ?>" class="block boton vertical columna xmall-6">
-								<i class="fa fa-asterisk"></i>
+						<div class="columna xmall-12 medium-8 center clearfix">
+							<a  class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/instituciones' ?>">
+								<i class="icon-ts-icon-filled-instituciones"></i>
 								Institución
 							</a>
-							<a href="<?php echo base_url().'index.php/temas' ?>" class="block boton vertical columna xmall-6">
-								<i class="fa fa-asterisk"></i>
+							<a class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/temas' ?>">
+								<i class="icon-ts-icon-filled-temas"></i>
 								Tema
 							</a>
 						</div>
