@@ -1,254 +1,5 @@
 <div class="main">
 	<div class="width clearfix">
-		<div class="main-content clearfix no-large">
-
-			<article class="header-single clearfix">
-				<div class="quick-info">
-					<p><i class="<?php echo $clase_icono ?>"></i><?php echo $ts->materia ?></p>
-					<p><?php echo $ts->id_cat_materia ?></p>
-				</div><!-- quick-info -->
-				<hr>
-				<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
-			</article><!-- header-single -->
-			<article class="consiste">
-				<?php if(is_null($ts->descripcion)) { ?>
-					<p class="hero">Este trámite no tiene descripción.</p>
-				<?php } else {  ?>
-					<p class="hero"><?php echo $ts->descripcion; ?></p>
-				<?php } ?>
-			</article>
-			<hr>
-			<article class="quick-info">
-				<?php
-				$indicePrecio = 0;
-				// Costo o costos del trámite o servicio
-				if($costo != ''){
-					foreach ($costo as $key => $value) {
-						if($value->concepto == 1){
-							echo '<h3 class="text-center highlight">Costo</h3>';
-							echo '<p class="text-center">$'.$value->monto.'</p>';
-						} else {
-							if($indicePrecio == 0){
-								echo '<a href="#" class="block boton margin-bottom">Costos</a>';
-								echo '<div class="tabla-precio hide">';
-							}
-							echo '<div class="costo">';
-							echo '<div class="numero-costo">';
-							echo '<p>$'.$value->monto.'</p>';
-							echo '</div>';
-							echo '<div class="nombre-costo">';
-							echo '<p>'.$value->concepto.'</p>';
-							echo '</div>';
-							echo '</div>';
-
-							$indicePrecio = $indicePrecio + 1;
-							if(sizeOf($costo) == $indicePrecio)
-								echo '</div>';
-						}
-					} // end foreach
-				}
-				?>
-			</article><!-- quick-info -->
-			<article class="quick-info">
-				<h3 class="text-center highlight">Tiempo de respuesta</h3>
-				<div class="">
-					<p class="text-center">
-						<?php
-						// Parsear tiempo de respuesta si existe
-						if(!is_null($ts->tiempo_respuesta)){
-							$tiempo_respuesta = explode('_', $ts->tiempo_respuesta);
-							$dias = $tiempo_respuesta[0];
-
-							if($tiempo_respuesta[1] == 1){
-								$tipo = ' días hábiles';
-								echo $dias.$tipo;
-							} else if ($tiempo_respuesta[1] == 2){
-								$tipo = ' días naturales';
-								echo $dias.$tipo;
-							} else {
-								$tipo = 'inmediato';
-								echo $tipo;
-							}
-						} else
-							echo 'Tiempo de respuesta no definido';
-						?>
-					</p>
-				</div>
-			</article><!-- quick-info -->
-			<?php
-			// Cargar requisitos si existen
-			$numReq = 1;
-			if($requisitos == '' && $requisitos_esp == ''){
-				echo '<p>Este trámite o servicio no tiene requisitos</p>';
-			} else { ?>
-				<article class="" data-content="requisitos">
-					<a href="#" class="block boton margin-bottom">Requisitos</a>
-					<div class="hide">
-						<?php
-						if($requisitos != ''){
-							$documentoOficial = '';
-							$esDiferente = false;
-							$numReqAcr = -1;
-							foreach ($requisitos as $key => $value) {
-								if($documentoOficial != $value->documento_oficial){
-									if($numReqAcr > 1){
-										echo '</ul></div>';
-									}
-
-									$documentoOficial = $value->documento_oficial;
-									echo '<div class="paso clearfix">';
-									echo '<span>'.$numReq.'</span>';
-									echo '<p><strong>'.$documentoOficial.': </strong></p><ul class="inside">';
-									$numReq = $numReq + 1;
-									$numReqAcr = 1;
-								}
-
-								$documentoAcreditacion = $value->documento_acreditacion;
-								if($numReqAcr == 1){
-									if(substr($documentoAcreditacion, 0, 1) == 'y' || substr($documentoAcreditacion, 0, 1) == 'o' )
-										$documentoAcreditacion = substr($documentoAcreditacion, 2);
-								}
-
-								echo '<li>'.$documentoAcreditacion.'</li>';
-								$numReqAcr = $numReqAcr + 1;
-
-							} // end foreach
-							echo '</ul></div>';
-
-							// Cargar requisitos específicos si existen
-							if($requisitos_esp != ''){
-								$requisitoEsp = '';
-								foreach ($requisitos_esp as $key => $value) {
-									$requisitoEsp = $value->requisito_especifico;
-									echo '<div class="paso clearfix">';
-									echo '<span>'.$numReq.'</span>';
-									echo '<p>'.$requisitoEsp.'</p>';
-									echo '</div>';
-									$numReq = $numReq + 1;
-								} // end foreach
-							}
-						} ?>
-					</div>
-				</article>
-			<?php
-			}
-			// Cargar requisitos específicos si existen
-			if($procedimiento != ''){ ?>
-				<article>
-					<a href="#" class="block boton margin-bottom">Procedimiento</a>
-					<div class="hide">
-						<?php
-						foreach ($procedimiento as $key => $value) {
-							echo '<div class="paso clearfix">';
-								echo '<span>'.$value->paso.'</span>';
-								if ($value->actor == CIUDADANO){
-									echo '<p class="highlight">Actor: Ciudadano</p>';
-								} else if ($value->actor == SERVIDOR_PUBLICO){
-									echo '<p class="highlight">Actor: Servidor público</p>';
-								} else if($value->actor == SISTEMA){
-									echo '<p class="highlight">Actor: Sistema informático</p>';
-								}
-
-								echo '<p>'.$value->accion.'</p>';
-							echo '</div>';
-						} // end foreach
-						?>
-					</div>
-				</article>
-				<div class="clear"></div>
-			<?php } ?>
-			<article class="" data-seccion="area-atencion">
-				<a href="#" class="block boton margin-bottom">Áreas de atención</a>
-				<div class="hide" id="map-movil"></div>
-			</article>
-			<article class="quick-info">
-				<a href="#" class="block boton margin-bottom">Formatos requeridos</a>
-				<div class="formatos hide">
-					<?php
-					if($formatos != ''){
-						foreach ($formatos as $key => $value) {
-							$formato = $value->nombre;
-							$url = 'http://www.registrocdmx.df.gob.mx/'.$value->url;
-							$numFormato = $key + 1;
-							echo '<div class="margin-bottom">';
-							echo '<p>Formato '.$numFormato.'</p>';
-							echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a>';
-							echo '</div>';
-						} // end foreach
-					} else {
-						echo '<p>Este trámite o servicio no tiene formatos requeridos</p>';
-					}
-					?>
-				</div>
-			</article> <!--quick-info -->
-			<article class="quick-info">
-				<article class="" data-content="beneficio-documento">
-				<?php
-				if($ts->is_tramite){
-					echo '<a href="#" class="block boton margin-bottom">Documento(s) a obtener</a>';
-				} else {
-					echo '<a href="#" class="block boton margin-bottom">Beneficio(s) a obtener</a>';
-				}
-				?>
-				<div class="hide">
-					<?php
-					if($documento != ''){
-						$sinDocumento = true;
-						foreach ($documento as $key => $value) {
-							$nombreDocumento = $value['nombreDocumento'];
-							$vigencia = $value['vigencia'];
-							$vigenciaArray = explode('_', $vigencia);
-							echo '<p><strong>'.$nombreDocumento.'</strong></p>';
-							if($vigencia != -1) {
-								echo '<p>Vigencia: '.$vigencia.'</p>';
-								$sinDocumento = false;
-							}
-						} // end foreach
-						if($sinDocumento)
-							echo '<p>No se obtiene documento alguno</p>';
-					} else {
-						echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
-					}
-					?>
-				</div>
-			</article><!--quick-info -->
-			<article >
-				<a href="#" class="block boton margin-bottom">Danos tu opinión</a>
-				<div class="hide">
-					<form class="feedback clearfix" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
-						<fieldset>
-							<label>¿Te ha sido de ayuda?</label>
-							<input name="ayuda" type="radio" value="t" checked="checked"> Sí
-							<input name="ayuda" type="radio" value="f"> No
-						</fieldset>
-						<fieldset class="rating-f">
-							<label>¿Qué tanto?</label>
-				            <select class="example-f" id="example-f" name="rating">
-				                <option value="1">1</option>
-				                <option value="2">2</option>
-				                <option value="3">3</option>
-				                <option value="4">4</option>
-				                <option value="5">5</option>
-				            </select>
-						</fieldset>
-						<fieldset>
-							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
-							<textarea name="comentarios" rows="8"></textarea>
-						</fieldset>
-						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
-						<input type="submit" class="boton chico horizontal right" value="Enviar">
-					</form>
-				</div>
-			</article>
-		</div><!-- main-content -->
-
-
-
-
-
-
-
-
 		<!-- Este es el bueno -->
 		<div class="main-content clearfix large">
 			<ul class="breadcrumbs">
@@ -433,7 +184,6 @@
 				<div class="clear"></div>
 				<hr>
 				<div class="clear"></div>
-
 				<article class="" data-seccion="area-atencion">
 					<div class="div" style="border:1px solid black">
 						<strong>Esto debe ser un acordión...</strong>
@@ -473,7 +223,7 @@
 								}// foreach
 
 								echo '</ul><div class="clear margin-bottom"></div>';
-								echo '<a class="boton" href="'.$link.'" target="_blank">realizar en linea</a>';
+								echo '<a class="boton margin-bottom" href="'.$link.'" target="_blank">realizar en linea</a>';
 							}
 
 							if($ts->tel_presentacion != '0'){
@@ -517,7 +267,7 @@
 								else
 									echo '<p>Negativa ficta: no procede negativa ficta.</p>';
 							?>
-						
+
 						<h2 class="highlight">Plazo máximo de respuesta</h2>
 						<?php
 						// Parsear tiempo de respuesta si existe
@@ -535,16 +285,16 @@
 								$tipo = 'Inmediato';
 								$tiempo_respuesta = $tipo;
 							}
-							
+
 						} else
 							$tiempo_respuesta = 'Tiempo de respuesta no definido';
 
 						echo '<p>'.$tiempo_respuesta.'</p>';
 						?>
-						
+
 						<h2 class="highlight">De acuerdo a los fundamentos jurídicos:</h2>
 						<ul>
-							<?php 
+							<?php
 							if($info_juridica != ''){
 								foreach ($info_juridica as $key => $value) {
 									echo '<li>'.$value->descripcion.' '.$value->articulos.'</li>';
@@ -625,7 +375,7 @@
 
 				<div class="quick-info">
 					<h3 class="highlight">¿Qué pasa si no te responden a tiempo?</h3>
-					<?php  
+					<?php
 						if($afirmativa_ficta == '1')
 							echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
 						if($negativa_ficta == '1')

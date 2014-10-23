@@ -283,9 +283,8 @@
 
 	function scrollTop(elemento){
 		var seccion 	= elemento.data('seccion');
-		var divPosicion = $("article[data-seccion='"+seccion+"']").offset().top;
+		var divPosicion = $("[data-seccion='"+seccion+"']").offset().top;
 		divPosicion = divPosicion - 100;
-
 		$('html, body').animate({scrollTop: divPosicion}, 400);
 	}
 
@@ -352,19 +351,6 @@ function creaMapa(mapas){
 	  }
 	});
 
-	// Crea mapa movil
-	var map_movil = new google.maps.Map(document.getElementById('map-movil'), {
-	  zoom: 40,
-	  mapTypeId: google.maps.MapTypeId.ROADMAP,
-	  mapTypeControl: false,
-	  streetViewControl: false,
-	  panControl: false,
-	  scrollwheel: false,
-	  zoomControlOptions: {
-		 position: google.maps.ControlPosition.LEFT_BOTTOM
-	  }
-	});
-
 	var infowindow = new google.maps.InfoWindow({
 	  maxWidth: 400
 	});
@@ -385,13 +371,7 @@ function creaMapa(mapas){
 		map: map,
 	  });
 
-	  marker_movil = new google.maps.Marker({
-		position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-		map: map_movil,
-	  });
-
 	  markers.push(marker);
-	  markers_movil.push(marker_movil);
 
 	  google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		return function() {
@@ -399,16 +379,8 @@ function creaMapa(mapas){
 		  infowindow.open(map, marker);
 		}
 	  })(marker, i));
-
-	  google.maps.event.addListener(marker_movil, 'click', (function(marker_movil, i) {
-		return function() {
-		  infowindowMovil.setContent(locations[i][0]);
-		  infowindowMovil.open(map_movil, marker_movil);
-		}
-	  })(marker_movil, i));
 	}
 	autoCenter();
-	autoCenterMovil();
 
 	// Autocentrar el mapa dependiendo de los marcadores
 	function autoCenter() {
@@ -422,19 +394,6 @@ function creaMapa(mapas){
 	  //  Mete los límites en el mapa
 	  map.fitBounds(bounds);
 	} // autoCenter
-	// Autocentrar el mapa dependiendo de los marcadores
-	function autoCenterMovil() {
-	  //  Crea un nuevo limite
-	  var bounds = new google.maps.LatLngBounds();
-
-	  //  Itera todos los marcadores
-	  $.each(markers_movil, function (index, marker_movil) {
-		bounds.extend(marker_movil.position);
-	  });
-	
-	  //  Mete los límites en el mapa
-	  map_movil.fitBounds(bounds);
-	} // autoCenterMovil
 
 	// obtiene coordenadas de url de base de datos
 	function dameCoordenadas(url){

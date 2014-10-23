@@ -9,14 +9,16 @@
 		</ul>
 		<section class="mas-comunes clearfix">
 			<h2 class="text-center highlight">Trámites y servicios en linea</h2>
-			<?php
-			foreach ($ts_en_linea as $key => $value) {
-				$id = $value->id_tramite_servicio;
-				$nombre = $value->nombre_tramite;
-				$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$id.'#ts_en_linea';
-			?>
-				<a href="<?php echo $urlTramite ?>"><?php echo $nombre ?></a>
-			<?php } ?>
+			<div class="masonry-container">
+				<?php
+				foreach ($ts_en_linea as $key => $value) {
+					$id = $value->id_tramite_servicio;
+					$nombre = $value->nombre_tramite;
+					$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$id.'#ts_en_linea';
+				?>
+					<a class="[ item ] [ boton ] [ columna large-4 ]" href="<?php echo $urlTramite ?>"><?php echo $nombre ?></a>
+				<?php } ?>
+			</div><!-- masonry-container -->
 		</section>
 		<div class="clear"></div>
 	</div><!-- width -->
