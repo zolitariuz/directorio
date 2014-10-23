@@ -508,19 +508,24 @@ function busquedaTS(dataTS, base_url){
 		appendTo: '.main-search-home'
 	});
 	$('.main-search-movil button').on('click', function(e){
+
 		e.preventDefault();
 		idTS = $('#ts_movil_id').val();
-		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+		if(typeof idTS !== 'undefined')
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
 	$('.main-search-header button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
-		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+		if(typeof idTS !== 'undefined')
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
+
 	$('.main-search-home button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
-		window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+		if(typeof idTS !== 'undefined')
+			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
 } // busquedaTS
 
@@ -552,6 +557,7 @@ function agregarTS(dataTS, base_url, ts_omitir){
 		},
 		appendTo: '.main-search-cms'
 	});
+
 	$('.main-search button').on('click', function(e){
 		e.preventDefault();
 		var idTS = $('#ts_cms_id').val();
@@ -698,7 +704,10 @@ function muestraReporteTS(id_ts, ts, base_url){
 								<div class="columna xmall-2 text-center"> \
 									' + val.calificacion + '\
 								</div> \
-								<div class="columna xmall-5 text-center"> \
+								<div class="columna xmall-2 text-center"> \
+									' + val.servicio + '\
+								</div> \
+								<div class="columna xmall-3 text-center"> \
 									' + util + '\
 								</div> \
 							</div>';
@@ -925,6 +934,13 @@ function visitasMensuales(visitas, meses){
 	};
 	var ctx = $('#chartVisitasMensuales').get(0).getContext('2d');
 	new Chart(ctx).Bar(data);
+}
+
+function imprimirInfoTramite(){
+	$('.j-imprimir').on('click', function(e){
+		e.preventDefault();
+		window.print();
+	});
 }
 
 
