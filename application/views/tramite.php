@@ -227,8 +227,12 @@
 							}
 
 							if($ts->tel_presentacion != '0'){
+								$tel = $ts->tel_presentacion;
+								if($ts->ext_presentacion != '0')
+									$tel = $tel.' ext. '.$ts->ext_presentacion;
+
 								echo '<h3 class="highlight">Vía telefónica</h3>';
-								echo '<p>'.$tel_presentacion.'</p>';
+								echo '<p>'.$tel.'</p>';
 							}
 
 							?>
