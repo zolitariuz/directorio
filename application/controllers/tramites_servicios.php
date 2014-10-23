@@ -16,7 +16,7 @@ class Tramites_servicios extends CI_Controller {
 	 * Descripción: Muestra detalle de trámite o servicio
 	 * Input:		$id_tramite - id de trámite o servicio
 	 */
-	function muestraInfo($id_tramite){
+	function muestraInfo($id_tramite, $feedback = 0){
 
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
 
@@ -89,16 +89,33 @@ class Tramites_servicios extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
+		// Carga áreas de pago
+		$area_pago = file_get_contents($url_ws.'/area_pago/id/'.$id_tramite.'/format/json');
+		if(is_null($area_pago))
+			$data['area_pago'] = '';
+		else
+			$data['area_pago'] = json_decode($area_pago);
+
+		// Carga información jurídica
+		$info_juridica = file_get_contents($url_ws.'/info_juridica/id/'.$id_tramite.'/format/json');
+		if(is_null($info_juridica))
+			$data['info_juridica'] = '';
+		else
+			$data['info_juridica'] = json_decode($info_juridica);
+
 		// Clase para el ícono de la materia
 		$materia_actual = $this->formateaMateria($data['ts']->materia);
 		$data['clase_icono'] = 'icon-ts-icon-filled-'.$materia_actual;
-
 
 		// carga avisos
 		$this->load->model('aviso');
 		$data['avisos'] = $this->aviso->dame_avisos_activos();
 
 		$data['seccion'] = 'Tramite';
+
+		if($feedback == 1){
+			$data['feedback'] = $feedback;
+		}
 
 		// Carga la vista que muestra información de trámites o servicios
 		// en caso de error, redirecciona al inicio
@@ -220,7 +237,7 @@ class Tramites_servicios extends CI_Controller {
 						break;
 				}
 			} else if($vigenciaArray[0] == OTRA_DURACION){
-				$vigencia = 'Otra vigencia?';
+				$vigencia = $vigenciaArray[1];
 			} else if($vigenciaArray[0] == SERVICIO){
 				$vigencia = 'No tiene vigencia.';
 			} else {
@@ -268,11 +285,12 @@ class Tramites_servicios extends CI_Controller {
 		$ayuda = $_POST['ayuda'];
 		$comentarios = $_POST['comentarios'];
 		$calificacion = $_POST['rating'];
+		$servicio = $_POST['rating-servicio'];
 
-		$this->feedback->agrega_feedback($id_tramite_servicio, $comentarios, $calificacion, $ayuda);
+		$this->feedback->agrega_feedback($id_tramite_servicio, $comentarios, $calificacion, $ayuda, $servicio);
 
 		// Carga trámite/servicio
-		$this->muestraInfo($id_tramite_servicio);
+		$this->muestraInfo($id_tramite_servicio, 1);
 	} // dameAreasAtencion
 
 	/**

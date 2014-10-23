@@ -7,6 +7,7 @@
 			if($error == '1')
 				echo '<p>No se encontró el trámite o servicio que estabas buscando</p>';
 		?>
+
 		<section class="busqueda clearfix">
 			<h2 class="text-center">Busca tu trámite o servicio</h2>
 			<form class="main-search hero clearfix main-search-home" action="#">
@@ -14,6 +15,8 @@
 				<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
 				<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
 			</form>
+
+			<!-- 
 			<h3 class="text-center">O ve trámites y servicios por:</h3>
 			<div class="columna xmall-12 medium-8 center clearfix">
 				<a  class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/instituciones' ?>">
@@ -25,10 +28,43 @@
 					Tema
 				</a>
 			</div>
+			-->
+
 		</section><!-- busqueda -->
-		<div class="clear"></div>
-		<hr class="columna xmall-6 center large">
-		<div class="clear"></div>
+
+		<section class="anuncios clearfix large">
+			<div class="slider clearfix cycle-slideshow"
+				data-cycle-slides=".slide"
+				data-cycle-fx="scrollHorz"
+				data-cycle-swipe="true"
+				data-cycle-log="false"
+			>
+				<?php
+					// contenido del slider
+					foreach ($anuncios as $key => $value) {
+						echo '<div class="slide">';
+						echo '<img src="'.$value['url_img'].'" alt="">';
+						echo '<div class="info">';
+						echo '<p>';
+
+						if(trim($value['tipo_contenido']) == 'link') {
+							echo '<a href="'.$value['url'].'">';
+							echo $value['contenido'];
+							echo '</a>';
+						} else
+							echo $value['contenido'];
+
+						echo '</p>';
+						echo '</div>';
+						echo '</div>';
+					}// foreach anuncio
+				?>
+
+				<div class="cycle-controls cycle-prev"><i class="fa fa-angle-left"></i></div>
+    			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
+			</div>
+		</section><!-- anuncios -->
+
 		<section class="mas-comunes clearfix large">
 			<?php if ($nombres_ts_comunes != '') { ?>
 				<h2 class="text-center highlight">Trámites y servicios más solicitados</h2>
@@ -90,42 +126,9 @@
 				<div class="cycle-pager"></div>
 			</div>
 		</section>
+
 		<div class="clear large"></div>
 		<hr class="columna large large-6 center">
-		<div class=" large"></div>
-		<section class="anuncios clearfix large">
-			<h2 class="text-center highlight">Anuncios</h2>
-			<div class="slider clearfix cycle-slideshow"
-				data-cycle-slides=".slide"
-				data-cycle-fx="scrollHorz"
-				data-cycle-swipe="true"
-				data-cycle-log="false"
-			>
-				<?php
-					// contenido del slider
-					foreach ($anuncios as $key => $value) {
-						echo '<div class="slide">';
-						echo '<img src="'.$value['url_img'].'" alt="">';
-						echo '<div class="info">';
-						echo '<p>';
-
-						if(trim($value['tipo_contenido']) == 'link') {
-							echo '<a href="'.$value['url'].'">';
-							echo $value['contenido'];
-							echo '</a>';
-						} else
-							echo $value['contenido'];
-
-						echo '</p>';
-						echo '</div>';
-						echo '</div>';
-					}// foreach anuncio
-				?>
-
-				<div class="cycle-controls cycle-prev"><i class="fa fa-angle-left"></i></div>
-    			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
-			</div>
-		</section>
 		<?php  if(!is_null($pregunta['pregunta'])){ ?>
 			<div class="clear"></div>
 			<hr class="columna xmall-6 center">

@@ -16,6 +16,12 @@
 			<section class="emergencia">
 				<div class="width clearfix">
 					<div class="columna xmall-6 large-2">
+						<i class="icon-ts-icon-filled-locatel"></i>
+						<h4 class="text-center large">5658 1111</h4>
+						<h4 class="text-center no-large"><a href="tel: 5658-1111">5658 1111</a></h4>
+						<p class="text-center">LOCATEL</p>
+					</div>
+					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-emergencias-secretaria-de-seguridad-publica"></i>
 						<h4 class="text-center large">066</h4>
 						<h4 class="text-center no-large"><a href="tel: 066">066</a></h4>
@@ -52,12 +58,6 @@
 							<small><a href="tel: 5683-2222">5683 2222</a></small>
 						</h4>
 						<p class="text-center">Secretaría de Protección Civil</p>
-					</div>
-					<div class="columna xmall-6 large-2">
-						<i class="icon-ts-icon-filled-locatel"></i>
-						<h4 class="text-center large">5658 1111</h4>
-						<h4 class="text-center no-large"><a href="tel: 5658-1111">5658 1111</a></h4>
-						<p class="text-center">LOCATEL</p>
 					</div>
 				</div><!-- width -->
 			</section>
@@ -132,8 +132,13 @@
 		<?php }
 
 		if($seccion == 'Tramite') { ?>
+			imprimirInfoTramite();
 			scrollHeader('aside .busqueda');
 
+			// Mostrar mensaje en caso de haber mandado feedback
+			<?php  if($feedback == '1') { ?>
+				alert('¡Gracias por tu participación! Tu opinión es muy importante para nosotros.');
+			<?php } ?>
 			//*** ON SCROLL ***//
 			$(window).scroll(function() {
 				scrollHeader('aside .busqueda');

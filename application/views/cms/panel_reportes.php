@@ -13,11 +13,10 @@
 				</form>
 			</section><!-- busqueda -->
 			<div class="clear"></div>
-			<section class="columna xmall-6 visitas-mensuales hide">
+			<section class="columna xmall-12 visitas-mensuales hide">
 				<h4>Visitas totales: <span></span></h4>
-				<!--<canvas id="chartVisitasMensuales"></canvas>-->
 			</section>
-			<section class="columna xmall-6 feedback hide">
+			<section class="columna xmall-12 feedback hide">
 				<h4 id="comentarios" class="columna xmall-6">Comentarios totales: <span></span></h4>
 				<h4 id="promedio" class="columna xmall-6">Calificación promedio: <span></span></h4>
 				<div class="columna xmall-12 tabla">
@@ -26,9 +25,12 @@
 							Comentarios
 						</div>
 						<div class="columna xmall-2">
-							Calificación
+							Calificación utilidad
 						</div>
-						<div class="columna xmall-5">
+						<div class="columna xmall-2">
+							Calificación servicio
+						</div>
+						<div class="columna xmall-3">
 							¿Sirvió la información?
 						</div>
 					</div>

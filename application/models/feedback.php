@@ -12,12 +12,13 @@ class Feedback extends CI_Model {
 	 *int $calificacion, string $ayuda
 	 * @return true	o false
 	 */
-	public function agrega_feedback($id_tramite_servicio, $comentarios, $calificacion, $ayuda){
+	public function agrega_feedback($id_tramite_servicio, $comentarios, $calificacion, $ayuda, $servicio){
 		$data = array(
 		   'id_tramite_servicio' 	=> $id_tramite_servicio,
 		   'comentarios' 			=> $comentarios,
-		   'calificacion' 			=> 	$calificacion,
-		   'ayuda' 					=> 	$ayuda
+		   'calificacion' 			=> $calificacion,
+		   'ayuda' 					=> $ayuda,
+		   'calificacion_servicio'	=> $servicio
 		);
 
 		if($this->db->insert('feedback_ts', $data)){
@@ -44,6 +45,7 @@ class Feedback extends CI_Model {
 			    	'comentarios' 			=> $row->comentarios,
 			    	'calificacion' 			=> $row->calificacion,
 			    	'ayuda' 				=> $row->ayuda,
+			    	'servicio'				=> $row->calificacion_servicio
 			    	);
 			}
 			return $feedback;
