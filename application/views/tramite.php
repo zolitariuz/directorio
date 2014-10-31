@@ -12,8 +12,8 @@
 			<section class="content columna medium-8 large-9">
 				<article class="header-single clearfix">
 					<div class="quick-info">
+						<p><i class="<?php echo $clase_icono ?>"></i>Tema: <?php echo $ts->materia ?></p>
 						<p><i class="<?php echo $clase_icono ?>"></i>Unidad responsable: <?php echo $ts->ente ?></p>
-						<p><i class="<?php echo $clase_icono ?>"></i><?php echo $ts->materia ?></p>
 					</div><!-- quick-info -->
 					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
 				</article><!-- header-single -->
@@ -46,24 +46,19 @@
 								$documentoOficial = '';
 								$esDiferente = false;
 								$numReqAcr = -1;
-
 								foreach ($requisitos as $key => $value) {
-
 									if($documentoOficial != $value->documento_oficial){
 										if($numReqAcr > 1){
 											echo '</ul></div>';
 										}
-
 										$documentoOficial = $value->documento_oficial;
 										echo '<div class="paso clearfix">';
 										echo '<span>'.$numReq.'</span>';
-										echo '<p><strong>'.$documentoOficial.': </strong></p><ul class="inside">';
+										echo '<p><strong>'.$documentoOficial.': </strong></p><ul class="[ disc inside ]">';
 										$numReq = $numReq + 1;
 										$numReqAcr = 1;
 									}
-
 									$documentoAcreditacion = $value->documento_acreditacion;
-
 									// Agregar (o no) conjunciones
 									switch($value->conjuncion){
 										case '1':
@@ -73,7 +68,6 @@
 											$documentoAcreditacion = 'o '.$documentoAcreditacion;
 											break;
 									}// switch
-
 									$num_copias = $value->num_copias;
 									switch($value->original_copia){
 										case 1:
@@ -87,13 +81,10 @@
 											$documentoAcreditacion = $documentoAcreditacion.' <strong>traer original y '.$num_copias.' copia(s) </strong>';
 											break;
 									}// switch
-
 									echo '<li>'.$documentoAcreditacion.'</li>';
 									$numReqAcr = $numReqAcr + 1;
-
 								} // end foreach
 								echo '</ul></div>';
-
 								// Cargar requisitos específicos si existen
 								if($requisitos_esp != ''){
 									$requisitoEsp = '';
@@ -160,7 +151,7 @@
 								echo '<p>Mixta</p>';
 								break;
 							default:
-								echo '<ul class="inside">';
+								echo '<ul class="[ disc inside ]">';
 								$forma_arr = explode('_', $forma);
 								foreach ($forma_arr as $key => $value) {
 									switch(trim($value)){
@@ -202,7 +193,7 @@
 								echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
 							} else {
 								echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
-								echo '<ul class="inside">';
+								echo '<ul class="[ disc inside ]">';
 
 								$nivel_arr = explode('_', $nivel);
 								foreach ($nivel_arr as $key => $value) {
@@ -297,7 +288,7 @@
 						?>
 
 						<h2 class="highlight">De acuerdo a los fundamentos jurídicos:</h2>
-						<ul>
+						<ul class="[ disc inside ]">
 							<?php
 							if($info_juridica != ''){
 								foreach ($info_juridica as $key => $value) {
@@ -426,7 +417,7 @@
 					// Áreas de pago
 					if($area_pago != ''){
 						echo '<h3 class="highlight">Áreas de pago</h3>';
-						echo '<ul>';
+						echo '<ul class="[ disc inside ]">';
 						foreach ($area_pago as $key => $value) {
 							echo '<li>'.$value->descripcion.'</li>';
 						} // end foreach
