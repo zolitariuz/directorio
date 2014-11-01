@@ -12,8 +12,8 @@
 			<section class="content columna medium-8 large-9">
 				<article class="header-single clearfix">
 					<div class="quick-info">
+						<p><i class="<?php echo $clase_icono ?>"></i>Tema: <?php echo $ts->materia ?></p>
 						<p><i class="<?php echo $clase_icono ?>"></i>Unidad responsable: <?php echo $ts->ente ?></p>
-						<p><i class="<?php echo $clase_icono ?>"></i><?php echo $ts->materia ?></p>
 					</div><!-- quick-info -->
 					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
 				</article><!-- header-single -->
@@ -46,24 +46,19 @@
 								$documentoOficial = '';
 								$esDiferente = false;
 								$numReqAcr = -1;
-
 								foreach ($requisitos as $key => $value) {
-
 									if($documentoOficial != $value->documento_oficial){
 										if($numReqAcr > 1){
 											echo '</ul></div>';
 										}
-
 										$documentoOficial = $value->documento_oficial;
 										echo '<div class="paso clearfix">';
 										echo '<span>'.$numReq.'</span>';
-										echo '<p><strong>'.$documentoOficial.': </strong></p><ul class="inside">';
+										echo '<p><strong>'.$documentoOficial.': </strong></p><ul class="[ disc inside ]">';
 										$numReq = $numReq + 1;
 										$numReqAcr = 1;
 									}
-
 									$documentoAcreditacion = $value->documento_acreditacion;
-
 									// Agregar (o no) conjunciones
 									switch($value->conjuncion){
 										case '1':
@@ -73,7 +68,6 @@
 											$documentoAcreditacion = 'o '.$documentoAcreditacion;
 											break;
 									}// switch
-
 									$num_copias = $value->num_copias;
 									switch($value->original_copia){
 										case 1:
@@ -87,13 +81,10 @@
 											$documentoAcreditacion = $documentoAcreditacion.' <strong>traer original y '.$num_copias.' copia(s) </strong>';
 											break;
 									}// switch
-
 									echo '<li>'.$documentoAcreditacion.'</li>';
 									$numReqAcr = $numReqAcr + 1;
-
 								} // end foreach
 								echo '</ul></div>';
-
 								// Cargar requisitos específicos si existen
 								if($requisitos_esp != ''){
 									$requisitoEsp = '';
@@ -160,7 +151,7 @@
 								echo '<p>Mixta</p>';
 								break;
 							default:
-								echo '<ul class="inside">';
+								echo '<ul class="[ disc inside ]">';
 								$forma_arr = explode('_', $forma);
 								foreach ($forma_arr as $key => $value) {
 									switch(trim($value)){
@@ -185,63 +176,85 @@
 				<hr>
 				<div class="clear"></div>
 				<article class="" data-seccion="area-atencion">
-					<div class="div" style="border:1px solid black">
-						<strong>Esto debe ser un acordión...</strong>
-						<h2 class="highlight">¿Dónde lo realizo?</h2>
-						<div id="map"></div>
+					<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
+					<div class="[ acordeon ]">
+						<div class="[ acordeon-item ]">
+							<a href="#" class="block boton margin-bottom">
+								<h2 class="[ no-margin ]">En área de atención ciudadana</h2>
+							</a>
+							<ul class="[ none ] [ hide ]">
+								<li>
+									<div class="[ map-wrapper ] [ margin-bottom ]">
+										<div id="map"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
 						<?php
 							$nivel = $ts->nvl_automatizacion;
 							$link = $ts->url_nvl_automatizacion;
 							if(is_null($nivel) || $nivel  == '1'){
 
 							} else{
-								echo '<h3 class="highlight" id="ts_en_linea">En línea</h3>';
+								echo '<div class="[ acordeon-item ]">';
+									echo '<a href="#" class="block boton margin-bottom">';
+									echo '<h2 id="ts_en_linea" class="[ no-margin ]">En línea</h2>';
+									echo '</a>';
+								echo '<ul class="[ none ] [ hide ]">';
+								echo '<li>';
 							}
 
-							if($nivel == '2'){
-								echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
-							} else {
-								echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
-								echo '<ul class="inside">';
+								if($nivel == '2'){
+									echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
+								} else {
+									echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
+									echo '<ul class="[ disc inside ]">';
 
-								$nivel_arr = explode('_', $nivel);
-								foreach ($nivel_arr as $key => $value) {
-									switch($value){
-										case '1':
-											echo '<li>Solicitud en línea</li>';
-											break;
-										case '2':
-											echo '<li>Generación de línea de captura</li>';
-											break;
-										case '3':
-											echo '<li>Pago totalmente en línea</li>';
-											break;
-										case '4':
-											echo '<li>Entrega en línea</li>';
-											break;
-									}// switch
-								}// foreach
+									$nivel_arr = explode('_', $nivel);
+									foreach ($nivel_arr as $key => $value) {
+										switch($value){
+											case '1':
+												echo '<li>Solicitud en línea</li>';
+												break;
+											case '2':
+												echo '<li>Generación de línea de captura</li>';
+												break;
+											case '3':
+												echo '<li>Pago totalmente en línea</li>';
+												break;
+											case '4':
+												echo '<li>Entrega en línea</li>';
+												break;
+										}// switch
+									}// foreach
 
-								echo '</ul><div class="clear margin-bottom"></div>';
-								echo '<a class="boton margin-bottom" href="'.$link.'" target="_blank">realizar en linea</a>';
-							}
+									echo '</ul><div class="clear margin-bottom"></div>';
+									echo '<br/><a class="boton margin-bottom" href="'.$link.'" target="_blank">realizar en linea</a>';
+								}
+							echo '</li>';
+						echo '</ul>';
+						if($ts->tel_presentacion != '0'){
+							$tel = $ts->tel_presentacion;
+							if($ts->ext_presentacion != '0')
+								$tel = $tel.' ext. '.$ts->ext_presentacion;
+								echo '<div class="[ acordeon-item ]">';
+										echo '<a href="#" class="block boton margin-bottom">';
+										echo '<h2 id="ts_en_linea" class="[ no-margin ]">Vía telefónica</h2>';
+										echo '</a>';
+									echo '<ul class="[ none ] [ hide ]">';
+									echo '<li>';
+										echo '<p>'.$tel.'</p>';
+									echo '</li>';
+								echo '</ul>';
+						}
 
-							if($ts->tel_presentacion != '0'){
-								$tel = $ts->tel_presentacion;
-								if($ts->ext_presentacion != '0')
-									$tel = $tel.' ext. '.$ts->ext_presentacion;
-
-								echo '<h3 class="highlight">Vía telefónica</h3>';
-								echo '<p>'.$tel.'</p>';
-							}
-
-							?>
-					</div>
+						?>
+					</div><!-- acordeon -->
 				</article>
 				<hr>
 
 				<?php if(trim($ts->observaciones) != '') { ?>
-					<article class="" data-seccion="observaciones">
+					<article class="[ gray-background ] [ padding ]" data-seccion="observaciones">
 						<h2 class="highlight">¿Qué debes considerar?</h2>
 						<p><?php echo $ts->observaciones ?></p>
 					</article>
@@ -297,7 +310,7 @@
 						?>
 
 						<h2 class="highlight">De acuerdo a los fundamentos jurídicos:</h2>
-						<ul>
+						<ul class="[ disc inside ]">
 							<?php
 							if($info_juridica != ''){
 								foreach ($info_juridica as $key => $value) {
@@ -426,7 +439,7 @@
 					// Áreas de pago
 					if($area_pago != ''){
 						echo '<h3 class="highlight">Áreas de pago</h3>';
-						echo '<ul>';
+						echo '<ul class="[ disc inside ]">';
 						foreach ($area_pago as $key => $value) {
 							echo '<li>'.$value->descripcion.'</li>';
 						} // end foreach

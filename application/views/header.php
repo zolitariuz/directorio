@@ -18,7 +18,6 @@
 		<script type="text/javascript" src="//use.typekit.net/jro5mkt.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	</head>
-
 	<body>
 		<!--[if lt IE 9]>
 			<p class="chromeframe">Estás usando una versión <strong>vieja</strong> de tu explorador. Por favor <a href="http://browsehappy.com/" target="_blank"> actualiza tu explorador</a> para tener una experiencia completa.</p>
@@ -33,7 +32,6 @@
 			  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
-
 		<div class="container">
 			<header class="clearfix">
 				<div class="width clearfix">
@@ -46,7 +44,9 @@
 							<a href="<?php echo base_url() ?>">
 								<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
 							</a>
-						</h1>
+						</h1><span class="[ slogan ] [ text-center ]">
+							<small>Transparecia y Certeza Jurídica</small>
+						</span>
 					</div><!-- header-top --><div class="search no-large">
 						<?php if ( $seccion !== 'Inicio' ) {?>
 							<i class="fa fa-search"></i>
