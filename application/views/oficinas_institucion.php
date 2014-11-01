@@ -8,7 +8,6 @@
 			<li>></li>
 			<li class="actual"><?php echo $institucion->institucion; ?></li>
 		</ul>
-
 		<h2 class="text-center highlight">Oficinas por institución: <?php echo $institucion->institucion; ?></h2>
 		<section class="columna full medium-8 center directorio">
 			<?php
@@ -27,14 +26,15 @@
 					// Coordenadas mapa
 					$coordenadas = str_replace('mapa:', '', $value['url_ubicacion']);
 					$url_mapa = 'http://maps.google.com/maps?q=loc:'.$coordenadas;
-					$ubicacion = '<a href="'.$url_mapa.'" target="_new">Ubicación en el mapa</a>';
+					$ubicacion = '<br/><a href="'.$url_mapa.'" target="_new">Ubicación en el mapa</a>';
 
 					$primeraLetra = substr($oficina, 0, 1);
+					$primeraLetra = strtoupper ( $primeraLetra );
 					if($primeraLetra != $primeraLetraAnt){
 						if($primeraLetraAnt != ''){
 							echo '</ul></div>';
 						} ?>
-						<div class="letra margin-bottom directorio-item">
+						<div class="letra margin-bottom acordeon-item">
 							<a href="#" class="block boton margin-bottom">
 								<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
 							</a>

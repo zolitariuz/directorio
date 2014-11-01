@@ -15,7 +15,7 @@
 						if($primeraLetraAnt != ''){
 							echo '</ul></div>';
 						} ?>
-						<div class="letra margin-bottom directorio-item">
+						<div class="letra margin-bottom acordeon-item">
 							<a href="#" class="block boton margin-bottom">
 								<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
 							</a>

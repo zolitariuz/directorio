@@ -176,63 +176,85 @@
 				<hr>
 				<div class="clear"></div>
 				<article class="" data-seccion="area-atencion">
-					<div class="div" style="border:1px solid black">
-						<strong>Esto debe ser un acordión...</strong>
-						<h2 class="highlight">¿Dónde lo realizo?</h2>
-						<div id="map"></div>
+					<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
+					<div class="[ acordeon ]">
+						<div class="[ acordeon-item ]">
+							<a href="#" class="block boton margin-bottom">
+								<h2 class="[ no-margin ]">En área de atención ciudadana</h2>
+							</a>
+							<ul class="[ none ] [ hide ]">
+								<li>
+									<div class="[ map-wrapper ] [ margin-bottom ]">
+										<div id="map"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
 						<?php
 							$nivel = $ts->nvl_automatizacion;
 							$link = $ts->url_nvl_automatizacion;
 							if(is_null($nivel) || $nivel  == '1'){
 
 							} else{
-								echo '<h3 class="highlight" id="ts_en_linea">En línea</h3>';
+								echo '<div class="[ acordeon-item ]">';
+									echo '<a href="#" class="block boton margin-bottom">';
+									echo '<h2 id="ts_en_linea" class="[ no-margin ]">En línea</h2>';
+									echo '</a>';
+								echo '<ul class="[ none ] [ hide ]">';
+								echo '<li>';
 							}
 
-							if($nivel == '2'){
-								echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
-							} else {
-								echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
-								echo '<ul class="[ disc inside ]">';
+								if($nivel == '2'){
+									echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
+								} else {
+									echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
+									echo '<ul class="[ disc inside ]">';
 
-								$nivel_arr = explode('_', $nivel);
-								foreach ($nivel_arr as $key => $value) {
-									switch($value){
-										case '1':
-											echo '<li>Solicitud en línea</li>';
-											break;
-										case '2':
-											echo '<li>Generación de línea de captura</li>';
-											break;
-										case '3':
-											echo '<li>Pago totalmente en línea</li>';
-											break;
-										case '4':
-											echo '<li>Entrega en línea</li>';
-											break;
-									}// switch
-								}// foreach
+									$nivel_arr = explode('_', $nivel);
+									foreach ($nivel_arr as $key => $value) {
+										switch($value){
+											case '1':
+												echo '<li>Solicitud en línea</li>';
+												break;
+											case '2':
+												echo '<li>Generación de línea de captura</li>';
+												break;
+											case '3':
+												echo '<li>Pago totalmente en línea</li>';
+												break;
+											case '4':
+												echo '<li>Entrega en línea</li>';
+												break;
+										}// switch
+									}// foreach
 
-								echo '</ul><div class="clear margin-bottom"></div>';
-								echo '<a class="boton margin-bottom" href="'.$link.'" target="_blank">realizar en linea</a>';
-							}
+									echo '</ul><div class="clear margin-bottom"></div>';
+									echo '<br/><a class="boton margin-bottom" href="'.$link.'" target="_blank">realizar en linea</a>';
+								}
+							echo '</li>';
+						echo '</ul>';
+						if($ts->tel_presentacion != '0'){
+							$tel = $ts->tel_presentacion;
+							if($ts->ext_presentacion != '0')
+								$tel = $tel.' ext. '.$ts->ext_presentacion;
+								echo '<div class="[ acordeon-item ]">';
+										echo '<a href="#" class="block boton margin-bottom">';
+										echo '<h2 id="ts_en_linea" class="[ no-margin ]">Vía telefónica</h2>';
+										echo '</a>';
+									echo '<ul class="[ none ] [ hide ]">';
+									echo '<li>';
+										echo '<p>'.$tel.'</p>';
+									echo '</li>';
+								echo '</ul>';
+						}
 
-							if($ts->tel_presentacion != '0'){
-								$tel = $ts->tel_presentacion;
-								if($ts->ext_presentacion != '0')
-									$tel = $tel.' ext. '.$ts->ext_presentacion;
-
-								echo '<h3 class="highlight">Vía telefónica</h3>';
-								echo '<p>'.$tel.'</p>';
-							}
-
-							?>
-					</div>
+						?>
+					</div><!-- acordeon -->
 				</article>
 				<hr>
 
 				<?php if(trim($ts->observaciones) != '') { ?>
-					<article class="" data-seccion="observaciones">
+					<article class="[ gray-background ] [ padding ]" data-seccion="observaciones">
 						<h2 class="highlight">¿Qué debes considerar?</h2>
 						<p><?php echo $ts->observaciones ?></p>
 					</article>

@@ -2,10 +2,6 @@
 	"use strict";
 	$(function(){
 
-
-
-
-
 		//***************//
 		//*** ON LOAD ***//
 		//***************//
@@ -32,22 +28,19 @@
 		//***************//
 		//*** CLICKS ****//
 		//***************//
+
 		//Tabs
 		$('.tabs a').on('click', function(){
 			cambiarTab( $(this) );
 		});
 
-		//Acordion
-		$('body').on('click', '.directorio-item > .boton', function(e){
+		//Acordeon
+		$('body').on('click', '.acordeon-item > .boton', function(e){
 			e.preventDefault();
-			abrirDirectorio( $(this) );
+			abrirAcordeon( $(this) );
 		});
 
-		//Modals
-		// $('body').on('click', '.boton', function(){
-		// 	abrirModal( $(this) );
-		// });
-
+		//Modal
 		$('body').on('click', '.modal .cerrar', function(){
 			cerrarModal( $(this) );
 		});
@@ -115,7 +108,7 @@
 		});
 
 		//Abrir secciones home
-		$('body').on('click', '.main-content.no-large .boton', function(e){
+		$('body').on('click', '.main-content .boton', function(e){
 			e.preventDefault();
 			toggleSeccion( $(this), '.main-content.no-large article > div' );
 		});
@@ -188,13 +181,13 @@
 		$('.'+tabAAbrir).removeClass('hide');
 	}
 
-	function abrirDirectorio(elemento){
-		var ul = elemento.parent('.directorio-item').find('ul');
+	function abrirAcordeon(elemento){
+		var ul = elemento.parent('.acordeon-item').find('ul');
 		if( ul.hasClass('hide') ){
-			$('.directorio-item').find('ul').addClass('hide');
+			$('.acordeon-item').find('ul').addClass('hide');
 			ul.removeClass('hide');
 		} else {
-			$('.directorio-item').find('ul').addClass('hide');
+			$('.acordeon-item').find('ul').addClass('hide');
 		}
 	}
 
