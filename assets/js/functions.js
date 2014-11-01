@@ -2,6 +2,10 @@
 	"use strict";
 	$(function(){
 
+
+
+
+
 		//***************//
 		//*** ON LOAD ***//
 		//***************//
@@ -35,7 +39,7 @@
 		});
 
 		//Acordeon
-		$('body').on('click', '.acordeon-item > .boton', function(e){
+		$('body').on('click', '.acordeon-item > .boton-acordeon', function(e){
 			e.preventDefault();
 			abrirAcordeon( $(this) );
 		});
@@ -609,9 +613,7 @@ function agregarTSReportes(dataTS, base_url){
 function muestraReporteTS(id_ts, ts, base_url){
 	var jsonReporte = {};
 	jsonReporte['id_ts'] = id_ts;
-
 	escondeReportes();
-
 	$.post(
 		base_url + "index.php/gestor_contenidos/muestra_reporte_ts",
 		jsonReporte,
@@ -710,7 +712,6 @@ function muestraReporteTS(id_ts, ts, base_url){
 
 	function dameMes(num_mes){
 		var mes;
-
 		switch (num_mes){
 			case '01':
 				mes = "Enero"

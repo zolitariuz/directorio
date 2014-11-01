@@ -6,10 +6,14 @@
 						<img class="block center" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
 					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
-					</div><div class="">
-						<img class="block center" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
-					</div><div class="">
-						<img class="block center" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
+					</div><div class="[ apoyo ]">
+						<p class="[ text-center ]">Con el apoyo de:</p>
+						<div class=" [ columna xmall-6 ]">
+							<img class="[ block center ]" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
+						</div>
+						<div class=" [ columna xmall-6 ]">
+							<img class="[ block center ]" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
+						</div>
 					</div>
 				</div><!-- width -->
 			</section>

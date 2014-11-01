@@ -179,11 +179,44 @@
 					<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
-							<a href="#" class="block boton margin-bottom">
-								<h2 class="[ no-margin ]">En área de atención ciudadana</h2>
+							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
+								<i class="fa fa-bank"></i> En área de atención ciudadana
 							</a>
 							<ul class="[ none ] [ hide ]">
 								<li>
+									<form class="[ margin-bottom ]" action="">
+										<fieldset>
+											<label for="delegacion">Delegación:</label>
+											<select name="delegacion" id="delegacion">
+												<option value="Seleccionar">Seleccionar delegación</option>
+												<option value="cuauhtemoc">Cuauhtémoc</option>
+											</select>
+										</fieldset>
+									</form>
+									<div class="tabla">
+										<div class="fila header clearfix">
+											<div class="columna xmall-3 text-center">
+												Nombre
+											</div>
+											<div class="columna xmall-3 text-center">
+												Dirección
+											</div>
+											<div class="columna xmall-3 text-center">
+												Horarios
+											</div>
+											<div class="columna xmall-3 text-center">
+												Teléfonos
+											</div>
+										</div>
+										<div class="clear"></div>
+										<div class="fila clearfix">
+											<div class="[ columna xmall-3 ]"><strong>Ventanilla única</strong></div>
+											<div class="[ columna xmall-3 ]">Re mihi non aeque satisfacit et quidem locis pluribus terram.</div>
+											<div class="[ columna xmall-3 ]">Re mihi non aeque satisfacit et quidem locis pluribus terram.</div>
+											<div class="[ columna xmall-3 ]">55 44 77 55</div>
+										</div>
+										<div class="clear"></div>
+									</div><!-- tabla -->
 									<div class="[ map-wrapper ] [ margin-bottom ]">
 										<div id="map"></div>
 									</div>
@@ -197,56 +230,56 @@
 
 							} else{
 								echo '<div class="[ acordeon-item ]">';
-									echo '<a href="#" class="block boton margin-bottom">';
-									echo '<h2 id="ts_en_linea" class="[ no-margin ]">En línea</h2>';
+									echo '<a href="#" class="block [ boton boton-acordeon ] margin-bottom">';
+										echo '<i class="fa fa-bank"></i> En línea';
 									echo '</a>';
-								echo '<ul class="[ none ] [ hide ]">';
-								echo '<li>';
-							}
-
-								if($nivel == '2'){
-									echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
-								} else {
-									echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
-									echo '<ul class="[ disc inside ]">';
-
-									$nivel_arr = explode('_', $nivel);
-									foreach ($nivel_arr as $key => $value) {
-										switch($value){
-											case '1':
-												echo '<li>Solicitud en línea</li>';
-												break;
-											case '2':
-												echo '<li>Generación de línea de captura</li>';
-												break;
-											case '3':
-												echo '<li>Pago totalmente en línea</li>';
-												break;
-											case '4':
-												echo '<li>Entrega en línea</li>';
-												break;
-										}// switch
-									}// foreach
-
-									echo '</ul><div class="clear margin-bottom"></div>';
-									echo '<br/><a class="boton margin-bottom" href="'.$link.'" target="_blank">realizar en linea</a>';
-								}
-							echo '</li>';
-						echo '</ul>';
-						if($ts->tel_presentacion != '0'){
-							$tel = $ts->tel_presentacion;
-							if($ts->ext_presentacion != '0')
-								$tel = $tel.' ext. '.$ts->ext_presentacion;
-								echo '<div class="[ acordeon-item ]">';
-										echo '<a href="#" class="block boton margin-bottom">';
-										echo '<h2 id="ts_en_linea" class="[ no-margin ]">Vía telefónica</h2>';
-										echo '</a>';
 									echo '<ul class="[ none ] [ hide ]">';
-									echo '<li>';
-										echo '<p>'.$tel.'</p>';
+										echo '<li class="[ clearfix ]">';
+									}
+									if($nivel == '2'){
+										echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
+									} else {
+										echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
+										echo '<ul class="[ disc inside ]">';
+
+										$nivel_arr = explode('_', $nivel);
+										foreach ($nivel_arr as $key => $value) {
+											switch($value){
+												case '1':
+													echo '<li>Solicitud en línea</li>';
+													break;
+												case '2':
+													echo '<li>Generación de línea de captura</li>';
+													break;
+												case '3':
+													echo '<li>Pago totalmente en línea</li>';
+													break;
+												case '4':
+													echo '<li>Entrega en línea</li>';
+													break;
+											}// switch
+										}// foreach
+										echo '</ul><div class="clear margin-bottom"></div>';
+										echo '<br/><a class="boton margin-bottom [ left ]" href="'.$link.'" target="_blank">realizar en linea</a>';
+									}
 									echo '</li>';
 								echo '</ul>';
-						}
+							echo '</div>';
+							if($ts->tel_presentacion != '0'){
+								$tel = $ts->tel_presentacion;
+								if($ts->ext_presentacion != '0')
+									$tel = $tel.' ext. '.$ts->ext_presentacion;
+									echo '<div class="[ acordeon-item ]">';
+											echo '<a href="#" class="block [ boton boton-acordeon ] margin-bottom">';
+											echo '<i class="fa fa-bank"></i> Vía telefónica';
+											echo '</a>';
+										echo '<ul class="[ none ] [ hide ]">';
+											echo '<li>';
+												echo '<p>'.$tel.'</p>';
+											echo '</li>';
+										echo '</ul>';
+									echo '</div>';
+							}
 
 						?>
 					</div><!-- acordeon -->
@@ -262,64 +295,70 @@
 				<?php } ?>
 
 				<article class="" data-seccion="informacion-juridica">
-					<a href="#" class="block boton margin-bottom">
-						<i class="fa fa-bank"></i> Información jurídica
-					</a>
-					<div>
-						<h2 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h2>
-							<?php
-								$afirmativa_ficta = $ts->afirmativa_ficta;
-								$negativa_ficta = $ts->negativa_ficta;
+					<div class="[ acordeon ]">
+						<div class="[ acordeon-item ]">
+							<a href="#" class="block boton margin-bottom">
+								<i class="fa fa-bank"></i> Información jurídica
+							</a>
+							<ul class="[ none ] [ hide ]">
+								<li>
+									<h2 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h2>
+									<?php
+										$afirmativa_ficta = $ts->afirmativa_ficta;
+										$negativa_ficta = $ts->negativa_ficta;
 
-								if($afirmativa_ficta == '3' && $negativa_ficta == '3')
-									echo '<p>No aplica</p>';
+										if($afirmativa_ficta == '3' && $negativa_ficta == '3')
+											echo '<p>No aplica</p>';
 
-								if($afirmativa_ficta == '1')
-									echo '<p>Afirmativa ficta: procede afirmativa ficta.</p>';
-								else
-									echo '<p>Afirmativa ficta: no procede afirmativa ficta.</p>';
+										if($afirmativa_ficta == '1')
+											echo '<p>Afirmativa ficta: procede afirmativa ficta.</p>';
+										else
+											echo '<p>Afirmativa ficta: no procede afirmativa ficta.</p>';
 
-								if($negativa_ficta == '1')
-									echo '<p>Negativa ficta: procede negativa ficta.</p>';
-								else
-									echo '<p>Negativa ficta: no procede negativa ficta.</p>';
-							?>
+										if($negativa_ficta == '1')
+											echo '<p>Negativa ficta: procede negativa ficta.</p>';
+										else
+											echo '<p>Negativa ficta: no procede negativa ficta.</p>';
+									?>
 
-						<h2 class="highlight">Plazo máximo de respuesta</h2>
-						<?php
-						// Parsear tiempo de respuesta si existe
-						if(!is_null($ts->tiempo_respuesta)){
-							$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
-							$dias = $tiempo_respuesta_ar[0];
+									<h2 class="highlight">Plazo máximo de respuesta</h2>
+									<?php
+									// Parsear tiempo de respuesta si existe
+									if(!is_null($ts->tiempo_respuesta)){
+										$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
+										$dias = $tiempo_respuesta_ar[0];
 
-							if($tiempo_respuesta_ar[1] == 1){
-								$tipo = ' días hábiles';
-								$tiempo_respuesta = $dias.$tipo;
-							} else if ($tiempo_respuesta_ar[1] == 2){
-								$tipo = ' días naturales';
-								$tiempo_respuesta = $dias.$tipo;
-							} else {
-								$tipo = 'Inmediato';
-								$tiempo_respuesta = $tipo;
-							}
+										if($tiempo_respuesta_ar[1] == 1){
+											$tipo = ' días hábiles';
+											$tiempo_respuesta = $dias.$tipo;
+										} else if ($tiempo_respuesta_ar[1] == 2){
+											$tipo = ' días naturales';
+											$tiempo_respuesta = $dias.$tipo;
+										} else {
+											$tipo = 'Inmediato';
+											$tiempo_respuesta = $tipo;
+										}
 
-						} else
-							$tiempo_respuesta = 'Tiempo de respuesta no definido';
+									} else
+										$tiempo_respuesta = 'Tiempo de respuesta no definido';
 
-						echo '<p>'.$tiempo_respuesta.'</p>';
-						?>
+									echo '<p>'.$tiempo_respuesta.'</p>';
+									?>
 
-						<h2 class="highlight">De acuerdo a los fundamentos jurídicos:</h2>
-						<ul class="[ disc inside ]">
-							<?php
-							if($info_juridica != ''){
-								foreach ($info_juridica as $key => $value) {
-									echo '<li>'.$value->descripcion.' '.$value->articulos.'</li>';
-								} // end foreach
-							}
-							?>
-						</ul>
-					</div>
+									<h2 class="highlight">De acuerdo a los fundamentos jurídicos:</h2>
+									<ul class="[ disc inside ]">
+										<?php
+										if($info_juridica != ''){
+											foreach ($info_juridica as $key => $value) {
+												echo '<li>'.$value->descripcion.' '.$value->articulos.'</li>';
+											} // end foreach
+										}
+										?>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- [ acordeon-item ] -->
+					</div><!-- [ acordeon ] -->
 				</article>
 
 				<article class="danos-tu-opinion">
@@ -362,17 +401,6 @@
 					</form>
 				<?php } ?>
 				</article><!-- danos tu opinion -->
-				<hr>
-
-				<article class="compartelo">
-					<h2 class="highlight">Compártelo</h2>
-					<div class="share block columna xmall-2">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="clear"></div>
-						<div class="fb-share-button" data-layout="button" data-href="#"></div>
-					</div><!-- share -->
-				</article>
 			</section><!-- content -->
 			<aside class="columna medium-4 large-3">
 				<a href="#" class="block boton horizontal margin-bottom busqueda js-overlay-opener">
@@ -400,7 +428,6 @@
 					?>
 				</div><!-- quick-info -->
 				<hr>
-
 				<div class="quick-info">
 					<?php
 					$indicePrecio = 0;
@@ -431,9 +458,17 @@
 						} // end foreach
 					}
 					?>
+				<hr>
+				<div class="[ quick-info ] [ clearfix ]">
+					<h3 class="highlight">Compártelo</h3>
+					<div class="share block columna xmall-2">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<div class="clear"></div>
+						<div class="fb-share-button" data-layout="button" data-href="#"></div>
+					</div><!-- share -->
 				</div><!-- quick-info -->
 				<hr>
-
 				<div class="quick-info">
 					<?php
 					// Áreas de pago

@@ -305,9 +305,12 @@ button, .boton{ padding: @margen; border: none; border-bottom: 6px solid @obscur
 a{ color: @highlight; }
 .gray-background{ background: lighten(@obscuro, 55%); }
 
+//
 section{ margin-bottom: (@margen); }
 hr{ height: 1px; border: none; margin: 0 0 (@margen*3) 0; background: lighten(@obscuro, 45%); }
-article{ margin-bottom: (@margen*3); }
+article{ margin-bottom: (@margen*3);
+	p:last-of-type{ margin-bottom: 0; }
+}
 
 
 ul{ margin: 0; list-style: lower-roman; list-style-position: outside;
@@ -414,6 +417,7 @@ footer{
 	section{ margin: 0; padding: @margen 0; }
 	.logos{ background: lighten(@obscuro, 40%);
 		> div > div{ display: inline-block; vertical-align: middle; width: 50%; }
+		.apoyo{  }
 	}
 	.emergencia{ background: @obscuro;
 		h4{ margin-bottom: @margen; color: @claro;
@@ -792,6 +796,7 @@ body.cms{
 		section{ padding: @margen; }
 		.logos{
 			> div > div{ width: 25%; }
+			.apoyo{ width: 50%; }
 		}
 	}
 
