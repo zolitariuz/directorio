@@ -901,9 +901,9 @@ function muestraAreaAtencionPorDelegacion(){
 	$('select[name="delegacion"]').change(function(){
 		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
 		var delegacion = $(this).find('option:selected').val();
-		var url = localStorage.getItem('url_ws') + '/area_atencion_delegacion/id/'+id_tramite_servicio+'/del/' + delegacion + '/format/json'
+		var url = localStorage.getItem('url_ws') + '/area_atencion_tramite_delegacion/del/' + delegacion + '/id/'+id_tramite_servicio+'/format/json'
 
-		console.log(delegacion);
+		console.log(url);
 
 		$('.j_area_atencion').addClass('hide');
 		$('.j_area_atencion .fila').not('.header').remove();
@@ -915,7 +915,6 @@ function muestraAreaAtencionPorDelegacion(){
 					$('.j_area_atencion').removeClass('hide');
 					$('.j_area_atencion').after('<div class="[ map-wrapper ] [ margin-bottom ]"><div id="map"></div></div>');
 					$.each(response, function(i, val){
-						console.log(val['telefono_2']);
 						var tel2 = val['telefono_2'];
 						if(tel2 === null){
 							tel2 = '';
@@ -932,12 +931,36 @@ function muestraAreaAtencionPorDelegacion(){
 						$('.j_area_atencion').append(fila);
 					});
 					creaMapa(response);
-					console.log(response);
 				}
 			);
 		}
 	});
 }// muestraAreaAtencionPorDelegacion
+
+function agregarFeedback(){
+	$('.feedback input[type="submit"]').on('click', function(e){
+		e.preventDefault();
+
+		var comentario = $('textarea[name="comentarios"').val();
+		
+		if($.trim(comentario) == ''){
+			alert('El campo de comentarios no puede quedar vacío.');
+			return;
+		}
+
+		var data = $('.feedback').serialize();
+		var url = localStorage.getItem('base_url') + "tramites_servicios/agregar_feedback";
+		$.post(
+			url ,
+			data,
+			function(response){
+				$('.feedback').remove();
+				$('.danos-tu-opinion').append('<h3>Gracias por tus comentarios. Tu opinión es muy importante para nosotros.</h3>')
+			}
+		);
+
+	})
+}// agregarFeedback
 
 
 

@@ -111,6 +111,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	<script>
 		localStorage.setItem('url_ws', '<?php echo $ws ?>');
+		localStorage.setItem('base_url', '<?php echo base_url() ?>');
 
 		<?php if($nombres_ts != '') { ?>
 			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
@@ -127,6 +128,7 @@
 		<?php }
 
 		if($seccion == 'Tramite') { ?>
+			agregarFeedback();
 			muestraAreaAtencionPorDelegacion();
 			imprimirInfoTramite();
 			scrollHeader('aside .busqueda');
