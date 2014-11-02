@@ -17,7 +17,6 @@
 					</div><!-- quick-info -->
 					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
 				</article><!-- header-single -->
-
 				<article class="consiste">
 					<?php if(is_null($ts->descripcion)) { ?>
 						<p class="hero">Este trámite no tiene descripción.</p>
@@ -26,13 +25,11 @@
 					<?php } ?>
 				</article>
 				<hr>
-
 				<article class="beneficiario">
 					<h2 class="highlight">¿Quién realiza el trámite?</h2>
 					<p><?php echo $ts->beneficiario ?></p>
 				</article>
 				<hr>
-
 				<?php
 				$numReq = 1;
 				if($requisitos == '' && $requisitos_esp == ''){
@@ -188,19 +185,16 @@
 										<input type="hidden" name="id_tramite_servicio" value="<?php echo $ts->id_tramite_servicio ?>">
 										<fieldset>
 											<label for="delegacion">Delegación:</label>
-
-
 											<select name="delegacion" id="delegacion">
 												<option value="Seleccionar">Seleccionar delegación</option>
 												<?php foreach ($delegacion_area_atencion as $key => $delegacion) { ?>
 
 												<option value="<?php echo $delegacion->delegacion ?>"><?php echo $delegacion->delegacion ?></option>
 												<?php } ?>
-												
+
 											</select>
 										</fieldset>
 									</form>
-
 									<div class="tabla j_area_atencion hide">
 										<div class="fila header clearfix">
 											<div class="columna xmall-4 text-center">
@@ -214,10 +208,7 @@
 											</div>
 										</div>
 										<div class="clear"></div>
-
 									</div><!-- tabla -->
-
-									
 								</li>
 							</ul>
 						</div>
@@ -278,12 +269,10 @@
 										echo '</ul>';
 									echo '</div>';
 							}
-
 						?>
 					</div><!-- acordeon -->
 				</article>
 				<hr>
-
 				<?php if(trim($ts->observaciones) != '') { ?>
 					<article class="[ gray-background ] [ padding ]" data-seccion="observaciones">
 						<h2 class="highlight">¿Qué debes considerar?</h2>
@@ -291,7 +280,6 @@
 					</article>
 					<hr>
 				<?php } ?>
-
 				<article class="" data-seccion="informacion-juridica">
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
@@ -358,7 +346,6 @@
 						</div><!-- [ acordeon-item ] -->
 					</div><!-- [ acordeon ] -->
 				</article>
-
 				<article class="danos-tu-opinion">
 					<h2 class="highlight">Danos tu opinión</h2>
 				<?php if($feedback == '1') { ?>

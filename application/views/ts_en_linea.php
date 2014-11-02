@@ -32,7 +32,9 @@
 				}
 				?>
 				<li>
-					<h3 class=""><a href="<?php echo $urlTramite ?>"><?php echo $nombre ?></a></h3>
+					<ul class="[ none ]">
+						<li><a href="<?php echo $urlTramite ?>"><?php echo $nombre ?></a></li>
+					</ul>
 				</li>
 			<?php
 			} //end for each
