@@ -17,7 +17,6 @@
 					</div><!-- quick-info -->
 					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
 				</article><!-- header-single -->
-
 				<article class="consiste">
 					<?php if(is_null($ts->descripcion)) { ?>
 						<p class="hero">Este trámite no tiene descripción.</p>
@@ -26,13 +25,11 @@
 					<?php } ?>
 				</article>
 				<hr>
-
 				<article class="beneficiario">
 					<h2 class="highlight">¿Quién realiza el trámite?</h2>
 					<p><?php echo $ts->beneficiario ?></p>
 				</article>
 				<hr>
-
 				<?php
 				$numReq = 1;
 				if($requisitos == '' && $requisitos_esp == ''){
@@ -188,19 +185,16 @@
 										<input type="hidden" name="id_tramite_servicio" value="<?php echo $ts->id_tramite_servicio ?>">
 										<fieldset>
 											<label for="delegacion">Delegación:</label>
-
-
 											<select name="delegacion" id="delegacion">
 												<option value="Seleccionar">Seleccionar delegación</option>
 												<?php foreach ($delegacion_area_atencion as $key => $delegacion) { ?>
 
 												<option value="<?php echo $delegacion->delegacion ?>"><?php echo $delegacion->delegacion ?></option>
 												<?php } ?>
-												
+
 											</select>
 										</fieldset>
 									</form>
-
 									<div class="tabla j_area_atencion hide">
 										<div class="fila header clearfix">
 											<div class="columna xmall-4 text-center">
@@ -214,18 +208,14 @@
 											</div>
 										</div>
 										<div class="clear"></div>
-
 									</div><!-- tabla -->
-
-									
 								</li>
 							</ul>
 						</div>
 						<?php
 							$nivel = $ts->nvl_automatizacion;
 							$link = $ts->url_nvl_automatizacion;
-							if(is_null($nivel) || $nivel  == '1'){
-
+							if( is_null($nivel) ){
 							} else{
 								echo '<div class="[ acordeon-item ]">';
 									echo '<a href="#" class="block [ boton boton-acordeon ] margin-bottom">';
@@ -262,7 +252,6 @@
 									}
 									echo '</li>';
 								echo '</ul>';
-							echo '</div>';
 							if($ts->tel_presentacion != '0'){
 								$tel = $ts->tel_presentacion;
 								if($ts->ext_presentacion != '0')
@@ -278,12 +267,10 @@
 										echo '</ul>';
 									echo '</div>';
 							}
-
 						?>
 					</div><!-- acordeon -->
 				</article>
 				<hr>
-
 				<?php if(trim($ts->observaciones) != '') { ?>
 					<article class="[ gray-background ] [ padding ]" data-seccion="observaciones">
 						<h2 class="highlight">¿Qué debes considerar?</h2>
@@ -291,7 +278,6 @@
 					</article>
 					<hr>
 				<?php } ?>
-
 				<article class="" data-seccion="informacion-juridica">
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
@@ -358,7 +344,6 @@
 						</div><!-- [ acordeon-item ] -->
 					</div><!-- [ acordeon ] -->
 				</article>
-
 				<article class="danos-tu-opinion">
 					<h2 class="highlight">Danos tu opinión</h2>
 				<?php if($feedback == '1') { ?>
@@ -459,7 +444,7 @@
 				<hr>
 				<div class="[ quick-info ] [ clearfix ]">
 					<h3 class="highlight">Compártelo</h3>
-					<div class="share block columna xmall-2">
+					<div class="share block">
 						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 						<div class="clear"></div>
