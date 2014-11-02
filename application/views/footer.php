@@ -3,7 +3,11 @@
 			<section class="logos">
 				<div class="width clearfix">
 					<div class="">
+						<img class="[ block center ]" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
+					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
+					</div><div class="">
+						<img class="block center" src="<?php echo base_url() ?>assets/img/cdmx-gray.png" alt="">
 					</div><div class="">
 						<img class="block center" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
 					</div><div class="[ apoyo ]">
@@ -91,17 +95,6 @@
 							<input type="hidden" name="tags_id" id="ts_footer_id" value="x" />
 							<button type="submit" class="span xmall-1"><i class="fa fa-search"></i></button>
 						</form>
-						<h3 class="text-center">O ve trámites y servicios por:</h3>
-						<div class="columna xmall-12 medium-8 center clearfix">
-							<a  class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/instituciones' ?>">
-								<i class="icon-ts-icon-filled-instituciones"></i>
-								Institución
-							</a>
-							<a class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/temas' ?>">
-								<i class="icon-ts-icon-filled-temas"></i>
-								Tema
-							</a>
-						</div>
 					</section><!-- busqueda -->
 				</div>
 			</div>
