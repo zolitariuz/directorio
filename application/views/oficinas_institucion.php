@@ -9,7 +9,7 @@
 			<li class="actual"><?php echo $institucion->institucion; ?></li>
 		</ul>
 		<h2 class="text-center highlight">Oficinas por institución: <?php echo $institucion->institucion; ?></h2>
-		<section class="columna full medium-8 center directorio">
+		<section class="[ columna full medium-8 ] [ center ]">
 			<?php
 				$primeraLetraAnt = '';
 				foreach ($area_atencion as $value) {
@@ -29,13 +29,17 @@
 					$ubicacion = '<br/><a href="'.$url_mapa.'" target="_new">Ubicación en el mapa</a>';
 
 					$primeraLetra = substr($oficina, 0, 1);
+					echo '<pre>';
+						print_r($primeraLetra);
+					echo '</pre>';
+
 					$primeraLetra = strtoupper ( $primeraLetra );
 					if($primeraLetra != $primeraLetraAnt){
 						if($primeraLetraAnt != ''){
 							echo '</ul></div>';
 						} ?>
 						<div class="letra margin-bottom acordeon-item">
-							<a href="#" class="block boton margin-bottom">
+							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
 								<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
 							</a>
 							<ul class="hide none">

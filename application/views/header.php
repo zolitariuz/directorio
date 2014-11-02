@@ -58,7 +58,7 @@
 				<nav class="large">
 					<div class="width">
 						<a class="text-center <?php if ( $seccion == 'Oficinas atencion' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">
-							Directorio de atención ciudadana
+							Directorio de áreas de atención ciudadana
 						</a><a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
 							Trámites y servicios en línea
 						</a><a class="text-center" href="#">

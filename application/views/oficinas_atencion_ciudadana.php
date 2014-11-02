@@ -4,10 +4,10 @@
 		<ul class="breadcrumbs">
 			<li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></li>
 			<li>></li>
-			<li class="actual">Oficinas de atención ciudadana</li>
+			<li class="actual">Directorio de áreas de atención ciudadana</li>
 		</ul>
 		<section class="mas-comunes clearfix">
-			<h2 class="text-center highlight">Oficinas de atención ciudadana por instituciones</h2>
+			<h2 class="text-center highlight">Áreas de atención ciudadana por delegación</h2>
 			<div class="masonry-container">
 			<?php foreach ($instituciones as $key => $value) {
 				$institucion = $value->institucion;
