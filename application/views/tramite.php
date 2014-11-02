@@ -184,42 +184,40 @@
 							</a>
 							<ul class="[ none ] [ hide ]">
 								<li>
-									<form class="[ margin-bottom ]" action="">
+									<form class="[ margin-bottom ] [ j-area-delegacion ]" action="">
+										<input type="hidden" name="id_tramite_servicio" value="<?php echo $ts->id_tramite_servicio ?>">
 										<fieldset>
 											<label for="delegacion">Delegación:</label>
+
+
 											<select name="delegacion" id="delegacion">
 												<option value="Seleccionar">Seleccionar delegación</option>
-												<option value="cuauhtemoc">Cuauhtémoc</option>
+												<?php foreach ($delegacion_area_atencion as $key => $delegacion) { ?>
+
+												<option value="<?php echo $delegacion->delegacion ?>"><?php echo $delegacion->delegacion ?></option>
+												<?php } ?>
+												
 											</select>
 										</fieldset>
 									</form>
-									<div class="tabla">
+
+									<div class="tabla j_area_atencion hide">
 										<div class="fila header clearfix">
-											<div class="columna xmall-3 text-center">
+											<div class="columna xmall-4 text-center">
 												Nombre
 											</div>
-											<div class="columna xmall-3 text-center">
+											<div class="columna xmall-5 text-center">
 												Dirección
-											</div>
-											<div class="columna xmall-3 text-center">
-												Horarios
 											</div>
 											<div class="columna xmall-3 text-center">
 												Teléfonos
 											</div>
 										</div>
 										<div class="clear"></div>
-										<div class="fila clearfix">
-											<div class="[ columna xmall-3 ]"><strong>Ventanilla única</strong></div>
-											<div class="[ columna xmall-3 ]">Re mihi non aeque satisfacit et quidem locis pluribus terram.</div>
-											<div class="[ columna xmall-3 ]">Re mihi non aeque satisfacit et quidem locis pluribus terram.</div>
-											<div class="[ columna xmall-3 ]">55 44 77 55</div>
-										</div>
-										<div class="clear"></div>
+
 									</div><!-- tabla -->
-									<div class="[ map-wrapper ] [ margin-bottom ]">
-										<div id="map"></div>
-									</div>
+
+									
 								</li>
 							</ul>
 						</div>

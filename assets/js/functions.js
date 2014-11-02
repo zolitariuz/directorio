@@ -304,12 +304,6 @@
 
 })(jQuery);
 
-
-function getMapas(data){
-	var mapasJSON = $.parseJSON(data);
-	creaMapa(mapasJSON);
-}
-
 function creaMapa(mapas){
 	// Estilos mapa
 
@@ -895,6 +889,42 @@ function imprimirInfoTramite(){
 		window.print();
 	});
 }
+
+function muestraAreaAtencionPorDelegacion(){
+	$('select[name="delegacion"]').change(function(){
+		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
+		var delegacion = $(this).find('option:selected').val();
+		var url = localStorage.getItem('url_ws') + '/area_atencion_delegacion/id/'+id_tramite_servicio+'/del/' + delegacion + '/format/json'
+
+		console.log(delegacion);
+
+		$('.j_area_atencion').addClass('hide');
+		$('.j_area_atencion .fila').not('.header').remove();
+		if(delegacion !== 'Seleccionar'){
+			$.get(
+				url,
+				function(response){
+					$('.j_area_atencion').removeClass('hide');
+					$('.j_area_atencion').after('<div class="[ map-wrapper ] [ margin-bottom ]"><div id="map"></div></div>');
+					$.each(response, function(i, val){
+						var fila = '<div class="fila clearfix"> \
+										<div class="[ columna xmall-4 ]">' + val['nombre'] + '</div> \
+										<div class="columna xmall-5 text-center"> \
+											' + val['calle_numero'] + ', ' + val['colonia'] + '\
+										</div> \
+										<div class="columna xmall-3 text-center"> \
+											' + val['telefono_1'] + '<br /> ' + val['telefono_2'] +  '\
+										</div> \
+									</div>';
+						$('.j_area_atencion').append(fila);
+					});
+					creaMapa(response);
+					console.log(response);
+				}
+			);
+		}
+	});
+}// muestraAreaAtencionPorDelegacion
 
 
 
