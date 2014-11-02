@@ -251,7 +251,7 @@ p{ margin-bottom: 1em; }
 .no-xmall{ display: none; }
 
 .small{ display: none; }
-.large{ display: none; }
+.large{ display: none !important; }
 
 
 /*** GENERAL ***/
@@ -396,20 +396,21 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @obscuro; backgroun
 	.main-search{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @obscuro; position: absolute; }
 }
 
-.menu, .header-top, .search{ display: inline-block; vertical-align: middle; padding: @margen 0; }
-.menu{ width: 13%; position: relative;
-	i{ font-size: 1.6em; text-align: left; }
+.logo, .header-top, .menu, .search{ display: inline-block; vertical-align: bottom; padding: @margen 0; }
+.logo,
+.menu,
+.search{ width: 10%;
+	i{ display: block; font-size: 1.6em; }
 }
-.header-top{ width: 100%; margin-left: 1%; margin-right: 1%; }
+.logo{ width: 10%;
+	img{ display: block; width: 90%; }
+}
+.header-top{ width: 68%; margin-left: 1%; margin-right: 1%; }
+
 nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @claro; position: absolute;
 	a{ display: block; padding: (@margen/2); text-align: center; border-bottom: 1px solid @claro; .font(1.2em, 1, 600); color: @claro; background: lighten(@obscuro, 10%); text-decoration: none; .transition;
 		&:hover, &.active{ color: @highlight; }
 	}
-}
-
-.search{ width: 13%;
-	i{ font-size: 1.6em; text-align: right; }
-	img{ width: 80%; float: right; }
 }
 
 /*** FOOTER ***/
@@ -688,9 +689,7 @@ body.cms{
 		&.medium-11{ width: 89.3%; }
 		&.medium-12{ width: 100%; margin-left: 0%; margin-right: 0%; }
 	}
-
 	.span{
-
 		&.medium-1{ width: 8.3%; }
 		&.medium-2{ width: 16.6%; }
 		&.medium-3{ width: 24.9%; }
@@ -704,7 +703,6 @@ body.cms{
 		&.medium-11{ width: 91.3%; }
 		&.medium-12{ width: 100%; margin-left: 0%; margin-right: 0% }
 	}
-
 	.medium{ display: block; }
 	.no-medium{ display: none; }
 
@@ -744,7 +742,6 @@ body.cms{
 		&.large-11{ width: 89.3%; }
 		&.large-12{ width: 100%; margin-left: 0%; margin-right: 0% }
 	}
-
 	.span{
 		&.large-1{ width: 8.3%; }
 		&.large-2{ width: 16.6%; }
@@ -760,7 +757,7 @@ body.cms{
 		&.large-12{ width: 100%; margin-left: 0%; margin-right: 0% }
 	}
 
-	.large{ display: block; }
+	.large{ display: block !important; }
 	.no-large{ display: none !important; }
 
 	//========================//
@@ -773,6 +770,7 @@ body.cms{
 
 	//HEADER
 	header{ width: 100%; margin: 0 0 (@margen*2) 0; border: none; z-index: 501; .transition; }
+	.header-top{ width: 100%; }
 	.logo-bloque, h1, .slogan{ display: inline-block; vertical-align: bottom; }
 	.logo-bloque{ width: 5%; margin-right: 1%;
 		img{ display: block; }

@@ -387,9 +387,9 @@ function creaMapa(mapas){
 		});
 		//  Mete los límites en el mapa
 		map.fitBounds(bounds);
-		var listener = google.maps.event.addListener(map, "idle", function() { 
-		if (map.getZoom() > 17) map.setZoom(17); 
-			google.maps.event.removeListener(listener); 
+		var listener = google.maps.event.addListener(map, "idle", function() {
+		if (map.getZoom() > 17) map.setZoom(17);
+			google.maps.event.removeListener(listener);
 		});
 	} // autoCenter
 
@@ -922,10 +922,10 @@ function muestraAreaAtencionPorDelegacion(){
 						};
 						var fila = '<div class="fila clearfix"> \
 										<div class="[ columna xmall-4 ]">' + val['nombre'] + '</div> \
-										<div class="columna xmall-5 text-center"> \
+										<div class="columna xmall-5"> \
 											' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
 										</div> \
-										<div class="columna xmall-3 text-center"> \
+										<div class="columna xmall-3"> \
 											' + val['telefono_1'] + '<br /> ' + tel2 +  '\
 										</div> \
 									</div>';

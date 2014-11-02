@@ -37,8 +37,8 @@
 		<div class="container">
 			<header class="clearfix">
 				<div class="width clearfix">
-					<div class="menu no-large">
-						<i class="fa fa-bars"></i>
+					<div class="logo no-large">
+						<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
 					</div><div class="header-top">
 						<a href="#" class="logo-bloque large">
 							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
@@ -46,15 +46,13 @@
 							<a href="<?php echo base_url() ?>">
 								<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
 							</a>
-						</h1><span class="[ slogan ] [ text-center ]">
+						</h1><span class="[ large ] [ slogan ] [ text-center ]">
 							<small>Transparecia y Certeza Jurídica</small>
 						</span>
-					</div><!-- header-top --><div class="search no-large">
-						<?php if ( $seccion !== 'Inicio' ) {?>
-							<i class="fa fa-search"></i>
-						<?php } else { ?>
-							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
-						<?php } ?>
+					</div><div class="menu no-large">
+						<i class="[ fa fa-bars ] [ full ] [ text-center ]"></i>
+					</div><div class="search no-large">
+						<i class="[ fa fa-search ] [ full ] [ text-center ]"></i>
 					</div>
 				</div><!-- width -->
 				<nav class="large">
