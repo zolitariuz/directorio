@@ -215,8 +215,7 @@
 						<?php
 							$nivel = $ts->nvl_automatizacion;
 							$link = $ts->url_nvl_automatizacion;
-							if(is_null($nivel) || $nivel  == '1'){
-
+							if( is_null($nivel) ){
 							} else{
 								echo '<div class="[ acordeon-item ]">';
 									echo '<a href="#" class="block [ boton boton-acordeon ] margin-bottom">';
@@ -253,7 +252,6 @@
 									}
 									echo '</li>';
 								echo '</ul>';
-							echo '</div>';
 							if($ts->tel_presentacion != '0'){
 								$tel = $ts->tel_presentacion;
 								if($ts->ext_presentacion != '0')
@@ -446,7 +444,7 @@
 				<hr>
 				<div class="[ quick-info ] [ clearfix ]">
 					<h3 class="highlight">Compártelo</h3>
-					<div class="share block columna xmall-2">
+					<div class="share block">
 						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 						<div class="clear"></div>
