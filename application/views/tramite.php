@@ -5,7 +5,7 @@
 			<ul class="breadcrumbs">
 				<li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></li>
 				<li>></li>
-				<li><a href="<?php echo base_url().'index.php/temas/muestraTS/'.$ts->id_materia ?>"><?php echo $ts->materia ?></a></li>
+				<li><a href="<?php echo base_url().'temas/muestraTS/'.$ts->id_materia ?>"><?php echo $ts->materia ?></a></li>
 				<li>></li>
 				<li class="actual"><?php echo $ts->nombre_tramite; ?></li>
 			</ul>
@@ -364,7 +364,7 @@
 				<?php if($feedback == '1') { ?>
 					<label>Gracias por participar.</label>
 				<?php } else { ?>
-					<form class="feedback clearfix" action="<?php echo base_url().'index.php/tramites_servicios/agregar_feedback' ?>" method="POST">
+					<form class="feedback clearfix" action="<?php echo base_url().'tramites_servicios/agregar_feedback' ?>" method="POST">
 						<fieldset>
 							<label>¿Te ha sido útil esta información?</label>
 							<input name="ayuda" type="radio" value="t" checked="checked"> Sí
