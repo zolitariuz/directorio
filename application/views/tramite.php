@@ -281,69 +281,69 @@
 				<article class="" data-seccion="informacion-juridica">
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
-							<a href="#" class="block boton margin-bottom">
+							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
 								<i class="fa fa-bank"></i> Información jurídica
 							</a>
 							<ul class="[ none ] [ hide ]">
 								<li>
-									<h2 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h2>
-									<?php
-										$afirmativa_ficta = $ts->afirmativa_ficta;
-										$negativa_ficta = $ts->negativa_ficta;
-
-										if($afirmativa_ficta == '3' && $negativa_ficta == '3')
-											echo '<p>No aplica</p>';
-
-										if($afirmativa_ficta == '1')
-											echo '<p>Afirmativa ficta: procede afirmativa ficta.</p>';
-										else
-											echo '<p>Afirmativa ficta: no procede afirmativa ficta.</p>';
-
-										if($negativa_ficta == '1')
-											echo '<p>Negativa ficta: procede negativa ficta.</p>';
-										else
-											echo '<p>Negativa ficta: no procede negativa ficta.</p>';
-									?>
-
-									<h2 class="highlight">Plazo máximo de respuesta</h2>
-									<?php
-									// Parsear tiempo de respuesta si existe
-									if(!is_null($ts->tiempo_respuesta)){
-										$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
-										$dias = $tiempo_respuesta_ar[0];
-
-										if($tiempo_respuesta_ar[1] == 1){
-											$tipo = ' días hábiles';
-											$tiempo_respuesta = $dias.$tipo;
-										} else if ($tiempo_respuesta_ar[1] == 2){
-											$tipo = ' días naturales';
-											$tiempo_respuesta = $dias.$tipo;
-										} else {
-											$tipo = 'Inmediato';
-											$tiempo_respuesta = $tipo;
-										}
-
-									} else
-										$tiempo_respuesta = 'Tiempo de respuesta no definido';
-
-									echo '<p>'.$tiempo_respuesta.'</p>';
-									?>
-
-									<h2 class="highlight">De acuerdo a los fundamentos jurídicos:</h2>
-									<ul class="[ disc inside ]">
+									<div class="[ margin-bottom ]">
+										<h3 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h3>
 										<?php
-										if($info_juridica != ''){
-											foreach ($info_juridica as $key => $value) {
-												echo '<li>'.$value->descripcion.' '.$value->articulos.'</li>';
-											} // end foreach
-										}
+											$afirmativa_ficta = $ts->afirmativa_ficta;
+											$negativa_ficta = $ts->negativa_ficta;
+											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
+												echo '<p>No aplica</p>';
+											if($afirmativa_ficta == '1')
+												echo '<p>Afirmativa ficta: procede afirmativa ficta.</p>';
+											else
+												echo '<p>Afirmativa ficta: no procede afirmativa ficta.</p>';
+											if($negativa_ficta == '1')
+												echo '<p>Negativa ficta: procede negativa ficta.</p>';
+											else
+												echo '<p>Negativa ficta: no procede negativa ficta.</p>';
 										?>
-									</ul>
+									</div><!-- [ margin-bottom ] -->
+									<div class="[ margin-bottom ]">
+										<h3 class="highlight">Plazo máximo de respuesta</h3>
+										<?php
+										// Parsear tiempo de respuesta si existe
+										if(!is_null($ts->tiempo_respuesta)){
+											$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
+											$dias = $tiempo_respuesta_ar[0];
+
+											if($tiempo_respuesta_ar[1] == 1){
+												$tipo = ' días hábiles';
+												$tiempo_respuesta = $dias.$tipo;
+											} else if ($tiempo_respuesta_ar[1] == 2){
+												$tipo = ' días naturales';
+												$tiempo_respuesta = $dias.$tipo;
+											} else {
+												$tipo = 'Inmediato';
+												$tiempo_respuesta = $tipo;
+											}
+										} else
+											$tiempo_respuesta = 'Tiempo de respuesta no definido';
+										echo '<p>'.$tiempo_respuesta.'</p>';
+										?>
+									</div><!-- [ margin-bottom ] -->
+									<div class="[ margin-bottom ]">
+										<h3 class="highlight">De acuerdo a los fundamentos jurídicos:</h3>
+										<ul class="[ disc inside ]">
+											<?php
+											if($info_juridica != ''){
+												foreach ($info_juridica as $key => $value) {
+													echo '<li>'.$value->descripcion.' '.$value->articulos.'</li>';
+												} // end foreach
+											}
+											?>
+										</ul>
+									</div><!-- [ margin-bottom ] -->
 								</li>
 							</ul>
 						</div><!-- [ acordeon-item ] -->
 					</div><!-- [ acordeon ] -->
 				</article>
+				<hr>
 				<article class="danos-tu-opinion">
 					<h2 class="highlight">Danos tu opinión</h2>
 				<?php if($feedback == '1') { ?>

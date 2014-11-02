@@ -3,7 +3,9 @@
 		<meta charset="utf-8">
 		<title>Trámites</title>
 
-		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="<?php echo base_url() ?>assets/img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="<?php echo base_url() ?>assets/img/favicon.ico" type="image/x-icon">
+
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/font.css">
 

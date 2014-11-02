@@ -29,10 +29,6 @@
 					$ubicacion = '<br/><a href="'.$url_mapa.'" target="_new">Ubicación en el mapa</a>';
 
 					$primeraLetra = substr($oficina, 0, 1);
-					echo '<pre>';
-						print_r($primeraLetra);
-					echo '</pre>';
-
 					$primeraLetra = strtoupper ( $primeraLetra );
 					if($primeraLetra != $primeraLetraAnt){
 						if($primeraLetraAnt != ''){
@@ -47,7 +43,7 @@
 						$primeraLetraAnt = $primeraLetra;
 					}
 				?>
-				<li>
+				<li class="[ js-count-item ]">
 					<address>
 				<?php
 					echo '<h3>'.$oficina.'</h3><br />';

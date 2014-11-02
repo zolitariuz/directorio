@@ -20,7 +20,7 @@
 		}
 
 		//Agregar cantidad de trámites a resultados alfabéticos
-		contarItems( $('.letra'), 'li');
+		contarItems( $('.letra'), '.js-count-item');
 
 		//Rating
 		$('.example-f').barrating({ showSelectedRating:false });
