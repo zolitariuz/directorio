@@ -16,7 +16,7 @@
 				<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
 			</form>
 
-			<!-- 
+			<!--
 			<h3 class="text-center">O ve trámites y servicios por:</h3>
 			<div class="columna xmall-12 medium-8 center clearfix">
 				<a  class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/instituciones' ?>">
@@ -110,9 +110,9 @@
 						echo '<a href="'.$url_tema.'" class="boton columna xmall-3 cuadrado chico">';
 						echo '<i class="'.$clase_icono.'"></i>';
 						echo $value->materia;
-					
+
 						echo '</a>';
-						
+
 						// cada 4 elementos mete un clear
 						$temas_por_slide = $temas_por_slide + 1;
 						if($temas_por_slide % 4 == 0){
@@ -126,36 +126,33 @@
 				<div class="cycle-pager"></div>
 			</div>
 		</section>
-
-		<div class="clear large"></div>
-		<hr class="columna large large-6 center">
 		<?php  if(!is_null($pregunta['pregunta'])){ ?>
-			<div class="clear"></div>
+			<div class="clear large"></div>
 			<hr class="columna xmall-6 center">
 			<div class="clear"></div>
-			<section class="pregunta clearfix">
-				<h2 class="text-center highlight">Nos interesa tu opinión</h2>
-				<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
-				<div class="columna full large-5 center clearfix">
-					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
-					<a href="#" class="block boton columna xmall-6 grande" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
+			<section class="[ pregunta links ] [ clearfix ]">
+				<div class="[ large ] [ columna medium-6 ]">
+					<h2 class="text-center highlight">Quejas, denuncias y sugerencias en Atención Ciudadana o denuncias de actos de corrupción</h2>
+					<div class="columna xmall-6">
+						<a href="#" class="block columna xmall-8 center">
+							<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
+						</a>
+					</div>
+					<div class="columna xmall-6">
+						<a href="#" class="block columna xmall-8 center">
+							<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="[ columna xmall-12 medium-6 ]">
+					<h2 class="text-center highlight">Nos interesa tu opinión</h2>
+					<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
+					<div class="columna full large-5 center clearfix">
+						<a href="#" class="block boton columna xmall-6 grande" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
+						<a href="#" class="block boton columna xmall-6 grande" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
+					</div>
 				</div>
 			</section>
 		<?php } ?>
-		<div class="clear large"></div>
-		<hr class="columna large large-6 center">
-		<div class="large"></div>
-		<section class="links clearfix large">
-			<div class="columna xmall-6">
-				<a href="#" class="block columna xmall-8 center">
-					<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
-				</a>
-			</div>
-			<div class="columna xmall-6">
-				<a href="#" class="block columna xmall-8 center">
-					<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
-				</a>
-			</div>
-		</section>
 	</div><!-- width -->
 </div><!-- main -->

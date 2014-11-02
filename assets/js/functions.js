@@ -71,6 +71,8 @@
 
 
 
+
+
 		//****************//
 		//***RESPONSIVE***//
 		//****************//
@@ -111,9 +113,11 @@
 			}
 		});
 
+		//Raúl: Esto lo tengo que cambiar
+		//para cuando en movil las secciones se abren como botones
 		//Abrir secciones home
 		$('body').on('click', '.main-content .boton', function(e){
-			e.preventDefault();
+			//e.preventDefault();
 			toggleSeccion( $(this), '.main-content.no-large article > div' );
 		});
 
