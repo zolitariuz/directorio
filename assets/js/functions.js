@@ -332,10 +332,9 @@ function creaMapa(mapas){
 		}
 	});
 
-
 	// Crea Mapa
 	var map = new google.maps.Map(document.getElementById('map'), {
-	  zoom: 20,
+	  zoom: 15,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP,
 	  mapTypeControl: false,
 	  streetViewControl: false,
@@ -379,15 +378,19 @@ function creaMapa(mapas){
 
 	// Autocentrar el mapa dependiendo de los marcadores
 	function autoCenter() {
-	  //  Crea un nuevo limite
-	  var bounds = new google.maps.LatLngBounds();
+		//  Crea un nuevo limite
+		var bounds = new google.maps.LatLngBounds();
 
-	  //  Itera todos los marcadores
-	  $.each(markers, function (index, marker) {
-		bounds.extend(marker.position);
-	  });
-	  //  Mete los límites en el mapa
-	  map.fitBounds(bounds);
+		//  Itera todos los marcadores
+		$.each(markers, function (index, marker) {
+			bounds.extend(marker.position);
+		});
+		//  Mete los límites en el mapa
+		map.fitBounds(bounds);
+		var listener = google.maps.event.addListener(map, "idle", function() { 
+		if (map.getZoom() > 17) map.setZoom(17); 
+			google.maps.event.removeListener(listener); 
+		});
 	} // autoCenter
 
 	// obtiene coordenadas de url de base de datos
@@ -438,7 +441,7 @@ function busquedaTS(dataTS, base_url){
 		select: function(event, ui) {
 			$('#ts_movil_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_movil_id').attr('value');
-			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
 		},
 		appendTo: '.main-search-movil'
 	});
@@ -447,7 +450,7 @@ function busquedaTS(dataTS, base_url){
 		select: function(event, ui) {
 			$('#ts_footer_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_footer_id').attr('value');
-			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
 		},
 		appendTo: '.main-search-footer'
 	});
@@ -456,7 +459,7 @@ function busquedaTS(dataTS, base_url){
 		select: function(event, ui) {
 			$('#ts_home_id').val(mapNombreTS[ui.item.value]);
 			idTS = $('#ts_home_id').attr('value');
-			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
 
 		},
 		appendTo: '.main-search-home'
@@ -466,20 +469,20 @@ function busquedaTS(dataTS, base_url){
 		e.preventDefault();
 		idTS = $('#ts_movil_id').val();
 		if(typeof idTS !== 'undefined')
-			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
 	$('.main-search-header button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
 		if(typeof idTS !== 'undefined')
-			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
 
 	$('.main-search-home button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
 		if(typeof idTS !== 'undefined')
-			window.open(base_url + 'index.php/tramites_servicios/muestraInfo/' + idTS , '_self');
+			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
 } // busquedaTS
 
@@ -526,7 +529,7 @@ function agregarTSSolicitado(id_ts, ts, base_url){
 	jsonSolicitado['id_ts'] = id_ts;
 
 	$.post(
-		base_url + "index.php/gestor_contenidos/agregar_ts_solicitado",
+		base_url + "gestor_contenidos/agregar_ts_solicitado",
 		jsonSolicitado,
 		function(response){
 			var respuesta = $.parseJSON(response);
@@ -559,7 +562,7 @@ function eliminarTSSolicitado(base_url){
 		jsonEliminado['id_ts'] = id_ts;
 
 		$.post(
-			base_url + "index.php/gestor_contenidos/eliminar_ts_solicitado",
+			base_url + "gestor_contenidos/eliminar_ts_solicitado",
 			jsonEliminado,
 			function(response){
 				var respuesta = $.parseJSON(response);
@@ -613,7 +616,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 	jsonReporte['id_ts'] = id_ts;
 	escondeReportes();
 	$.post(
-		base_url + "index.php/gestor_contenidos/muestra_reporte_ts",
+		base_url + "gestor_contenidos/muestra_reporte_ts",
 		jsonReporte,
 		function(response){
 			var respuesta = $.parseJSON(response);
@@ -804,7 +807,7 @@ function votoPregunta(base_url){
 		jsonVoto['respuesta'] = $(this).data('respuesta');
 
 		$.post(
-			base_url + "index.php/inicio/set_voto",
+			base_url + "inicio/set_voto",
 			jsonVoto,
 			function(response){
 				$('.pregunta').empty();
@@ -904,6 +907,7 @@ function muestraAreaAtencionPorDelegacion(){
 
 		$('.j_area_atencion').addClass('hide');
 		$('.j_area_atencion .fila').not('.header').remove();
+		$('.map-wrapper').remove();
 		if(delegacion !== 'Seleccionar'){
 			$.get(
 				url,
@@ -911,13 +915,18 @@ function muestraAreaAtencionPorDelegacion(){
 					$('.j_area_atencion').removeClass('hide');
 					$('.j_area_atencion').after('<div class="[ map-wrapper ] [ margin-bottom ]"><div id="map"></div></div>');
 					$.each(response, function(i, val){
+						console.log(val['telefono_2']);
+						var tel2 = val['telefono_2'];
+						if(tel2 === null){
+							tel2 = '';
+						};
 						var fila = '<div class="fila clearfix"> \
 										<div class="[ columna xmall-4 ]">' + val['nombre'] + '</div> \
 										<div class="columna xmall-5 text-center"> \
-											' + val['calle_numero'] + ', ' + val['colonia'] + '\
+											' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
 										</div> \
 										<div class="columna xmall-3 text-center"> \
-											' + val['telefono_1'] + '<br /> ' + val['telefono_2'] +  '\
+											' + val['telefono_1'] + '<br /> ' + tel2 +  '\
 										</div> \
 									</div>';
 						$('.j_area_atencion').append(fila);
