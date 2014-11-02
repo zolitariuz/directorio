@@ -33,7 +33,7 @@
 				?>
 				<li>
 					<ul class="[ none ]">
-						<li><a href="<?php echo $urlTramite ?>"><?php echo $nombre ?></a></li>
+						<li class="js-count-item"><a href="<?php echo $urlTramite ?>"><?php echo $nombre ?></a></li>
 					</ul>
 				</li>
 			<?php

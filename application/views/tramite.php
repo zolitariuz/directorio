@@ -1,7 +1,6 @@
 <div class="main">
 	<div class="width clearfix">
-		<!-- Este es el bueno -->
-		<div class="main-content clearfix large">
+		<div class="main-content clearfix">
 			<ul class="breadcrumbs">
 				<li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></li>
 				<li>></li>
@@ -9,7 +8,150 @@
 				<li>></li>
 				<li class="actual"><?php echo $ts->nombre_tramite; ?></li>
 			</ul>
-			<section class="content columna medium-8 large-9">
+			<aside class="[ columna medium-4 large-3 ] [ right ]">
+				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ busqueda ] [ js-overlay-opener ] [ large ] ">
+					<i class="fa fa-search"></i> Busca tu trámite
+				</a>
+				<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton ] [ scrollTo ] [ large ]">
+					<i class="fa fa-map-marker"></i> ¿Dónde se realiza?
+				</a>
+				<a href="#" class="[ block margin-bottom ] [ boton ] [ j-imprimir ] [ large ]">
+					<i class="fa fa-print"></i> Imprimir información
+				</a>
+				<div class="clear"></div>
+				<hr>
+				<div class="quick-info">
+					<h3 class="highlight">Tiempo de respuesta</h3>
+					<p><?php echo $tiempo_respuesta ?></p>
+				</div><!-- quick-info -->
+				<hr>
+				<div class="quick-info">
+					<h3 class="highlight">¿Qué pasa si no te responden a tiempo?</h3>
+					<?php
+						if($afirmativa_ficta == '1')
+							echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
+						if($negativa_ficta == '1')
+							echo '<p>Puedes asumir que la respuesta a tu petición es negativa.</p>';
+					?>
+				</div><!-- quick-info -->
+				<hr>
+				<?php
+				$indicePrecio = 0;
+				// Costo o costos del trámite o servicio
+				if($costo != ''){ ?>
+					<div class="quick-info">
+				<?php
+					foreach ($costo as $key => $value) {
+						if($value->concepto == 1){
+							echo '<h3 class="highlight">Costo</h3>';
+							echo '<p>$'.$value->monto.'</p>';
+						} else {
+							if($indicePrecio == 0){
+								echo '<h3 class="highlight">Costos</h3>';
+								echo '<div class="tabla-precio">';
+							}
+							echo '<div class="costo">';
+							echo '<div class="numero-costo">';
+							echo '<p>$'.$value->monto.'</p>';
+							echo '</div>';
+							echo '<div class="nombre-costo">';
+							echo '<p>'.$value->concepto.'</p>';
+							echo '</div>';
+							echo '</div>';
+
+							$indicePrecio = $indicePrecio + 1;
+							if(sizeOf($costo) == $indicePrecio)
+								echo '</div>';
+						}
+					} // end foreach ?>
+					</div>
+				<?php
+				}
+				?>
+				<hr>
+				<div class="[ quick-info ] [ clearfix ]">
+					<h3 class="highlight">Compártelo</h3>
+					<div class="share block">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<div class="clear"></div>
+						<div class="fb-share-button" data-layout="button" data-href="#"></div>
+					</div><!-- share -->
+				</div><!-- quick-info -->
+				<hr>
+				<div class="quick-info">
+					<?php
+					// Áreas de pago
+					if($area_pago != ''){
+						echo '<h3 class="highlight">Áreas de pago</h3>';
+						echo '<ul class="[ disc inside ]">';
+						foreach ($area_pago as $key => $value) {
+							echo '<li>'.$value->descripcion.'</li>';
+						} // end foreach
+						echo '</ul>';
+					}
+					?>
+				</div><!-- quick-info -->
+				<hr>
+				<div class="quick-info">
+					<h3 class="highlight">Formatos requeridos</h3>
+					<div class="formatos">
+						<?php
+						if($formatos != ''){
+							foreach ($formatos as $key => $value) {
+								$formato = $value->nombre;
+								$url = 'http://www.registrocdmx.df.gob.mx/'.$value->url;
+								$numFormato = $key + 1;
+								echo '<div class="margin-bottom">';
+								echo '<p>Formato '.$numFormato.'</p>';
+								echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a>';
+								echo '</div>';
+							} // end foreach
+						} else {
+							echo '<p>Este trámite o servicio no tiene formatos requeridos</p>';
+						}
+						?>
+					</div>
+				</div> <!--quick-info -->
+				<hr>
+				<div class="quick-info">
+					<article class="" data-content="beneficio-documento">
+					<?php
+					if($ts->is_tramite){
+						echo '<h3 class="highlight">Documento(s) a obtener</h3>';
+					} else {
+						echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
+					}
+					?>
+					<div>
+						<?php
+						if($documento != ''){
+							$sinDocumento = true;
+							foreach ($documento as $key => $value) {
+								$nombreDocumento = $value['nombreDocumento'];
+								$vigencia = $value['vigencia'];
+								$vigenciaArray = explode('_', $vigencia);
+								echo '<p><strong>'.$nombreDocumento.'</strong></p>';
+								if($vigencia != -1) {
+									echo '<p>Vigencia: '.$vigencia.'</p>';
+									$sinDocumento = false;
+								}
+							} // end foreach
+							if($sinDocumento)
+								echo '<p>No se obtiene documento alguno</p>';
+						} else {
+							echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
+						}
+						?>
+					</div>
+				</div><!--quick-info -->
+				<div class="quick-info">
+					<a href="#" class="block columna xmall-10 center">
+						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+					</a>
+				</div>
+			</aside>
+			<section class="[ content ] [ columna medium-8 large-9 ]">
 				<article class="header-single clearfix">
 					<div class="quick-info">
 						<p><i class="<?php echo $clase_icono ?>"></i>Tema: <?php echo $ts->materia ?></p>
@@ -132,7 +274,6 @@
 					$forma = $ts->formasolicitud;
 					if(!is_null($forma)){
 						echo '<h2 class="highlight">¿Cómo se realiza?</h2>';
-
 						switch(trim($forma)){
 							case "Presencial":
 								echo '<p>Presencial</p>';
@@ -252,6 +393,7 @@
 									}
 									echo '</li>';
 								echo '</ul>';
+							echo '</div>';
 							if($ts->tel_presentacion != '0'){
 								$tel = $ts->tel_presentacion;
 								if($ts->ext_presentacion != '0')
@@ -281,69 +423,69 @@
 				<article class="" data-seccion="informacion-juridica">
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
-							<a href="#" class="block boton margin-bottom">
+							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
 								<i class="fa fa-bank"></i> Información jurídica
 							</a>
 							<ul class="[ none ] [ hide ]">
 								<li>
-									<h2 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h2>
-									<?php
-										$afirmativa_ficta = $ts->afirmativa_ficta;
-										$negativa_ficta = $ts->negativa_ficta;
-
-										if($afirmativa_ficta == '3' && $negativa_ficta == '3')
-											echo '<p>No aplica</p>';
-
-										if($afirmativa_ficta == '1')
-											echo '<p>Afirmativa ficta: procede afirmativa ficta.</p>';
-										else
-											echo '<p>Afirmativa ficta: no procede afirmativa ficta.</p>';
-
-										if($negativa_ficta == '1')
-											echo '<p>Negativa ficta: procede negativa ficta.</p>';
-										else
-											echo '<p>Negativa ficta: no procede negativa ficta.</p>';
-									?>
-
-									<h2 class="highlight">Plazo máximo de respuesta</h2>
-									<?php
-									// Parsear tiempo de respuesta si existe
-									if(!is_null($ts->tiempo_respuesta)){
-										$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
-										$dias = $tiempo_respuesta_ar[0];
-
-										if($tiempo_respuesta_ar[1] == 1){
-											$tipo = ' días hábiles';
-											$tiempo_respuesta = $dias.$tipo;
-										} else if ($tiempo_respuesta_ar[1] == 2){
-											$tipo = ' días naturales';
-											$tiempo_respuesta = $dias.$tipo;
-										} else {
-											$tipo = 'Inmediato';
-											$tiempo_respuesta = $tipo;
-										}
-
-									} else
-										$tiempo_respuesta = 'Tiempo de respuesta no definido';
-
-									echo '<p>'.$tiempo_respuesta.'</p>';
-									?>
-
-									<h2 class="highlight">De acuerdo a los fundamentos jurídicos:</h2>
-									<ul class="[ disc inside ]">
+									<div class="[ margin-bottom ]">
+										<h3 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h3>
 										<?php
-										if($info_juridica != ''){
-											foreach ($info_juridica as $key => $value) {
-												echo '<li>'.$value->descripcion.' '.$value->articulos.'</li>';
-											} // end foreach
-										}
+											$afirmativa_ficta = $ts->afirmativa_ficta;
+											$negativa_ficta = $ts->negativa_ficta;
+											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
+												echo '<p>No aplica</p>';
+											if($afirmativa_ficta == '1')
+												echo '<p>Afirmativa ficta: procede afirmativa ficta.</p>';
+											else
+												echo '<p>Afirmativa ficta: no procede afirmativa ficta.</p>';
+											if($negativa_ficta == '1')
+												echo '<p>Negativa ficta: procede negativa ficta.</p>';
+											else
+												echo '<p>Negativa ficta: no procede negativa ficta.</p>';
 										?>
-									</ul>
+									</div><!-- [ margin-bottom ] -->
+									<div class="[ margin-bottom ]">
+										<h3 class="highlight">Plazo máximo de respuesta</h3>
+										<?php
+										// Parsear tiempo de respuesta si existe
+										if(!is_null($ts->tiempo_respuesta)){
+											$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
+											$dias = $tiempo_respuesta_ar[0];
+
+											if($tiempo_respuesta_ar[1] == 1){
+												$tipo = ' días hábiles';
+												$tiempo_respuesta = $dias.$tipo;
+											} else if ($tiempo_respuesta_ar[1] == 2){
+												$tipo = ' días naturales';
+												$tiempo_respuesta = $dias.$tipo;
+											} else {
+												$tipo = 'Inmediato';
+												$tiempo_respuesta = $tipo;
+											}
+										} else
+											$tiempo_respuesta = 'Tiempo de respuesta no definido';
+										echo '<p>'.$tiempo_respuesta.'</p>';
+										?>
+									</div><!-- [ margin-bottom ] -->
+									<div class="[ margin-bottom ]">
+										<h3 class="highlight">De acuerdo a los fundamentos jurídicos:</h3>
+										<ul class="[ disc inside ]">
+											<?php
+											if($info_juridica != ''){
+												foreach ($info_juridica as $key => $value) {
+													echo '<li>'.$value->descripcion.' '.$value->articulos.'</li>';
+												} // end foreach
+											}
+											?>
+										</ul>
+									</div><!-- [ margin-bottom ] -->
 								</li>
 							</ul>
 						</div><!-- [ acordeon-item ] -->
 					</div><!-- [ acordeon ] -->
 				</article>
+				<hr>
 				<article class="danos-tu-opinion">
 					<h2 class="highlight">Danos tu opinión</h2>
 				<?php if($feedback == '1') { ?>
@@ -385,146 +527,6 @@
 				<?php } ?>
 				</article><!-- danos tu opinion -->
 			</section><!-- content -->
-			<aside class="columna medium-4 large-3">
-				<a href="#" class="block boton horizontal margin-bottom busqueda js-overlay-opener">
-					<i class="fa fa-search"></i> Busca tu trámite
-				</a>
-				<a href="#" data-seccion="area-atencion" class="block boton margin-bottom scrollTo">
-					<i class="fa fa-map-marker"></i> ¿Dónde se realiza?
-				</a>
-				<a href="#" class="block boton margin-bottom j-imprimir">
-					<i class="fa fa-print"></i> Imprimir información
-				</a>
-				<div class="quick-info">
-					<h3 class="highlight">Tiempo de respuesta</h3>
-					<p><?php echo $tiempo_respuesta ?></p>
-				</div><!-- quick-info -->
-				<hr>
-
-				<div class="quick-info">
-					<h3 class="highlight">¿Qué pasa si no te responden a tiempo?</h3>
-					<?php
-						if($afirmativa_ficta == '1')
-							echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
-						if($negativa_ficta == '1')
-							echo '<p>Puedes asumir que la respuesta a tu petición es negativa.</p>';
-					?>
-				</div><!-- quick-info -->
-				<hr>
-				<div class="quick-info">
-					<?php
-					$indicePrecio = 0;
-					// Costo o costos del trámite o servicio
-					if($costo != ''){
-						foreach ($costo as $key => $value) {
-							if($value->concepto == 1){
-								echo '<h3 class="highlight">Costo</h3>';
-								echo '<p>$'.$value->monto.'</p>';
-							} else {
-								if($indicePrecio == 0){
-									echo '<h3 class="highlight">Costos</h3>';
-									echo '<div class="tabla-precio">';
-								}
-								echo '<div class="costo">';
-								echo '<div class="numero-costo">';
-								echo '<p>$'.$value->monto.'</p>';
-								echo '</div>';
-								echo '<div class="nombre-costo">';
-								echo '<p>'.$value->concepto.'</p>';
-								echo '</div>';
-								echo '</div>';
-
-								$indicePrecio = $indicePrecio + 1;
-								if(sizeOf($costo) == $indicePrecio)
-									echo '</div>';
-							}
-						} // end foreach
-					}
-					?>
-				<hr>
-				<div class="[ quick-info ] [ clearfix ]">
-					<h3 class="highlight">Compártelo</h3>
-					<div class="share block">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="clear"></div>
-						<div class="fb-share-button" data-layout="button" data-href="#"></div>
-					</div><!-- share -->
-				</div><!-- quick-info -->
-				<hr>
-				<div class="quick-info">
-					<?php
-					// Áreas de pago
-					if($area_pago != ''){
-						echo '<h3 class="highlight">Áreas de pago</h3>';
-						echo '<ul class="[ disc inside ]">';
-						foreach ($area_pago as $key => $value) {
-							echo '<li>'.$value->descripcion.'</li>';
-						} // end foreach
-						echo '</ul>';
-					}
-					?>
-				</div><!-- quick-info -->
-				<hr>
-
-				<div class="quick-info">
-					<h3 class="highlight">Formatos requeridos</h3>
-					<div class="formatos">
-						<?php
-						if($formatos != ''){
-							foreach ($formatos as $key => $value) {
-								$formato = $value->nombre;
-								$url = 'http://www.registrocdmx.df.gob.mx/'.$value->url;
-								$numFormato = $key + 1;
-								echo '<div class="margin-bottom">';
-								echo '<p>Formato '.$numFormato.'</p>';
-								echo '<a class="highlight" href="'.$url.'" target="_blank">'.$formato.' </a>';
-								echo '</div>';
-							} // end foreach
-						} else {
-							echo '<p>Este trámite o servicio no tiene formatos requeridos</p>';
-						}
-						?>
-					</div>
-				</div> <!--quick-info -->
-				<hr>
-				<div class="quick-info">
-					<article class="" data-content="beneficio-documento">
-					<?php
-					if($ts->is_tramite){
-						echo '<h3 class="highlight">Documento(s) a obtener</h3>';
-					} else {
-						echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
-					}
-					?>
-					<div>
-						<?php
-						if($documento != ''){
-							$sinDocumento = true;
-							foreach ($documento as $key => $value) {
-								$nombreDocumento = $value['nombreDocumento'];
-								$vigencia = $value['vigencia'];
-								$vigenciaArray = explode('_', $vigencia);
-								echo '<p><strong>'.$nombreDocumento.'</strong></p>';
-								if($vigencia != -1) {
-									echo '<p>Vigencia: '.$vigencia.'</p>';
-									$sinDocumento = false;
-								}
-							} // end foreach
-							if($sinDocumento)
-								echo '<p>No se obtiene documento alguno</p>';
-						} else {
-							echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
-						}
-						?>
-					</div>
-				</div><!--quick-info -->
-				<div class="quick-info">
-					<a href="#" class="block columna xmall-10 center">
-						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
-					</a>
-				</div>
-			</aside>
 		</div><!-- main-content large-->
 	</div><!-- width -->
 </div><!-- main -->
