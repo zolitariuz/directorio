@@ -3,20 +3,20 @@
 			<div class="width">
 				<?php if($_SESSION['is_admin'] == 't') { ?>
 					<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_contenido/'?>">
-						<i class="icon-ts-icon-filled-agregar-contenido"></i>
-						<!-- <i class="icon-ts-icon-filled-agregar-contenido"></i> -->
+						<i class="icon-ts-agregar-contenido"></i>
+						<!-- <i class="icon-ts-agregar-contenido"></i> -->
 						Agregar contenido
 					</a><a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_usuario/'?>">
-						<i class="icon-ts-icon-filled-agregar-usuario"></i>
+						<i class="icon-ts-agregar-usuario"></i>
 						Agregar usuario
 					</a><?php } ?><a href="<?php echo base_url().'index.php/gestor_contenidos/editar_contenido/'?>">
-					<i class="icon-ts-icon-filled-editar-contenido"></i>
+					<i class="icon-ts-editar-contenido"></i>
 					Editar contenido
 				</a><a href="<?php echo base_url().'index.php/gestor_contenidos/mas_solicitados/'?>">
-					<i class="icon-ts-icon-filled-tramites-mas-buscados"></i>
+					<i class="icon-ts-tramites-mas-buscados"></i>
 					Trámites y servicios mas solicitados
 				</a><a href="<?php echo base_url().'index.php/gestor_contenidos/panel_reportes/'?>">
-					<i class="icon-ts-icon-filled-reportes"></i>
+					<i class="icon-ts-reportes"></i>
 					Reportes
 				</a>
 			</div>

@@ -16,7 +16,7 @@
 							echo '</ul></div>';
 						} ?>
 						<div class="letra margin-bottom acordeon-item">
-							<a href="#" class="block boton margin-bottom">
+							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
 								<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
 							</a>
 							<ul class="hide arabigos inside">
@@ -24,7 +24,7 @@
 						$primeraLetraAnt = $primeraLetra;
 					}
 				?>
-				<li>
+				<li class="[ js-count-item ]">
 					<a class="highligth" href="<?php echo $urlTramite; ?>">
 						<?php echo $tramite; ?>
 					</a>

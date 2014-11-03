@@ -63,10 +63,10 @@ class Inicio extends CI_Controller {
 		$clases_materias = array();
 		foreach ($data['temas'] as $key => $value) {
 			$clase_materia = $this->formateaMateria($value->materia);
-			$clases_materias[$key] = 'icon-ts-icon-filled-'.$clase_materia;
+			$clases_materias[$key] = 'icon-ts-'.$clase_materia;
 		}
 		$data['clases_iconos'] = $clases_materias;
-		
+
 
 		$data['seccion'] = 'Inicio';
 
@@ -92,7 +92,7 @@ class Inicio extends CI_Controller {
 	}// setVoto
 
 	/**
-	 * Descripción: Borra acentos de materias para 
+	 * Descripción: Borra acentos de materias para
 	 * armar el nombre del icono
 	 * @param string $str
 	 * @return string $materia_formateada
@@ -105,5 +105,5 @@ class Inicio extends CI_Controller {
 	  $materia_formateada = str_replace(',', '', $materia_formateada);
 	  return str_replace(' ','-',$materia_formateada);
 	}// formateaMateria
-	
+
 }// class Inicio

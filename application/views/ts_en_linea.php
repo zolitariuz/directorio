@@ -7,7 +7,7 @@
 			<li>></li>
 			<li class="actual">Trámites y servicios en línea</li>
 		</ul>
-		<section class="[ columna full medium-8 ] [ center ]">
+		<section class="[ columna full medium-8 ] [ center ] [ directorio ]">
 			<h2 class="text-center highlight">Trámites y servicios en linea</h2>
 			<?php
 			$primeraLetraAnt = '';
@@ -26,15 +26,13 @@
 						<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
 							<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
 						</a>
-						<ul class="hide none">
+						<ul class="hide arabigos inside">
 					<?php
 					$primeraLetraAnt = $primeraLetra;
 				}
 				?>
-				<li>
-					<ul class="[ none ]">
-						<li class="js-count-item"><a href="<?php echo $urlTramite ?>"><?php echo $nombre ?></a></li>
-					</ul>
+				<li class="[ js-count-item ]">
+					<a href="<?php echo $urlTramite ?>"><?php echo $nombre ?></a>
 				</li>
 			<?php
 			} //end for each

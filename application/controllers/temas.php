@@ -19,8 +19,8 @@ class Temas extends CI_Controller {
 
 	/**
 	 * Descripción: Muestra todos los temas
-	 * @param 
-	 * @return 
+	 * @param
+	 * @return
 	 */
 	function index()
 	{
@@ -50,7 +50,7 @@ class Temas extends CI_Controller {
 		$clases_materias = array();
 		foreach ($data['temas'] as $key => $value) {
 			$clase_materia = $this->formateaMateria($value->materia);
-			$clases_materias[$key] = 'icon-ts-icon-filled-'.$clase_materia;
+			$clases_materias[$key] = 'icon-ts-'.$clase_materia;
 		}
 		$data['clases_iconos'] = $clases_materias;
 
@@ -66,7 +66,7 @@ class Temas extends CI_Controller {
 	/**
 	 * Descripción: Muestra trámites/servicios por tema
 	 * @param integer $idTema
-	 * @return 
+	 * @return
 	 */
 	function muestraTS($idTema)
 	{
@@ -99,7 +99,7 @@ class Temas extends CI_Controller {
 	}
 
 	/**
-	 * Descripción: Borra acentos de materias para 
+	 * Descripción: Borra acentos de materias para
 	 * armar el nombre del icono
 	 * @param string $str
 	 * @return string $materia_formateada

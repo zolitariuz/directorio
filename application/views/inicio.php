@@ -20,11 +20,11 @@
 			<h3 class="text-center">O ve trámites y servicios por:</h3>
 			<div class="columna xmall-12 medium-8 center clearfix">
 				<a  class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/instituciones' ?>">
-					<i class="icon-ts-icon-filled-instituciones"></i>
+					<i class="icon-ts-instituciones"></i>
 					Institución
 				</a>
 				<a class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/temas' ?>">
-					<i class="icon-ts-icon-filled-temas"></i>
+					<i class="icon-ts-temas"></i>
 					Tema
 				</a>
 			</div>
