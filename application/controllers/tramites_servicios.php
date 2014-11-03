@@ -298,7 +298,8 @@ class Tramites_servicios extends CI_Controller {
 		$this->feedback->agrega_feedback($id_tramite_servicio, $comentarios, $calificacion, $ayuda, $servicio);
 
 		// Carga trámite/servicio
-		$this->muestraInfo($id_tramite_servicio, 1);
+		//$this->muestraInfo($id_tramite_servicio, 1);
+		echo 'success';
 	} // dameAreasAtencion
 
 	/**

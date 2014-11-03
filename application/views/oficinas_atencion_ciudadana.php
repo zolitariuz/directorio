@@ -9,13 +9,12 @@
 		<section class="mas-comunes clearfix">
 			<h2 class="text-center highlight">Áreas de atención ciudadana por delegación</h2>
 			<div class="masonry-container">
-			<?php foreach ($instituciones as $key => $value) {
-				$institucion = $value->institucion;
-				$idInstitucion = $value->id_cat_institucion;
-				$urlInstitucion = base_url().'index.php/instituciones/muestraOficinasInstitucion/'.$idInstitucion;
+			<?php foreach ($delegaciones as $key => $value) {
+				$delegacion = $value->delegacion;
+				$urlDelegacion = base_url().'instituciones/muestraOficinasDelegacion/'.$delegacion;
 			?>
-				<a href="<?php echo $urlInstitucion; ?>" class="item boton columna full medium-4 large-3 margin-bottom">
-					<?php echo $institucion; ?>
+				<a href="<?php echo $urlDelegacion; ?>" class="item boton columna full medium-4 large-3 margin-bottom">
+					<?php echo $delegacion; ?>
 				</a>
 			<?php } // end foreach ?>
 			</div>
