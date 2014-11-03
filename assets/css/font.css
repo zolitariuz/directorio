@@ -34,7 +34,7 @@
 .icon-ts-taxis:before {
 	content: "\e60b";
 }
-.icon-ts-patrimonio-urbano:before {
+.icon-ts-patrimonio-cultural-urbano:before {
 	content: "\e60c";
 }
 .icon-ts-mercados-publicos-y-mercados-sobre-ruedas:before {
@@ -46,7 +46,7 @@
 .icon-ts-industria:before {
 	content: "\e60f";
 }
-.icon-ts-servicios-legales-y-archivos-de-notarias:before {
+.icon-ts-servicios-legales-y-archivo-de-notarias:before {
 	content: "\e610";
 }
 .icon-ts-servicios-urbanos:before {
@@ -73,7 +73,7 @@
 .icon-ts-agraria:before {
 	content: "\e618";
 }
-.icon-ts-asistencia-telefonica:before {
+.icon-ts-asesoria-telefonica:before {
 	content: "\e619";
 }
 .icon-ts-cultura-y-recreacion:before {
