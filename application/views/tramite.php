@@ -68,8 +68,8 @@
 				<?php
 				}
 				?>
-				<hr>
-				<div class="[ quick-info ] [ clearfix ]">
+				<hr class="[ large ]">
+				<div class="[ quick-info ] [ clearfix ] [ large ]">
 					<h3 class="highlight">Compártelo</h3>
 					<div class="share block">
 						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
