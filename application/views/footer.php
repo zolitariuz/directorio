@@ -12,10 +12,10 @@
 						<img class="block center" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
 					</div><div class="[ apoyo ]">
 						<p class="[ text-center ]">Con el apoyo de:</p>
-						<div class=" [ columna xmall-6 ]">
+						<div class="[ columna xmall-6 ]">
 							<img class="[ block center ]" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
 						</div>
-						<div class=" [ columna xmall-6 ]">
+						<div class="[ columna xmall-6 ]">
 							<img class="[ block center ]" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
 						</div>
 					</div>
@@ -35,6 +35,7 @@
 						<h4 class="text-center no-large"><a href="tel: 066">066</a></h4>
 						<p class="text-center">Emergencias Secretaría de Seguridad Pública </p>
 					</div>
+					<div class="[ clear no-large ]"></div>
 					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-emergencias-procuradoria-general-de-justicia"></i>
 						<h4 class="text-center large">061</h4>
@@ -47,6 +48,7 @@
 						<h4 class="text-center no-large"><a href="tel: 065">065</a></h4>
 						<p class="text-center">Cruz Roja</p>
 					</div>
+					<div class="[ clear no-large ]"></div>
 					<div class="columna xmall-6 large-2">
 						<i class="icon-ts-icon-filled-bomberos"></i>
 						<h4 class="text-center large">068</h4>

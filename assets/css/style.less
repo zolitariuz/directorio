@@ -417,8 +417,15 @@ nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @cl
 footer{
 	section{ margin: 0; padding: @margen 0; }
 	.logos{ background: lighten(@obscuro, 40%);
-		> div > div{ display: inline-block; vertical-align: middle; width: 50%; }
-		.apoyo{  }
+		> div > div{ width: 23%; margin: 0 1%; display: inline-block; vertical-align: middle;
+			&:first-of-type{
+				img{ width: 90%; }
+			}
+			img{ width: 80%; height: auto; }
+		}
+		.apoyo{ width: 100%; margin-top: @margen;
+			> div{ width: 30%; margin: 0 10%; }
+		}
 	}
 	.emergencia{ background: @obscuro;
 		h4{ margin-bottom: @margen; color: @claro;
@@ -718,6 +725,19 @@ body.cms{
 		&.chico{ letter-spacing: 0.05em; }
 	}
 
+	//FOOTER
+	footer{
+		section{ padding: @margen; }
+		.logos{
+			> div > div{ width: 16%; margin: 0;
+				&:first-of-type{
+				}
+			}
+			.apoyo{ width: 33%;
+				> div{ width: 50%; margin: 0; }
+			}
+		}
+	}
 
 }
 
@@ -790,14 +810,6 @@ body.cms{
 	//FOOTER
 	footer{
 		section{ padding: @margen; }
-		.logos{
-			> div > div{ width: 16%;
-				&:first-of-type{
-					img{ width: 40%; }
-				}
-			}
-			.apoyo{ width: 33%; }
-		}
 	}
 
 	//MAIN-HOME

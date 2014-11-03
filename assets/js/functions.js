@@ -80,11 +80,13 @@
 		//** CLICKS **//
 
 		$('.menu').on('click', function(){
-			abrirMenu( $(this), $('nav') );
+			cerrarElement( $('header .main-search') );
+			abrirElement( $('nav') );
 		});
 
 		$('.search').on('click', function(){
-			abrirSearch( $(this), $('header .main-search') );
+			cerrarElement( $('nav') );
+			abrirElement( $('header .main-search') );
 		});
 
 		//Large
@@ -173,12 +175,12 @@
 
 	});
 
-	function abrirMenu(elemento, menu){
-		menu.slideToggle('fast');
+	function abrirElement(elemento){
+		elemento.slideToggle('fast');
 	}
 
-	function abrirSearch(elemento, menu){
-		menu.slideToggle('fast');
+	function cerrarElement(elemento){
+		elemento.slideUp('fast');
 	}
 
 	function cambiarTab(elemento){
