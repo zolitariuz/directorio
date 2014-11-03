@@ -160,5 +160,10 @@
 				scrollHeader('header');
 			});
 		<?php } ?>
+
+		<?php if($seccion == 'Oficina por delegación') { ?>
+			creaMapaAreaAtencion(<?php echo $area_atencion ?>);
+		<?php } ?>
+
 	</script>
 </html>

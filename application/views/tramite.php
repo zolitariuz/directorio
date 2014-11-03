@@ -22,12 +22,34 @@
 				<hr>
 				<div class="quick-info">
 					<h3 class="highlight">Tiempo de respuesta</h3>
+					<?php
+					// Parsear tiempo de respuesta si existe
+					if(!is_null($ts->tiempo_respuesta)){
+						$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
+						$dias = $tiempo_respuesta_ar[0];
+
+						if($tiempo_respuesta_ar[1] == 1){
+							$tipo = ' días hábiles';
+							$tiempo_respuesta = $dias.$tipo;
+						} else if ($tiempo_respuesta_ar[1] == 2){
+							$tipo = ' días naturales';
+							$tiempo_respuesta = $dias.$tipo;
+						} else {
+							$tipo = 'Inmediato';
+							$tiempo_respuesta = $tipo;
+						}
+					} else
+						$tiempo_respuesta = 'Tiempo de respuesta no definido';
+					?>
 					<p><?php echo $tiempo_respuesta ?></p>
 				</div><!-- quick-info -->
 				<hr>
 				<div class="quick-info">
 					<h3 class="highlight">¿Qué pasa si no te responden a tiempo?</h3>
 					<?php
+						$afirmativa_ficta = $ts->afirmativa_ficta;
+						$negativa_ficta = $ts->negativa_ficta;
+						
 						if($afirmativa_ficta == '1')
 							echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
 						if($negativa_ficta == '1')
@@ -431,8 +453,7 @@
 									<div class="[ margin-bottom ]">
 										<h3 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h3>
 										<?php
-											$afirmativa_ficta = $ts->afirmativa_ficta;
-											$negativa_ficta = $ts->negativa_ficta;
+											
 											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
 												echo '<p>No aplica</p>';
 											if($afirmativa_ficta == '1')
@@ -447,26 +468,7 @@
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
 										<h3 class="highlight">Plazo máximo de respuesta</h3>
-										<?php
-										// Parsear tiempo de respuesta si existe
-										if(!is_null($ts->tiempo_respuesta)){
-											$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
-											$dias = $tiempo_respuesta_ar[0];
-
-											if($tiempo_respuesta_ar[1] == 1){
-												$tipo = ' días hábiles';
-												$tiempo_respuesta = $dias.$tipo;
-											} else if ($tiempo_respuesta_ar[1] == 2){
-												$tipo = ' días naturales';
-												$tiempo_respuesta = $dias.$tipo;
-											} else {
-												$tipo = 'Inmediato';
-												$tiempo_respuesta = $tipo;
-											}
-										} else
-											$tiempo_respuesta = 'Tiempo de respuesta no definido';
-										echo '<p>'.$tiempo_respuesta.'</p>';
-										?>
+										<?php echo '<p>'.$tiempo_respuesta.'</p>'; ?>
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
 										<h3 class="highlight">De acuerdo a los fundamentos jurídicos:</h3>

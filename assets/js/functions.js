@@ -20,7 +20,7 @@
 		}
 
 		//Agregar cantidad de trámites a resultados alfabéticos
-		contarItems( $('.letra'), '.js-count-item');
+		contarItems( $('.letra'), 'li');
 
 		//Rating
 		$('.example-f').barrating({ showSelectedRating:false });
@@ -387,9 +387,9 @@ function creaMapa(mapas){
 		});
 		//  Mete los límites en el mapa
 		map.fitBounds(bounds);
-		var listener = google.maps.event.addListener(map, "idle", function() {
-		if (map.getZoom() > 17) map.setZoom(17);
-			google.maps.event.removeListener(listener);
+		var listener = google.maps.event.addListener(map, "idle", function() { 
+		if (map.getZoom() > 17) map.setZoom(17); 
+			google.maps.event.removeListener(listener); 
 		});
 	} // autoCenter
 
@@ -914,28 +914,35 @@ function muestraAreaAtencionPorDelegacion(){
 				function(response){
 					$('.j_area_atencion').removeClass('hide');
 					$('.j_area_atencion').after('<div class="[ map-wrapper ] [ margin-bottom ]"><div id="map"></div></div>');
-					$.each(response, function(i, val){
-						var tel2 = val['telefono_2'];
-						if(tel2 === null){
-							tel2 = '';
-						};
-						var fila = '<div class="fila clearfix"> \
-										<div class="[ columna xmall-4 ]">' + val['nombre'] + '</div> \
-										<div class="columna xmall-5"> \
-											' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
-										</div> \
-										<div class="columna xmall-3"> \
-											' + val['telefono_1'] + '<br /> ' + tel2 +  '\
-										</div> \
-									</div>';
-						$('.j_area_atencion').append(fila);
-					});
-					creaMapa(response);
+					creaMapaAreaAtencion(response);
 				}
 			);
 		}
 	});
 }// muestraAreaAtencionPorDelegacion
+
+function creaMapaAreaAtencion(area_atencion_data){
+	
+	$.each(area_atencion_data, function(i, val){
+		console.log(val);
+		var tel2 = val['telefono_2'];
+		if(tel2 === null){
+			tel2 = '';
+		};
+		var fila = '<div class="fila clearfix"> \
+						<div class="[ columna xmall-4 ]">' + val['nombre'] + '</div> \
+						<div class="columna xmall-5 text-center"> \
+							' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
+						</div> \
+						<div class="columna xmall-3 text-center"> \
+							' + val['telefono_1'] + '<br /> ' + tel2 +  '\
+						</div> \
+					</div>';
+		$('.j_area_atencion').append(fila);
+		console.log(fila);
+	});
+	creaMapa(area_atencion_data);
+}// creaMapaAreaAtencion
 
 function agregarFeedback(){
 	$('.feedback input[type="submit"]').on('click', function(e){

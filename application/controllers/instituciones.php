@@ -89,11 +89,11 @@ class Instituciones extends CI_Controller {
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
 
 		// Carga instituciones
-		$instituciones = file_get_contents($url_ws.'/instituciones/format/json');
-		if(is_null($instituciones))
-			$data['instituciones'] = '';
+		$delegaciones = file_get_contents($url_ws.'/delegaciones/format/json');
+		if(is_null($delegaciones))
+			$data['delegaciones'] = '';
 		else
-			$data['instituciones'] = json_decode($instituciones);
+			$data['delegaciones'] = json_decode($delegaciones);
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
@@ -119,25 +119,20 @@ class Instituciones extends CI_Controller {
 	 * @param integer $id_institucion
 	 * @return 
 	 */
-	function muestraOficinasInstitucion($id_institucion)
+	function muestraOficinasDelegacion($delegacion)
 	{
 		// Datos de conexión para WS
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
 
 		// Carga areas de atención 
-		$area_atencion =  file_get_contents($url_ws.'/oficinas/id/'.$id_institucion.'/format/json');
+		$area_atencion =  file_get_contents($url_ws.'/area_atencion_delegacion/del/'.$delegacion.'/format/json');
 
 		if(is_null($area_atencion))
 			$data['area_atencion'] = '';
 		else
-			$data['area_atencion'] = $this->dameAreasAtencion(json_decode($area_atencion));
+			$data['area_atencion'] = $area_atencion;
 
-		// Carga institucion 
-		$institucion =  file_get_contents($url_ws.'/institucion/id/'.$id_institucion.'/format/json');
-		if(is_null($institucion))
-			$data['institucion'] = '';
-		else
-			$data['institucion'] = json_decode($institucion);
+		$data['delegacion'] = $delegacion;
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
@@ -148,7 +143,7 @@ class Instituciones extends CI_Controller {
 			$data['nombres_ts'] = $nombres_ts;
 
 		// Sección actual
-		$data['seccion'] = 'Oficina por institución';
+		$data['seccion'] = 'Oficina por delegación';
 
 		// carga avisos
 		$this->load->model('aviso');
@@ -156,7 +151,7 @@ class Instituciones extends CI_Controller {
 
 		// Cargar vista inicio
 		$this->load->view('header', $data);
-		$this->load->view('oficinas_institucion', $data);
+		$this->load->view('oficinas_delegacion', $data);
 		$this->load->view('footer', $data);
 	} // muestraOficinasInstitucion
 
