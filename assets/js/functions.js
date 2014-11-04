@@ -115,11 +115,9 @@
 			}
 		});
 
-		//Raúl: Esto lo tengo que cambiar
-		//para cuando en movil las secciones se abren como botones
 		//Abrir secciones home
-		$('body').on('click', '.main-content .boton', function(e){
-			//e.preventDefault();
+		$('body').on('click', '.main-content section .boton', function(e){
+			e.preventDefault();
 			toggleSeccion( $(this), '.main-content.no-large article > div' );
 		});
 
@@ -286,7 +284,8 @@
 
 	function scrollTop(elemento){
 		var seccion 	= elemento.data('seccion');
-		var divPosicion = $("[data-seccion='"+seccion+"']").offset().top;
+		var divPosicion = $("article[data-seccion='"+seccion+"']").offset().top;
+		console.log(divPosicion);
 		divPosicion = divPosicion - 100;
 		$('html, body').animate({scrollTop: divPosicion}, 400);
 	}
@@ -389,9 +388,9 @@ function creaMapa(mapas){
 		});
 		//  Mete los límites en el mapa
 		map.fitBounds(bounds);
-		var listener = google.maps.event.addListener(map, "idle", function() { 
-		if (map.getZoom() > 17) map.setZoom(17); 
-			google.maps.event.removeListener(listener); 
+		var listener = google.maps.event.addListener(map, "idle", function() {
+		if (map.getZoom() > 17) map.setZoom(17);
+			google.maps.event.removeListener(listener);
 		});
 	} // autoCenter
 
@@ -924,7 +923,7 @@ function muestraAreaAtencionPorDelegacion(){
 }// muestraAreaAtencionPorDelegacion
 
 function creaMapaAreaAtencion(area_atencion_data){
-	
+
 	$.each(area_atencion_data, function(i, val){
 		console.log(val);
 		var tel2 = val['telefono_2'];
@@ -951,7 +950,7 @@ function agregarFeedback(){
 		e.preventDefault();
 
 		var comentario = $('textarea[name="comentarios"').val();
-		
+
 		if($.trim(comentario) == ''){
 			alert('El campo de comentarios no puede quedar vacío.');
 			return;
