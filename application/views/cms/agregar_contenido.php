@@ -55,9 +55,13 @@
 					<label class="block" for="pregunta" >Anuncio nuevo</label>
 					<input type="text" name="anuncio" class=" columna xmall-12" required>
 				</fieldset>
-				<fieldset class="">
-					<label class="block" for="vigencia" >Vigencia</label>
-					<input type="text" name="vigencia" class="datepicker  columna xmall-12" required>
+				<fieldset class="columna xmall-12 center"> 
+					<label for="fecha_inicial" >Fecha inicial</label>
+					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_inicial']; ?>">
+				</fieldset>
+				<fieldset class="columna xmall-12 center"> 
+					<label for="fecha_final" >Fecha final</label>
+					<input type="text" name="fecha_final" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_final']; ?>">
 				</fieldset>
 				<fieldset class="">
 					<input type="checkbox" name="link_anuncio"> ¿Tiene link?

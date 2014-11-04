@@ -118,6 +118,7 @@
 		//Abrir secciones home
 		$('body').on('click', '.main-content section .boton', function(e){
 			e.preventDefault();
+			console.log('s');
 			toggleSeccion( $(this), '.main-content.no-large article > div' );
 		});
 

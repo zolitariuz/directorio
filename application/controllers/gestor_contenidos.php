@@ -360,7 +360,8 @@ class Gestor_contenidos extends CI_Controller {
 		// datos a insertar
 		$anuncio = $_POST['anuncio'];
 		$url_anuncio = $_POST['url_anuncio'];
-		$vigencia = $_POST['vigencia'];
+		$fecha_inicial = $_POST['fecha_inicial'];
+		$fecha_final = $_POST['fecha_final'];
 		if($url_anuncio == '-'){
 			$tipo = 'texto';
 		} else {
@@ -391,7 +392,7 @@ class Gestor_contenidos extends CI_Controller {
 
 			// inserta anuncio a bd
 			$this->load->model('anuncio');
-			if($this->anuncio->agrega_anuncio($anuncio, $id_usuario, $tipo, $url_anuncio, $img_url[1], $vigencia, 't')){
+			if($this->anuncio->agrega_anuncio($anuncio, $id_usuario, $tipo, $url_anuncio, $img_url[1], $fecha_inicial, $fecha_final, 't')){
 				$data['success'] = '¡Se agregó el anuncio con éxito!';
 			} else {
 				$data['error'] = 'No se pudo agregar el anuncio.';
