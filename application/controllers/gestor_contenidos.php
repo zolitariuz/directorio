@@ -157,7 +157,8 @@ class Gestor_contenidos extends CI_Controller {
 
 		$aviso = $_POST['aviso'];
 		$url_aviso = $_POST['url_aviso'];
-		$vigencia = $_POST['vigencia'];
+		$fecha_inicial = $_POST['fecha_inicial'];
+		$fecha_final = $_POST['fecha_final'];
 		if($url_aviso == '-'){
 			$tipo = 'texto';
 		} else {
@@ -170,7 +171,7 @@ class Gestor_contenidos extends CI_Controller {
 
 		// inserta aviso a bd
 		$this->load->model('aviso');
-		if($this->aviso->agrega_aviso($aviso, $url_aviso, $tipo, $id_usuario, $vigencia, 't')){
+		if($this->aviso->agrega_aviso($aviso, $url_aviso, $tipo, $id_usuario, $fecha_inicial, $fecha_final, 't')){
 			$data['success'] = '¡Se agregó el aviso con éxito!';
 		} else {
 			$data['error'] = 'No se pudo agregar el aviso.';
@@ -261,7 +262,8 @@ class Gestor_contenidos extends CI_Controller {
 
 		// datos a insertar
 		$pregunta = $_POST['pregunta'];
-		$vigencia = $_POST['vigencia'];
+		$fecha_inicial = $_POST['fecha_inicial'];
+		$fecha_final = $_POST['fecha_final'];
 
 		// usuario que agrega el aviso
 		$this->load->model('usuario');
@@ -269,7 +271,7 @@ class Gestor_contenidos extends CI_Controller {
 
 		// inserta pregunta a bd
 		$this->load->model('pregunta');
-		if($this->pregunta->agrega_pregunta($pregunta, $id_usuario, $vigencia, 't')){
+		if($this->pregunta->agrega_pregunta($pregunta, $id_usuario, $fecha_inicial, $fecha_final, 't')){
 			$data['success'] = '¡Se agregó la pregunta con éxito!';
 		} else {
 			$data['error'] = 'No se pudo agregar la pregunta.';
