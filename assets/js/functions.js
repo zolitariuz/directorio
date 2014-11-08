@@ -23,7 +23,10 @@
 		contarItems( $('.letra'), 'li');
 
 		//Rating
-		$('.example-f').barrating({ showSelectedRating:false });
+		$('.example-f').barrating({
+			showSelectedRating:false,
+			initialRating: 5
+		});
 
 
 

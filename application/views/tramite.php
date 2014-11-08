@@ -9,6 +9,16 @@
 				<li class="actual"><?php echo $ts->nombre_tramite; ?></li>
 			</ul>
 			<aside class="[ columna medium-4 large-3 ] [ right ]">
+				<hr class="[ large ]">
+				<div class="[ quick-info ] [ clearfix ] [ large ]">
+					<h3 class="highlight">Compártelo</h3>
+					<div class="share block">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<div class="clear"></div>
+						<div class="fb-share-button" data-layout="button" data-href="#"></div>
+					</div><!-- share -->
+				</div><!-- quick-info -->
 				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ busqueda ] [ js-overlay-opener ] [ large ] ">
 					<i class="fa fa-search"></i> Busca tu trámite
 				</a>
@@ -49,20 +59,35 @@
 					<?php
 						$afirmativa_ficta = $ts->afirmativa_ficta;
 						$negativa_ficta = $ts->negativa_ficta;
-						
+
 						if($afirmativa_ficta == '1')
 							echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
 						if($negativa_ficta == '1')
 							echo '<p>Puedes asumir que la respuesta a tu petición es negativa.</p>';
 					?>
 				</div><!-- quick-info -->
-				<hr>
+				<?php
+				// Áreas de pago
+				if($area_pago != ''){ ?>
+					<hr>
+					<div class="quick-info">
+						<?php
+						echo '<h3 class="highlight">Áreas de pago</h3>';
+						echo '<ul class="[ disc inside ]">';
+						foreach ($area_pago as $key => $value) {
+							echo '<li>'.$value->descripcion.'</li>';
+						} // end foreach
+						echo '</ul>';
+						?>
+					</div><!-- quick-info -->
+				<?php } ?>
 				<?php
 				$indicePrecio = 0;
 				// Costo o costos del trámite o servicio
 				if($costo != ''){ ?>
+					<hr>
 					<div class="quick-info">
-				<?php
+					<?php
 					foreach ($costo as $key => $value) {
 						if($value->concepto == 1){
 							echo '<h3 class="highlight">Costo</h3>';
@@ -90,30 +115,6 @@
 				<?php
 				}
 				?>
-				<hr class="[ large ]">
-				<div class="[ quick-info ] [ clearfix ] [ large ]">
-					<h3 class="highlight">Compártelo</h3>
-					<div class="share block">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="clear"></div>
-						<div class="fb-share-button" data-layout="button" data-href="#"></div>
-					</div><!-- share -->
-				</div><!-- quick-info -->
-				<hr>
-				<div class="quick-info">
-					<?php
-					// Áreas de pago
-					if($area_pago != ''){
-						echo '<h3 class="highlight">Áreas de pago</h3>';
-						echo '<ul class="[ disc inside ]">';
-						foreach ($area_pago as $key => $value) {
-							echo '<li>'.$value->descripcion.'</li>';
-						} // end foreach
-						echo '</ul>';
-					}
-					?>
-				</div><!-- quick-info -->
 				<hr>
 				<div class="quick-info">
 					<h3 class="highlight">Formatos requeridos</h3>
@@ -453,7 +454,7 @@
 									<div class="[ margin-bottom ]">
 										<h3 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h3>
 										<?php
-											
+
 											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
 												echo '<p>No aplica</p>';
 											if($afirmativa_ficta == '1')
