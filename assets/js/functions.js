@@ -195,11 +195,14 @@
 
 	function abrirAcordeon(elemento){
 		var ul = elemento.parent('.acordeon-item').find('ul');
+		var icon = elemento.closest('.acordeon-item').find('.drop');
 		if( ul.hasClass('hide') ){
 			$('.acordeon-item').find('ul').addClass('hide');
 			ul.removeClass('hide');
+			icon.addClass('up');
 		} else {
 			$('.acordeon-item').find('ul').addClass('hide');
+			icon.removeClass('up');
 		}
 	}
 
@@ -927,19 +930,21 @@ function muestraAreaAtencionPorDelegacion(){
 }// muestraAreaAtencionPorDelegacion
 
 function creaMapaAreaAtencion(area_atencion_data){
-
 	$.each(area_atencion_data, function(i, val){
-		console.log(val);
+		console.log(area_atencion_data);
 		var tel2 = val['telefono_2'];
 		if(tel2 === null){
 			tel2 = '';
 		};
 		var fila = '<div class="fila clearfix"> \
-						<div class="[ columna xmall-4 ]">' + val['nombre'] + '</div> \
-						<div class="columna xmall-5 text-center"> \
+						<div class="[ columna xmall-3 ]">' + val['nombre'] + '</div> \
+						<div class="[ columna xmall-5 ]"> \
 							' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
 						</div> \
-						<div class="columna xmall-3 text-center"> \
+						<div class="[ columna xmall-2 ]"> \
+							' + val['telefono_1'] + '<br /> ' + tel2 +  '\
+						</div> \
+						<div class="[ columna xmall-2 ]"> \
 							' + val['telefono_1'] + '<br /> ' + tel2 +  '\
 						</div> \
 					</div>';

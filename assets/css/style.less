@@ -124,11 +124,11 @@ figure {margin: 0;}
 	backface-visibility:@type;
 }
 
-.rotatey (@deg) {
-	-webkit-transform: 	rotateY(@deg);
-	-moz-transform: 	rotateY(@deg);
-	-ms-transform: 		rotateY(@deg);
-	-o-transform: 		rotateY(@deg);
+.rotate (@deg) {
+	-webkit-transform: 	rotate(@deg);
+	-moz-transform: 	rotate(@deg);
+	-ms-transform: 		rotate(@deg);
+	-o-transform: 		rotate(@deg);
 }
 
 .translate(@x; @y) {
@@ -301,6 +301,10 @@ button, .boton{ padding: @margen; border: none; border-bottom: 6px solid @obscur
 	}
 	&:active{ padding: @margen @margen (@margen*1.05) @margen; border-bottom: 4px solid @highlight; color: @highlight; }
 	h2{ margin: 0; }
+}
+
+.drop{ .transition();
+	&.up{ .rotate(180deg); }
 }
 
 //Colores
