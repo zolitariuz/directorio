@@ -9,6 +9,16 @@
 				<li class="actual"><?php echo $ts->nombre_tramite; ?></li>
 			</ul>
 			<aside class="[ columna medium-4 large-3 ] [ right ]">
+				<hr class="[ large ]">
+				<div class="[ quick-info ] [ clearfix ] [ large ]">
+					<h3 class="highlight">Compártelo</h3>
+					<div class="share block">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<div class="clear"></div>
+						<div class="fb-share-button" data-layout="button" data-href="#"></div>
+					</div><!-- share -->
+				</div><!-- quick-info -->
 				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ busqueda ] [ js-overlay-opener ] [ large ] ">
 					<i class="fa fa-search"></i> Busca tu trámite
 				</a>
@@ -49,20 +59,35 @@
 					<?php
 						$afirmativa_ficta = $ts->afirmativa_ficta;
 						$negativa_ficta = $ts->negativa_ficta;
-						
+
 						if($afirmativa_ficta == '1')
 							echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
 						if($negativa_ficta == '1')
 							echo '<p>Puedes asumir que la respuesta a tu petición es negativa.</p>';
 					?>
 				</div><!-- quick-info -->
-				<hr>
+				<?php
+				// Áreas de pago
+				if($area_pago != ''){ ?>
+					<hr>
+					<div class="quick-info">
+						<?php
+						echo '<h3 class="highlight">Áreas de pago</h3>';
+						echo '<ul class="[ disc inside ]">';
+						foreach ($area_pago as $key => $value) {
+							echo '<li>'.$value->descripcion.'</li>';
+						} // end foreach
+						echo '</ul>';
+						?>
+					</div><!-- quick-info -->
+				<?php } ?>
 				<?php
 				$indicePrecio = 0;
 				// Costo o costos del trámite o servicio
 				if($costo != ''){ ?>
+					<hr>
 					<div class="quick-info">
-				<?php
+					<?php
 					foreach ($costo as $key => $value) {
 						if($value->concepto == 1){
 							echo '<h3 class="highlight">Costo</h3>';
@@ -90,30 +115,6 @@
 				<?php
 				}
 				?>
-				<hr class="[ large ]">
-				<div class="[ quick-info ] [ clearfix ] [ large ]">
-					<h3 class="highlight">Compártelo</h3>
-					<div class="share block">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="clear"></div>
-						<div class="fb-share-button" data-layout="button" data-href="#"></div>
-					</div><!-- share -->
-				</div><!-- quick-info -->
-				<hr>
-				<div class="quick-info">
-					<?php
-					// Áreas de pago
-					if($area_pago != ''){
-						echo '<h3 class="highlight">Áreas de pago</h3>';
-						echo '<ul class="[ disc inside ]">';
-						foreach ($area_pago as $key => $value) {
-							echo '<li>'.$value->descripcion.'</li>';
-						} // end foreach
-						echo '</ul>';
-					}
-					?>
-				</div><!-- quick-info -->
 				<hr>
 				<div class="quick-info">
 					<h3 class="highlight">Formatos requeridos</h3>
@@ -168,6 +169,7 @@
 					</div>
 				</div><!--quick-info -->
 				<div class="quick-info">
+					<h3 class="highlight">La información de este trámite es la oficial. Denuncia cualquier anomalía.</h3>
 					<a href="#" class="block columna xmall-10 center">
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 					</a>
@@ -232,14 +234,14 @@
 									$num_copias = $value->num_copias;
 									switch($value->original_copia){
 										case 1:
-											$documentoAcreditacion = $documentoAcreditacion.' <strong>traer original</strong>';
+											$documentoAcreditacion = $documentoAcreditacion.' <strong>- original</strong>';
 											break;
 										case 2:
 											if($num_copias > 0)
-												$documentoAcreditacion = $documentoAcreditacion.' <strong>traer '.$num_copias.' copia(s) </strong>';
+												$documentoAcreditacion = $documentoAcreditacion.' <strong>- '.$num_copias.' copia(s) </strong>';
 											break;
 										case 3:
-											$documentoAcreditacion = $documentoAcreditacion.' <strong>traer original y '.$num_copias.' copia(s) </strong>';
+											$documentoAcreditacion = $documentoAcreditacion.' <strong>- original y '.$num_copias.' copia(s) </strong>';
 											break;
 									}// switch
 									echo '<li>'.$documentoAcreditacion.'</li>';
@@ -340,7 +342,7 @@
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
 							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
-								<i class="fa fa-bank"></i> En área de atención ciudadana
+								<i class="fa fa-bank"></i> En área de atención ciudadana  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>
 							</a>
 							<ul class="[ none ] [ hide ]">
 								<li>
@@ -360,13 +362,16 @@
 									</form>
 									<div class="tabla j_area_atencion hide">
 										<div class="fila header clearfix">
-											<div class="columna xmall-4 text-center">
+											<div class="columna xmall-3 text-center">
 												Nombre
 											</div>
 											<div class="columna xmall-5 text-center">
 												Dirección
 											</div>
-											<div class="columna xmall-3 text-center">
+											<div class="columna xmall-2 text-center">
+												Horarios
+											</div>
+											<div class="columna xmall-2 text-center">
 												Teléfonos
 											</div>
 										</div>
@@ -382,7 +387,7 @@
 							} else{
 								echo '<div class="[ acordeon-item ]">';
 									echo '<a href="#" class="block [ boton boton-acordeon ] margin-bottom">';
-										echo '<i class="fa fa-bank"></i> En línea';
+										echo '<i class="fa fa-bank"></i> En línea <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
 									echo '</a>';
 									echo '<ul class="[ none ] [ hide ]">';
 										echo '<li class="[ clearfix ]">';
@@ -422,7 +427,7 @@
 									$tel = $tel.' ext. '.$ts->ext_presentacion;
 									echo '<div class="[ acordeon-item ]">';
 											echo '<a href="#" class="block [ boton boton-acordeon ] margin-bottom">';
-											echo '<i class="fa fa-bank"></i> Vía telefónica';
+												echo '<i class="fa fa-bank"></i> Vía telefónica  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
 											echo '</a>';
 										echo '<ul class="[ none ] [ hide ]">';
 											echo '<li>';
@@ -453,7 +458,7 @@
 									<div class="[ margin-bottom ]">
 										<h3 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h3>
 										<?php
-											
+
 											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
 												echo '<p>No aplica</p>';
 											if($afirmativa_ficta == '1')
@@ -509,6 +514,22 @@
 				                <option value="5">5</option>
 				            </select>
 						</fieldset>
+						<fieldset>
+							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
+							<textarea name="comentarios" rows="8"></textarea>
+						</fieldset>
+						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
+						<input type="submit" class="boton chico horizontal right" value="Enviar">
+					</form>
+				<?php } ?>
+				</article><!-- danos tu opinion -->
+				<hr>
+				<article class="danos-tu-opinion">
+					<h2 class="highlight">Danos tu opinión</h2>
+				<?php if($feedback == '1') { ?>
+					<label>Gracias por participar.</label>
+				<?php } else { ?>
+					<form class="feedback clearfix" action="<?php echo base_url().'tramites_servicios/agregar_feedback' ?>" method="POST">
 						<fieldset class="rating-f">
 							<label>Si haz realizado este trámite anteriormente ¿cómo calificas el servicio?</label>
 				            <select class="example-f" id="example-f" name="rating-servicio">
@@ -518,10 +539,6 @@
 				                <option value="4">4</option>
 				                <option value="5">5</option>
 				            </select>
-						</fieldset>
-						<fieldset>
-							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
-							<textarea name="comentarios" rows="8"></textarea>
 						</fieldset>
 						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
 						<input type="submit" class="boton chico horizontal right" value="Enviar">

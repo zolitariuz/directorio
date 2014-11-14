@@ -124,11 +124,11 @@ figure {margin: 0;}
 	backface-visibility:@type;
 }
 
-.rotatey (@deg) {
-	-webkit-transform: 	rotateY(@deg);
-	-moz-transform: 	rotateY(@deg);
-	-ms-transform: 		rotateY(@deg);
-	-o-transform: 		rotateY(@deg);
+.rotate (@deg) {
+	-webkit-transform: 	rotate(@deg);
+	-moz-transform: 	rotate(@deg);
+	-ms-transform: 		rotate(@deg);
+	-o-transform: 		rotate(@deg);
 }
 
 .translate(@x; @y) {
@@ -183,7 +183,9 @@ figure {margin: 0;}
 .hide{ display: none !important; }
 .block{ display: block !important; }
 
+.text-left{ text-align: left; }
 .text-center{ text-align: center; }
+.text-right{ text-align: right; }
 
 .no-margin{ margin: 0 !important; }
 .no-margin-bottom{ margin-bottom: 0 !important; }
@@ -301,6 +303,10 @@ button, .boton{ padding: @margen; border: none; border-bottom: 6px solid @obscur
 	h2{ margin: 0; }
 }
 
+.drop{ .transition();
+	&.up{ .rotate(180deg); }
+}
+
 //Colores
 a{ color: @highlight; }
 .gray-background{ background: lighten(@obscuro, 55%); }
@@ -391,7 +397,7 @@ h2, h3, p, a, label{
 
 /*** HEADER ***/
 
-header{ margin-bottom: (@margen*2); border-bottom: 1px solid @obscuro; background: lighten(@obscuro, 45%);
+header{ margin-bottom: (@margen*2); border-bottom: 1px solid @highlight; background: @claro;
 	i{ display: block; width: 100%; font-size: 2em; cursor: pointer; }
 	.main-search{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @obscuro; position: absolute; }
 }
@@ -407,9 +413,9 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @obscuro; backgroun
 }
 .header-top{ width: 68%; margin-left: 1%; margin-right: 1%; }
 
-nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @claro; position: absolute;
+nav{ display: none; width: 100%; border-top: 1px solid @obscuro; background: @highlight; position: absolute;
 	a{ display: block; padding: (@margen/2); text-align: center; border-bottom: 1px solid @claro; .font(1.2em, 1, 600); color: @claro; background: lighten(@obscuro, 10%); text-decoration: none; .transition;
-		&:hover, &.active{ color: @highlight; }
+		&:hover, &.active{ color: darken(@claro, 10%); }
 	}
 }
 
@@ -448,7 +454,7 @@ footer{
 		input, button{ height: (@margen*3.5);
 			i{ font-size: 1.5em; }
 		}
-		input{ margin-bottom: (@margen); padding: (@margen/2); .font(1.4em, 1); }
+		input{ padding: (@margen/2); .font(1.4em, 1); }
 		button{  }
 	}
 	input, button{ height: (@margen*2); border: none; outline-color: @claro; .transition;
@@ -798,11 +804,11 @@ body.cms{
 		img{ display: block; }
 	}
 	h1{ width: 38%; padding: 0; text-align: left; }
-	.slogan{ width: 50%; .font(1.4em, 1.4em); font-style: italic; }
-	nav{ margin-top: (@margen/2); padding: (@margen/2) 0 (@margen/3) 0; border-top: 1px solid lighten(@obscuro, 45%); background: @claro; position: relative;
-		a{ display: inline-block; vertical-align: top; width: 31%; margin: 0 1%; padding: 0; border: none; text-align: left; color: @obscuro; background: none; }
+	.slogan{ width: 56%; .font(1.4em, 1.4em); font-style: italic; }
+	nav{ margin-top: (@margen/2); padding: (@margen/2) 0 (@margen/3) 0; border-top: 1px solid lighten(@obscuro, 45%); position: relative;
+		a{ display: inline-block; vertical-align: top; width: 31%; margin: 0 1%; padding: 0; border: none; text-align: left;  background: none; }
 	}
-	.avisos{ padding: (@margen/2) 0 (@margen/4) 0; background: lighten(@obscuro, 45%);
+	.avisos{ padding: (@margen/2) 0 (@margen/4) 0; background: lighten(@obscuro, 60%);
 		h3{ color: @highlight; border-right: 1px solid @obscuro; }
 		p{ margin: 0; color: @obscuro; line-height: 1.7em; }
 		span{ margin: 0 20px; }
@@ -816,7 +822,7 @@ body.cms{
 
 	//MAIN-HOME
 	.main-search{
-		&.hero{ margin: 0 0 (@margen*2) 0; }
+		&.hero{ margin: 0; }
 	}
 	.busqueda{
 		h3{ margin: 0 0 (@margen*2) 0; }

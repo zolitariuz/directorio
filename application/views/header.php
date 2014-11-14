@@ -46,7 +46,7 @@
 							<a href="<?php echo base_url() ?>">
 								<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
 							</a>
-						</h1><span class="[ large ] [ slogan ] [ text-center ]">
+						</h1><span class="[ large ] [ slogan ] [ text-right ]">
 							<small>Transparecia y Certeza Jurídica</small>
 						</span>
 					</div><div class="menu no-large">
@@ -91,7 +91,7 @@
 					</div><!-- width -->
 				</div>
 				<nav class="no-large">
-					<a class="text-center <?php if ( $seccion == 'Oficinas atencion' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">Oficinas de atención ciudadana</a>
+					<a class="text-center <?php if ( $seccion == 'Oficinas atencion' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">Directorio de áreas de atención ciudadana</a>
 					<a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">Trámites y servicios en línea</a>
 					<a class="text-center" href="#">Preguntas frecuentes</a>
 				</nav>
