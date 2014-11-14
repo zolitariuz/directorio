@@ -203,7 +203,7 @@
 	function contarItems(papa, items){
 		$.each(papa, function(){
 			var cuantosItems = $(this).find(items).length;
-			$(this).find('h2').find('span').html('('+cuantosItems+')');
+			$(this).find('h2').find('span').html('('+cuantosItems+' trámites)');
 		})
 	}
 

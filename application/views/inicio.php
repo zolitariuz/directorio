@@ -9,12 +9,7 @@
 		?>
 
 		<section class="busqueda clearfix">
-			<h2 class="text-center">Busca tu trámite o servicio</h2>
-			<form class="main-search hero clearfix main-search-home" action="#">
-				<input type="search" class="span large-11 full">
-				<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
-				<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
-			</form>
+			
 
 			<!--
 			<h3 class="text-center">O ve trámites y servicios por:</h3>
@@ -31,6 +26,13 @@
 			-->
 
 		</section><!-- busqueda -->
+
+		<h2 class="text-center">Busca tu trámite o servicio</h2>
+		<form class="main-search hero clearfix main-search-home" action="#">
+			<input type="search" class="span large-11 full">
+			<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
+			<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
+		</form>
 
 		<section class="anuncios clearfix large">
 			<div class="slider clearfix cycle-slideshow"
