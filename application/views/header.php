@@ -46,7 +46,7 @@
 							<a href="<?php echo base_url() ?>">
 								<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
 							</a>
-						</h1><span class="[ large ] [ slogan ] [ text-center ]">
+						</h1><span class="[ large ] [ slogan ] [ text-right ]">
 							<small>Transparecia y Certeza Jurídica</small>
 						</span>
 					</div><div class="menu no-large">
