@@ -294,6 +294,7 @@
 				<article class="" data-seccion="area-atencion">
 					<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
 					<div class="[ acordeon ]">
+						<?php if($delegacion_area_atencion != '') { ?>
 						<div class="[ acordeon-item ]">
 							<a href="#" class="[ block margin-bottom ] [ boton grande boton-acordeon ] [ ]">
 								<i class="icon-ts-tramite-en-ventanilla"></i> En área de atención ciudadana  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>
@@ -334,10 +335,10 @@
 								</li>
 							</ul>
 						</div>
-						<?php
+						<?php } 
 							$nivel = $ts->nvl_automatizacion;
 							$link = $ts->url_nvl_automatizacion;
-							if( is_null($nivel) ){
+							if( is_null($nivel) || $link == '' ){
 							} else{
 								echo '<div class="[ acordeon-item ]">';
 									echo '<a href="#" class="block [ boton grande boton-acordeon ] margin-bottom">';
@@ -345,7 +346,7 @@
 									echo '</a>';
 									echo '<ul class="[ none ] [ hide ]">';
 										echo '<li class="[ clearfix ]">';
-									}
+
 									if($nivel == '2'){
 										echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
 									} else {
@@ -353,6 +354,7 @@
 										echo '<ul class="[ disc inside ]">';
 
 										$nivel_arr = explode('_', $nivel);
+
 										foreach ($nivel_arr as $key => $value) {
 											switch($value){
 												case '1':
@@ -372,9 +374,10 @@
 										echo '</ul><div class="clear margin-bottom"></div>';
 										echo '<br/><a class="[ boton chico ] [ margin-bottom left ]" href="'.$link.'" target="_blank">realizar en línea</a>';
 									}
-									echo '</li>';
-								echo '</ul>';
-							echo '</div>';
+										echo '</li>';
+									echo '</ul>';
+								echo '</div>';
+							}
 							if($ts->tel_presentacion != '0'){
 								$tel = $ts->tel_presentacion;
 								if($ts->ext_presentacion != '0')
