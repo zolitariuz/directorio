@@ -911,8 +911,6 @@ function muestraAreaAtencionPorDelegacion(){
 		var delegacion = $(this).find('option:selected').val();
 		var url = localStorage.getItem('url_ws') + '/area_atencion_tramite_delegacion/del/' + delegacion + '/id/'+id_tramite_servicio+'/format/json'
 
-		console.log(url);
-
 		$('.j_area_atencion').addClass('hide');
 		$('.j_area_atencion .fila').not('.header').remove();
 		$('.map-wrapper').remove();
@@ -932,9 +930,12 @@ function muestraAreaAtencionPorDelegacion(){
 function creaMapaAreaAtencion(area_atencion_data){
 	$.each(area_atencion_data, function(i, val){
 
+		console.log('we are here');
+		console.log(val);
 		var tel2 = val['telefono_2'];
 		var ext1 = '';
 		var ext2 = '';
+		var dias = getDiasAreaAtencion(val['dias']);
 
 		if(tel2 === null){
 			tel2 = '';
@@ -946,13 +947,15 @@ function creaMapaAreaAtencion(area_atencion_data){
 			ext2 = 'ext. ' + val['ext_2'];
 		}
 
+
+
 		var fila = '<div class="fila clearfix"> \
 						<div class="[ columna xmall-3 ]">' + val['nombre'] + '</div> \
 						<div class="[ columna xmall-5 ]"> \
 							' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
 						</div> \
 						<div class="[ columna xmall-2 ]"> \
-							10:00am - 9:00pm \
+							' + dias + val['hora_inicio'] + ' a ' + val['hora_fin'] + ' \
 						</div> \
 						<div class="[ columna xmall-2 ]"> \
 							' + val['telefono_1'] + ' ' +  ext1 + '<br /> ' + '\
@@ -963,6 +966,29 @@ function creaMapaAreaAtencion(area_atencion_data){
 	});
 	creaMapa(area_atencion_data);
 }// creaMapaAreaAtencion
+
+function getDiasAreaAtencion(dias){
+	var dias_array = dias.split('_');
+	var dia_inicial = getDia(dias_array[0]);
+	var dia_final = getDia(dias_array[dias_array.length-1]);
+
+	return dia_inicial + ' a ' + dia_final + ' de: ';
+}// getDiasAreaAtencion
+
+function getDia(dia){
+	switch(dia){
+		case 'lu':
+			return 'lunes';
+		case 'ma':
+			return 'martes';
+		case 'mi':
+			return 'miércoles';
+		case 'ju':
+			return 'jueves';
+		case 'vi':
+			return 'viernes';
+	}
+}// getDia
 
 function agregarFeedback(){
 	$('.feedback input[type="submit"]').on('click', function(e){
