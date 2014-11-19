@@ -206,6 +206,9 @@ figure {margin: 0;}
 .first{ margin-left: 0 !important; padding-left: 0; }
 .last{ margin-right: 0 !important; padding-right: 0; }
 
+.inline-block {display: inline-block;}
+.vertical-middle{ vertical-align: middle; }
+
 .columna{ margin-right: 1%; margin-left: 1%; float: left;
 	&.xmall-1{ width: 6.3%; }
 	&.xmall-2{ width: 14.6%; }
@@ -425,13 +428,13 @@ nav{ display: none; width: 100%; border-top: 1px solid @gris-obscuro; background
 footer{
 	section{ margin: 0; padding: @margen 0; }
 	.logos{ background: @gris-claro;
-		> div > div{ width: 23%; margin: 0 1%; display: inline-block; vertical-align: middle;
-			&:first-of-type{
-				img{ width: 90%; }
-			}
-			img{ width: 80%; height: auto; }
+		.gobierno{ width: 100%; margin-bottom: @margen;
+			> div{ width: 23%; margin: 0 1%; }
+			.img-100{ width: 100%; height: auto; }
+			.img-60{ width: 60%; height: auto; }
+			.img-50{ width: 50%; height: auto; }
 		}
-		.apoyo{ width: 100%; margin-top: @margen;
+		.apoyo{ width: 100%;
 			> div{ width: 30%; margin: 0 10%; }
 		}
 	}
@@ -740,10 +743,12 @@ body.cms{
 	footer{
 		section{ padding: @margen; }
 		.logos{
-			> div > div{ width: 16%; margin: 0;
-				img{ width: 50%; }
-				&:first-of-type{
-					img{ width: 60%; }
+			.gobierno{ width: 66%;
+				> div{ width: 17%; margin: 0 4%;
+					.img-100{ width: 100%; }
+					.img-60{ width: 60%; }
+					.img-50{ width: 50%; }
+					.img-40{ width: 40%; }
 				}
 			}
 			.apoyo{ width: 33%;
