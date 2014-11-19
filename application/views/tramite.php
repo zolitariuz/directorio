@@ -416,7 +416,7 @@
 											}// switch
 										}// foreach
 										echo '</ul><div class="clear margin-bottom"></div>';
-										echo '<br/><a class="boton margin-bottom [ left ]" href="'.$link.'" target="_blank">realizar en linea</a>';
+										echo '<br/><a class="boton margin-bottom [ left ]" href="http://'.$link.'" target="_self">realizar en línea</a>';
 									}
 									echo '</li>';
 								echo '</ul>';
