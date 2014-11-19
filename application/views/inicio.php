@@ -1,5 +1,4 @@
 <div class="main">
-
 	<div class="width">
 		<?php
 			// Mostrar error en caso de búsqueda
@@ -7,33 +6,14 @@
 			if($error == '1')
 				echo '<p>No se encontró el trámite o servicio que estabas buscando</p>';
 		?>
-
 		<section class="busqueda clearfix">
-			
-
-			<!--
-			<h3 class="text-center">O ve trámites y servicios por:</h3>
-			<div class="columna xmall-12 medium-8 center clearfix">
-				<a  class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/instituciones' ?>">
-					<i class="icon-ts-instituciones"></i>
-					Institución
-				</a>
-				<a class="block boton vertical columna xmall-12 medium-6 margin-bottom" href="<?php echo base_url().'index.php/temas' ?>">
-					<i class="icon-ts-temas"></i>
-					Tema
-				</a>
-			</div>
-			-->
-
+			<h2 class="text-center">Busca tu trámite o servicio</h2>
+			<form class="main-search hero clearfix main-search-home" action="#">
+				<input type="search" class="span large-11 full">
+				<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
+				<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
+			</form>
 		</section><!-- busqueda -->
-
-		<h2 class="text-center">Busca tu trámite o servicio</h2>
-		<form class="main-search hero clearfix main-search-home" action="#">
-			<input type="search" class="span large-11 full">
-			<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
-			<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
-		</form>
-
 		<section class="anuncios clearfix large">
 			<div class="slider clearfix cycle-slideshow"
 				data-cycle-slides=".slide"

@@ -177,9 +177,9 @@
 			</aside>
 			<section class="[ content ] [ columna medium-8 large-9 ]">
 				<article class="header-single clearfix">
-					<div class="quick-info">
-						<p><i class="<?php echo $clase_icono ?>"></i>Tema: <?php echo $ts->materia ?></p>
-						<p><i class="<?php echo $clase_icono ?>"></i>Unidad responsable: <?php echo $ts->ente ?></p>
+					<div class="[ quick-info ] [ margin-bottom-big ]">
+						<p><i class="icon-ts-temas"></i><b>Tema:</b> <?php echo $ts->materia ?></p>
+						<p><i class="<?php echo $clase_icono ?>"></i><b>Unidad responsable:</b> <?php echo $ts->ente ?></p>
 					</div><!-- quick-info -->
 					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
 				</article><!-- header-single -->
@@ -291,58 +291,12 @@
 					<hr>
 					<div class="clear"></div>
 				<?php } ?>
-
-				<article>
-				<?php
-
-					$forma = $ts->formasolicitud;
-					if(!is_null($forma)){
-						echo '<h2 class="highlight">¿Cómo se realiza?</h2>';
-						switch(trim($forma)){
-							case "Presencial":
-								echo '<p>Presencial</p>';
-								break;
-							case 'Electrónica':
-								echo '<p>Vía electrónica</p>';
-								break;
-							case 'Telefónica':
-								$tel_presentacion = $ts->tel_presentacion;
-								echo '<p>Vía telefónica: '.$tel_presentacion.'</p>';
-								break;
-							case 'Mixta':
-								echo '<p>Mixta</p>';
-								break;
-							default:
-								echo '<ul class="[ disc inside ]">';
-								$forma_arr = explode('_', $forma);
-								foreach ($forma_arr as $key => $value) {
-									switch(trim($value)){
-										case '1':
-											echo '<li>Presencial</li>';
-											break;
-										case '2':
-											echo '<li>Vía electrónica</li>';
-											break;
-										case '3':
-											$tel_presentacion = $ts->tel_presentacion;
-											echo '<li>Vía telefónica: '.$tel_presentacion.'</li>';
-											break;
-									}// switch
-								}// foreach
-								echo '</ul>';
-						}// switch
-					}
-				?>
-				</article>
-				<div class="clear"></div>
-				<hr>
-				<div class="clear"></div>
 				<article class="" data-seccion="area-atencion">
 					<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
-							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
-								<i class="fa fa-bank"></i> En área de atención ciudadana  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>
+							<a href="#" class="[ block margin-bottom ] [ boton grande boton-acordeon ] [ ]">
+								<i class="icon-ts-tramite-en-ventanilla"></i> En área de atención ciudadana  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>
 							</a>
 							<ul class="[ none ] [ hide ]">
 								<li>
@@ -386,8 +340,8 @@
 							if( is_null($nivel) ){
 							} else{
 								echo '<div class="[ acordeon-item ]">';
-									echo '<a href="#" class="block [ boton boton-acordeon ] margin-bottom">';
-										echo '<i class="fa fa-bank"></i> En línea <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
+									echo '<a href="#" class="block [ boton grande boton-acordeon ] margin-bottom">';
+										echo '<i class="icon-ts-tramite-en-linea"></i> En línea <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
 									echo '</a>';
 									echo '<ul class="[ none ] [ hide ]">';
 										echo '<li class="[ clearfix ]">';
@@ -416,7 +370,7 @@
 											}// switch
 										}// foreach
 										echo '</ul><div class="clear margin-bottom"></div>';
-										echo '<br/><a class="boton margin-bottom [ left ]" href="'.$link.'" target="_blank">realizar en linea</a>';
+										echo '<br/><a class="[ boton chico ] [ margin-bottom left ]" href="'.$link.'" target="_blank">realizar en línea</a>';
 									}
 									echo '</li>';
 								echo '</ul>';
@@ -426,8 +380,8 @@
 								if($ts->ext_presentacion != '0')
 									$tel = $tel.' ext. '.$ts->ext_presentacion;
 									echo '<div class="[ acordeon-item ]">';
-											echo '<a href="#" class="block [ boton boton-acordeon ] margin-bottom">';
-												echo '<i class="fa fa-bank"></i> Vía telefónica  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
+											echo '<a href="#" class="block [ boton grande boton-acordeon ] margin-bottom">';
+												echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
 											echo '</a>';
 										echo '<ul class="[ none ] [ hide ]">';
 											echo '<li>';

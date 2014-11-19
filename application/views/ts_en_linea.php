@@ -25,7 +25,7 @@
 						<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
 							<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
 						</a>
-						<ul class="hide arabigos inside">
+						<ul class="hide arabigos">
 					<?php
 					$primeraLetraAnt = $primeraLetra;
 				}

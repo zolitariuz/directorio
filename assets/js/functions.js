@@ -41,12 +41,6 @@
 			cambiarTab( $(this) );
 		});
 
-		//Acordeon
-		$('body').on('click', '.acordeon-item > .boton-acordeon', function(e){
-			e.preventDefault();
-			abrirAcordeon( $(this) );
-		});
-
 		//Modal
 		$('body').on('click', '.modal .cerrar', function(){
 			cerrarModal( $(this) );
@@ -119,10 +113,16 @@
 		});
 
 		//Abrir secciones home
-		$('body').on('click', '.main-content section .boton', function(e){
+		// $('body').on('click', '.main-content section .j-toggle', function(e){
+		// 	e.preventDefault();
+		// 	console.log('s');
+		// 	toggleSeccion( $(this), '.main-content.no-large article > div' );
+		// });
+
+		//Acordeon
+		$('body').on('click', '.acordeon-item > .boton-acordeon', function(e){
 			e.preventDefault();
-			console.log('s');
-			toggleSeccion( $(this), '.main-content.no-large article > div' );
+			abrirAcordeon( $(this) );
 		});
 
 

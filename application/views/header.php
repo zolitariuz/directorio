@@ -47,7 +47,7 @@
 								<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
 							</a>
 						</h1><span class="[ large ] [ slogan ] [ text-right ]">
-							<small>Transparecia y Certeza Jurídica</small>
+							<small>Transparencia y Certeza Jurídica</small>
 						</span>
 					</div><div class="menu no-large">
 						<i class="[ fa fa-bars ] [ full ] [ text-center ]"></i>
@@ -76,7 +76,7 @@
 									echo '<span>';
 									// ¿el aviso tiene link?
 									if(trim($value['tipo_contenido']) == 'link') {
-										echo '<a href="'.$value['url'].'">';
+										echo '<a target="_blank" href="'.$value['url'].'">';
 										echo $value['contenido'];
 										echo '</a>';
 									} else {
