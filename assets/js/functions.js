@@ -931,25 +931,35 @@ function muestraAreaAtencionPorDelegacion(){
 
 function creaMapaAreaAtencion(area_atencion_data){
 	$.each(area_atencion_data, function(i, val){
-		console.log(area_atencion_data);
+
 		var tel2 = val['telefono_2'];
+		var ext1 = '';
+		var ext2 = '';
+
 		if(tel2 === null){
 			tel2 = '';
-		};
+		}
+		if(val['ext_1'] !== null){
+			ext1 = 'ext. ' + val['ext_1'];
+		}
+		if(val['ext_2'] !== null){
+			ext2 = 'ext. ' + val['ext_2'];
+		}
+
 		var fila = '<div class="fila clearfix"> \
 						<div class="[ columna xmall-3 ]">' + val['nombre'] + '</div> \
 						<div class="[ columna xmall-5 ]"> \
 							' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
 						</div> \
 						<div class="[ columna xmall-2 ]"> \
-							' + val['telefono_1'] + '<br /> ' + tel2 +  '\
+							10:00am - 9:00pm \
 						</div> \
 						<div class="[ columna xmall-2 ]"> \
-							' + val['telefono_1'] + '<br /> ' + tel2 +  '\
+							' + val['telefono_1'] + ' ' +  ext1 + '<br /> ' + '\
+							' + tel2 + ' ' +  ext2 +  '\
 						</div> \
 					</div>';
 		$('.j_area_atencion').append(fila);
-		console.log(fila);
 	});
 	creaMapa(area_atencion_data);
 }// creaMapaAreaAtencion
