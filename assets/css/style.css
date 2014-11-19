@@ -354,6 +354,12 @@ figure {
   margin-right: 0 !important;
   padding-right: 0;
 }
+.inline-block {
+  display: inline-block;
+}
+.vertical-middle {
+  vertical-align: middle;
+}
 .columna {
   margin-right: 1%;
   margin-left: 1%;
@@ -1002,22 +1008,28 @@ footer section {
 footer .logos {
   background: #dcdcdc;
 }
-footer .logos > div > div {
+footer .logos .gobierno {
+  width: 100%;
+  margin-bottom: 20px;
+}
+footer .logos .gobierno > div {
   width: 23%;
   margin: 0 1%;
-  display: inline-block;
-  vertical-align: middle;
 }
-footer .logos > div > div:first-of-type img {
-  width: 90%;
+footer .logos .gobierno .img-100 {
+  width: 100%;
+  height: auto;
 }
-footer .logos > div > div img {
-  width: 80%;
+footer .logos .gobierno .img-60 {
+  width: 60%;
+  height: auto;
+}
+footer .logos .gobierno .img-50 {
+  width: 50%;
   height: auto;
 }
 footer .logos .apoyo {
   width: 100%;
-  margin-top: 20px;
 }
 footer .logos .apoyo > div {
   width: 30%;
@@ -1696,15 +1708,24 @@ body.cms footer i {
   footer section {
     padding: 20px;
   }
-  footer .logos > div > div {
-    width: 16%;
-    margin: 0;
+  footer .logos .gobierno {
+    width: 66%;
   }
-  footer .logos > div > div img {
+  footer .logos .gobierno > div {
+    width: 17%;
+    margin: 0 4%;
+  }
+  footer .logos .gobierno > div .img-100 {
+    width: 100%;
+  }
+  footer .logos .gobierno > div .img-60 {
+    width: 60%;
+  }
+  footer .logos .gobierno > div .img-50 {
     width: 50%;
   }
-  footer .logos > div > div:first-of-type img {
-    width: 60%;
+  footer .logos .gobierno > div .img-40 {
+    width: 40%;
   }
   footer .logos .apoyo {
     width: 33%;
