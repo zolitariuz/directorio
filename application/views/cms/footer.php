@@ -34,6 +34,15 @@
 			toggleUrlAnuncio();
 			setLimitDate('.js-validate-aviso, .js-validate-pregunta, .js-validate-anuncio');
 		<?php }
+
+			if ($seccion == 'Editar aviso'){ ?>
+				setLimitDate('.js-validate-aviso');
+			<?php }
+
+			if ($seccion == 'Editar pregunta'){ ?>
+				setLimitDate('.js-validate-pregunta');
+			<?php }
+
 			if ($seccion == 'Editar anuncio'){ ?>
 				toggleSubirImagen();
 				setLimitDate('.js-validate-anuncio');
