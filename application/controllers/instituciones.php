@@ -123,6 +123,7 @@ class Instituciones extends CI_Controller {
 	{
 		// Datos de conexión para WS
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+		$data['ws'] = $url_ws;
 
 		// Carga areas de atención 
 		$area_atencion =  file_get_contents($url_ws.'/area_atencion_delegacion/del/'.$delegacion.'/format/json');

@@ -977,7 +977,6 @@ function getHorarioAreaAtencion(id_area_atencion){
 		function(response){
 			var dias_anteriores = 0;
 			$.each(response, function(i, val){
-				console.log(val);
 				var horario = $('div').find('[data-area="'+id_area_atencion+'"]');
 				if(dias_anteriores != val.dias){
 					dias_anteriores = val.dias;
