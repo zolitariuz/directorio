@@ -57,7 +57,7 @@
 						$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$idTS; ?>
 						<a href="<?php echo $urlTramite; ?>" class="item boton columna large-4">
 							<?php echo $tramite; ?>
-						</a></a>
+						</a>
 					<?php } // end foreach ?>
 				</div>
 			<?php } ?>
@@ -116,7 +116,7 @@
 				<div class="[ large ] [ columna medium-6 ]">
 					<h2 class="text-center highlight">Quejas, denuncias y sugerencias en Atención Ciudadana o denuncias de actos de corrupción</h2>
 					<div class="columna xmall-6">
-						<a href="#" class="block columna xmall-8 center">
+						<a href="href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana"" class="block columna xmall-8 center">
 							<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
 						</a>
 					</div>

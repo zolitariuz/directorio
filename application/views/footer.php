@@ -26,7 +26,8 @@
 			<section class="emergencia">
 				<div class="width clearfix">
 					<div class="columna xmall-6 large-2">
-						<i class="icon-ts-locatel"></i>
+						<a class="[ no-large ]" href="tel: 5658-1111"><i class="[ icon-ts-locatel ]"></i></a>
+						<i class="[ icon-ts-locatel ]"></i>
 						<h4 class="text-center large">5658 1111</h4>
 						<h4 class="text-center no-large"><a href="tel: 5658-1111">5658 1111</a></h4>
 						<p class="text-center">LOCATEL</p>

@@ -139,38 +139,36 @@
 				<hr>
 				<div class="quick-info">
 					<article class="" data-content="beneficio-documento">
-					<?php
-					if($ts->is_tramite){
-						echo '<h3 class="highlight">Documento(s) a obtener</h3>';
-					} else {
-						echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
-					}
-					?>
-					<div>
-						<?php
-						if($documento != ''){
-							$sinDocumento = true;
-							foreach ($documento as $key => $value) {
-								$nombreDocumento = $value['nombreDocumento'];
-								$vigencia = $value['vigencia'];
-								$vigenciaArray = explode('_', $vigencia);
-								echo '<p><strong>'.$nombreDocumento.'</strong></p>';
-								if($vigencia != -1) {
-									echo '<p>Vigencia: '.$vigencia.'</p>';
-									$sinDocumento = false;
+						<div>
+							<?php if($documento != ''){
+								if($ts->is_tramite){
+									echo '<h3 class="highlight">Documento(s) a obtener</h3>';
+								} else {
+									echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
 								}
-							} // end foreach
-							if($sinDocumento)
-								echo '<p>No se obtiene documento alguno</p>';
-						} else {
-							echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
-						}
-						?>
-					</div>
+								$sinDocumento = true;
+								foreach ($documento as $key => $value) {
+									$nombreDocumento = $value['nombreDocumento'];
+									$vigencia = $value['vigencia'];
+									$vigenciaArray = explode('_', $vigencia);
+									echo '<p><strong>'.$nombreDocumento.'</strong></p>';
+									if($vigencia != -1) {
+										echo '<p>Vigencia: '.$vigencia.'</p>';
+										$sinDocumento = false;
+									}
+								} // end foreach
+								if($sinDocumento)
+									echo '<p>No se obtiene documento alguno</p>';
+							} else {
+								echo '<p>Este trámite o servicio no tiene beneficio / documento</p>';
+							}
+							?>
+						</div>
+					</article>
 				</div><!--quick-info -->
 				<div class="quick-info">
 					<h3 class="highlight">La información de este trámite es la oficial. Denuncia cualquier anomalía.</h3>
-					<a href="#" class="block columna xmall-10 center">
+					<a href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana" target="_blank" class="block columna xmall-10 center">
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 					</a>
 				</div>
