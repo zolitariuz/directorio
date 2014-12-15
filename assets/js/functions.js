@@ -755,7 +755,21 @@ function muestraReporteTS(id_ts, ts, base_url){
 
 }
 
+function setLimitDate(forms){
+    $(forms).each(function(){
+    	var fechaInicial = $(this).find('input[name="fecha_inicial"]');
+    	var fechaFinal = $(this).find('input[name="fecha_final"]');
+    	fechaInicial.datepicker({minDate: '0', dateFormat: 'yy-mm-dd'});
+    	fechaInicial.on('change', function(){
+		    console.log(fechaFinal);
+		    var fechaInicialVal = new Date( $(this).val() );
+		    var limitDate = new Date(fechaInicialVal);
+		    limitDate.setDate(limitDate.getDate() + 2);
+		    fechaFinal.datepicker({minDate: limitDate, dateFormat: 'yy-mm-dd'});
+		});
 
+    });
+}
 
 function toggleUrlAviso(){
 	$('.crea-aviso input[name="link_aviso"]').change(function(){

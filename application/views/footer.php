@@ -26,51 +26,51 @@
 			<section class="emergencia">
 				<div class="width clearfix">
 					<div class="columna xmall-6 large-2">
-						<a class="[ no-large ]" href="tel: 5658-1111"><i class="[ icon-ts-locatel ]"></i></a>
-						<i class="[ icon-ts-locatel ]"></i>
-						<h4 class="text-center large">5658 1111</h4>
-						<h4 class="text-center no-large"><a href="tel: 5658-1111">5658 1111</a></h4>
-						<p class="text-center">LOCATEL</p>
+						<a class="[ block ]" href="tel: 5658-1111">
+							<i class="[ icon-ts-locatel ]"></i>
+							<h4 class="[ text-center ]">5658 1111</h4>
+							<p class="[ text-center ]">LOCATEL</p>
+						</a>
 					</div>
 					<div class="columna xmall-6 large-2">
-						<i class="icon-ts-emergencias-secretaria-de-seguridad-publica"></i>
-						<h4 class="text-center large">066</h4>
-						<h4 class="text-center no-large"><a href="tel: 066">066</a></h4>
-						<p class="text-center">Emergencias Secretaría de Seguridad Pública </p>
+						<a class="[ block ]" href="tel: 066">
+							<i class="icon-ts-emergencias-secretaria-de-seguridad-publica"></i>
+							<h4 class="[ text-center ]">066</h4>
+							<p class="[ text-center ]">Emergencias Secretaría de Seguridad Pública </p>
+						</a>
 					</div>
-					<div class="[ clear no-large ]"></div>
+					<div class="[ clear ] [ no-large ]"></div>
 					<div class="columna xmall-6 large-2">
-						<i class="icon-ts-procuraduria-general-de-justicia"></i>
-						<h4 class="text-center large">061</h4>
-						<h4 class="text-center no-large"><a href="tel: 061">061</a></h4>
-						<p class="text-center">Emergencias Procuradoría General de Justicia</p>
+						<a class="[ block ]" href="tel: 061">
+							<i class="icon-ts-procuraduria-general-de-justicia"></i>
+							<h4 class="[ text-center ]">061</h4>
+							<p class="[ text-center ]">Emergencias Procuradoría General de Justicia</p>
+						</a>
+					</div>
+					<div class="[ columna xmall-6 large-2 ]">
+						<a class="[ block ]" href="tel: 065">
+							<i class="icon-ts-cruz-roja"></i>
+							<h4 class="[ text-center ]">065</h4>
+							<p class="text-center">Cruz Roja</p>
+						</a>
+					</div>
+					<div class="[ clear ] [ no-large ]"></div>
+					<div class="columna xmall-6 large-2">
+						<a class="[ block ]" href="tel: 068">
+							<i class="icon-ts-bomberos"></i>
+							<h4 class="[ text-center ]">068</h4>
+							<p class="[ text-center ]">Bomberos</p>
+						</a>
 					</div>
 					<div class="columna xmall-6 large-2">
-						<i class="icon-ts-cruz-roja"></i>
-						<h4 class="text-center large">065</h4>
-						<h4 class="text-center no-large"><a href="tel: 065">065</a></h4>
-						<p class="text-center">Cruz Roja</p>
-					</div>
-					<div class="[ clear no-large ]"></div>
-					<div class="columna xmall-6 large-2">
-						<i class="icon-ts-bomberos"></i>
-						<h4 class="text-center large">068</h4>
-						<h4 class="text-center no-large"><a href="tel: 068">068</a></h4>
-						<p class="text-center">Bomberos</p>
-					</div>
-					<div class="columna xmall-6 large-2">
-						<i class="icon-ts-secretaria-de-proteccion-civil"></i>
-						<h4 class="text-center large">
-							5683 1154
-							<br/>
-							<small>5683 2222</small>
-						</h4>
-						<h4 class="text-center no-large">
-							<a href="tel: 5683-1154">5683 1154</a>
-							<br/>
-							<small><a href="tel: 5683-2222">5683 2222</a></small>
-						</h4>
-						<p class="text-center">Secretaría de Protección Civil</p>
+						<a class="[ block ]" href="tel: 5683-1154">
+							<i class="icon-ts-secretaria-de-proteccion-civil"></i>
+							<h4 class="[ text-center ]">
+								5683 1154<br/>
+								5683 2222
+							</h4>
+							<p class="[ text-center ]">Secretaría de Protección Civil</p>
+						</a>
 					</div>
 				</div><!-- width -->
 			</section>

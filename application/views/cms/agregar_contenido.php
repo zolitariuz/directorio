@@ -13,15 +13,15 @@
 			<form class="crea-aviso js-validate-aviso" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_aviso' ?>">
 				<fieldset class="">
 					<label for="aviso" >Aviso nuevo (máximo 140 caracteres)</label>
-					<textarea type="text" name="aviso" class="full" required></textarea>
+					<textarea type="text" name="aviso" class="full" required maxlength="140"></textarea>
 				</fieldset>
 				<fieldset class="columna xmall-12 center"> 
 					<label for="fecha_inicial" >Fecha inicial</label>
-					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_inicial']; ?>">
+					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_inicial']; ?>">
 				</fieldset>
 				<fieldset class="columna xmall-12 center"> 
 					<label for="fecha_final" >Fecha final</label>
-					<input type="text" name="fecha_final" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_final']; ?>">
+					<input type="text" name="fecha_final" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_final']; ?>">
 				</fieldset>
 				<fieldset class="">
 					<input type="checkbox" name="link_aviso"> ¿Tiene link?
@@ -43,11 +43,11 @@
 				</fieldset>
 				<fieldset class="columna xmall-12 center"> 
 					<label for="fecha_inicial" >Fecha inicial</label>
-					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_inicial']; ?>">
+					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_inicial']; ?>">
 				</fieldset>
 				<fieldset class="columna xmall-12 center"> 
 					<label for="fecha_final" >Fecha final</label>
-					<input type="text" name="fecha_final" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_final']; ?>">
+					<input type="text" name="fecha_final" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_final']; ?>">
 				</fieldset>
 				<fieldset class="">
 					<input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario'] ?>">
@@ -65,11 +65,11 @@
 				</fieldset>
 				<fieldset class="columna xmall-12 center"> 
 					<label for="fecha_inicial" >Fecha inicial</label>
-					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_inicial']; ?>">
+					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_inicial']; ?>">
 				</fieldset>
 				<fieldset class="columna xmall-12 center"> 
 					<label for="fecha_final" >Fecha final</label>
-					<input type="text" name="fecha_final" class="datepicker columna xmall-12" value="<?php echo $anuncio['fecha_final']; ?>">
+					<input type="text" name="fecha_final" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_final']; ?>">
 				</fieldset>
 				<fieldset class="">
 					<input type="checkbox" name="link_anuncio"> ¿Tiene link?
