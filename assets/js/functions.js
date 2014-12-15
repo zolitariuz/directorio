@@ -112,19 +112,11 @@
 			}
 		});
 
-		//Abrir secciones home
-		// $('body').on('click', '.main-content section .j-toggle', function(e){
-		// 	e.preventDefault();
-		// 	console.log('s');
-		// 	toggleSeccion( $(this), '.main-content.no-large article > div' );
-		// });
-
 		//Acordeon
 		$('body').on('click', '.acordeon-item > .boton-acordeon', function(e){
 			e.preventDefault();
 			abrirAcordeon( $(this) );
 		});
-
 
 
 		//****************//
@@ -292,7 +284,6 @@
 	function scrollTop(elemento){
 		var seccion 	= elemento.data('seccion');
 		var divPosicion = $("article[data-seccion='"+seccion+"']").offset().top;
-		console.log(divPosicion);
 		divPosicion = divPosicion - 100;
 		$('html, body').animate({scrollTop: divPosicion}, 400);
 	}
@@ -909,7 +900,7 @@ function muestraAreaAtencionPorDelegacion(){
 	$('select[name="delegacion"]').change(function(){
 		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
 		var delegacion = $(this).find('option:selected').val();
-		var url = localStorage.getItem('url_ws') + '/area_atencion_tramite_delegacion/del/' + delegacion + '/id/'+id_tramite_servicio+'/format/json'
+		var url = localStorage.getItem('url_ws') + '/area_atencion_tramite_delegacion/del/' + delegacion + '/id/'+id_tramite_servicio+'/format/json';
 
 		$('.j_area_atencion').addClass('hide');
 		$('.j_area_atencion .fila').not('.header').remove();
@@ -930,12 +921,10 @@ function muestraAreaAtencionPorDelegacion(){
 function creaMapaAreaAtencion(area_atencion_data){
 	$.each(area_atencion_data, function(i, val){
 
-		console.log('we are here');
-		console.log(val);
 		var tel2 = val['telefono_2'];
 		var ext1 = '';
 		var ext2 = '';
-		var dias = getDiasAreaAtencion(val['dias']);
+		//var dias = getDiasAreaAtencion(val['dias']);
 
 		if(tel2 === null){
 			tel2 = '';
@@ -947,25 +936,50 @@ function creaMapaAreaAtencion(area_atencion_data){
 			ext2 = 'ext. ' + val['ext_2'];
 		}
 
-
-
-		var fila = '<div class="fila clearfix"> \
-						<div class="[ columna xmall-3 ]">' + val['nombre'] + '</div> \
-						<div class="[ columna xmall-5 ]"> \
-							' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
-						</div> \
-						<div class="[ columna xmall-2 ]"> \
-							' + dias + val['hora_inicio'] + ' a ' + val['hora_fin'] + ' \
-						</div> \
-						<div class="[ columna xmall-2 ]"> \
-							' + val['telefono_1'] + ' ' +  ext1 + '<br /> ' + '\
-							' + tel2 + ' ' +  ext2 +  '\
-						</div> \
-					</div>';
+		var fila = ' \
+			<div class="fila clearfix"> \
+				<div class="[ columna xmall-3 ]">' + val['nombre'] + '</div> \
+				<div class="[ columna xmall-5 ]"> \
+					' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
+				</div> \
+				<div class="[ columna xmall-2 ] [ j-horario ]" data-area="'+val['id_area_atencion_ts']+'"> \
+				</div> \
+				<div class="[ columna xmall-2 ]"> \
+					' + val['telefono_1'] + ' ' +  ext1 + '<br /> ' + '\
+					' + tel2 + ' ' +  ext2 +  '\
+				</div> \
+			</div>';
 		$('.j_area_atencion').append(fila);
+		var horario = getHorarioAreaAtencion(val['id_area_atencion_ts']);
 	});
 	creaMapa(area_atencion_data);
 }// creaMapaAreaAtencion
+
+function getHorarioAreaAtencion(id_area_atencion){
+	var url = localStorage.getItem('url_ws') + '/horario_area_atencion/id/' + id_area_atencion + '/format/json';
+
+	$.get(
+		url,
+		function(response){
+			var dias_anteriores = 0;
+			$.each(response, function(i, val){
+				console.log(val);
+				var horario = $('div').find('[data-area="'+id_area_atencion+'"]');
+				if(dias_anteriores != val.dias){
+					dias_anteriores = val.dias;
+					var dias = getDiasAreaAtencion(val.dias);
+					
+					horario.append('<p>'+dias+'</p>');
+					horario.append('<p>'+val.hora_inicio+' a '+val.hora_fin+'</p>');
+					//dias_anteriores = val.dias;
+				} else {
+					horario.append('<p>'+val.hora_inicio+' a '+val.hora_fin+'</p>');
+				}
+			});
+			//console.log(response);
+		}
+	);
+}// getHorarioAreaAtencion
 
 function getDiasAreaAtencion(dias){
 	var dias_array = dias.split('_');
@@ -987,6 +1001,10 @@ function getDia(dia){
 			return 'jueves';
 		case 'vi':
 			return 'viernes';
+		case 'sa':
+			return 'sábado';
+		case 'do':
+			return 'domingo';
 	}
 }// getDia
 

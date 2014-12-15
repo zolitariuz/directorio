@@ -72,6 +72,20 @@ class Gestor_contenidos extends CI_Controller {
 		$this->login();
 	}// logout
 
+	function administrar_usuarios(){
+		// datos usuario
+		session_start();
+		$data['id_usuario'] = $_SESSION['id_usuario'];
+
+		$this->load->model('usuario');
+		$data['usuarios'] = $this->usuario->dame_usuarios();
+
+		// Carga vista de login o index en caso de credenciales correctas
+		$this->load->view('cms/header', $data);
+		$this->load->view('cms/administrar_usuarios', $data);
+		$this->load->view('cms/footer');
+	}// administrar_usuarios
+
 	function agregar_usuario(){
 		// datos usuario
 		session_start();
@@ -107,6 +121,43 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->view('cms/agregar_usuario', $data);
 		$this->load->view('cms/footer');
 	}// agregar_usuario
+
+	function editar_usuario($id){
+		// datos usuario
+		session_start();
+		$data['id_usuario'] = $_SESSION['id_usuario'];
+
+		$this->load->model('usuario');
+		$data['usuario'] = $this->usuario->dame_usuario($id);
+
+		// Cacha datos al hacer update
+		if(isset($_POST['id_usuario'])){
+			$usuario = $_POST['usuario'];
+			$nombre = $_POST['nombre'];
+			$apellidos = $_POST['apellidos'];
+			$rol = $_POST['rol'];
+
+			// ¿es administrador?
+			if($rol == 'admin')
+				$is_admin = 't';
+			else
+				$is_admin = 'f';
+
+			// agrega usuario a base de datos
+			if($this->usuario->edita_usuario($_POST['id_usuario'], $usuario, $password, $nombre, $apellidos, $is_admin)){
+				$data['success'] = '¡Se editó el usuario con éxito!';
+			} else {
+				$data['error'] = 'No se pudo agregar el usuario.';
+			}
+			// Carga info actualizada
+			$data['usuario'] = $this->usuario->dame_usuario($_POST['id_usuario']);
+		}
+
+		// Carga vista de login o index en caso de credenciales correctas
+		$this->load->view('cms/header', $data);
+		$this->load->view('cms/editar_usuario', $data);
+		$this->load->view('cms/footer');
+	}// editar_usuario
 
 	function agregar_contenido(){
 		// datos usuario

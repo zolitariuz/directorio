@@ -50,6 +50,28 @@ class Usuario extends CI_Model {
 			return 0;
 	}// dame_usuario
 
+	public function dame_usuarios(){
+		$this->db->order_by('id_usuario');
+		$query = $this->db->get('usuarios');
+		$usuario = array();
+
+		if($query->num_rows() > 0){
+			foreach ($query->result() as $key => $row)
+			{
+			    $usuarios[$key] = array(
+			    	'id_usuario' 	=> $row->id_usuario,
+			    	'usuario' 		=> $row->usuario,
+			    	'nombre' 		=> $row->nombre,
+			    	'apellidos'	  	=> $row->apellidos,
+			    	'password'	 	=> $row->password,
+			    	'is_admin'		=> $row->is_admin
+			    	);
+			}
+			return $usuarios;
+		} else
+			return 0;
+	}// dame_usuarios
+
 	public function agrega_usuario($usuario, $password, $nombre, $apellidos, $is_admin){
 		$data = array(
 		   'usuario' 	=> $usuario,
@@ -65,6 +87,23 @@ class Usuario extends CI_Model {
 			return 0;
 
 	}// agrega_usuario
+
+	public function edita_usuario($id_usuario, $usuario, $password, $nombre, $apellidos, $is_admin){
+		$data = array(
+		   'usuario' 	=> $usuario,
+		   'nombre' 	=> $nombre,
+		   'apellidos' 	=> $apellidos,
+		   'password' 	=> $password,
+		   'is_admin' 	=> $is_admin
+		);
+		
+		$this->db->where('id_usuario', $id_usuario);
+		if($this->db->update('usuarios', $data))
+			return 1;
+		else
+			return 0;
+
+	}// edita_usuario
 
 	public function agrega_pregunta($pregunta, $id_usuario){
 		$data = array(

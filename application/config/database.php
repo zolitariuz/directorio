@@ -42,8 +42,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'reg_cdmx';
-$db['default']['password'] = 'reg_cdmx123';
+$db['default']['username'] = 'micho';
+$db['default']['password'] = '';
 $db['default']['database'] = 'portal_ts';
 $db['default']['dbdriver'] = 'postgre';
 $db['default']['dbprefix'] = '';

@@ -6,9 +6,9 @@
 						<i class="icon-ts-agregar-contenido"></i>
 						<!-- <i class="icon-ts-agregar-contenido"></i> -->
 						Agregar contenido
-					</a><a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_usuario/'?>">
+					</a><a href="<?php echo base_url().'index.php/gestor_contenidos/administrar_usuarios/'?>">
 						<i class="icon-ts-agregar-usuario"></i>
-						Agregar usuario
+						Administrar usuarios
 					</a><?php } ?><a href="<?php echo base_url().'index.php/gestor_contenidos/editar_contenido/'?>">
 					<i class="icon-ts-editar-contenido"></i>
 					Editar contenido

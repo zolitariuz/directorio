@@ -382,16 +382,16 @@
 								$tel = $ts->tel_presentacion;
 								if($ts->ext_presentacion != '0')
 									$tel = $tel.' ext. '.$ts->ext_presentacion;
-									echo '<div class="[ acordeon-item ]">';
-											echo '<a href="#" class="block [ boton grande boton-acordeon ] margin-bottom">';
-												echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
-											echo '</a>';
-										echo '<ul class="[ none ] [ hide ]">';
-											echo '<li>';
-												echo '<p>'.$tel.'</p>';
-											echo '</li>';
-										echo '</ul>';
-									echo '</div>';
+								echo '<div class="[ acordeon-item ]">';
+										echo '<a href="#" class="block [ boton grande boton-acordeon ] margin-bottom">';
+											echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
+										echo '</a>';
+									echo '<ul class="[ none ] [ hide ]">';
+										echo '<li>';
+											echo '<p>'.$tel.'</p>';
+										echo '</li>';
+									echo '</ul>';
+								echo '</div>';
 							}
 						?>
 					</div><!-- acordeon -->
