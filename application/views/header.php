@@ -68,8 +68,8 @@
 				</nav>
 				<div class="barra avisos large">
 					<div class="width clearfix">
-						<h3 class="blok obscuro span xmall-1 text-center">Avisos</h3>
-						<div class="mensaje columna xmall-11">
+						<h3 class="block obscuro columna xmall-2 text-center">Avisos</h3>
+						<div class="mensaje span xmall-10">
 							<p class="hide highlight">
 								<?php
 								foreach ($avisos as $key => $value) {

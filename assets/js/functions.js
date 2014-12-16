@@ -934,12 +934,14 @@ function muestraAreaAtencionPorDelegacion(){
 
 function creaMapaAreaAtencion(area_atencion_data){
 	$.each(area_atencion_data, function(i, val){
-
+		var tel1 = val['telefono_1'];
 		var tel2 = val['telefono_2'];
 		var ext1 = '';
 		var ext2 = '';
-		//var dias = getDiasAreaAtencion(val['dias']);
 
+		if(tel1 === null){
+			tel1 = '-';
+		}
 		if(tel2 === null){
 			tel2 = '';
 		}
@@ -953,13 +955,13 @@ function creaMapaAreaAtencion(area_atencion_data){
 		var fila = ' \
 			<div class="fila clearfix"> \
 				<div class="[ columna xmall-3 ]">' + val['nombre'] + '</div> \
-				<div class="[ columna xmall-5 ]"> \
+				<div class="[ columna xmall-4 ]"> \
 					' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
 				</div> \
-				<div class="[ columna xmall-2 ] [ j-horario ]" data-area="'+val['id_area_atencion_ts']+'"> \
+				<div class="[ columna xmall-3 ] [ j-horario ]" data-area="'+val['id_area_atencion_ts']+'"> \
 				</div> \
 				<div class="[ columna xmall-2 ]"> \
-					' + val['telefono_1'] + ' ' +  ext1 + '<br /> ' + '\
+					' + tel1 + ' ' +  ext1 + '<br /> ' + '\
 					' + tel2 + ' ' +  ext2 +  '\
 				</div> \
 			</div>';
@@ -981,12 +983,9 @@ function getHorarioAreaAtencion(id_area_atencion){
 				if(dias_anteriores != val.dias){
 					dias_anteriores = val.dias;
 					var dias = getDiasAreaAtencion(val.dias);
-					
-					horario.append('<p>'+dias+'</p>');
-					horario.append('<p>'+val.hora_inicio+' a '+val.hora_fin+'</p>');
-					//dias_anteriores = val.dias;
+					horario.append('<strong>'+dias+'</strong><br />'+val.hora_inicio+' - '+val.hora_fin+'<br />');
 				} else {
-					horario.append('<p>'+val.hora_inicio+' a '+val.hora_fin+'</p>');
+					horario.append(val.hora_inicio+' - '+val.hora_fin+'<br /><br />');
 				}
 			});
 			//console.log(response);
@@ -999,25 +998,25 @@ function getDiasAreaAtencion(dias){
 	var dia_inicial = getDia(dias_array[0]);
 	var dia_final = getDia(dias_array[dias_array.length-1]);
 
-	return dia_inicial + ' a ' + dia_final + ' de: ';
+	return dia_inicial + ' a ' + dia_final;
 }// getDiasAreaAtencion
 
 function getDia(dia){
 	switch(dia){
 		case 'lu':
-			return 'lunes';
+			return 'Lunes';
 		case 'ma':
-			return 'martes';
+			return 'Martes';
 		case 'mi':
-			return 'miércoles';
+			return 'Miércoles';
 		case 'ju':
-			return 'jueves';
+			return 'Jueves';
 		case 'vi':
-			return 'viernes';
+			return 'Viernes';
 		case 'sa':
-			return 'sábado';
+			return 'Sábado';
 		case 'do':
-			return 'domingo';
+			return 'Domingo';
 	}
 }// getDia
 

@@ -1,15 +1,8 @@
 <div class="main">
 	<div class="width clearfix">
 		<div class="main-content clearfix">
-			<ul class="breadcrumbs">
-				<li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></li>
-				<li>></li>
-				<li><a href="<?php echo base_url().'temas/muestraTS/'.$ts->id_materia ?>"><?php echo $ts->materia ?></a></li>
-				<li>></li>
-				<li class="actual"><?php echo $ts->nombre_tramite; ?></li>
-			</ul>
+			<div class="clear"></div>
 			<aside class="[ columna medium-4 large-3 ] [ right ]">
-				<hr class="[ large ]">
 				<div class="[ quick-info ] [ clearfix ] [ large ]">
 					<h3 class="highlight">Compártelo</h3>
 					<div class="share block">
@@ -37,7 +30,6 @@
 					if(!is_null($ts->tiempo_respuesta)){
 						$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
 						$dias = $tiempo_respuesta_ar[0];
-
 						if($tiempo_respuesta_ar[1] == 1){
 							$tipo = ' días hábiles';
 							$tiempo_respuesta = $dias.$tipo;
@@ -73,7 +65,7 @@
 					<div class="quick-info">
 						<?php
 						echo '<h3 class="highlight">Áreas de pago</h3>';
-						echo '<ul class="[ disc inside ]">';
+						echo '<ul class="[ none ]">';
 						foreach ($area_pago as $key => $value) {
 							echo '<li>'.$value->descripcion.'</li>';
 						} // end foreach
@@ -174,14 +166,21 @@
 				</div>
 			</aside>
 			<section class="[ content ] [ columna medium-8 large-9 ]">
-				<article class="header-single clearfix">
-					<div class="[ quick-info ] [ margin-bottom-big ]">
-						<p><i class="icon-ts-temas"></i><b>Tema:</b> <?php echo $ts->materia ?></p>
-						<p><i class="<?php echo $clase_icono ?>"></i><b>Unidad responsable:</b> <?php echo $ts->ente ?></p>
+				<article class="[ header-single ] [ clearfix ] [ margin-bottom-big ]">
+					<div class="[ breadcrumbs ] [ margin-bottom-small ]">
+						<span><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></span>
+						<span>></span>
+						<span><a href="<?php echo base_url().'temas/muestraTS/'.$ts->id_materia ?>"><?php echo $ts->materia ?></a></span>
+						<span>></span>
+						<span class="actual"><?php echo $ts->nombre_tramite; ?></span>
+					</div><!-- .breadcrumbs -->
+					<div class="[ quick-info ] [ margin-bottom ]">
+						<i class="icon-ts-temas"></i> <b>Tema:</b> <span class="[ highlight ]"><?php echo $ts->materia ?></span><br />
+						<i class="<?php echo $clase_icono ?>"></i> <b>Unidad responsable:</b> <span class="[ highlight ]"><?php echo $ts->ente ?></span>
 					</div><!-- quick-info -->
-					<h2 class="highlight"><?php echo $ts->nombre_tramite; ?></h2>
 				</article><!-- header-single -->
 				<article class="consiste">
+					<h2 class="highlight"><strong><?php echo $ts->nombre_tramite; ?></strong></h2>
 					<?php if(is_null($ts->descripcion)) { ?>
 						<p class="hero">Este trámite no tiene descripción.</p>
 					<?php } else {  ?>
@@ -215,7 +214,7 @@
 										$documentoOficial = $value->documento_oficial;
 										echo '<div class="paso clearfix">';
 										echo '<span>'.$numReq.'</span>';
-										echo '<p><strong>'.$documentoOficial.': </strong></p><ul class="[ disc inside ]">';
+										echo '<p><strong>'.$documentoOficial.': </strong></p><ul class="[ none ]">';
 										$numReq = $numReq + 1;
 										$numReqAcr = 1;
 									}
@@ -294,8 +293,8 @@
 					<div class="[ acordeon ]">
 						<?php if($delegacion_area_atencion != '') { ?>
 						<div class="[ acordeon-item ]">
-							<a href="#" class="[ block margin-bottom ] [ boton grande boton-acordeon ] [ ]">
-								<i class="icon-ts-tramite-en-ventanilla"></i> En área de atención ciudadana  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>
+							<a href="#" class="[ block margin-bottom ] [ boton boton-acordeon horizontal ] [ text-left ] [ ]">
+								<i class="icon-ts-tramite-en-ventanilla"></i> En área de atención ciudadana  <i class="[ fa fa-angle-down drop ] [ right ]"></i>
 							</a>
 							<ul class="[ none ] [ hide ]">
 								<li>
@@ -313,18 +312,18 @@
 											</select>
 										</fieldset>
 									</form>
-									<div class="tabla j_area_atencion hide">
+									<div class="[ tabla tabla-small ] [ j_area_atencion ] [ hide ]">
 										<div class="fila header clearfix">
-											<div class="columna xmall-3 text-center">
+											<div class="[ columna xmall-3 ]">
 												Nombre
 											</div>
-											<div class="columna xmall-5 text-center">
+											<div class="[ columna xmall-4 ]">
 												Dirección
 											</div>
-											<div class="columna xmall-2 text-center">
+											<div class="[ columna xmall-3 ]">
 												Horarios
 											</div>
-											<div class="columna xmall-2 text-center">
+											<div class="[ columna xmall-2 ]">
 												Teléfonos
 											</div>
 										</div>
@@ -339,8 +338,8 @@
 							if( is_null($nivel) || $link == '' ){
 							} else{
 								echo '<div class="[ acordeon-item ]">';
-									echo '<a href="#" class="block [ boton grande boton-acordeon ] margin-bottom">';
-										echo '<i class="icon-ts-tramite-en-linea"></i> En línea <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
+									echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
+										echo '<i class="icon-ts-tramite-en-linea"></i> En línea <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
 									echo '</a>';
 									echo '<ul class="[ none ] [ hide ]">';
 										echo '<li class="[ clearfix ]">';
@@ -349,7 +348,7 @@
 										echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
 									} else {
 										echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
-										echo '<ul class="[ disc inside ]">';
+										echo '<ul class=" ]">';
 
 										$nivel_arr = explode('_', $nivel);
 
@@ -381,8 +380,8 @@
 								if($ts->ext_presentacion != '0')
 									$tel = $tel.' ext. '.$ts->ext_presentacion;
 								echo '<div class="[ acordeon-item ]">';
-										echo '<a href="#" class="block [ boton grande boton-acordeon ] margin-bottom">';
-											echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-toggle-down drop ] [ right ]"></i>';
+										echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
+											echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
 										echo '</a>';
 									echo '<ul class="[ none ] [ hide ]">';
 										echo '<li>';
@@ -396,17 +395,17 @@
 				</article>
 				<hr>
 				<?php if(trim($ts->observaciones) != '') { ?>
-					<article class="[ gray-background ] [ padding ]" data-seccion="observaciones">
+					<article class="[ padding ]" data-seccion="observaciones">
 						<h2 class="highlight">¿Qué debes considerar?</h2>
-						<p><?php echo $ts->observaciones ?></p>
+						<p class="[ darker-light-grey italic ]"><?php echo $ts->observaciones ?></p>
 					</article>
 					<hr>
 				<?php } ?>
 				<article class="" data-seccion="informacion-juridica">
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
-							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
-								<i class="fa fa-bank"></i> Información jurídica
+							<a href="#" class="[ block ] [ boton boton-acordeon horizontal ] [ text-left ] [ margin-bottom ]">
+								<i class="fa fa-bank"></i> Información jurídica <i class="[ fa fa-angle-down drop ] [ right ]"></i>
 							</a>
 							<ul class="[ none ] [ hide ]">
 								<li>
@@ -432,7 +431,7 @@
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
 										<h3 class="highlight">De acuerdo a los fundamentos jurídicos:</h3>
-										<ul class="[ disc inside ]">
+										<ul class="[ none ]">
 											<?php
 											if($info_juridica != ''){
 												foreach ($info_juridica as $key => $value) {
@@ -469,22 +468,6 @@
 				                <option value="5">5</option>
 				            </select>
 						</fieldset>
-						<fieldset>
-							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
-							<textarea name="comentarios" rows="8"></textarea>
-						</fieldset>
-						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
-						<input type="submit" class="boton chico horizontal right" value="Enviar">
-					</form>
-				<?php } ?>
-				</article><!-- danos tu opinion -->
-				<hr>
-				<article class="danos-tu-opinion">
-					<h2 class="highlight">Danos tu opinión</h2>
-				<?php if($feedback == '1') { ?>
-					<label>Gracias por participar.</label>
-				<?php } else { ?>
-					<form class="feedback clearfix" action="<?php echo base_url().'tramites_servicios/agregar_feedback' ?>" method="POST">
 						<fieldset class="rating-f">
 							<label>Si haz realizado este trámite anteriormente ¿cómo calificas el servicio?</label>
 				            <select class="example-f" id="example-f" name="rating-servicio">
@@ -494,6 +477,10 @@
 				                <option value="4">4</option>
 				                <option value="5">5</option>
 				            </select>
+						</fieldset>
+						<fieldset>
+							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
+							<textarea name="comentarios" rows="8"></textarea>
 						</fieldset>
 						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
 						<input type="submit" class="boton chico horizontal right" value="Enviar">

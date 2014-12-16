@@ -11,21 +11,20 @@
 		<h2 class="text-center highlight">Oficinas por delegación</h2>
 		<div class="tabla j_area_atencion">
 			<div class="fila header clearfix">
-				<div class="columna xmall-3 text-center">
+				<div class="[ columna xmall-3 ]">
 					Nombre
 				</div>
-				<div class="columna xmall-5 text-center">
+				<div class="[ columna xmall-4 ]">
 					Dirección
 				</div>
-				<div class="columna xmall-2 text-center">
+				<div class="[ columna xmall-3 ]">
 					Horarios
 				</div>
-				<div class="columna xmall-2 text-center">
+				<div class="[ columna xmall-2 ]">
 					Teléfonos
 				</div>
 			</div>
 			<div class="clear"></div>
-
 		</div><!-- tabla -->
 		<div class="[ map-wrapper ] [ margin-bottom ]">
 			<div id="map"></div>
