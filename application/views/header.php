@@ -43,11 +43,11 @@
 						<a href="#" class="logo-bloque large">
 							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo.png" alt="">
 						</a><h1 class="">
-							<a href="<?php echo base_url() ?>">
+							<a class="[ block ]" href="<?php echo base_url() ?>">
 								<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites.png" alt="">
 							</a>
-							<span class="[ large ] [ slogan ] [ text-center ]">
-								<small class="[ highlight ]">"Transparencia y Certeza Jurídica"</small>
+							<span class="[ large ] [ slogan ] [ text-right ]">
+								<small class="[ ]">"Transparencia y Certeza Jurídica"</small>
 							</span>
 						</h1><span class="[ header__icon ]">
 							<i class="icon-ts-agregar-contenido"></i>
