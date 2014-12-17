@@ -52,6 +52,9 @@
 						</h1><span class="[ header__icon ]">
 							<i class="icon-ts-agregar-contenido"></i>
 						</span>
+						<div class="[ large ] [ beta ]">
+							Versión <strong>Beta</strong>
+						</div>
 					</div><div class="menu no-large">
 						<i class="[ fa fa-bars ] [ full ] [ text-center ]"></i>
 					</div><div class="search no-large">

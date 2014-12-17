@@ -723,7 +723,6 @@ body.cms{
 			input{ padding: (@margen/2) (@margen/2) 0 (@margen/2); border: none; border-bottom: 1px solid @highlight; .font(1.3em); text-align: center; background: none;
 				&:focus{ outline: none; }
 			}
-
 		}
 	}
 
@@ -843,7 +842,7 @@ body.cms{
 
 	//HEADER
 	.logo{ width: 13%; }
-	.header-top{ width: 50%; margin-left: 1%; margin-right: 16%; }
+	.header-top{ width: 50%; margin-left: 1%; margin-right: 16%; position: relative; }
 
 	//FOOTER
 	footer{
@@ -948,9 +947,16 @@ body.cms{
 		padding: (@margen/2); border: 2px solid lighten(@gris-obscuro, 20%); .border-radius(10px); margin-left: 46%;
 		color: lighten(@gris-obscuro, 20%);
 		background: @claro;
+		position: relative; bottom: -11px;
 		i{
 			font-size: 2em;
 		}
+	}
+	.beta{
+		padding: 5px 10px; .border-radiuses(0px, 15px, 15px, 0px);
+		background: @highlight;
+		text-align: center; color: @claro;
+		position: absolute; top: 0; right: 10px;
 	}
 	.avisos{
 		padding: (@margen/2) 0 (@margen/4) 0; border-bottom: 1px solid @gris-claro;
