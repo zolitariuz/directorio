@@ -10,12 +10,12 @@
 			<div class="[ columna xmall-12 large-8 ]">
 				<p class="[ title--small ]">El sitio para buscar los trámites y servicios de la Ciudad de México de forma más simple y rápida</p>
 				<form class="[ main-search main-search-home hero ] [ input-group ] [ full ] [ clearfix ] " action="#">
-					<input type="search" class="[ span xmall-11 large-10 ]" placeholder="Busca tu trámite o servicio">
+					<input type="search" class="[ span xmall-10 large-11 ]" placeholder="Busca tu trámite o servicio">
 					<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
-					<button type="submit" class="[ span xmall-1 large-2 ]"><i class="icon-ts-buscar"></i></button>
+					<button type="submit" class="[ span xmall-2 large-1 ]"><i class="icon-ts-buscar"></i></button>
 				</form>
 			</div>
-			<div class="[ columna xmall-12 large-4 ] [ border-left-gray ]">
+			<div class="[ columna xmall-12 large-4 ] [ ts-mas-solicitados ]">
 				<p class="[ title--small ]">Trámites y servicios más solicitados</p>
 				<ul>
 					<?php foreach ($nombres_ts_comunes as $key => $value) {
@@ -33,8 +33,8 @@
 				</ul>
 			</div>
 		</section><!-- ts más solicitados -->
-		<hr>
-		<section class="anuncios clearfix large">
+		<hr class="[ large ]">
+		<section class="[ anuncios ] [ clearfix ] [ large ]">
 			<div class="slider clearfix cycle-slideshow"
 				data-cycle-slides=".slide"
 				data-cycle-fx="scrollHorz"

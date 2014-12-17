@@ -1,26 +1,26 @@
 <div class="main">
 	<div class="width">
 		<div class="clear"></div>
-		<ul class="breadcrumbs">
-			<li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></li>
-			<li>></li>
-			<li><a href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">Directorio de áreas de atención ciudadana</a></li>
-			<li>></li>
-			<li class="actual"><?php echo $delegacion ?></li>
-		</ul>
+		<div class="[ breadcrumbs ] [ margin-bottom-big ]">
+			<span><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></span>
+			<span>></span>
+			<span><a href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">Directorio de áreas de atención ciudadana</a></span>
+			<span>></span>
+			<span class="actual"><?php echo $delegacion ?></span>
+		</div><!-- .breadcrumbs -->
 		<h2 class="text-center highlight">Oficinas por delegación</h2>
 		<div class="tabla j_area_atencion">
 			<div class="fila header clearfix">
-				<div class="[ columna xmall-3 ]">
+				<div class="[ columna xmall-6 medium-3 ]">
 					Nombre
 				</div>
-				<div class="[ columna xmall-4 ]">
+				<div class="[ columna xmall-6 medium-4 ]">
 					Dirección
 				</div>
-				<div class="[ columna xmall-3 ]">
+				<div class="[ columna xmall-6 medium-3 ]">
 					Horarios
 				</div>
-				<div class="[ columna xmall-2 ]">
+				<div class="[ columna xmall-6 medium-2 ]">
 					Teléfonos
 				</div>
 			</div>

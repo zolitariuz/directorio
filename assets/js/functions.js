@@ -191,6 +191,7 @@
 		if( ul.hasClass('hide') ){
 			$('.acordeon-item').find('ul').addClass('hide');
 			ul.removeClass('hide');
+			$('.acordeon-item').find('.drop').removeClass('up');
 			icon.addClass('up');
 		} else {
 			$('.acordeon-item').find('ul').addClass('hide');
@@ -202,7 +203,7 @@
 		$.each(papa, function(){
 			var cuantosItems = $(this).find(items).length;
 			$(this).find('h2').find('span').html('('+cuantosItems+' trámites)');
-		})
+		});
 	}
 
 	function mayorQueMedium(){
@@ -315,10 +316,10 @@ function creaMapa(mapas){
 	$.each(mapas, function(i, item){
 		var l = [];
 		var coordenadas = dameCoordenadas(item.url_ubicacion);
-		var tel1 = item.telefono_1 == null ? '' : item.telefono_1;
-		var ext1 = item.ext_1 == null ? '' : ' ext: ' + item.ext_1;
-		var tel2 = item.telefono_2 == null ? '' : item.telefono_2;
-		var ext2 = item.ext_2 == null ? '' : ' ext: ' + item.ext_2;
+		var tel1 = item.telefono_1 === null ? '' : item.telefono_1;
+		var ext1 = item.ext_1 === null ? '' : ' ext: ' + item.ext_1;
+		var tel2 = item.telefono_2 === null ? '' : item.telefono_2;
+		var ext2 = item.ext_2 === null ? '' : ' ext: ' + item.ext_2;
 
 		var contenidoInfoWindow =
 			'<h3>'+item.nombre+'</h3><h3>Dirección</h3><br /><p>' + item.calle_numero + '<br />Col. ' + item.colonia + '<br />Del. ' + item.delegacion+', ' + item.cp + '</p><h3>Teléfonos</h3><p>' + tel1 + ext1 + '</p>' + '<p>' + tel2 + ext2 + '</p>';
@@ -370,7 +371,7 @@ function creaMapa(mapas){
 		return function() {
 		  infowindow.setContent(locations[i][0]);
 		  infowindow.open(map, marker);
-		}
+		};
 	  })(marker, i));
 	}
 	autoCenter();
@@ -414,10 +415,11 @@ function creaMapa(mapas){
 			}
 		}
 
-		if(typeof coordenadas === 'undefined')
-			return -1
-		else
+		if(typeof coordenadas === 'undefined'){
+			return -1;
+		} else {
 			return coordenadas;
+		}
 	} // dameCoordenadas
 }
 
@@ -668,13 +670,13 @@ function muestraReporteTS(id_ts, ts, base_url){
 
 				$(fila).appendTo('.feedback .tabla');
 				num_comentarios = num_comentarios + 1;
-				calificaciones = calificaciones + parseInt(val.calificacion)
+				calificaciones = calificaciones + parseInt(val.calificacion);
 			});
 			promedio_calificacion = calificaciones / num_comentarios;
 			promedio_calificacion = promedio_calificacion.toFixed(2);
 
 			// muestra info y reportes
-			if(visitas_totales != 0){
+			if(visitas_totales !== 0){
 				$('.visitas-mensuales span').text(visitas_totales);
 				$('.visitas-mensuales').removeClass('hide');
 				//$('#chartVisitasMensuales').removeClass('hide');
@@ -685,7 +687,7 @@ function muestraReporteTS(id_ts, ts, base_url){
 				$('.visitas-mensuales span').text('0');
 			}
 
-			if(num_comentarios != 0){
+			if(num_comentarios !== 0){
 				$('.feedback #comentarios span').text(num_comentarios);
 				$('.feedback #promedio span').text(promedio_calificacion);
 				$('.feedback #promedio').removeClass('hide');
@@ -696,7 +698,6 @@ function muestraReporteTS(id_ts, ts, base_url){
 				$('.feedback #promedio span').text('-');
 				$('.feedback').removeClass('hide');
 			}
-
 		}
 	);
 
@@ -714,40 +715,40 @@ function muestraReporteTS(id_ts, ts, base_url){
 		var mes;
 		switch (num_mes){
 			case '01':
-				mes = "Enero"
+				mes = "Enero";
 				break;
 			case '02':
-				mes = "Febrero"
+				mes = "Febrero";
 				break;
 			case '03':
-				mes = "Marzo"
+				mes = "Marzo";
 				break;
 			case '04':
-				mes = "Abril"
+				mes = "Abril";
 				break;
 			case '05':
-				mes = "Mayo"
+				mes = "Mayo";
 				break;
 			case '06':
-				mes = "Junio"
+				mes = "Junio";
 				break;
 			case '07':
-				mes = "Julio"
+				mes = "Julio";
 				break;
 			case '08':
-				mes = "Agosto"
+				mes = "Agosto";
 				break;
 			case '09':
-				mes = "Septiembre"
+				mes = "Septiembre";
 				break;
 			case '10':
-				mes = "Octubre"
+				mes = "Octubre";
 				break;
 			case '11':
-				mes = "Noviembre"
+				mes = "Noviembre";
 				break;
 			case '12':
-				mes = "Diciembre"
+				mes = "Diciembre";
 				break;
 		}
 		return mes;
@@ -954,13 +955,13 @@ function creaMapaAreaAtencion(area_atencion_data){
 
 		var fila = ' \
 			<div class="fila clearfix"> \
-				<div class="[ columna xmall-3 ]">' + val['nombre'] + '</div> \
-				<div class="[ columna xmall-4 ]"> \
+				<div class="[ columna xmall-6 medium-3 ]">' + val['nombre'] + '</div> \
+				<div class="[ columna xmall-6 medium-4 ]"> \
 					' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
+				</div> <div class="[ xmall-clear ] [ margin-bottom-small ]"></div>\
+				<div class="[ columna xmall-6 medium-3 ] [ j-horario ]" data-area="'+val['id_area_atencion_ts']+'"> \
 				</div> \
-				<div class="[ columna xmall-3 ] [ j-horario ]" data-area="'+val['id_area_atencion_ts']+'"> \
-				</div> \
-				<div class="[ columna xmall-2 ]"> \
+				<div class="[ columna xmall-6 medium-2 ]"> \
 					' + tel1 + ' ' +  ext1 + '<br /> ' + '\
 					' + tel2 + ' ' +  ext2 +  '\
 				</div> \
@@ -1021,11 +1022,9 @@ function getDia(dia){
 }// getDia
 
 function agregarFeedback(){
-	$('.feedback input[type="submit"]').on('click', function(e){
+	$('.feedback [type="submit"]').on('click', function(e){
 		e.preventDefault();
-
 		var comentario = $('textarea[name="comentarios"').val();
-
 		if($.trim(comentario) == ''){
 			alert('El campo de comentarios no puede quedar vacío.');
 			return;

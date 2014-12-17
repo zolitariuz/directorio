@@ -33,6 +33,7 @@ figure {margin: 0;}
 /* Utilities */
 .lst_reset, .lst_reset li { margin: 0; padding: 0; list-style: none; }
 .clear { clear:both; height:1px; margin:0; padding:0; font-size: 1px; line-height: 0; }
+.xmall-clear { clear:both; height:1px; margin:0; padding:0; font-size: 1px; line-height: 0; }
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -195,9 +196,7 @@ figure {margin: 0;}
 .margin-bottom-small{ margin-bottom: (@margen/2) !important; }
 .padding{ padding: @margen; }
 
-.border-left-gray{
-	padding-left: 1%; border-left: 1px solid lighten(@gris-obscuro, 40%); margin-left: 0;
-}
+
 
 
 
@@ -473,7 +472,7 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @highlight; backgro
 }
 .header__icon{ display: none; }
 
-.logo, .header-top, .menu, .search{ display: inline-block; vertical-align: bottom; padding: @margen 0; }
+.logo, .header-top, .menu, .search{ display: inline-block; vertical-align: middle; padding: (@margen/2) 0; }
 .logo,
 .menu,
 .search{ width: 10%;
@@ -496,13 +495,16 @@ footer{
 	.logos{ background: @gris-claro;
 		.gobierno{ width: 100%; margin-bottom: @margen;
 			> div{ width: 23%; margin: 0 1%; }
-			.img-100{ width: 100%; height: auto; }
-			.img-60{ width: 60%; height: auto; }
-			.img-50{ width: 50%; height: auto; }
 		}
 		.apoyo{ width: 100%;
-			//> div{ width: 30%; margin: 0 10%; }
+			> div{ width: 30%; margin: 0 10%; }
 		}
+		.img-100{ width: 100%; height: auto; }
+		.img-90{ width: 90%; height: auto; }
+		.img-80{ width: 80%; height: auto; }
+		.img-70{ width: 70%; height: auto; }
+		.img-60{ width: 60%; height: auto; }
+		.img-50{ width: 50%; height: auto; }
 	}
 	.emergencia{ background: @gris-obscuro;
 		h4{ margin-bottom: @margen; color: @claro;
@@ -825,6 +827,7 @@ body.cms{
 	}
 	.medium{ display: block; }
 	.no-medium{ display: none; }
+	.xmall-clear { display: none; }
 
 	//========================//
 
@@ -848,6 +851,7 @@ body.cms{
 			.apoyo{ width: 25%; float: right;
 				//> div{ width: 50%; margin: 0; }
 			}
+			span{ display: inline-block; }
 		}
 		.img-100{ width: 100%; }
 		.img-90{ width: 90%; }
@@ -955,6 +959,9 @@ body.cms{
 	}
 	.busqueda{
 		h3{ margin: 0 0 (@margen*2) 0; }
+	}
+	.ts-mas-solicitados{
+		padding-left: 1%; border-left: 1px solid lighten(@gris-obscuro, 40%); margin-left: 0;
 	}
 	.masonry-container{
 		.boton{ margin-bottom: @margen; text-align: left; }

@@ -2,7 +2,7 @@
 	<div class="width clearfix">
 		<div class="main-content clearfix">
 			<div class="clear"></div>
-			<aside class="[ columna medium-4 large-3 ] [ right ]">
+			<aside class="[ columna medium-4 large-3 ] [ right ] [ margin-bottom-big ]">
 				<div class="[ quick-info ] [ clearfix ] [ large ]">
 					<h3 class="highlight">Compártelo</h3>
 					<div class="share block">
@@ -12,7 +12,7 @@
 					</div><!-- share -->
 				</div><!-- quick-info -->
 				<div class="clear"></div>
-				<hr>
+				<hr class="[ large ]">
 				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ busqueda ] [ js-overlay-opener ] [ large ] ">
 					<i class="icon-ts-buscar"></i> Busca tu trámite
 				</a>
@@ -487,7 +487,7 @@
 							<textarea name="comentarios" rows="8"></textarea>
 						</fieldset>
 						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
-						<button type="submit" class="boton chico horizontal right">Enviar</button>
+						<button type="submit" class="[ boton chico horizontal ] [ right ]">Enviar</button>
 					</form>
 				<?php } ?>
 				</article><!-- danos tu opinion -->
