@@ -49,8 +49,17 @@
 							<span class="[ large ] [ slogan ] [ text-right ]">
 								<small class="[ ]">"Transparencia y Certeza Jurídica"</small>
 							</span>
-						</h1><span class="[ header__icon ]">
-							<i class="icon-ts-agregar-contenido"></i>
+						</h1><span class="[ header__icon--wrapper ] [ cycle-slideshow ]"
+							data-cycle-slides=".header__icon"
+							data-cycle-fx="none"
+							data-cycle-log="false"
+						>
+							<?php foreach ($temas as $key => $value) {
+								$clase_icono = $clases_iconos[$key]; ?>
+								<span class="[ header__icon ]">
+									<i class="<?php echo $clase_icono; ?>"></i>
+								</span>
+							<?php } ?>
 						</span>
 						<div class="[ large ] [ beta ]">
 							Versión <strong>Beta</strong>

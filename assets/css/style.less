@@ -470,7 +470,7 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @highlight; backgro
 	> i{ display: block; width: 100%; font-size: 2em; cursor: pointer; }
 	.main-search{ display: none; width: 100%; border-top: 1px solid @gris-obscuro; background: @gris-obscuro; position: absolute; }
 }
-.header__icon{ display: none; }
+.header__icon--wrapper{ display: none; }
 
 .logo, .header-top, .menu, .search{ display: inline-block; vertical-align: middle; padding: (@margen/2) 0; }
 .logo,
@@ -942,12 +942,15 @@ body.cms{
 	nav{ margin-top: (@margen/2); padding: (@margen/2) 0 (@margen/3) 0; border-top: 1px solid @gris-claro; position: relative;
 		a{ display: inline-block; vertical-align: top; width: 31%; margin: 0 1%; padding: 0; border: none; text-align: left;  background: none; }
 	}
-	.header__icon{
+	.header__icon--wrapper{
+		margin-left: 46%;
 		display: inline-block; vertical-align: middle;
-		padding: (@margen/2); border: 2px solid lighten(@gris-obscuro, 20%); .border-radius(10px); margin-left: 46%;
+		position: relative; bottom: -11px;
+	}
+	.header__icon{
+		padding: (@margen/2); border: 2px solid lighten(@gris-obscuro, 20%); .border-radius(10px);
 		color: lighten(@gris-obscuro, 20%);
 		background: @claro;
-		position: relative; bottom: -11px;
 		i{
 			font-size: 2em;
 		}
