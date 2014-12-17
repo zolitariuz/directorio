@@ -6,14 +6,34 @@
 			if($error == '1')
 				echo '<p>No se encontró el trámite o servicio que estabas buscando</p>';
 		?>
-		<section class="busqueda clearfix">
-			<h2 class="text-center">Busca tu trámite o servicio</h2>
-			<form class="main-search hero clearfix main-search-home" action="#">
-				<input type="search" class="span large-11 full">
-				<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
-				<button type="submit" class="span full large-1"><i class="fa fa-search"></i></button>
-			</form>
-		</section><!-- busqueda -->
+		<section class="[ busqueda ] [ clearfix ]">
+			<div class="[ columna xmall-12 large-8 ]">
+				<p class="[ title--small ]">El sitio para buscar los trámites y servicios de la Ciudad de México de forma más simple y rápida</p>
+				<form class="[ main-search main-search-home hero ] [ input-group ] [ full ] [ clearfix ] " action="#">
+					<input type="search" class="[ span xmall-11 large-10 ]" placeholder="Busca tu trámite o servicio">
+					<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
+					<button type="submit" class="[ span xmall-1 large-2 ]"><i class="icon-ts-buscar"></i></button>
+				</form>
+			</div>
+			<div class="[ columna xmall-12 large-4 ] [ border-left-gray ]">
+				<p class="[ title--small ]">Trámites y servicios más solicitados</p>
+				<ul>
+					<?php foreach ($nombres_ts_comunes as $key => $value) {
+						$tramite = $value->nombre_ts;
+						$idTS = $value->id_tramite_servicio;
+						$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$idTS; ?>
+						<li class="[ wrap-ellipsis ]"><a href="<?php echo $urlTramite; ?>"><?php echo $tramite; ?></a></li>
+					<?php } // end foreach ?>
+					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
+					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
+					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
+					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
+					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
+					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
+				</ul>
+			</div>
+		</section><!-- ts más solicitados -->
+		<hr>
 		<section class="anuncios clearfix large">
 			<div class="slider clearfix cycle-slideshow"
 				data-cycle-slides=".slide"
@@ -46,22 +66,6 @@
     			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
 			</div>
 		</section><!-- anuncios -->
-
-		<section class="mas-comunes clearfix large">
-			<?php if ($nombres_ts_comunes != '') { ?>
-				<h2 class="text-center highlight">Trámites y servicios más solicitados</h2>
-				<div class="masonry-container">
-					<?php foreach ($nombres_ts_comunes as $key => $value) {
-						$tramite = $value->nombre_ts;
-						$idTS = $value->id_tramite_servicio;
-						$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$idTS; ?>
-						<a href="<?php echo $urlTramite; ?>" class="item boton columna large-4">
-							<?php echo $tramite; ?>
-						</a>
-					<?php } // end foreach ?>
-				</div>
-			<?php } ?>
-		</section>
 		<div class="clear large"></div>
 		<hr class="columna large xmall-6 center">
 		<div class="clear large"></div>
@@ -114,13 +118,14 @@
 			<div class="clear"></div>
 			<section class="[ pregunta links ] [ clearfix ]">
 				<div class="[ large ] [ columna medium-6 ]">
-					<h2 class="text-center highlight">Quejas, denuncias y sugerencias en Atención Ciudadana o denuncias de actos de corrupción</h2>
-					<div class="columna xmall-6">
+					<h2 class="[ text-center highlight ]">Compártenos sugerencias</h2>
+					<div class="[ columna xmall-6 ] [ center ] [ margin-bottom-big ]">
 						<a href="href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana"" class="block columna xmall-8 center">
 							<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
 						</a>
 					</div>
-					<div class="columna xmall-6">
+					<h2 class="[ text-center highlight ]">Denuncia actos de corrupción</h2>
+					<div class="[ columna xmall-6 ] [ center ]">
 						<a href="#" class="block columna xmall-8 center">
 							<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 						</a>
@@ -128,10 +133,10 @@
 				</div>
 				<div class="[ columna xmall-12 medium-6 ]">
 					<h2 class="text-center highlight">Nos interesa tu opinión</h2>
-					<h4 class="text-center"><?php echo $pregunta['pregunta'] ?></h4>
-					<div class="columna full large-5 center clearfix">
-						<a href="#" class="block boton columna xmall-6 grande" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
-						<a href="#" class="block boton columna xmall-6 grande" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
+					<p class="[ text-center ] [ title--small ]"><?php echo $pregunta['pregunta'] ?></p>
+					<div class="[ text-center ]">
+						<a href="#" class="[ boton grande ]" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
+						<a href="#" class="[ boton grande ]" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
 					</div>
 				</div>
 			</section>

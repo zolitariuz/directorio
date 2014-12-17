@@ -6,20 +6,24 @@
 				<div class="[ quick-info ] [ clearfix ] [ large ]">
 					<h3 class="highlight">Compártelo</h3>
 					<div class="share block">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="clear"></div>
 						<div class="fb-share-button" data-layout="button" data-href="#"></div>
+						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
 					</div><!-- share -->
 				</div><!-- quick-info -->
-				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ busqueda ] [ js-overlay-opener ] [ large ] ">
-					<i class="fa fa-search"></i> Busca tu trámite
+				<div class="clear"></div>
+				<hr>
+				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ busqueda ] [ js-overlay-opener ] [ large ] ">
+					<i class="icon-ts-buscar"></i> Busca tu trámite
 				</a>
-				<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton ] [ scrollTo ] [ large ]">
-					<i class="fa fa-map-marker"></i> ¿Dónde se realiza?
+				<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
+					<i class="icon-ts-marcador-mapa"></i> ¿Dónde se realiza?
 				</a>
-				<a href="#" class="[ block margin-bottom ] [ boton ] [ j-imprimir ] [ large ]">
-					<i class="fa fa-print"></i> Imprimir información
+				<a href="#" data-seccion="requisitos" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
+					<i class="icon-ts-reportes"></i> Requisitos
+				</a>
+				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ j-imprimir ] [ large ]">
+					<i class="icon-ts-imprimir"></i> Imprimir información
 				</a>
 				<div class="clear"></div>
 				<hr>
@@ -159,7 +163,7 @@
 					</article>
 				</div><!--quick-info -->
 				<div class="quick-info">
-					<h3 class="highlight">La información de este trámite es la oficial. Denuncia cualquier anomalía.</h3>
+					<h3 class="highlight">Denuncia actos de corrupción</h3>
 					<a href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana" target="_blank" class="block columna xmall-10 center">
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 					</a>
@@ -198,7 +202,7 @@
 				if($requisitos == '' && $requisitos_esp == ''){
 					echo '<p>Este trámite o servicio no tiene requisitos</p>';
 				} else { ?>
-					<article class="" data-content="requisitos">
+					<article class="" data-content="requisitos" data-seccion="requisitos">
 						<h2 class="highlight">Requisitos</h2>
 						<div>
 							<?php
@@ -410,32 +414,32 @@
 							<ul class="[ none ] [ hide ]">
 								<li>
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight">¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</h3>
+										<h3 class="highlight"><small>¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</small></h3>
 										<?php
 
 											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
-												echo '<p>No aplica</p>';
+												echo '<p><small>No aplica</small></p>';
 											if($afirmativa_ficta == '1')
-												echo '<p>Afirmativa ficta: procede afirmativa ficta.</p>';
+												echo '<p><small>Afirmativa ficta: procede afirmativa ficta.</small></p>';
 											else
-												echo '<p>Afirmativa ficta: no procede afirmativa ficta.</p>';
+												echo '<p><small>Afirmativa ficta: no procede afirmativa ficta.</small></p>';
 											if($negativa_ficta == '1')
-												echo '<p>Negativa ficta: procede negativa ficta.</p>';
+												echo '<p><small>Negativa ficta: procede negativa ficta.</small></p>';
 											else
-												echo '<p>Negativa ficta: no procede negativa ficta.</p>';
+												echo '<p><small>Negativa ficta: no procede negativa ficta.</small></p>';
 										?>
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight">Plazo máximo de respuesta</h3>
-										<?php echo '<p>'.$tiempo_respuesta.'</p>'; ?>
+										<h3 class="highlight"><small>Plazo máximo de respuesta</small></h3>
+										<?php echo '<p><small>'.$tiempo_respuesta.'</small></p>'; ?>
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight">De acuerdo a los fundamentos jurídicos:</h3>
+										<h3 class="highlight"><small>De acuerdo a los fundamentos jurídicos:</small></h3>
 										<ul class="[ none ]">
 											<?php
 											if($info_juridica != ''){
 												foreach ($info_juridica as $key => $value) {
-													echo '<li>'.$value->descripcion.' '.$value->articulos.'</li>';
+													echo '<li><small>'.$value->descripcion.' '.$value->articulos.'</small></li>';
 												} // end foreach
 											}
 											?>
@@ -483,7 +487,7 @@
 							<textarea name="comentarios" rows="8"></textarea>
 						</fieldset>
 						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
-						<input type="submit" class="boton chico horizontal right" value="Enviar">
+						<button type="submit" class="boton chico horizontal right">Enviar</button>
 					</form>
 				<?php } ?>
 				</article><!-- danos tu opinion -->
