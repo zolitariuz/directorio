@@ -92,13 +92,10 @@
 						}
 						if($temas_por_slide % 8 == 0)
 							echo '<div class="slide">';
-
 						echo '<a href="'.$url_tema.'" class="boton columna xmall-3 cuadrado chico">';
 						echo '<i class="'.$clase_icono.'"></i>';
 						echo $value->materia;
-
 						echo '</a>';
-
 						// cada 4 elementos mete un clear
 						$temas_por_slide = $temas_por_slide + 1;
 						if($temas_por_slide % 4 == 0){
@@ -117,7 +114,7 @@
 			<hr class="columna xmall-6 center">
 			<div class="clear"></div>
 			<section class="[ pregunta links ] [ clearfix ]">
-				<div class="[ large ] [ columna medium-6 ]">
+				<div class=" [ inline-block vertical-middle ] [ columna medium-6 ] [ sugerencias-home ]">
 					<h2 class="[ text-center highlight ]">Compártenos sugerencias</h2>
 					<div class="[ columna xmall-6 ] [ center ] [ margin-bottom-big ]">
 						<a href="href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana"" class="block columna xmall-8 center">
@@ -130,8 +127,7 @@
 							<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 						</a>
 					</div>
-				</div>
-				<div class="[ columna xmall-12 medium-6 ]">
+				</div><div class="[ inline-block vertical-middle ] [ columna xmall-12 medium-6 ]  [ denuncia-home ]">
 					<h2 class="text-center highlight">Nos interesa tu opinión</h2>
 					<p class="[ text-center ] [ title--small ]"><?php echo $pregunta['pregunta'] ?></p>
 					<div class="[ text-center ]">

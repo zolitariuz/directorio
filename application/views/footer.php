@@ -6,19 +6,19 @@
 						<div class="[ inline-block vertical-middle ]">
 							<img class="[ img-90 ] [ block center ]" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo-gray.png" alt="">
 						</div><div class="[ inline-block vertical-middle ]">
-							<img class="[ img-80 ] [ block center ]" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
+							<img class="[ img-70 ] [ block center ]" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
 						</div><div class="[ inline-block vertical-middle ]">
 							<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
 						</div><div class="[ inline-block vertical-middle ]">
-							<img class="[ img-80 ] [ block center ]" src="<?php echo base_url() ?>assets/img/cdmx-gray.png" alt="">
+							<img class="[ img-90 ] [ block center ]" src="<?php echo base_url() ?>assets/img/cdmx-gray.png" alt="">
 						</div>
 					</div><div class="[ apoyo ] [ inline-block vertical-middle ]">
 						<p class="[ ]">Con el apoyo de:</p>
-						<div class="[ columna xmall-5 ]">
-							<img class="[ img-90 ] [ block center ]" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
+						<div class="[ columna xmall-6 ]">
+							<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
 						</div>
-						<div class="[ columna xmall-5 ]">
-							<img class="[ img-90 ] [ block center ]" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
+						<div class="[ columna xmall-6 ]">
+							<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
 						</div>
 					</div>
 				</div><!-- width -->

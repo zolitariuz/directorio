@@ -49,21 +49,27 @@
 							<span class="[ large ] [ slogan ] [ text-right ]">
 								<small class="[ ]">"Transparencia y Certeza Jurídica"</small>
 							</span>
-						</h1><span class="[ header__icon--wrapper ] [ cycle-slideshow ]"
-							data-cycle-slides=".header__icon"
-							data-cycle-fx="none"
-							data-cycle-log="false"
-						>
-							<?php foreach ($temas as $key => $value) {
-								$clase_icono = $clases_iconos[$key]; ?>
-								<span class="[ header__icon ]">
-									<i class="<?php echo $clase_icono; ?>"></i>
-								</span>
-							<?php } ?>
-						</span>
-						<div class="[ large ] [ beta ]">
-							Versión <strong>Beta</strong>
-						</div>
+						</h1><div class="[ ads ]">
+							<div class="[ large ] [ beta ]">
+								Versión <strong>Beta</strong>
+							</div>
+							<span class="[ header__icon--wrapper ] [ cycle-slideshow ]"
+								data-cycle-slides=".header__icon"
+								data-cycle-fx="none"
+								data-cycle-log="false"
+							>
+								<?php foreach ($temas as $key => $value) {
+									$clase_icono = $clases_iconos[$key];
+									$url_tema = base_url().'index.php/temas/muestraTS/'.$value->id_cat_materia;
+									?>
+									<span class="[ header__icon ]">
+										<a href="<?php echo $url_tema; ?>">
+											<i class="<?php echo $clase_icono; ?>"></i>
+										</a>
+									</span>
+								<?php } ?>
+							</span>
+						</div><!-- ads -->
 					</div><div class="menu no-large">
 						<i class="[ fa fa-bars ] [ full ] [ text-center ]"></i>
 					</div><div class="search no-large">
