@@ -24,50 +24,46 @@
 						$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$idTS; ?>
 						<li class="[ wrap-ellipsis ]"><a href="<?php echo $urlTramite; ?>"><?php echo $tramite; ?></a></li>
 					<?php } // end foreach ?>
-					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
-					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
-					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
-					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
-					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
-					<li class="[ wrap-ellipsis ][ highlight ]"><a href="#">Nam pyrrho aristo erillus iam diu abiecti sed tamen intellego quid velit intellegi quidem ut propter aliam quampiam rem verbi.</a></li>
 				</ul>
 			</div>
 		</section><!-- ts más solicitados -->
 		<hr class="[ large ]">
-		<section class="[ anuncios ] [ clearfix ] [ large ]">
-			<div class="slider clearfix cycle-slideshow"
-				data-cycle-slides=".slide"
-				data-cycle-fx="scrollHorz"
-				data-cycle-swipe="true"
-				data-cycle-log="false"
-			>
-				<?php
-					// contenido del slider
-					foreach ($anuncios as $key => $value) {
-						echo '<div class="slide">';
-						echo '<img src="'.$value['url_img'].'" alt="">';
-						echo '<div class="info">';
-						echo '<p>';
+		<?php if($anuncions != '') { ?>
+			<section class="[ anuncios ] [ clearfix ] [ large ]">
+				<div class="slider clearfix cycle-slideshow"
+					data-cycle-slides=".slide"
+					data-cycle-fx="scrollHorz"
+					data-cycle-swipe="true"
+					data-cycle-log="false"
+				>
+					<?php
+						// contenido del slider
+						foreach ($anuncios as $key => $value) {
+							echo '<div class="slide">';
+							echo '<img src="'.$value['url_img'].'" alt="">';
+							echo '<div class="info">';
+							echo '<p>';
 
-						if(trim($value['tipo_contenido']) == 'link') {
-							echo '<a href="'.$value['url'].'">';
-							echo $value['contenido'];
-							echo '</a>';
-						} else
-							echo $value['contenido'];
+							if(trim($value['tipo_contenido']) == 'link') {
+								echo '<a href="'.$value['url'].'">';
+								echo $value['contenido'];
+								echo '</a>';
+							} else
+								echo $value['contenido'];
 
-						echo '</p>';
-						echo '</div>';
-						echo '</div>';
-					}// foreach anuncio
-				?>
+							echo '</p>';
+							echo '</div>';
+							echo '</div>';
+						}// foreach anuncio
+					?>
 
-				<div class="cycle-controls cycle-prev"><i class="fa fa-angle-left"></i></div>
-    			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
-			</div>
-		</section><!-- anuncios -->
-		<div class="clear large"></div>
-		<hr class="columna large xmall-6 center">
+					<div class="cycle-controls cycle-prev"><i class="fa fa-angle-left"></i></div>
+	    			<div class="cycle-controls cycle-next"><i class="fa fa-angle-right"></i></div>
+				</div>
+			</section><!-- anuncios -->
+			<div class="clear large"></div>
+			<hr class="columna large xmall-6 center">
+		<?php } ?>
 		<div class="clear large"></div>
 		<section class="categorias clearfix large">
 			<h2 class="text-center highlight">Temas</h2>
