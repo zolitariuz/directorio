@@ -28,7 +28,7 @@
 			</div>
 		</section><!-- ts más solicitados -->
 		<hr class="[ large ]">
-		<?php if($anuncions != '') { ?>
+		<?php if($anuncios != '') { ?>
 			<section class="[ anuncios ] [ clearfix ] [ large ]">
 				<div class="slider clearfix cycle-slideshow"
 					data-cycle-slides=".slide"
