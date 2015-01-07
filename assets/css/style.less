@@ -326,7 +326,7 @@ button, .boton{
 	&.chico{ padding: (@margen/2); .font(1em, 1.3em, 300); letter-spacing: 0.05em;
 		&:hover{  padding: (@margen/2) (@margen/2) (@margen/1.7) (@margen/2);}
 	}
-	&:hover{ border: 3px solid @gris-obscuro; color: @gris-obscuro;
+	&:hover, &.active{ border: 3px solid @gris-obscuro; color: @gris-obscuro;
 		>*{ color: inherit; }
 	}
 	h2{ margin: 0; }
@@ -476,6 +476,16 @@ h2, h3, p, a, label{
 	}
 	.first{ border-right: 1px solid @claro; .border-radiuses(0,0, 4px, 4px); }
 	.last{ border-left: 1px solid @claro; .border-radiuses(4px, 4px,0,0); }
+}
+
+.tabs-header{ position: relative; z-index: 2; top: 6px; }
+.tab-content{ margin-top: -1px; border: 1px solid @highlight; position: relative; z-index: 1;
+	>div{ display: none; }
+	.active{ display: block; }
+}
+
+.boton-tab{
+	.border-radiuses(20px, 0px, 0px, 20px);
 }
 
 /*** HEADER ***/
