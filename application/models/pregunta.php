@@ -4,6 +4,7 @@ class Pregunta extends CI_Model {
 	public function __construct()
 	{
 		$this->load->database();
+		$this->actualizaStatus();
 	}
 
 	/**
@@ -158,5 +159,21 @@ class Pregunta extends CI_Model {
 
 		return 1;
 	} // actualiza_aviso
+
+	/**
+	 * Descripción: Revisa la vigencia y desactiva avisos caducados
+	 * @param 
+	 * @return 
+	 */
+	private function actualizaStatus(){
+		$data = array('is_activo' => 't');
+		$this->db->update('preguntas', $data);
+
+		$data = array('is_activo' => 'f');
+
+		// actualizar registro
+		$this->db->where("fecha_final < DATE 'today' AND is_activo = 't'");
+		$this->db->update('preguntas', $data);
+	}
 		
 }// clase Pregunta
