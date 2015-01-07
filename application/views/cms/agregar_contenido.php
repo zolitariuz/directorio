@@ -75,7 +75,7 @@
 					<input type="checkbox" name="link_anuncio"> ¿Tiene link?
 				</fieldset>
 				<fieldset class=" url_anuncio hide">
-					<label class="block" for="url_anuncio" >URL de anuncio </label>
+					<label class="block" for="url_anuncio" >URL de anuncio (incluir http://)</label>
 					<input type="text" name="url_anuncio" value="-" class=" columna xmall-12">
 				</fieldset>
 				<fieldset class="">

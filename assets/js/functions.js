@@ -807,7 +807,7 @@ function toggleSubirImagen(){
 } // toggleSubirImagen
 
 function votoPregunta(base_url){
-	$('.pregunta a').on('click', function(e){
+	$('.j-pregunta-container a').on('click', function(e){
 		e.preventDefault();
 		var jsonVoto = {};
 		jsonVoto['pregunta'] = $(this).data('pregunta');
@@ -817,8 +817,8 @@ function votoPregunta(base_url){
 			base_url + "inicio/set_voto",
 			jsonVoto,
 			function(response){
-				$('.pregunta').empty();
-				$('.pregunta').html('<h2 class="text-center highlight">¡Gracias!</h2><h4 class="text-center">Tu opinión es muy importante para nosotros.</h4>');
+				$('.j-pregunta-container').empty();
+				$('.j-pregunta-container').html('<h2 class="text-center highlight">¡Gracias!</h2><h4 class="text-center">Tu opinión es muy importante para nosotros.</h4>');
 			}
 		);
 	});
