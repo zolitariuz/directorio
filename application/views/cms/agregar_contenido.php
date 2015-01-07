@@ -12,14 +12,14 @@
 			?>
 			<form class="crea-aviso js-validate-aviso" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_aviso' ?>">
 				<fieldset class="">
-					<label for="aviso" >Aviso nuevo (máximo 140 caracteres)</label>
+					<label for="aviso" >Aviso nuevo <small>(máximo 140 caracteres)</small></label>
 					<textarea type="text" name="aviso" class="full" required maxlength="140"></textarea>
 				</fieldset>
-				<fieldset class="columna xmall-12 center"> 
+				<fieldset class="columna xmall-12 center">
 					<label for="fecha_inicial" >Fecha inicial</label>
 					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_inicial']; ?>">
 				</fieldset>
-				<fieldset class="columna xmall-12 center"> 
+				<fieldset class="columna xmall-12 center">
 					<label for="fecha_final" >Fecha final</label>
 					<input type="text" name="fecha_final" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_final']; ?>">
 				</fieldset>
@@ -38,14 +38,14 @@
 			<hr>
 			<form class="crea-pregunta js-validate-pregunta" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_pregunta' ?>">
 				<fieldset class="">
-					<label class="block" for="pregunta">Pregunta nueva</label><br />
-					<input type="text" name="pregunta" class=" columna xmall-12" required>
+					<label class="block" for="pregunta">Pregunta nueva <small>(máximo 140 caracteres)</small></label><br />
+					<input type="text" name="pregunta" class=" columna xmall-12" required  maxlength="140">
 				</fieldset>
-				<fieldset class="columna xmall-12 center"> 
+				<fieldset class="columna xmall-12 center">
 					<label for="fecha_inicial" >Fecha inicial</label>
 					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_inicial']; ?>">
 				</fieldset>
-				<fieldset class="columna xmall-12 center"> 
+				<fieldset class="columna xmall-12 center">
 					<label for="fecha_final" >Fecha final</label>
 					<input type="text" name="fecha_final" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_final']; ?>">
 				</fieldset>
@@ -60,14 +60,14 @@
 			echo form_open_multipart('index.php/gestor_contenidos/agregar_anuncio/'.$aviso['id_aviso'], $atributos);
 			?>
 				<fieldset class="">
-					<label class="block" for="pregunta" >Anuncio nuevo</label>
-					<input type="text" name="anuncio" class=" columna xmall-12" required>
+					<label class="block" for="pregunta" >Anuncio nuevo <small>(máximo 140 caracteres)</small></label>
+					<input type="text" name="anuncio" class=" columna xmall-12" required  maxlength="140">
 				</fieldset>
-				<fieldset class="columna xmall-12 center"> 
+				<fieldset class="columna xmall-12 center">
 					<label for="fecha_inicial" >Fecha inicial</label>
 					<input type="text" name="fecha_inicial" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_inicial']; ?>">
 				</fieldset>
-				<fieldset class="columna xmall-12 center"> 
+				<fieldset class="columna xmall-12 center">
 					<label for="fecha_final" >Fecha final</label>
 					<input type="text" name="fecha_final" class="datepicker columna xmall-12" required value="<?php echo $anuncio['fecha_final']; ?>">
 				</fieldset>
