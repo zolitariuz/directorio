@@ -8,7 +8,7 @@
 		?>
 		<section class="[ busqueda ] [ clearfix ]">
 			<div class="[ columna xmall-12 large-8 ]">
-				<p class="[ title--small ]">El sitio para buscar los trámites y servicios de la Ciudad de México de forma más simple y rápida</p>
+				<p class="[ title--small ]"> El sitio para buscar los trámites y servicios de la Ciudad de México de forma más simple y rápida</p>
 				<form class="[ main-search main-search-home hero ] [ input-group ] [ full ] [ clearfix ] " action="#">
 					<input type="search" class="[ span xmall-10 large-11 ]" placeholder="Busca tu trámite o servicio">
 					<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
