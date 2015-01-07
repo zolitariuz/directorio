@@ -30,7 +30,8 @@
 		//***************//
 
 		//Tabs
-		$('.tabs a').on('click', function(){
+		$('.tabs-header a').on('click', function(e){
+			e.preventDefault();
 			cambiarTab( $(this) );
 		});
 
@@ -171,11 +172,11 @@
 	}
 
 	function cambiarTab(elemento){
-		var tabAAbrir = elemento.data('tab');
-		$('.tabs a').removeClass('active');
+		var nombreTab = elemento.data('tab');
+		$('.tabs-header a').removeClass('active');
 		elemento.addClass('active');
-		$('.tab-content').addClass('hide');
-		$('.'+tabAAbrir).removeClass('hide');
+		$('.tab-content > div').removeClass('active');
+		$('.tab-content .tab-'+nombreTab).addClass('active');
 	}
 
 	function abrirAcordeon(elemento){

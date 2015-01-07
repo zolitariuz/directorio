@@ -8,7 +8,7 @@
 		?>
 		<section class="[ busqueda ] [ clearfix ]">
 			<div class="[ columna xmall-12 large-8 ]">
-				<p class="[ title--small ]"> El sitio para buscar los trámites y servicios de la Ciudad de México de forma más simple y rápida</p>
+				<p class="[ title--small ]">El sitio para buscar los trámites y servicios de la Ciudad de México de forma más simple y rápida</p>
 				<form class="[ main-search main-search-home hero ] [ input-group ] [ full ] [ clearfix ] " action="#">
 					<input type="search" class="[ span xmall-10 large-11 ]" placeholder="Busca tu trámite o servicio">
 					<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
@@ -113,13 +113,13 @@
 				<div class=" [ inline-block vertical-middle ] [ columna medium-6 ] [ sugerencias-home ]">
 					<h2 class="[ text-center highlight ]">Compártenos sugerencias</h2>
 					<div class="[ columna xmall-6 ] [ center ] [ margin-bottom-big ]">
-						<a href="href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana"" class="block columna xmall-8 center">
+						<a href="http://www1.df.gob.mx/virtual/ssac/atencion_ciudadana/solicitud_info.php" class="block columna xmall-8 center">
 							<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
 						</a>
 					</div>
 					<h2 class="[ text-center highlight ]">Denuncia actos de corrupción</h2>
 					<div class="[ columna xmall-6 ] [ center ]">
-						<a href="#" class="block columna xmall-8 center">
+						<a href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana" class="block columna xmall-8 center">
 							<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 						</a>
 					</div>
