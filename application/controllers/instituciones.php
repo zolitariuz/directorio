@@ -133,7 +133,9 @@ class Instituciones extends CI_Controller {
 		else
 			$data['area_atencion'] = $area_atencion;
 
-		$data['delegacion'] = json_decode($area_atencion)[0]->delegacion;
+		//$data['delegacion'] = json_decode($area_atencion)[0]->delegacion;
+		$data['delegacion'] = json_decode($area_atencion);
+		$data['delegacion'] = $data['delegacion'][0]->delegacion;
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar

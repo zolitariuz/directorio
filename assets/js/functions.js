@@ -2,10 +2,6 @@
 	"use strict";
 	$(function(){
 
-
-
-
-
 		//***************//
 		//*** ON LOAD ***//
 		//***************//
@@ -27,9 +23,6 @@
 			showSelectedRating:false,
 			initialRating: 5
 		});
-
-
-
 
 
 		//***************//
@@ -975,6 +968,8 @@ function creaMapaAreaAtencion(area_atencion_data){
 function getHorarioAreaAtencion(id_area_atencion){
 	var url = localStorage.getItem('url_ws') + '/horario_area_atencion/id/' + id_area_atencion + '/format/json';
 
+	console.log(url);
+
 	$.get(
 		url,
 		function(response){
@@ -994,12 +989,27 @@ function getHorarioAreaAtencion(id_area_atencion){
 	);
 }// getHorarioAreaAtencion
 
-function getDiasAreaAtencion(dias){
-	var dias_array = dias.split('_');
-	var dia_inicial = getDia(dias_array[0]);
-	var dia_final = getDia(dias_array[dias_array.length-1]);
+function getDiasAreaAtencion(dias_abreviados){
+	var dias_array = dias_abreviados.split('_');
 
-	return dia_inicial + ' a ' + dia_final;
+	if (dias_array.length == 1) return getDia(dias_array[0]);
+
+	var dias = '';
+	$.each(dias_array, function(i, val){
+		if (i == 0) {
+			dias = getDia(val);
+			return true;
+		}
+
+		if(i+1 == dias_array.length) {
+			dias = dias + ' y ' + getDia(val);
+			return true;
+		}
+
+		dias = dias + ', ' + getDia(val);
+	});
+
+	return dias;
 }// getDiasAreaAtencion
 
 function getDia(dia){
