@@ -4,21 +4,33 @@
 				<div class="width clearfix">
 					<div class="[ gobierno ] [ inline-block vertical-middle ]">
 						<div class="[ inline-block vertical-middle ]">
-							<img class="[ img-90 ] [ block center ]" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo-gray.png" alt="">
+							<a href="http://df.gob.mx/" target="_blank">
+								<img class="[ img-90 ] [ block center ]" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo-gray.png" alt="">
+							</a>
 						</div><div class="[ inline-block vertical-middle ]">
-							<img class="[ img-70 ] [ block center ]" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
+							<a href="http://www.om.df.gob.mx/" target="_blank">
+								<img class="[ img-70 ] [ block center ]" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
+							</a>
 						</div><div class="[ inline-block vertical-middle ]">
-							<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
+							<a href="http://www.cgma.df.gob.mx/index.jsp" target="_blank">
+								<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/cgma-gray.png" alt="">
+							</a>
 						</div><div class="[ inline-block vertical-middle ]">
-							<img class="[ img-90 ] [ block center ]" src="<?php echo base_url() ?>assets/img/cdmx-gray.png" alt="">
+							<a href="http://www.cdmx190.mx/" target="_blank">
+								<img class="[ img-90 ] [ block center ]" src="<?php echo base_url() ?>assets/img/cdmx-gray.png" alt="">
+							</a>
 						</div>
 					</div><div class="[ apoyo ] [ inline-block vertical-middle ]">
 						<p class="[ ]">Con el apoyo de:</p>
 						<div class="[ columna xmall-6 ]">
-							<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
+							<a href="http://www.pidesinnovacion.org/" target="_blank">
+								<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/pides-gray.png" alt="">
+							</a>
 						</div>
 						<div class="[ columna xmall-6 ]">
-							<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
+							<a href="https://www.gov.uk/government/world/organisations/british-embassy-mexico-city.es-419" target="_blank">
+								<img class="[ img-100 ] [ block center ]" src="<?php echo base_url() ?>assets/img/ebm-gray.png" alt="">
+							</a>
 						</div>
 					</div>
 				</div><!-- width -->
@@ -26,11 +38,20 @@
 			<section class="emergencia">
 				<div class="width clearfix">
 					<div class="columna xmall-6 large-2">
-						<a class="[ block ]" href="tel: 5658-1111">
-							<i class="[ icon-ts-locatel ]"></i>
-							<h4 class="[ text-center ]">5658 1111</h4>
-							<p class="[ text-center ]">LOCATEL</p>
-						</a>
+						<div class="[ medium ]">
+							<a class="[ block ]" href="http://www.locatel.df.gob.mx/" target="_blank">
+								<i class="[ icon-ts-locatel ]"></i>
+								<h4 class="[ text-center ]">5658 1111</h4>
+								<p class="[ text-center ]">LOCATEL</p>
+							</a>
+						</div>
+						<div class="[ small ]">
+							<a class="[ block ]" href="tel: 5658-1111">
+								<i class="[ icon-ts-locatel ]"></i>
+								<h4 class="[ text-center ]">5658 1111</h4>
+								<p class="[ text-center ]">LOCATEL</p>
+							</a>
+						</div>
 					</div>
 					<div class="columna xmall-6 large-2">
 						<a class="[ block ]" href="tel: 066">
