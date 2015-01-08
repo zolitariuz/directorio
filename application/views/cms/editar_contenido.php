@@ -14,22 +14,22 @@
 							<h3 class="text-center margin-bottom">Editar avisos</h3>
 							<div class="tabla">
 								<div class="fila header clearfix">
-									<div class="columna xmall-3 text-center">
+									<div class="columna xmall-6 small-3 text-center">
 										Contenido
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="columna xmall-2 no-xmall small text-center">
 										URL
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="columna xmall-2 small-2 no-xmall small text-center">
 										Fecha inicial
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="columna xmall-2 small-2 no-xmall small text-center">
 										Fecha final
 									</div>
-									<div class="columna xmall-1 text-center">
+									<div class="columna xmall-2 small-1 text-center">
 										¿Activo?
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="columna xmall-4 small-2 text-center">
 										Opciones
 									</div>
 								</div>
