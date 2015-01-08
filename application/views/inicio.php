@@ -105,25 +105,26 @@
 				<div class="cycle-pager"></div>
 			</div>
 		</section>
-		<?php  if(!is_null($pregunta['pregunta'])){ ?>
-			<div class="clear large"></div>
-			<hr class="columna xmall-6 center">
-			<div class="clear"></div>
-			<section class="[ pregunta links ] [ clearfix ]">
-				<div class=" [ inline-block vertical-middle ] [ columna medium-6 ] [ sugerencias-home ]">
-					<h2 class="[ text-center highlight ]">Compártenos sugerencias</h2>
-					<div class="[ columna xmall-6 ] [ center ] [ margin-bottom-big ]">
-						<a href="http://www1.df.gob.mx/virtual/ssac/atencion_ciudadana/solicitud_info.php" class="block columna xmall-8 center">
-							<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
-						</a>
-					</div>
-					<h2 class="[ text-center highlight ]">Denuncia actos de corrupción</h2>
-					<div class="[ columna xmall-6 ] [ center ]">
-						<a href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana" class="block columna xmall-8 center">
-							<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
-						</a>
-					</div>
-				</div><div class="[ inline-block vertical-middle ] [ columna xmall-12 medium-6 ]  [ denuncia-home ] [ j-pregunta-container ]">
+		<div class="clear large"></div>
+		<hr class="columna xmall-6 center">
+		<div class="clear"></div>
+		<section class="[ pregunta links ] [ clearfix ]">
+			<div class=" [ inline-block vertical-middle ] [ columna medium-6 ] [ sugerencias-home ]">
+				<h2 class="[ text-center highlight ]">Compártenos sugerencias</h2>
+				<div class="[ columna xmall-6 ] [ center ] [ margin-bottom-big ]">
+					<a href="http://www1.df.gob.mx/virtual/ssac/atencion_ciudadana/solicitud_info.php" class="block columna xmall-8 center" target="_blank">
+						<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
+					</a>
+				</div>
+				<h2 class="[ text-center highlight ]">Denuncia actos de corrupción</h2>
+				<div class="[ columna xmall-6 ] [ center ]">
+					<a href="http://www.anticorrupcion.df.gob.mx/index.php/sistema-de-denuncia-ciudadana" class="block columna xmall-8 center" target="_blank">
+						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
+					</a>
+				</div>
+			</div>
+			<?php  if(!is_null($pregunta['pregunta'])){ ?>
+				<div class="[ inline-block vertical-middle ] [ columna xmall-12 medium-6 ]  [ denuncia-home ] [ j-pregunta-container ]">
 					<h2 class="text-center highlight">Nos interesa tu opinión</h2>
 					<p class="[ text-center ] [ title--small ]"><?php echo $pregunta['pregunta'] ?></p>
 					<div class="[ text-center ]">
@@ -131,7 +132,7 @@
 						<a href="#" class="[ boton grande ]" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
 					</div>
 				</div>
-			</section>
-		<?php } ?>
+			<?php } ?>
+		</section>
 	</div><!-- width -->
 </div><!-- main -->
