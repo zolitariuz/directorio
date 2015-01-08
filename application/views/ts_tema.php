@@ -17,7 +17,7 @@
 						} ?>
 						<div class="letra margin-bottom acordeon-item">
 							<a href="#" class="block [ boton boton-acordeon ] margin-bottom">
-								<h2><strong><?php echo $primeraLetra; ?></strong> <span></span></h2>
+								<h2 class="[ text-left ]"><strong><?php echo $primeraLetra; ?></strong> <span></span><i class="[ fa fa-angle-down drop ] [ right ]"></i></h2>
 							</a>
 							<ul class="hide arabigos inside">
 						<?php
