@@ -756,7 +756,6 @@ function setLimitDate(forms){
     	var fechaFinal = $(this).find('input[name="fecha_final"]');
     	fechaInicial.datepicker({minDate: '0', dateFormat: 'yy-mm-dd'});
     	fechaInicial.on('change', function(){
-		    console.log(fechaFinal);
 		    var fechaInicialVal = new Date( $(this).val() );
 		    var limitDate = new Date(fechaInicialVal);
 		    limitDate.setDate(limitDate.getDate() + 2);
@@ -909,7 +908,7 @@ function muestraAreaAtencionPorDelegacion(){
 	$('select[name="delegacion"]').change(function(){
 		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
 		var delegacion = $(this).find('option:selected').val();
-		var url = localStorage.getItem('url_ws') + '/area_atencion_tramite_delegacion/del/' + delegacion + '/id/'+id_tramite_servicio+'/format/json';
+		var url = localStorage.getItem('url_ws') + '/area_atencion_tramite_delegacion/del/' + delegacion.trim() + '/id/'+id_tramite_servicio+'/format/json';
 
 		$('.j_area_atencion').addClass('hide');
 		$('.j_area_atencion .fila').not('.header').remove();
@@ -969,8 +968,6 @@ function creaMapaAreaAtencion(area_atencion_data){
 function getHorarioAreaAtencion(id_area_atencion){
 	var url = localStorage.getItem('url_ws') + '/horario_area_atencion/id/' + id_area_atencion + '/format/json';
 
-	console.log(url);
-
 	$.get(
 		url,
 		function(response){
@@ -985,7 +982,6 @@ function getHorarioAreaAtencion(id_area_atencion){
 					horario.append(val.hora_inicio+' - '+val.hora_fin+'<br /><br />');
 				}
 			});
-			//console.log(response);
 		}
 	);
 }// getHorarioAreaAtencion
