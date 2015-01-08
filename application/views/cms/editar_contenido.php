@@ -95,7 +95,7 @@
 											else
 												$activo = 'No';
 											echo '<div class="[ columna xmall-2 medium-1 ] text-center">'.$activo.'</div>';
-											echo '<div class="columna xmall-4 text-center">'.$link_ver.' '.$link_editar.' '.$link_eliminar.'</div>';
+											echo '<div class="[ columna xmall-2 medium-3 ] [ text-center ]">'.$link_ver.' '.$link_editar.' '.$link_eliminar.'</div>';
 										echo '</div>';
 										echo '<div class="clear"></div>';
 									}// foreach anuncio
