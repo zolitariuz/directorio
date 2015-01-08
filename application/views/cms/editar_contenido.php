@@ -14,22 +14,22 @@
 							<h3 class="text-center margin-bottom">Editar avisos</h3>
 							<div class="tabla">
 								<div class="fila header clearfix">
-									<div class="columna xmall-6 small-3 text-center">
+									<div class="[ columna xmall-7 medium-3 ] [ text-center ]">
 										Contenido
 									</div>
-									<div class="columna xmall-2 no-xmall small text-center">
+									<div class="[ columna xmall-2 ] [ medium ] [ text-center ]">
 										URL
 									</div>
-									<div class="columna xmall-2 small-2 no-xmall small text-center">
+									<div class="[ columna xmall-2 medium-2 ] [ medium ] [ text-center ]">
 										Fecha inicial
 									</div>
-									<div class="columna xmall-2 small-2 no-xmall small text-center">
+									<div class="[ columna xmall-2 medium-2 ] [ medium ] [ text-center ]">
 										Fecha final
 									</div>
-									<div class="columna xmall-2 small-1 text-center">
+									<div class="[ columna xmall-2 medium-1 ] [ text-center ]">
 										¿Activo?
 									</div>
-									<div class="columna xmall-4 small-2 text-center">
+									<div class="[ columna xmall-3 medium-2 ] [ text-center ]">
 										Opciones
 									</div>
 								</div>
@@ -41,17 +41,16 @@
 										$link_editar = '<a href="'.base_url().'index.php/gestor_contenidos/editar_aviso/'.$value['id_aviso'].'">Editar</a>';
 										$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_aviso/'.$value['id_aviso'].'">Eliminar</a>';
 										echo '<div class="fila clearfix">';
-											echo '<div class="columna xmall-3 ">'.$value['contenido'].'</div>';
-											echo '<div class="columna xmall-2 text-center">'.$value['url'].'</div>';
-											echo '<div class="columna xmall-2 text-center">'.$value['fecha_inicial'].'</div>';
-											echo '<div class="columna xmall-2 text-center">'.$value['fecha_final'].'</div>';
+											echo '<div class="[ columna xmall-7 medium-3 ]">'.$value['contenido'].'</div>';
+											echo '<div class="[ columna xmall-2 ] [ medium ] [ text-center ]">'.$value['url'].'</div>';
+											echo '<div class="[ columna xmall-2 medium-2 ] [ medium ] [ text-center ]">'.$value['fecha_inicial'].'</div>';
+											echo '<div class="[ columna xmall-2 medium-2 ] [ medium ] [ text-center ]">'.$value['fecha_final'].'</div>';
 											if ($value['activo'] == 't')
 												$activo = 'Si';
 											else
 												$activo = 'No';
-											echo '<div class="columna xmall-1 text-center">'.$activo.'</div>';
-											echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
-											echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
+											echo '<div class="[ columna xmall-2 medium-1 ] [ text-center ]">'.$activo.'</div>';
+											echo '<div class="[ columna xmall-3 medium-2 ] [ text-center ]">'.$link_editar.' '.$link_eliminar.'</div>';
 											/*echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';*/
 										echo '</div>';
 										echo '<div class="clear"></div>';
@@ -65,19 +64,19 @@
 							<h3 class="text-center margin-bottom">Editar preguntas</h3>
 							<div class="tabla">
 								<div class="fila header clearfix">
-									<div class="columna xmall-4 text-center">
+									<div class="[ columna xmall-6 medium-4 ] [ text-center ]">
 										Pregunta
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="[ columna medium-2 ] [ medium ] [ text-center ]">
 										Fecha inicial
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="[ columna medium-2 ] [ medium ] [ text-center ]">
 										Fecha final
 									</div>
-									<div class="columna xmall-1 text-center">
+									<div class="[ columna xmall-2 medium-1 ] [ text-center ]">
 										¿Activo?
 									</div>
-									<div class="columna xmall-3 text-center">
+									<div class="[ columna xmall-4 medium-3 ] [ text-center ]">
 										Opciones
 									</div>
 								</div>
@@ -88,17 +87,15 @@
 										$link_ver = '<a href="'.base_url().'index.php/gestor_contenidos/ver_respuestas/'.$value['id_pregunta'].'">Ver</a>';
 										$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_pregunta/'.$value['id_pregunta'].'">Eliminar</a>';
 										echo '<div class="fila clearfix">';
-											echo '<div class="columna xmall-4">'.$value['pregunta'].'</div>';
-											echo '<div class="columna xmall-2 text-center">'.$value['fecha_inicial'].'</div>';
-											echo '<div class="columna xmall-2 text-center">'.$value['fecha_final'].'</div>';
+											echo '<div class="[ columna xmall-6 medium-4 ]">'.$value['pregunta'].'</div>';
+											echo '<div class="[ columna medium-2 ] [ medium ] text-center">'.$value['fecha_inicial'].'</div>';
+											echo '<div class="[ columna medium-2 ] [ medium ] text-center">'.$value['fecha_final'].'</div>';
 											if ($value['activo'] == 't')
 												$activo = 'Si';
 											else
 												$activo = 'No';
-											echo '<div class="columna xmall-1 text-center">'.$activo.'</div>';
-											echo '<div class="columna xmall-1 text-center">'.$link_ver.'</div>';
-											echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
-											echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
+											echo '<div class="[ columna xmall-2 medium-1 ] text-center">'.$activo.'</div>';
+											echo '<div class="columna xmall-4 text-center">'.$link_ver.' '.$link_editar.' '.$link_eliminar.'</div>';
 										echo '</div>';
 										echo '<div class="clear"></div>';
 									}// foreach anuncio
@@ -111,26 +108,25 @@
 							<h3 class="text-center margin-bottom">Editar anuncios</h3>
 							<div class="tabla">
 								<div class="fila header clearfix">
-									<div class="columna xmall-3 text-center">
+									<div class="[ columna xmall-7 medium-3 ] text-center">
 										Texto slide
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="[ columna xmall-2 ] [ medium ] text-center">
 										URL
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="[ columna xmall-2 medium-2 ] [ medium ] text-center">
 										Fecha inicial
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="[ columna xmall-2 medium-2 ] [ medium ] text-center">
 										Fecha final
 									</div>
-									<div class="columna xmall-1 text-center">
+									<div class="[ columna xmall-2 medium-1 ] text-center">
 										¿Activo?
 									</div>
-									<div class="columna xmall-2 text-center">
+									<div class="[ columna xmall-3 medium-2 ] text-center">
 										Opciones
 									</div>
 								</div>
-
 								<?php
 									foreach ($anuncios as $key => $value) {
 										if($value['is_default'] == 't')
@@ -138,17 +134,16 @@
 										$link_editar = '<a href="'.base_url().'index.php/gestor_contenidos/editar_anuncio/'.$value['id_anuncio'].'">Editar</a>';
 										$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_anuncio/'.$value['id_anuncio'].'">Eliminar</a>';
 										echo '<div class="fila clearfix">';
-											echo '<div class="columna xmall-3">'.$value['contenido'].'</div>';
-											echo '<div class="columna xmall-2 text-center">'.$value['url'].'</div>';
-											echo '<div class="columna xmall-2 text-center">'.$value['fecha_inicial'].'</div>';
-											echo '<div class="columna xmall-2 text-center">'.$value['fecha_final'].'</div>';
+											echo '<div class="[ columna xmall-7 medium-3 ]">'.$value['contenido'].'</div>';
+											echo '<div class="[ columna xmall-2 ] [ medium ] text-center">'.$value['url'].'</div>';
+											echo '<div class="[ columna xmall-2 medium-2 ] [ medium ] text-center">'.$value['fecha_inicial'].'</div>';
+											echo '<div class="[ columna xmall-2 medium-2 ] [ medium ] text-center">'.$value['fecha_final'].'</div>';
 											if ($value['activo'] == 't')
 												$activo = 'Si';
 											else
 												$activo = 'No';
-											echo '<div class="columna xmall-1 text-center">'.$activo.'</div>';
-											echo '<div class="columna xmall-1 text-center">'.$link_editar.'</div>';
-											echo '<div class="columna xmall-1 text-center">'.$link_eliminar.'</div>';
+											echo '<div class="[ columna xmall-2 medium-1 ] text-center">'.$activo.'</div>';
+											echo '<div class="[ columna xmall-3 medium-2 ] text-center">'.$link_editar.' '.$link_eliminar.'</div>';
 										echo '</div>';
 										echo '<div class="clear"></div>';
 									}// foreach anuncio
