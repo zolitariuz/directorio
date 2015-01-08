@@ -349,7 +349,7 @@
 										echo '<li class="[ clearfix ]">';
 
 									if($nivel == '2'){
-										echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'">siguiente enlace.</a></p>';
+										echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'" target="_blank">siguiente enlace.</a></p>';
 									} else {
 										echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
 										echo '<ul class=" ]">';

@@ -5,7 +5,7 @@
 		<div class="full">
 			<section class="busqueda clearfix">
 				<h2 class="text-center">Panel de reportes</h2>
-				<p class="columna xmall-10 center">Busca un trámite/servicio para ver sus reportes.</p>
+				<p class="columna xmall-10 center">En esta sección puedes buscar los reportes relacionados a un trámite o servicio. Los reportes incluyen las visitas totales, comentarios y calificación promedio.</p>
 				<form class="main-search hero clearfix main-search-reportes" action="#">
 					<input type="search" class="span xmall-11">
 					<input type="hidden" name="tags_id" id="ts_cms_id" value="x" />

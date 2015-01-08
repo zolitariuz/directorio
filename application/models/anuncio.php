@@ -63,7 +63,7 @@ class Anuncio extends CI_Model {
 	}// dame_anuncios
 
 	public function dame_anuncios_activos(){
-		$this->db->where("fecha_inicial <= DATE 'today' AND fecha_final >= DATE 'today' AND is_activo = 't'");
+		$this->db->where("(fecha_inicial <= DATE 'today' AND fecha_final >= DATE 'today' AND is_activo = 't') OR is_default = 't'");
 		$query = $this->db->get('anuncios');
 		$anuncios = array();
 
@@ -147,12 +147,9 @@ class Anuncio extends CI_Model {
 	 * @return 	
 	 */
 	private function actualizaStatus(){
-		$data = array(
-		   'is_activo' => 'f'
-		);
-
 		// actualizar registro
-		$this->db->where("fecha_final < DATE 'today' AND is_activo = 't'");
+		$data = array('is_activo' => 'f');
+		$this->db->where("fecha_final < DATE 'today' AND is_activo = 't' AND is_default <> 't'");
 		$this->db->update('anuncios', $data);
 	}
 		

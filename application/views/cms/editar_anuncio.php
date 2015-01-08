@@ -22,7 +22,7 @@
 						<textarea type="text" name="anuncio" class="[ full ]"><?php echo $anuncio['contenido']; ?></textarea>
 					</fieldset>
 					<fieldset class="">
-						<label for="url_anuncio" >URL</label>
+						<label for="url_anuncio" >URL (incluir http://)</label>
 						<input type="text" name="url_anuncio" class="[ full ]" value="<?php echo $anuncio['url']; ?>">
 					</fieldset>
 					<fieldset class="center">
