@@ -331,6 +331,14 @@ button, .boton{
 		>*{ color: inherit; }
 	}
 	h2{ margin: 0; }
+	&.iverted{
+		border: 3px solid @gris-obscuro;
+		color: @gris-obscuro;
+		>*{ color: inherit; }
+		&:hover, &.active{ border: 3px solid @highlight; color: @highlight;
+			>*{ color: inherit; }
+		}
+	}
 }
 
 .drop{ .transition();
@@ -554,7 +562,9 @@ footer{
 			i{ font-size: 1.5em; }
 		}
 		input{ .font(1.4em, 1); }
-		button{ padding: (@margen/2); }
+		button{
+			padding: 7px 10px 12px 10px; border-left: none;
+		}
 	}
 	input, button{
 		height: (@margen*2);
@@ -874,8 +884,8 @@ body.cms{
 	footer{
 		section{ padding: @margen; }
 		.logos{
-			.gobierno{ width: 66%;
-				> div{ width: 17%; margin: 0 2%; }
+			.gobierno{ width: 48%;
+				> div{ width: 21%; margin: 0 2%; }
 			}
 			.apoyo{ width: 25%; float: right;
 				//> div{ width: 50%; margin: 0; }
