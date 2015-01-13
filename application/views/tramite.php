@@ -91,7 +91,7 @@
 						} else {
 							if($indicePrecio == 0){
 								echo '<h3 class="highlight">Costos</h3>';
-								echo '<div class="tabla-precio">';
+								echo '<div class="[ tabla-precio ] [ margin-bottom ]">';
 							}
 							echo '<div class="costo">';
 							echo '<div class="numero-costo">';
@@ -336,7 +336,7 @@
 								</li>
 							</ul>
 						</div>
-						<?php } 
+						<?php }
 							$nivel = $ts->nvl_automatizacion;
 							$link = $ts->url_nvl_automatizacion;
 							if( is_null($nivel) || $link == '' ){
