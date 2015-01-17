@@ -1,4 +1,4 @@
-<?php if(isset($usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 
 	<div class="main">
 		<div class="width clearfix">
@@ -42,7 +42,10 @@
 										$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_aviso/'.$value['id_aviso'].'">Eliminar</a>';
 										echo '<div class="fila clearfix">';
 											echo '<div class="[ columna xmall-7 medium-3 ]">'.$value['contenido'].'</div>';
-											echo '<div class="[ columna xmall-2 ] [ medium ] [ text-center ]">'.$value['url'].'</div>';
+											echo '<div class="[ columna xmall-2 ] [ medium ] [ text-center ]">';
+											if(trim($value['url']) == '-') echo $value['url'];
+											else echo '<a href="'.$value['url'].'" target="_blank">Ver link</a>';
+											echo '</div>';
 											echo '<div class="[ columna xmall-2 medium-2 ] [ medium ] [ text-center ]">'.$value['fecha_inicial'].'</div>';
 											echo '<div class="[ columna xmall-2 medium-2 ] [ medium ] [ text-center ]">'.$value['fecha_final'].'</div>';
 											if ($value['activo'] == 't')
@@ -56,6 +59,7 @@
 										echo '<div class="clear"></div>';
 									}// foreach anuncio
 								?>
+								<p><strong>* Aviso default</strong></p>
 							</div><!-- tabla -->
 						</div>
 					</div><!-- tab-avisos -->
@@ -135,7 +139,10 @@
 										$link_eliminar = '<a href="'.base_url().'index.php/gestor_contenidos/eliminar_anuncio/'.$value['id_anuncio'].'">Eliminar</a>';
 										echo '<div class="fila clearfix">';
 											echo '<div class="[ columna xmall-7 medium-3 ]">'.$value['contenido'].'</div>';
-											echo '<div class="[ columna xmall-2 ] [ medium ] text-center">'.$value['url'].'</div>';
+											echo '<div class="[ columna xmall-2 ] [ medium ] [ text-center ]">';
+											if(trim($value['url']) == '-') echo $value['url'];
+											else echo '<a href="'.$value['url'].'" target="_blank">Ver link</a>';
+											echo '</div>';
 											echo '<div class="[ columna xmall-2 medium-2 ] [ medium ] text-center">'.$value['fecha_inicial'].'</div>';
 											echo '<div class="[ columna xmall-2 medium-2 ] [ medium ] text-center">'.$value['fecha_final'].'</div>';
 											if ($value['activo'] == 't')
@@ -148,6 +155,7 @@
 										echo '<div class="clear"></div>';
 									}// foreach anuncio
 								?>
+								<p><strong>* Anuncio default</strong></p>
 							</div><!-- tabla -->
 						</div><!-- editar-anuncio -->
 					</div><!-- tab-anuncios -->

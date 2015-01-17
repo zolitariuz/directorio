@@ -118,6 +118,18 @@ class Usuario extends CI_Model {
 		} 
 	}// agregar_pregunta
 
-	
+	/**
+	 * Descripción: Revisa si ya existe el usuario en la base de datos.
+	 * @param string $id_ts_comun, string $url, string $tipo, integer $id_usuario
+	 * @return true	o false
+	 */
+	public function existe($usuario){
+		$this->db->where('usuario', $usuario);
+		$query = $this->db->get('usuarios');
+
+		if($query->num_rows() > 0) return true;
+
+		return false;
+	} // agrega_ts_comun	
 		
 }// clase Usuario

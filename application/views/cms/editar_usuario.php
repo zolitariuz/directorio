@@ -1,4 +1,4 @@
-<?php if(isset($id_usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 <div class="main">
 	<div class="width">
 		<div class="columna xmall-6 center">
@@ -22,6 +22,10 @@
 				<fieldset class="">
 					<label class="block" for="apellidos" >Apellidos</label>
 					<input type="text" name="apellidos" class=" columna xmall-12" value="<?php echo trim($usuario['apellidos']) ?>">
+				</fieldset>
+				<fieldset class="">
+					<label class="block" for="password" >Password</label>
+					<input type="password" name="password" class=" columna xmall-12" value="<?php echo trim($usuario['password']) ?>">
 				</fieldset>
 				<fieldset class="url_aviso">
 					<label class="block" for="nombre" >Tipo de usuario</label>

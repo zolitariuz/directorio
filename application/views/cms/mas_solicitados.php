@@ -1,5 +1,4 @@
-<?php if(isset($usuario)) { ?>
-
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 <div class="main">
 	<div class="width">
 		<div class="full">
@@ -7,13 +6,13 @@
 				<h2 class="text-center">Trámites y servicios más solicitados</h2>
 				<p class="columna xmall-10 center">Para agregar un trámite a la lista de más solicitados, utiliza la barra de búsqueda. Recuerda que solo puede haber 15 trámites y/o servicios más solicitados.</p>
 				<form class="[ main-search main-search-home hero ] [ input-group ] [ full ] [ clearfix ] [ main-search-cms ]" action="#">
-					<input type="search" class="[ span xmall-10 large-11 ]" placeholder="Busca tu trámite o servicio">
+					<input type="search" class="[ span xmall-10 large-11 ]" placeholder="Agrega un trámite o servicio">
 					<input type="hidden" name="tags_id" id="ts_cms_id" value="x" />
-					<button type="submit" class="[ span xmall-2 large-1 ]"><i class="icon-ts-buscar"></i></button>
+					<button type="submit" class="[ span xmall-2 large-1 ]"><i class="fa fa-plus"></i></button>
 				</form>
 			</section><!-- busqueda -->
 			<p class="success hide"></p>
-			<p class="error hide"></p>
+			<label class="error hide"></label>
 			<section class="clearfix">
 				<div class="tabla tabla-ts columna xmall-12">
 					<div class="fila header clearfix">

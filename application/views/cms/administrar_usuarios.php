@@ -1,4 +1,4 @@
-<?php if(isset($id_usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 
 	<div class="main">
 		<div class="width clearfix">

@@ -1,4 +1,4 @@
-<?php if(isset($usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 
 <div class="main">
 	<div class="width">
@@ -9,7 +9,7 @@
 				<form class="main-search hero clearfix main-search-reportes" action="#">
 					<input type="search" class="span xmall-11">
 					<input type="hidden" name="tags_id" id="ts_cms_id" value="x" />
-					<button type="submit" class="span xmall-1"><i class="fa fa-plus"></i></button>
+					<button type="submit" class="span xmall-1"><i class="icon-ts-buscar"></i></button>
 				</form>
 			</section><!-- busqueda -->
 			<div class="clear"></div>

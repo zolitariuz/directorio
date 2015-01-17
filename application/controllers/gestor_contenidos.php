@@ -66,7 +66,9 @@ class Gestor_contenidos extends CI_Controller {
 
 	function logout(){
 		// destruye sesión actual
+		session_start();
 		session_destroy();
+		unset($_SESSION);
 		$this->login();
 	}// logout
 
@@ -107,11 +109,16 @@ class Gestor_contenidos extends CI_Controller {
 				$is_admin = 'f';
 
 			// agrega usuario a base de datos
-			if($this->usuario->agrega_usuario($usuario, $password, $nombre, $apellidos, $is_admin)){
-				$data['success'] = '¡Se agregó el usuario con éxito!';
-			} else {
-				$data['error'] = 'No se pudo agregar el usuario.';
+			if( ! $this->usuario->existe($usuario)){
+				if($this->usuario->agrega_usuario($usuario, $password, $nombre, $apellidos, $is_admin)){
+					$data['success'] = '¡Se agregó el usuario con éxito!';
+				} else {
+					$data['error'] = 'No se pudo agregar el usuario.';
+				}
+			} else { 
+				$data['error'] = 'El usuario '.$usuario.' ya existe.';
 			}
+
 		}
 
 		// Carga vista de login o index en caso de credenciales correctas
@@ -133,6 +140,7 @@ class Gestor_contenidos extends CI_Controller {
 			$usuario = $_POST['usuario'];
 			$nombre = $_POST['nombre'];
 			$apellidos = $_POST['apellidos'];
+			$password = $_POST['password'];
 			$rol = $_POST['rol'];
 
 			// ¿es administrador?
@@ -254,16 +262,19 @@ class Gestor_contenidos extends CI_Controller {
 			$url = $_POST['url_aviso'];
 			$fecha_inicial = $_POST['fecha_inicial'];
 			$fecha_final = $_POST['fecha_final'];
+			$activo = $_POST['activo'];
+
 			if(trim($url) == '' || trim($url) == '-'){
 				$url = '-';
 				$tipo = 'texto';
 			} else {
 				$tipo = 'link';
 			}
-			if ($_POST['activo'] == 'on')
+			if ($activo == 'on')
 				$activo = 't';
 			else
 				$activo = 'f';
+			echo $activo;
 
 			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo, $fecha_inicial,$fecha_final, $activo);
 			$data['success'] = '¡Aviso actualizado!';
@@ -352,7 +363,8 @@ class Gestor_contenidos extends CI_Controller {
 			$pregunta = $_POST['pregunta'];
 			$fecha_inicial = $_POST['fecha_inicial'];
 			$fecha_final = $_POST['fecha_final'];
-			if ($_POST['activo'] == 'on')
+			$activo = $_POST['activo'];
+			if ($activo == 'on')
 				$activo = 't';
 			else
 				$activo = 'f';
@@ -440,6 +452,7 @@ class Gestor_contenidos extends CI_Controller {
 
 			// url relativa de la imagen
 			$img_url = explode('directorio/', $data['upload']['full_path']);
+			var_dump($img_url);
 
 			// inserta anuncio a bd
 			$this->load->model('anuncio');
@@ -633,10 +646,12 @@ class Gestor_contenidos extends CI_Controller {
 		if($total >= 15){
 			$respuesta['estatus'] = 'error';
 			$respuesta['msg'] = '¡Ya hay 15 trámites/servicios mas comunes! Elimina un registro para poder agregar más.';
+		} else if( $this->ts_comun->existe($id_ts) ) {
+			$respuesta['estatus'] = 'error';
+			$respuesta['msg'] = 'Ya existe el trámite/servicio que deseas agregar.';
 		} else {
 			$this->ts_comun->agrega_ts_comun($id_ts, 't');
 			$respuesta['estatus'] = 'success';
-			#$respuesta['msg'] = '¡Se agregó el trámite/servicio con éxito!';
 		}
 
 		$this->output->set_output(json_encode($respuesta));
@@ -667,6 +682,7 @@ class Gestor_contenidos extends CI_Controller {
 	 * @return
 	 */
 	function ver_respuestas($id_pregunta){
+		session_start();
 		// carga pregunta
 		$this->load->model('pregunta');
 		$data['pregunta'] = $this->pregunta->dame_pregunta($id_pregunta);

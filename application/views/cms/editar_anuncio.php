@@ -1,4 +1,4 @@
-<?php //if(isset($usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 <div class="main">
 	<div class="width">
 		<a href="<?php echo base_url().'index.php/gestor_contenidos/panel_admin/' ?>">Regresar a panel de administración</a>
@@ -72,4 +72,4 @@
 	</div>
 </div>
 
-<?php // } else { header('Location: '.base_url().'index.php/login'); } ?>
+<?php } else { header('Location: '.base_url().'index.php/login'); } ?>

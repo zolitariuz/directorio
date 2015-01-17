@@ -34,6 +34,20 @@ class Ts_comun extends CI_Model {
 	} // agrega_ts_comun
 
 	/**
+	 * Descripción: Revisa si ya se agregó el trámite / servicio.
+	 * @param string $id_ts_comun, string $url, string $tipo, integer $id_usuario
+	 * @return true	o false
+	 */
+	public function existe($id_tramite_servicio){
+		$this->db->where('id_tramite_servicio', $id_tramite_servicio);
+		$query = $this->db->get('ts_comunes');
+
+		if($query->num_rows() > 0) return true;
+
+		return false;
+	} // agrega_ts_comun
+
+	/**
 	 * Descripción: Elimina un ts_comun a la base de datos
 	 * @param string $id_ts_comun
 	 * @return 

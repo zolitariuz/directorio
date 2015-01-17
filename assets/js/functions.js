@@ -141,6 +141,23 @@
 				}
 			}
 		});
+		$('.feedback').validate({
+			rules: {
+				comentarios: {
+					maxlength: 1000
+				}
+			}
+		});
+		$('.js-validate-aviso').validate({
+			rules: {
+				aviso: {
+					maxlength: 140
+				},
+				vigencia: {
+					date: true
+				}
+			}
+		});
 
 		$.datepicker.regional['es'] = {
 			closeText: 'Cerrar',
@@ -506,6 +523,7 @@ function agregarTS(dataTS, base_url, ts_omitir){
 			var ts = ui.item.value;
 
 			agregarTSSolicitado(idTS, ts, base_url);
+			idTS = $('#ts_cms_id').val('x');
 		},
 		appendTo: '.main-search-cms'
 	});
@@ -515,13 +533,22 @@ function agregarTS(dataTS, base_url, ts_omitir){
 		var idTS = $('#ts_cms_id').val();
 		var ts = $('input[type="search"]').val();
 
+		console.log('hola');
+		console.log(idTS);
+		if(idTS == 'x') {
+			$('.error').text('No existe el trámite o servicio "'+ts+'."');
+			$('.error').removeClass('hide');
+			return 0;
+		}
 		agregarTSSolicitado(idTS, ts, base_url);
+		idTS = $('#ts_cms_id').val('x');
 	});
 } // agregarTS
 
 function agregarTSSolicitado(id_ts, ts, base_url){
 	var jsonSolicitado = {};
 	jsonSolicitado['id_ts'] = id_ts;
+	console.log(id_ts);
 
 	$.post(
 		base_url + "gestor_contenidos/agregar_ts_solicitado",
@@ -769,11 +796,13 @@ function toggleUrlAviso(){
 	$('.crea-aviso input[name="link_aviso"]').change(function(){
 		if($(this).is(":checked")) {
 			$('.url_aviso').removeClass('hide');
+			$('.url_aviso input').addClass('required');			
 			$('.url_aviso input').val('');
 			$('.url_aviso input').focus();
 		}
 		else {
 			$('.url_aviso').addClass('hide');
+			$('.url_aviso input').removeClass('required');	
 			$('.url_aviso input').val('-');
 		}
 	});
@@ -783,11 +812,13 @@ function toggleUrlAnuncio(){
 	$('.crea-anuncio input[name="link_anuncio"]').change(function(){
 		if($(this).is(":checked")) {
 			$('.url_anuncio').removeClass('hide');
+			$('.url_anuncio input').addClass('required');	
 			$('.url_anuncio input').val('');
 			$('.url_anuncio input').focus();
 		}
 		else {
 			$('.url_anuncio').addClass('hide');
+			$('.url_anuncio input').removeClass('required');	
 			$('.url_anuncio input').val('-');
 		}
 	});
@@ -927,6 +958,12 @@ function muestraAreaAtencionPorDelegacion(){
 }// muestraAreaAtencionPorDelegacion
 
 function creaMapaAreaAtencion(area_atencion_data){
+	if(typeof area_atencion_data === 'undefined'){
+	   $('.j_area_atencion').empty();
+	   $('.j_area_atencion').append('<p>Por el momento no existen áreas de atención asociadas a ésta delegación.</p>');
+	   return 0;
+	};
+	$('.header').show();
 	$.each(area_atencion_data, function(i, val){
 		var tel1 = val['telefono_1'];
 		var tel2 = val['telefono_2'];
@@ -968,12 +1005,17 @@ function creaMapaAreaAtencion(area_atencion_data){
 function getHorarioAreaAtencion(id_area_atencion){
 	var url = localStorage.getItem('url_ws') + '/horario_area_atencion/id/' + id_area_atencion + '/format/json';
 
+	console.log(id_area_atencion);
+	console.log(url);
+
 	$.get(
 		url,
 		function(response){
 			var dias_anteriores = 0;
+
 			$.each(response, function(i, val){
 				var horario = $('div').find('[data-area="'+id_area_atencion+'"]');
+
 				if(dias_anteriores != val.dias){
 					dias_anteriores = val.dias;
 					var dias = getDiasAreaAtencion(val.dias);

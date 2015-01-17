@@ -156,6 +156,7 @@ class Pregunta extends CI_Model {
 		// actualizar registro
 		$this->db->where('id_pregunta', $id_pregunta);
 		$this->db->update('preguntas', $data);
+		$this->actualizaStatus();
 
 		return 1;
 	} // actualiza_aviso

@@ -45,7 +45,7 @@
 							echo '<p>';
 
 							if(trim($value['tipo_contenido']) == 'link') {
-								echo '<a href="'.$value['url'].'">';
+								echo '<a href="'.$value['url'].'" target="_blank">';
 								echo $value['contenido'];
 								echo '</a>';
 							} else

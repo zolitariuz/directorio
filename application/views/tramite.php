@@ -49,19 +49,21 @@
 					?>
 					<p><?php echo $tiempo_respuesta ?></p>
 				</div><!-- quick-info -->
-				<hr>
-				<div class="quick-info">
-					<h3 class="highlight">¿Qué pasa si no te responden a tiempo?</h3>
-					<?php
-						$afirmativa_ficta = $ts->afirmativa_ficta;
-						$negativa_ficta = $ts->negativa_ficta;
+				<?php if($ts->afirmativa_ficta == '1' || $ts->negativa_ficta == '1') { ?>
+					<hr>
+					<div class="quick-info">
+						<h3 class="highlight">¿Qué pasa si no te responden a tiempo?</h3>
+						<?php
+							$afirmativa_ficta = $ts->afirmativa_ficta;
+							$negativa_ficta = $ts->negativa_ficta;
 
-						if($afirmativa_ficta == '1')
-							echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
-						if($negativa_ficta == '1')
-							echo '<p>Puedes asumir que la respuesta a tu petición es negativa.</p>';
-					?>
-				</div><!-- quick-info -->
+							if($afirmativa_ficta == '1')
+								echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
+							if($negativa_ficta == '1')
+								echo '<p>Puedes asumir que la respuesta a tu petición es negativa.</p>';
+						?>
+					</div><!-- quick-info -->
+				<?php } ?>
 				<?php
 				// Áreas de pago
 				if($area_pago != ''){ ?>
@@ -87,7 +89,7 @@
 					foreach ($costo as $key => $value) {
 						if($value->concepto == 1){
 							echo '<h3 class="highlight">Costo</h3>';
-							echo '<p>$'.$value->monto.'</p>';
+							echo '<p>'.($value->monto == '0.00' ? 'variable' : '$'.$value->monto).'</p>';
 						} else {
 							if($indicePrecio == 0){
 								echo '<h3 class="highlight">Costos</h3>';
@@ -95,7 +97,7 @@
 							}
 							echo '<div class="costo">';
 							echo '<div class="numero-costo">';
-							echo '<p>$'.$value->monto.'</p>';
+							echo '<p>'.($value->monto == '0.00' ? 'variable' : '$'.$value->monto).'</p>';
 							echo '</div>';
 							echo '<div class="nombre-costo">';
 							echo '<p>'.$value->concepto.'</p>';
@@ -484,7 +486,7 @@
 						</fieldset>
 						<fieldset>
 							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
-							<textarea name="comentarios" rows="8"></textarea>
+							<textarea name="comentarios" rows="8" maxLength="1000"></textarea>
 						</fieldset>
 						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
 						<button type="submit" class="[ boton chico horizontal ] [ right ]">Enviar</button>

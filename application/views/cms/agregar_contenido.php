@@ -1,4 +1,4 @@
-<?php if(isset($usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 
 <div class="main">
 	<div class="width">
@@ -39,7 +39,7 @@
 			<form class="crea-pregunta js-validate-pregunta" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_pregunta' ?>">
 				<fieldset class="">
 					<label class="block" for="pregunta">Pregunta nueva <small>(máximo 140 caracteres)</small></label><br />
-					<input type="text" name="pregunta" class=" columna xmall-12" required  maxlength="140">
+					<textarea type="text" name="pregunta" class="full" required maxlength="140"></textarea>
 				</fieldset>
 				<fieldset class="columna xmall-12 center">
 					<label for="fecha_inicial" >Fecha inicial</label>
@@ -61,7 +61,7 @@
 			?>
 				<fieldset class="">
 					<label class="block" for="pregunta" >Anuncio nuevo <small>(máximo 140 caracteres)</small></label>
-					<input type="text" name="anuncio" class=" columna xmall-12" required  maxlength="140">
+					<textarea type="text" name="anuncio" class="full" required maxlength="140"></textarea>
 				</fieldset>
 				<fieldset class="columna xmall-12 center">
 					<label for="fecha_inicial" >Fecha inicial</label>

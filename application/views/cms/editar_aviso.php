@@ -1,4 +1,4 @@
-<?php //if(isset($usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 
 <div class="main">
 	<div class="width">
@@ -15,15 +15,15 @@
 				<form method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/editar_aviso/'.$aviso['id_aviso']; ?>" class="[ js-validate-aviso ]">
 					<fieldset class="">
 						<label for="aviso" >Contenido aviso (máximo 140 caracteres)</label>
-						<textarea type="text" name="aviso" class="[ full ]"><?php echo $aviso['contenido']; ?></textarea>
+						<textarea type="text" name="aviso" class="[ full ] [ required ]"><?php echo $aviso['contenido']; ?></textarea>
 					</fieldset>
 					<fieldset class="">
 						<label for="fecha_inicial" >Fecha inicial</label>
-						<input type="text" name="fecha_inicial" class="datepicker [ full ]" value="<?php echo $aviso['fecha_inicial']; ?>">
+						<input type="text" name="fecha_inicial" class="datepicker [ full ] [ required ]" value="<?php echo $aviso['fecha_inicial']; ?>">
 					</fieldset>
 					<fieldset class="">
 						<label for="fecha_final" >Fecha final</label>
-						<input type="text" name="fecha_final" class="datepicker [ full ]" value="<?php echo $aviso['fecha_final']; ?>">
+						<input type="text" name="fecha_final" class="datepicker [ full ] [ required ]" value="<?php echo $aviso['fecha_final']; ?>">
 					</fieldset>
 					<fieldset class="">
 						<label for="url_aviso" >URL de aviso</label><br />
@@ -49,4 +49,4 @@
 	</div>
 </div>
 
-<?php // } else { header('Location: '.base_url().'index.php/login'); } ?>
+<?php } else { header('Location: '.base_url().'index.php/login'); } ?>
