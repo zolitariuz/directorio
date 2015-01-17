@@ -331,6 +331,14 @@ button, .boton{
 		>*{ color: inherit; }
 	}
 	h2{ margin: 0; }
+	&.iverted{
+		border: 3px solid @gris-obscuro;
+		color: @gris-obscuro;
+		>*{ color: inherit; }
+		&:hover, &.active{ border: 3px solid @highlight; color: @highlight;
+			>*{ color: inherit; }
+		}
+	}
 }
 
 .drop{ .transition();
@@ -554,7 +562,9 @@ footer{
 			i{ font-size: 1.5em; }
 		}
 		input{ .font(1.4em, 1); }
-		button{ padding: (@margen/2); }
+		button{
+			padding: 7px 10px 12px 10px; border-left: none;
+		}
 	}
 	input, button{
 		height: (@margen*2);
@@ -616,7 +626,11 @@ aside{
 	h3{ margin-bottom: (@margen/2); .font(1.4em, 1.4em); }
 	i{ color: @highlight; }
 	p{ margin: 0; color: @gris-obscuro; font-size: 1.2em; }
-	.tabla-precio{ width: 100%; margin-top: (@margen/2); padding: (@margen/2); background: @gris-claro;
+	.tabla-precio{
+		width: 100%;
+		margin-top: (@margen/2); padding: (@margen/2);
+		background: @gris-claro;
+		.border-radius( 20px );
 		.costo{ padding: (@margen/4) 0; border-bottom: 1px solid @gris-obscuro;
 			&:first-child{ padding-top: 0; }
 			&:last-child{ padding-bottom: 0; border-bottom: 0; }
@@ -874,8 +888,8 @@ body.cms{
 	footer{
 		section{ padding: @margen; }
 		.logos{
-			.gobierno{ width: 66%;
-				> div{ width: 17%; margin: 0 2%; }
+			.gobierno{ width: 48%;
+				> div{ width: 21%; margin: 0 2%; }
 			}
 			.apoyo{ width: 25%; float: right;
 				//> div{ width: 50%; margin: 0; }

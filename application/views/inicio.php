@@ -88,7 +88,7 @@
 						}
 						if($temas_por_slide % 8 == 0)
 							echo '<div class="slide">';
-						echo '<a href="'.$url_tema.'" class="boton columna xmall-3 cuadrado chico">';
+						echo '<a href="'.$url_tema.'" class="[ boton cuadrado chico iverted ] [ columna xmall-3 ]">';
 						echo '<i class="'.$clase_icono.'"></i>';
 						echo $value->materia;
 						echo '</a>';
