@@ -17,14 +17,14 @@
 			</div>
 			<div class="[ columna xmall-12 large-4 ] [ ts-mas-solicitados ]">
 				<p class="[ title--small ]">Trámites y servicios más solicitados</p>
-				<ul>
+				<ol class="[ inside arabigos ]">
 					<?php foreach ($nombres_ts_comunes as $key => $value) {
 						$tramite = $value->nombre_ts;
 						$idTS = $value->id_tramite_servicio;
 						$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$idTS; ?>
 						<li class="[ wrap-ellipsis ]"><a href="<?php echo $urlTramite; ?>"><?php echo $tramite; ?></a></li>
 					<?php } // end foreach ?>
-				</ul>
+				</ol>
 			</div>
 		</section><!-- ts más solicitados -->
 		<hr class="[ large ]">

@@ -405,7 +405,7 @@ article{ margin-bottom: (@margen*2);
 }
 
 
-ul{ margin: 0; list-style: lower-roman; list-style-position: outside;
+ul, ol{ margin: 0; list-style: lower-roman; list-style-position: outside;
 	&.disc{ list-style-type: disc; }
 	&.inside{ list-style-position: inside; }
 	&.arabigos{ list-style-type: decimal; }
@@ -1160,17 +1160,31 @@ body.cms{
 	/*** SINGLE ***/
 	.header-single{ margin-bottom: @margen;
 		h2{ .font(1.4em); }
-		.quick-info{ margin: 0 0 @margen 0;
+		.quick-info{ margin: 0 0 (@margen/2) 0;
 			p{ margin: 0; }
 		}
 	}
 
 	aside{
-		hr{ margin-bottom: (@margen*2); }
+		width: 100%;
+		float: none;
+		hr{
+			display: none;
+			margin-bottom: (@margen*2);
+		}
 		.boton{ display: none !important; }
 	}
 
-	.quick-info{ margin-bottom: (@margen*2);
+	.content ul, .content p{
+		font-size: 1em;
+		line-height: 1.1em;
+	}
+
+	.quick-info{
+		width: 50%;
+		margin-bottom: (@margen/2);
+		float: left;
+		&:last-of-type{ display: none; }
 		h3{ margin-bottom: (@margen/2); .font(1.4em, 1.4em); }
 		i{ color: @highlight; font-size: 1em; }
 		p{ margin: 0; color: @gris-obscuro; font-size: 1.2em; }

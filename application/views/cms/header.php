@@ -22,7 +22,7 @@
 			<header class="clearfix">
 				<div class="width clearfix">
 					<h1>
-						<a class="block" href="<?php echo base_url() ?>">
+						<a class="block" href="<?php echo base_url('/login') ?>">
 							<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites-blanco.png" alt="">
 						</a>
 					</h1><nav>

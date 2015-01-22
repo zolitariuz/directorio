@@ -7,7 +7,7 @@
 					<h3 class="highlight">Compártelo</h3>
 					<div class="share block">
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-layout="button" data-href="#"></div>
+						<div class="fb-share-button" data-layout="button" data-href="<?php echo $_SERVER['REQUEST_URI'] ?>"></div>
 						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
 					</div><!-- share -->
 				</div><!-- quick-info -->
@@ -416,7 +416,7 @@
 							<ul class="[ none ] [ hide ]">
 								<li>
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight"><small>¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</small></h3>
+										<h3 class="[ highlight ][ margin-bottom ]"><small>¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</small></h3>
 										<?php
 
 											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
@@ -432,12 +432,12 @@
 										?>
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight"><small>Plazo máximo de respuesta</small></h3>
+										<h3 class="[ highlight ][ margin-bottom ]"><small>Plazo máximo de respuesta</small></h3>
 										<?php echo '<p><small>'.$tiempo_respuesta.'</small></p>'; ?>
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight"><small>De acuerdo a los fundamentos jurídicos:</small></h3>
-										<ul class="[ none ]">
+										<h3 class="[ highlight ][ margin-bottom ]"><small>De acuerdo a los fundamentos jurídicos:</small></h3>
+										<ul class="[ inside disc ]">
 											<?php
 											if($info_juridica != ''){
 												foreach ($info_juridica as $key => $value) {
