@@ -122,9 +122,7 @@
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 					</a>
 				</div>
-			</div>
-			<?php  if(!is_null($pregunta['pregunta'])){ ?>
-				<div class="[ inline-block vertical-middle ] [ columna xmall-12 medium-6 ]  [ denuncia-home ] [ j-pregunta-container ]">
+			</div><?php if(!is_null($pregunta['pregunta'])){ ?><div class="[ inline-block vertical-middle ] [ columna xmall-12 medium-6 ]  [ denuncia-home ] [ j-pregunta-container ]">
 					<h2 class="text-center highlight">Nos interesa tu opinión</h2>
 					<p class="[ text-center ] [ title--small ]"><?php echo $pregunta['pregunta'] ?></p>
 					<div class="[ text-center ]">
