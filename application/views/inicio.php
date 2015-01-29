@@ -17,14 +17,14 @@
 			</div>
 			<div class="[ columna xmall-12 large-4 ] [ ts-mas-solicitados ]">
 				<p class="[ title--small ]">Trámites y servicios más solicitados</p>
-				<ul>
+				<ol class="[ inside arabigos ]">
 					<?php foreach ($nombres_ts_comunes as $key => $value) {
 						$tramite = $value->nombre_ts;
 						$idTS = $value->id_tramite_servicio;
 						$urlTramite = base_url().'index.php/tramites_servicios/muestraInfo/'.$idTS; ?>
 						<li class="[ wrap-ellipsis ]"><a href="<?php echo $urlTramite; ?>"><?php echo $tramite; ?></a></li>
 					<?php } // end foreach ?>
-				</ul>
+				</ol>
 			</div>
 		</section><!-- ts más solicitados -->
 		<hr class="[ large ]">
@@ -45,7 +45,7 @@
 							echo '<p>';
 
 							if(trim($value['tipo_contenido']) == 'link') {
-								echo '<a href="'.$value['url'].'">';
+								echo '<a href="'.$value['url'].'" target="_blank">';
 								echo $value['contenido'];
 								echo '</a>';
 							} else
@@ -88,7 +88,7 @@
 						}
 						if($temas_por_slide % 8 == 0)
 							echo '<div class="slide">';
-						echo '<a href="'.$url_tema.'" class="boton columna xmall-3 cuadrado chico">';
+						echo '<a href="'.$url_tema.'" class="[ boton cuadrado chico iverted ] [ columna xmall-3 ]">';
 						echo '<i class="'.$clase_icono.'"></i>';
 						echo $value->materia;
 						echo '</a>';
@@ -122,9 +122,7 @@
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 					</a>
 				</div>
-			</div>
-			<?php  if(!is_null($pregunta['pregunta'])){ ?>
-				<div class="[ inline-block vertical-middle ] [ columna xmall-12 medium-6 ]  [ denuncia-home ] [ j-pregunta-container ]">
+			</div><?php if(!is_null($pregunta['pregunta'])){ ?><div class="[ inline-block vertical-middle ] [ columna xmall-12 medium-6 ]  [ denuncia-home ] [ j-pregunta-container ]">
 					<h2 class="text-center highlight">Nos interesa tu opinión</h2>
 					<p class="[ text-center ] [ title--small ]"><?php echo $pregunta['pregunta'] ?></p>
 					<div class="[ text-center ]">

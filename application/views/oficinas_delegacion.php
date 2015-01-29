@@ -10,7 +10,7 @@
 		</div><!-- .breadcrumbs -->
 		<h2 class="text-center highlight">Oficinas por delegación</h2>
 		<div class="tabla j_area_atencion">
-			<div class="fila header clearfix">
+			<div class="fila header clearfix hide">
 				<div class="[ columna xmall-6 medium-3 ]">
 					Nombre
 				</div>

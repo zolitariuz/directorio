@@ -1,4 +1,4 @@
-<?php if(isset($usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 <div class="main">
 	<div class="width">
 		<div class="columna xmall-6 center">
@@ -11,20 +11,20 @@
 			?>
 			<form class="crea-aviso js-validate" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_usuario' ?>">
 				<fieldset class="">
-					<label class="block" for="usuario" >Nombre de usuario</label>
-					<input type="text" name="usuario" class=" columna xmall-12">
+					<label class="block" for="usuario">Nombre de usuario</label>
+					<input type="text" name="usuario" class=" columna xmall-12" maxlength="50">
 				</fieldset>
 				<fieldset class="">
 					<label class="block" for="password" >Contraseña</label>
-					<input type="text" name="password" class=" columna xmall-12">
+					<input type="text" name="password" class=" columna xmall-12" maxlength="30">
 				</fieldset>
 				<fieldset class="">
 					<label class="block" for="nombre" >Nombre</label>
-					<input type="text" name="nombre" class=" columna xmall-12">
+					<input type="text" name="nombre" class=" columna xmall-12" maxlength="30">
 				</fieldset>
 				<fieldset class="">
 					<label class="block" for="apellidos" >Apellidos</label>
-					<input type="text" name="apellidos" class=" columna xmall-12">
+					<input type="text" name="apellidos" class=" columna xmall-12" maxlength="50">
 				</fieldset>
 				<fieldset class=" url_aviso">
 					<label class="block" for="nombre" >Tipo de usuario</label>

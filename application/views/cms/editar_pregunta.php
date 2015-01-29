@@ -1,4 +1,4 @@
-<?php //if(isset($usuario)) { ?>
+<?php if(isset($_SESSION['id_usuario'])) { ?>
 
 <div class="main">
 	<div class="width">
@@ -44,4 +44,4 @@
 	</div>
 </div>
 
-<?php  //} else { header('Location: '.base_url().'index.php/login'); } ?>
+<?php  } else { header('Location: '.base_url().'index.php/login'); } ?>

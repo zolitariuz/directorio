@@ -7,7 +7,7 @@
 					<h3 class="highlight">Compártelo</h3>
 					<div class="share block">
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-layout="button" data-href="#"></div>
+						<div class="fb-share-button" data-layout="button" data-href="<?php echo $_SERVER['REQUEST_URI'] ?>"></div>
 						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
 					</div><!-- share -->
 				</div><!-- quick-info -->
@@ -49,19 +49,21 @@
 					?>
 					<p><?php echo $tiempo_respuesta ?></p>
 				</div><!-- quick-info -->
-				<hr>
-				<div class="quick-info">
-					<h3 class="highlight">¿Qué pasa si no te responden a tiempo?</h3>
-					<?php
-						$afirmativa_ficta = $ts->afirmativa_ficta;
-						$negativa_ficta = $ts->negativa_ficta;
+				<?php if($ts->afirmativa_ficta == '1' || $ts->negativa_ficta == '1') { ?>
+					<hr>
+					<div class="quick-info">
+						<h3 class="highlight">¿Qué pasa si no te responden a tiempo?</h3>
+						<?php
+							$afirmativa_ficta = $ts->afirmativa_ficta;
+							$negativa_ficta = $ts->negativa_ficta;
 
-						if($afirmativa_ficta == '1')
-							echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
-						if($negativa_ficta == '1')
-							echo '<p>Puedes asumir que la respuesta a tu petición es negativa.</p>';
-					?>
-				</div><!-- quick-info -->
+							if($afirmativa_ficta == '1')
+								echo '<p>Puedes asumir que la respuesta a tu petición es afirmativa.</p>';
+							if($negativa_ficta == '1')
+								echo '<p>Puedes asumir que la respuesta a tu petición es negativa.</p>';
+						?>
+					</div><!-- quick-info -->
+				<?php } ?>
 				<?php
 				// Áreas de pago
 				if($area_pago != ''){ ?>
@@ -87,15 +89,15 @@
 					foreach ($costo as $key => $value) {
 						if($value->concepto == 1){
 							echo '<h3 class="highlight">Costo</h3>';
-							echo '<p>$'.$value->monto.'</p>';
+							echo '<p>'.($value->monto == '0.00' ? 'variable' : '$'.$value->monto).'</p>';
 						} else {
 							if($indicePrecio == 0){
 								echo '<h3 class="highlight">Costos</h3>';
-								echo '<div class="tabla-precio">';
+								echo '<div class="[ tabla-precio ] [ margin-bottom ]">';
 							}
 							echo '<div class="costo">';
 							echo '<div class="numero-costo">';
-							echo '<p>$'.$value->monto.'</p>';
+							echo '<p>'.($value->monto == '0.00' ? 'variable' : '$'.$value->monto).'</p>';
 							echo '</div>';
 							echo '<div class="nombre-costo">';
 							echo '<p>'.$value->concepto.'</p>';
@@ -336,7 +338,7 @@
 								</li>
 							</ul>
 						</div>
-						<?php } 
+						<?php }
 							$nivel = $ts->nvl_automatizacion;
 							$link = $ts->url_nvl_automatizacion;
 							if( is_null($nivel) || $link == '' ){
@@ -414,7 +416,7 @@
 							<ul class="[ none ] [ hide ]">
 								<li>
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight"><small>¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</small></h3>
+										<h3 class="[ highlight ][ margin-bottom ]"><small>¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</small></h3>
 										<?php
 
 											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
@@ -430,12 +432,12 @@
 										?>
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight"><small>Plazo máximo de respuesta</small></h3>
+										<h3 class="[ highlight ][ margin-bottom ]"><small>Plazo máximo de respuesta</small></h3>
 										<?php echo '<p><small>'.$tiempo_respuesta.'</small></p>'; ?>
 									</div><!-- [ margin-bottom ] -->
 									<div class="[ margin-bottom ]">
-										<h3 class="highlight"><small>De acuerdo a los fundamentos jurídicos:</small></h3>
-										<ul class="[ none ]">
+										<h3 class="[ highlight ][ margin-bottom ]"><small>De acuerdo a los fundamentos jurídicos:</small></h3>
+										<ul class="[ inside disc ]">
 											<?php
 											if($info_juridica != ''){
 												foreach ($info_juridica as $key => $value) {
@@ -484,7 +486,7 @@
 						</fieldset>
 						<fieldset>
 							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
-							<textarea name="comentarios" rows="8"></textarea>
+							<textarea name="comentarios" rows="8" maxLength="1000"></textarea>
 						</fieldset>
 						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
 						<button type="submit" class="[ boton chico horizontal ] [ right ]">Enviar</button>

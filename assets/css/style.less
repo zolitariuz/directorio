@@ -289,7 +289,7 @@ body{ background: #fff; .font;
 h1{ margin: 0; .font(2em, 0.1em, 300); text-transform: uppercase;
 	a{ color: @highlight; text-decoration: none; }
 }
-h2{ margin: 0 0 (@margen*2) 0; .font(2em, 1); letter-spacing: 0.03em; color: @gris-obscuro;
+h2{ margin: 0 0 (@margen*2) 0; .font(1.5em, 1); letter-spacing: 0.03em; color: @gris-obscuro;
 	&.hero{ color: @highlight; }
 	&.boton{ margin: 0; }
 }
@@ -331,6 +331,14 @@ button, .boton{
 		>*{ color: inherit; }
 	}
 	h2{ margin: 0; }
+	&.iverted{
+		border: 3px solid @gris-obscuro;
+		color: @gris-obscuro;
+		>*{ color: inherit; }
+		&:hover, &.active{ border: 3px solid @highlight; color: @highlight;
+			>*{ color: inherit; }
+		}
+	}
 }
 
 .drop{ .transition();
@@ -397,7 +405,7 @@ article{ margin-bottom: (@margen*2);
 }
 
 
-ul{ margin: 0; list-style: lower-roman; list-style-position: outside;
+ul, ol{ margin: 0; list-style: lower-roman; list-style-position: outside;
 	&.disc{ list-style-type: disc; }
 	&.inside{ list-style-position: inside; }
 	&.arabigos{ list-style-type: decimal; }
@@ -554,7 +562,9 @@ footer{
 			i{ font-size: 1.5em; }
 		}
 		input{ .font(1.4em, 1); }
-		button{ padding: (@margen/2); }
+		button{
+			padding: 7px 10px 12px 10px; border-left: none;
+		}
 	}
 	input, button{
 		height: (@margen*2);
@@ -613,10 +623,15 @@ aside{
 }
 
 .quick-info{ margin-bottom: @margen;
-	h3{ margin-bottom: (@margen/2); .font(1.4em, 1.4em); }
+	h3{ margin-bottom: (@margen/2); .font(1.1em, 1em); }
 	i{ color: @highlight; }
-	p{ margin: 0; color: @gris-obscuro; font-size: 1.2em; }
-	.tabla-precio{ width: 100%; margin-top: (@margen/2); padding: (@margen/2); background: @gris-claro;
+	p{ margin: 0; color: @gris-obscuro; font-size: 1em; }
+	a{ font-size: 1em; }
+	.tabla-precio{
+		width: 100%;
+		margin-top: (@margen/2); padding: (@margen/2);
+		background: @gris-claro;
+		.border-radius( 20px );
 		.costo{ padding: (@margen/4) 0; border-bottom: 1px solid @gris-obscuro;
 			&:first-child{ padding-top: 0; }
 			&:last-child{ padding-bottom: 0; border-bottom: 0; }
@@ -630,6 +645,7 @@ aside{
 		>div:last-child{ margin-bottom: 0 !important; }
 	}
 }
+.quick-info + hr{ display: none; }
 
 //Redes
 .share{}
@@ -672,11 +688,11 @@ aside{
 		ul{ margin-left: 80px; }
 		ul > li:before{
 			content: "–"; /* en dash here */
-    		position: absolute;
-    		margin-left: -1.1em;
+			position: absolute;
+			margin-left: -1.1em;
 		}
 	}
-	ul, p{ .font(1.4em, 1.6em); color: @gris-obscuro; }
+	ul, p{ .font(1.2em, 1.6em); color: @gris-obscuro; }
 	ul p, ul ul li{ margin-bottom: @margen; color: @gris-obscuro; }
 	ul p{ .font(1em, 1.2em); }
 	ul ul li{ .font(0.7em, 1em); }
@@ -866,6 +882,12 @@ body.cms{
 		&.chico{ letter-spacing: 0.05em; }
 	}
 
+	//TYPOGRAPHY
+	h2{ .font(2em, 1); }
+	.content{
+		p{ .font(1.4em, 1.6em); }
+	}
+
 	//HEADER
 	.logo{ width: 13%; }
 	.header-top{ width: 50%; margin-left: 1%; margin-right: 16%; position: relative; }
@@ -874,8 +896,8 @@ body.cms{
 	footer{
 		section{ padding: @margen; }
 		.logos{
-			.gobierno{ width: 66%;
-				> div{ width: 17%; margin: 0 2%; }
+			.gobierno{ width: 48%;
+				> div{ width: 21%; margin: 0 2%; }
 			}
 			.apoyo{ width: 25%; float: right;
 				//> div{ width: 50%; margin: 0; }
@@ -891,6 +913,30 @@ body.cms{
 		.img-40{ width: 40%; }
 	}
 
+	//QUICK INFO
+	.quick-info{ margin-bottom: @margen;
+		h3{ margin-bottom: (@margen/2); .font(1.4em, 1.4em); }
+		i{ color: @highlight; }
+		p{ margin: 0; color: @gris-obscuro; font-size: 1.2em; }
+		.tabla-precio{
+			width: 100%;
+			margin-top: (@margen/2); padding: (@margen/2);
+			background: @gris-claro;
+			.border-radius( 20px );
+			.costo{ padding: (@margen/4) 0; border-bottom: 1px solid @gris-obscuro;
+				&:first-child{ padding-top: 0; }
+				&:last-child{ padding-bottom: 0; border-bottom: 0; }
+			}
+			.numero-costo{
+				p{ text-align: center; .font(2em, 2.1em); }
+			}
+			p{ color: @gris-obscuro; .font(0.9em, 1.2em, 400); }
+		}
+		.formatos{
+			>div:last-child{ margin-bottom: 0 !important; }
+		}
+	}
+	.quick-info + hr{ display: block; }
 }
 
 /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
@@ -1146,17 +1192,31 @@ body.cms{
 	/*** SINGLE ***/
 	.header-single{ margin-bottom: @margen;
 		h2{ .font(1.4em); }
-		.quick-info{ margin: 0 0 @margen 0;
+		.quick-info{ margin: 0 0 (@margen/2) 0;
 			p{ margin: 0; }
 		}
 	}
 
 	aside{
-		hr{ margin-bottom: (@margen*2); }
+		width: 100%;
+		float: none;
+		hr{
+			display: none;
+			margin-bottom: (@margen*2);
+		}
 		.boton{ display: none !important; }
 	}
 
-	.quick-info{ margin-bottom: (@margen*2);
+	.content ul, .content p{
+		font-size: 1em;
+		line-height: 1.1em;
+	}
+
+	.quick-info{
+		width: 50%;
+		margin-bottom: (@margen/2);
+		float: left;
+		&:last-of-type{ display: none; }
 		h3{ margin-bottom: (@margen/2); .font(1.4em, 1.4em); }
 		i{ color: @highlight; font-size: 1em; }
 		p{ margin: 0; color: @gris-obscuro; font-size: 1.2em; }
