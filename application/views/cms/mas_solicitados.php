@@ -4,7 +4,7 @@
 		<div class="full">
 			<section class="busqueda clearfix">
 				<h2 class="text-center">Trámites y servicios más solicitados</h2>
-				<p class="columna xmall-10 center">Para agregar un trámite a la lista de más solicitados, utiliza la barra de búsqueda. Recuerda que solo puede haber 15 trámites y/o servicios más solicitados.</p>
+				<p class="columna xmall-10 center">Para agregar un trámite a la lista de más solicitados, utiliza la barra de búsqueda. Recuerda que solo puede haber 6 trámites y/o servicios más solicitados.</p>
 				<form class="[ main-search main-search-home hero ] [ input-group ] [ full ] [ clearfix ] [ main-search-cms ]" action="#">
 					<input type="search" class="[ span xmall-10 large-11 ]" placeholder="Escribe el nombre de un trámite o servicio y agrégalo">
 					<input type="hidden" name="tags_id" id="ts_cms_id" value="x" />
@@ -29,9 +29,6 @@
 					?>
 				</div>
 			</section>
-
-
-
 		</div>
 	</div>
 </div>

@@ -533,8 +533,6 @@ function agregarTS(dataTS, base_url, ts_omitir){
 		var idTS = $('#ts_cms_id').val();
 		var ts = $('input[type="search"]').val();
 
-		console.log('hola');
-		console.log(idTS);
 		if(idTS == 'x') {
 			$('.error').text('No existe el trámite o servicio "'+ts+'."');
 			$('.error').removeClass('hide');
@@ -1005,14 +1003,12 @@ function creaMapaAreaAtencion(area_atencion_data){
 function getHorarioAreaAtencion(id_area_atencion){
 	var url = localStorage.getItem('url_ws') + '/horario_area_atencion/id/' + id_area_atencion + '/format/json';
 
-	console.log(id_area_atencion);
-	console.log(url);
-
 	$.get(
 		url,
 		function(response){
 			var dias_anteriores = 0;
 
+			console.log(response);
 			$.each(response, function(i, val){
 				var horario = $('div').find('[data-area="'+id_area_atencion+'"]');
 
@@ -1024,8 +1020,11 @@ function getHorarioAreaAtencion(id_area_atencion){
 					horario.append(val.hora_inicio+' - '+val.hora_fin+'<br /><br />');
 				}
 			});
-		}
-	);
+		})
+		.fail(function(){
+			var horario = $('div').find('[data-area="'+id_area_atencion+'"]');
+			horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
+		});
 }// getHorarioAreaAtencion
 
 function getDiasAreaAtencion(dias_abreviados){

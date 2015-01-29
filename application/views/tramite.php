@@ -7,7 +7,7 @@
 					<h3 class="highlight">Compártelo</h3>
 					<div class="share block">
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-share-button" data-layout="button" data-href="<?php echo $_SERVER['REQUEST_URI'] ?>"></div>
+						<a href="#" class="[ boton chico ] [ inline-block ] [ js-share-fb ]">Compartir en Facebook</a>
 						<a href="https://twitter.com/share" class="twitter-share-button" data-via="TramsyServGDF" data-hashtags="TramitesCDMX">Tweet</a>
 					</div><!-- share -->
 				</div><!-- quick-info -->

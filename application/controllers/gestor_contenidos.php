@@ -69,7 +69,7 @@ class Gestor_contenidos extends CI_Controller {
 		session_start();
 		session_destroy();
 		unset($_SESSION);
-		$this->login();
+		redirect('/login/', 'refresh');
 	}// logout
 
 	function administrar_usuarios(){
@@ -201,7 +201,6 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->model('pregunta');
 		$data['preguntas'] = $this->pregunta->dame_preguntas();
 
-		// Carga vista de login o index en caso de credenciales correctas
 		$this->load->view('cms/header', $data);
 		$this->load->view('cms/editar_contenido', $data);
 		$this->load->view('cms/footer');
@@ -236,7 +235,6 @@ class Gestor_contenidos extends CI_Controller {
 
 		$data['seccion'] = 'Agregar contenido';
 
-		// Carga vista de login o index en caso de credenciales correctas
 		$this->load->view('cms/header');
 		$this->load->view('cms/agregar_contenido', $data);
 		$this->load->view('cms/footer', $data);
@@ -339,7 +337,6 @@ class Gestor_contenidos extends CI_Controller {
 
 		$data['seccion'] = 'Agregar contenido';
 
-		// Carga vista de login o index en caso de credenciales correctas
 		$this->load->view('cms/header');
 		$this->load->view('cms/agregar_contenido', $data);
 		$this->load->view('cms/footer', $data);
@@ -452,7 +449,6 @@ class Gestor_contenidos extends CI_Controller {
 
 			// url relativa de la imagen
 			$img_url = explode('directorio/', $data['upload']['full_path']);
-			var_dump($img_url);
 
 			// inserta anuncio a bd
 			$this->load->model('anuncio');
@@ -643,9 +639,9 @@ class Gestor_contenidos extends CI_Controller {
 		$this->load->model('ts_comun');
 		// Revisar si hay mas de 15 trámites/servicios
 		$total =  $this->ts_comun->total_ts_comunes();
-		if($total >= 15){
+		if($total >= 6){
 			$respuesta['estatus'] = 'error';
-			$respuesta['msg'] = '¡Ya hay 15 trámites/servicios mas comunes! Elimina un registro para poder agregar más.';
+			$respuesta['msg'] = '¡Ya hay 6 trámites/servicios mas comunes! Elimina un registro para poder agregar más.';
 		} else if( $this->ts_comun->existe($id_ts) ) {
 			$respuesta['estatus'] = 'error';
 			$respuesta['msg'] = 'Ya existe el trámite/servicio que deseas agregar.';
@@ -653,7 +649,6 @@ class Gestor_contenidos extends CI_Controller {
 			$this->ts_comun->agrega_ts_comun($id_ts, 't');
 			$respuesta['estatus'] = 'success';
 		}
-
 		$this->output->set_output(json_encode($respuesta));
 	}// agregar_ts_solicitado
 
@@ -745,7 +740,6 @@ class Gestor_contenidos extends CI_Controller {
 		// sección actual
 		$data['seccion'] = 'Panel reportes';
 
-		// Carga vista de login o index en caso de credenciales correctas
 		$this->load->view('cms/header', $data);
 		$this->load->view('cms/panel_reportes', $data);
 		$this->load->view('cms/footer', $data);

@@ -202,6 +202,25 @@
 		<?php }
 
 		if($seccion == 'Tramite') { ?>
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '551510448309522',
+					xfbml      : true,
+					version    : 'v2.1'
+				});
+			};
+			$('.js-share-fb').click(function(e){
+				e.preventDefault();
+				FB.ui({
+					method: 'feed',
+					name: 'Portal Trámites y Servicios CDMX',
+					link: 'http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/<?php echo $id_tramite ?>',
+					caption: '<?php echo $ts->nombre_tramite; ?>',
+					message: ''
+					}, function(response){});
+			});
+			
+
 			agregarFeedback();
 			muestraAreaAtencionPorDelegacion();
 			imprimirInfoTramite();

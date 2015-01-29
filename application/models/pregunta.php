@@ -168,11 +168,11 @@ class Pregunta extends CI_Model {
 	 */
 	private function actualizaStatus(){
 		$data = array('is_activo' => 't');
+		$this->db->where("is_activo <> 'f'");
 		$this->db->update('preguntas', $data);
 
-		$data = array('is_activo' => 'f');
-
 		// actualizar registro
+		$data = array('is_activo' => 'f');
 		$this->db->where("fecha_final < DATE 'today' AND is_activo = 't'");
 		$this->db->update('preguntas', $data);
 	}

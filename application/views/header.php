@@ -19,6 +19,14 @@
 
 		<script type="text/javascript" src="//use.typekit.net/jro5mkt.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+
+		<meta property="fb:app_id"          content="551510448309522" /> 
+		<meta property="og:type"            content="website" /> 
+		<meta property="og:url"             content="http://samples.ogp.me/136756249803614" /> 
+		<meta property="og:title"           content="Chocolate Pecan Pie" /> 
+		<meta property="og:image"           content="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.2178-6/851565_496755187057665_544240989_n.jpg" /> 
+		<meta property="cookbook:author"    content="http://samples.ogp.me/390580850990722" />
 	</head>
 	<body>
 		<!--[if lt IE 9]>

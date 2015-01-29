@@ -115,6 +115,8 @@ class Tramites_servicios extends CI_Controller {
 		$materia_actual = $this->formateaMateria($data['ts']->materia);
 		$data['clase_icono'] = 'icon-ts-'.$materia_actual;
 
+		$data['id_tramite'] = $id_tramite;
+
 		// carga avisos
 		$this->load->model('aviso');
 		$data['avisos'] = $this->aviso->dame_avisos_activos();
