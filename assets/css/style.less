@@ -741,7 +741,10 @@ aside{
 body.cms{
 	//General
 	.main{ padding-bottom: 60px; }
-	h1{ width: 26%; margin: 0; padding: 0; }
+	h1{
+		margin: 0; padding: 0;
+		font-size: 10px; line-height: 47px;
+	}
 	form{ margin-bottom: (@margen*2);
 		input, textarea{ padding: (@margen/2); border: 1px solid @highlight;
 			&:focus{ outline-color: @highlight; }
@@ -769,19 +772,25 @@ body.cms{
 	}
 
 	//Header
-	header{ height: 40px; padding: 0; background: @highlight;
+	header{ height: 40px; padding: 0; background: @highlight; overflow: hidden;
 		> .width{ height: 100%; }
 		i{ display: initial; }
 	}
 	h1, nav{ display: inline-block; vertical-align: middle; height: 100%; }
-	h1{ line-height: 47px; }
-	nav{ width: 34%; margin: 0 0 0 40%; padding: 0; border: none; background: @highlight; position: static;
+	nav{ margin: 0; padding: 0; border: none; background: @highlight; position: static;
 		> *{ display: inline-block; vertical-align: middle; width: auto; height: 100%; margin: 0; padding: 0 3%; border-left: 1px solid @claro; line-height: 42px; color: @claro; }
-		a{ background: darken(@highlight, 20%); .transition;
-			&:hover{ background: @claro;
-				i{ color: @highlight; }
+		a{ padding: 0;
+			i{
+				padding: 31%;
+				color: @claro; background: darken(@highlight, 20%);
+				.transition;
+				&:hover{
+					background: @claro;
+					color: @highlight;
+				}
 			}
 		}
+		p{ display: none; }
 	}
 
 	//Footer
@@ -937,6 +946,15 @@ body.cms{
 		}
 	}
 	.quick-info + hr{ display: block; }
+
+
+
+
+	body.cms{
+		nav{
+			p, a{ display: inline-block; }
+		}
+	}
 }
 
 /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
@@ -1256,6 +1274,8 @@ body.cms{
 			&:last-child{ margin-bottom: 0; }
 		}
 	}
+
+	.acordeon-item ul{ display: block !important; }
 }
 
 // jquery UI datepicker

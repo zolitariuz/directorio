@@ -33,31 +33,32 @@
 		<![endif]-->
 		<div class="container">
 			<header class="clearfix">
-				<div class="width clearfix">
-					<h1>
-						<a class="block" href="<?php echo base_url('/gestor_contenidos/panel_admin') ?>">
-							<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites-blanco.png" alt="">
-						</a>
-					</h1><nav>
-						<?php
-						// ¿Ya existe una sesión?
-						if(isset($_SESSION['id_usuario'])){
-							// Jala datos de usuario activo
-							$nombre_usuario = $_SESSION['usuario'];
-							$is_admin = $_SESSION['is_admin'];
-						?>
-							<p class=""><i class="fa fa-user"></i> <?php echo $nombre_usuario ?></p>
-						<?php
-							if($is_admin == 't')
-								$rol = 'administrador';
-							else if ($is_admin == 'f')
-								$rol = 'editor';
-						?>
-							<p class=""><i class="fa fa-male"></i> <?php echo $rol ?></p>
-							<a class="" href="<?php echo base_url().'index.php/gestor_contenidos/logout/'?>"><i class="fa fa-sign-out"></i></a>
-						<?php
-						} // end if
-						?>
-					</nav>
+				<div class="[ width ]">
+					<div class="[ clearfix ]">
+						<div class="[ columna xmall-6 medium-4 ] [ text-center ]">
+							<h1>
+								<a class="block" href="<?php echo base_url('/gestor_contenidos/panel_admin') ?>">
+									<img class="img-full" src="<?php echo base_url() ?>assets/img/logo-tramites-blanco.png" alt="">
+								</a>
+							</h1>
+						</div>
+						<nav class="[ columna xmall-6 ][ right ][ text-right ][ menu__item ]">
+							<?php
+							// ¿Ya existe una sesión?
+							if(isset($_SESSION['id_usuario'])){
+								// Jala datos de usuario activo
+								$nombre_usuario = $_SESSION['usuario'];
+								$is_admin = $_SESSION['is_admin'];
+							?><p class="[ ]"><i class="fa fa-user"></i> <?php echo $nombre_usuario ?></p><?php
+								if($is_admin == 't')
+									$rol = 'administrador';
+								else if ($is_admin == 'f')
+									$rol = 'editor';
+							?><p class="[ ]"><i class="fa fa-male"></i> <?php echo $rol ?></p><a class="[ ]" href="<?php echo base_url().'index.php/gestor_contenidos/logout/'?>"><i class="fa fa-sign-out"></i></a>
+							<?php
+							} // end if
+							?>
+						</nav>
+					</div>
 				</div>
 			</header>
