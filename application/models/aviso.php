@@ -149,7 +149,9 @@ class Aviso extends CI_Model {
 	 */
 	private function actualizaStatus(){
 		$data = array('is_activo' => 't');
+		$this->db->where("is_activo <> 'f'");
 		$this->db->update('avisos', $data);
+
 
 		// actualizar registro
 		$data = array('is_activo' => 'f');
