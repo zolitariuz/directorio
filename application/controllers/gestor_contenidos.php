@@ -272,7 +272,6 @@ class Gestor_contenidos extends CI_Controller {
 				$activo = 't';
 			else
 				$activo = 'f';
-			echo $activo;
 
 			$this->aviso->actualiza_aviso($id_aviso, $aviso, $url, $tipo, $fecha_inicial,$fecha_final, $activo);
 			$data['success'] = '¡Aviso actualizado!';

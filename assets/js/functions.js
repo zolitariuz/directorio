@@ -987,7 +987,7 @@ function creaMapaAreaAtencion(area_atencion_data){
 				<div class="[ columna xmall-6 medium-4 ]"> \
 					' + val['calle_numero'] + ', Col. ' + val['colonia'] + ', Del. ' + val['delegacion'] + ', ' + val['cp'] +  '\
 				</div> <div class="[ xmall-clear ] [ margin-bottom-small ]"></div>\
-				<div class="[ columna xmall-6 medium-3 ] [ j-horario ]" data-area="'+val['id_area_atencion_ts']+'"> \
+				<div class="[ columna xmall-6 medium-3 ] [ j-horario ]" data-area="'+val['id_area_atencion_ts']+i+'"> \
 				</div> \
 				<div class="[ columna xmall-6 medium-2 ]"> \
 					' + tel1 + ' ' +  ext1 + '<br /> ' + '\
@@ -995,13 +995,15 @@ function creaMapaAreaAtencion(area_atencion_data){
 				</div> \
 			</div>';
 		$('.j_area_atencion').append(fila);
-		var horario = getHorarioAreaAtencion(val['id_area_atencion_ts']);
+		var horario = getHorarioAreaAtencion(val['id_area_atencion_ts'], i);
+		console.log(horario);
 	});
 	creaMapa(area_atencion_data);
 }// creaMapaAreaAtencion
 
-function getHorarioAreaAtencion(id_area_atencion){
+function getHorarioAreaAtencion(id_area_atencion, index){
 	var url = localStorage.getItem('url_ws') + '/horario_area_atencion/id/' + id_area_atencion + '/format/json';
+	console.log(url);
 
 	$.get(
 		url,
@@ -1022,7 +1024,7 @@ function getHorarioAreaAtencion(id_area_atencion){
 			});
 		})
 		.fail(function(){
-			var horario = $('div').find('[data-area="'+id_area_atencion+'"]');
+			var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
 			horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
 		});
 }// getHorarioAreaAtencion

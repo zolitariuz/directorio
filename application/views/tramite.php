@@ -35,10 +35,17 @@
 						$tiempo_respuesta_ar = explode('_', $ts->tiempo_respuesta);
 						$dias = $tiempo_respuesta_ar[0];
 						if($tiempo_respuesta_ar[1] == 1){
-							$tipo = ' días hábiles';
+							if($dias=='1')
+								$tipo = ' día hábil';
+							else
+								$tipo = ' días hábiles';
 							$tiempo_respuesta = $dias.$tipo;
 						} else if ($tiempo_respuesta_ar[1] == 2){
-							$tipo = ' días naturales';
+							if($dias=='1')
+								$tipo = ' día natural';
+							else
+								$tipo = ' días naturales';
+							
 							$tiempo_respuesta = $dias.$tipo;
 						} else {
 							$tipo = 'Inmediato';
@@ -86,6 +93,7 @@
 					<hr>
 					<div class="quick-info">
 					<?php
+
 					foreach ($costo as $key => $value) {
 						if($value->concepto == 1){
 							echo '<h3 class="highlight">Costo</h3>';
@@ -111,6 +119,11 @@
 					} // end foreach ?>
 					</div>
 				<?php
+				} else {
+					echo '<hr><div class="quick-info">';
+					echo '<h3 class="highlight">Costo</h3>';
+					echo '<p>Sin costo</p>';
+					echo '</div>';
 				}
 				?>
 				<hr>
@@ -295,50 +308,50 @@
 					<div class="clear"></div>
 				<?php } ?>
 				<article class="" data-seccion="area-atencion">
-					<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
-					<div class="[ acordeon ]">
-						<?php if($delegacion_area_atencion != '') { ?>
-						<div class="[ acordeon-item ]">
-							<a href="#" class="[ block margin-bottom ] [ boton boton-acordeon horizontal ] [ text-left ] [ ]">
-								<i class="icon-ts-tramite-en-ventanilla"></i> En área de atención ciudadana  <i class="[ fa fa-angle-down drop ] [ right ]"></i>
-							</a>
-							<ul class="[ none ] [ hide ]">
-								<li>
-									<form class="[ margin-bottom ] [ j-area-delegacion ]" action="">
-										<input type="hidden" name="id_tramite_servicio" value="<?php echo $ts->id_tramite_servicio ?>">
-										<fieldset>
-											<label for="delegacion">Delegación:</label>
-											<select name="delegacion" id="delegacion">
-												<option value="Seleccionar">Seleccionar delegación</option>
-												<?php foreach ($delegacion_area_atencion as $key => $delegacion) { ?>
+					<?php if($delegacion_area_atencion != '') { ?>
+						<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
+						<div class="[ acordeon ]">
+							<div class="[ acordeon-item ]">
+								<a href="#" class="[ block margin-bottom ] [ boton boton-acordeon horizontal ] [ text-left ] [ ]">
+									<i class="icon-ts-tramite-en-ventanilla"></i> En área de atención ciudadana  <i class="[ fa fa-angle-down drop ] [ right ]"></i>
+								</a>
+								<ul class="[ none ] [ hide ]">
+									<li>
+										<form class="[ margin-bottom ] [ j-area-delegacion ]" action="">
+											<input type="hidden" name="id_tramite_servicio" value="<?php echo $ts->id_tramite_servicio ?>">
+											<fieldset>
+												<label for="delegacion">Delegación:</label>
+												<select name="delegacion" id="delegacion">
+													<option value="Seleccionar">Seleccionar delegación</option>
+													<?php foreach ($delegacion_area_atencion as $key => $delegacion) { ?>
 
-												<option value="<?php echo $delegacion->delegacion ?>"><?php echo $delegacion->delegacion ?></option>
-												<?php } ?>
+													<option value="<?php echo $delegacion->delegacion ?>"><?php echo $delegacion->delegacion ?></option>
+													<?php } ?>
 
-											</select>
-										</fieldset>
-									</form>
-									<div class="[ tabla tabla-small ] [ j_area_atencion ] [ hide ]">
-										<div class="fila header clearfix">
-											<div class="[ columna xmall-3 ]">
-												Nombre
+												</select>
+											</fieldset>
+										</form>
+										<div class="[ tabla tabla-small ] [ j_area_atencion ] [ hide ]">
+											<div class="fila header clearfix">
+												<div class="[ columna xmall-3 ]">
+													Nombre
+												</div>
+												<div class="[ columna xmall-4 ]">
+													Dirección
+												</div>
+												<div class="[ columna xmall-3 ]">
+													Horarios
+												</div>
+												<div class="[ columna xmall-2 ]">
+													Teléfonos
+												</div>
 											</div>
-											<div class="[ columna xmall-4 ]">
-												Dirección
-											</div>
-											<div class="[ columna xmall-3 ]">
-												Horarios
-											</div>
-											<div class="[ columna xmall-2 ]">
-												Teléfonos
-											</div>
-										</div>
-										<div class="clear"></div>
-									</div><!-- tabla -->
-								</li>
-							</ul>
-						</div>
-						<?php }
+											<div class="clear"></div>
+										</div><!-- tabla -->
+									</li>
+								</ul>
+							</div>
+					<?php }
 							$nivel = $ts->nvl_automatizacion;
 							$link = $ts->url_nvl_automatizacion;
 							if( is_null($nivel) || $link == '' ){
