@@ -331,13 +331,17 @@
 				<div class="[ quick-info ] [ clearfix ] [ large ]">
 					<h3 class="highlight">Compártelo</h3>
 					<div class="share block">
-						<a href="#" class="[ boton chico ] [ block margin-bottom-small ] [ js-share-fb ]">Compartir en Facebook</a>
-						<a class="[ boton chico ] [ block ]" href="https://twitter.com/share?url=<?php echo $actual_link; ?>&text=<?php echo trim($ts->nombre_tramite); ?>&via=TramsyServGDF" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Compartir en Twitter<span></span></a>
+						<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ] [ js-share-fb ]">
+							<i class="fa fa-facebook"></i> Compartir en Facebook
+						</a>
+						<a class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ]" href="https://twitter.com/share?url=<?php echo $actual_link; ?>&text=<?php echo trim($ts->nombre_tramite); ?>&via=TramsyServGDF" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+							<i class="fa fa-twitter"></i> Compartir en Twitter
+						</a>
 					</div><!-- share -->
 				</div><!-- quick-info -->
 				<div class="clear"></div>
 				<hr class="[ large ]">
-				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ busqueda ] [ js-overlay-opener ] [ large ] ">
+				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ busqueda ] [ js-overlay-opener ] [ large ]">
 					<i class="icon-ts-buscar"></i> Busca tu trámite
 				</a>
 				<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
@@ -369,7 +373,7 @@
 								$tipo = ' día natural';
 							else
 								$tipo = ' días naturales';
-							
+
 							$tiempo_respuesta = $dias.$tipo;
 						} else {
 							$tipo = 'Inmediato';
