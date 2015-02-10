@@ -480,11 +480,7 @@
 					<article class="" data-content="beneficio-documento">
 						<div>
 							<?php if($documento != ''){
-								if($ts->is_tramite){
-									echo '<h3 class="highlight">Documento(s) a obtener</h3>';
-								} else {
-									echo '<h3 class="highlight">Beneficio(s) a obtener</h3>';
-								}
+								echo '<h3 class="highlight">Documento(s) o beneficio(s) a obtener</h3>';
 								$sinDocumento = true;
 								foreach ($documento as $key => $value) {
 									$nombreDocumento = $value['nombreDocumento'];

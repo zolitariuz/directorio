@@ -40,7 +40,7 @@
 					?>
 				</div><!-- .acordeon -->
 			<?php } else { ?>
-				<p>Por el momento no hay trámites registrados que se realicen en linea.</p>
+				<p>Por el momento no hay trámites registrados que se realicen en línea.</p>
 			<?php } ?>
 		</section>
 		<div class="clear"></div>
