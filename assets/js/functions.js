@@ -996,7 +996,6 @@ function creaMapaAreaAtencion(area_atencion_data){
 			</div>';
 		$('.j_area_atencion').append(fila);
 		var horario = getHorarioAreaAtencion(val['id_area_atencion_ts'], i);
-		console.log(horario);
 	});
 	creaMapa(area_atencion_data);
 }// creaMapaAreaAtencion
@@ -1008,11 +1007,12 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 	$.get(
 		url,
 		function(response){
+			console.log(response);
 			var dias_anteriores = 0;
 
 			console.log(response);
 			$.each(response, function(i, val){
-				var horario = $('div').find('[data-area="'+id_area_atencion+'"]');
+				var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
 
 				if(dias_anteriores != val.dias){
 					dias_anteriores = val.dias;
