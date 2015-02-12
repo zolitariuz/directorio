@@ -127,112 +127,113 @@
 					<hr>
 					<div class="clear"></div>
 				<?php } ?>
-				<article class="" data-seccion="area-atencion">
-					<?php if($delegacion_area_atencion != '') { ?>
-						<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
-						<div class="[ acordeon ]">
-							<div class="[ acordeon-item ]">
-								<a href="#" class="[ block margin-bottom ] [ boton boton-acordeon horizontal ] [ text-left ] [ ]">
-									<i class="icon-ts-tramite-en-ventanilla"></i> En área de atención ciudadana  <i class="[ fa fa-angle-down drop ] [ right ]"></i>
-								</a>
-								<ul class="[ none ] [ hide ]">
-									<li>
-										<form class="[ margin-bottom ] [ j-area-delegacion ]" action="">
-											<input type="hidden" name="id_tramite_servicio" value="<?php echo $ts->id_tramite_servicio ?>">
-											<fieldset>
-												<label for="delegacion">Delegación:</label>
-												<select name="delegacion" id="delegacion">
-													<option value="Seleccionar">Seleccionar delegación</option>
-													<?php foreach ($delegacion_area_atencion as $key => $delegacion) { ?>
+				<?php if( $delegacion_area_atencion != '' AND ( is_null($nivel) OR $link == '' ) AND $ts->tel_presentacion != '0' ) { ?>
+					<article class="" data-seccion="area-atencion">
+						<?php if( $delegacion_area_atencion != '') { ?>
+							<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
+							<div class="[ acordeon ]">
+								<div class="[ acordeon-item ]">
+									<a href="#" class="[ block margin-bottom ] [ boton boton-acordeon horizontal ] [ text-left ] [ ]">
+										<i class="icon-ts-tramite-en-ventanilla"></i> En área de atención ciudadana  <i class="[ fa fa-angle-down drop ] [ right ]"></i>
+									</a>
+									<ul class="[ none ] [ hide ]">
+										<li>
+											<form class="[ margin-bottom ] [ j-area-delegacion ]" action="">
+												<input type="hidden" name="id_tramite_servicio" value="<?php echo $ts->id_tramite_servicio ?>">
+												<fieldset>
+													<label for="delegacion">Delegación:</label>
+													<select name="delegacion" id="delegacion">
+														<option value="Seleccionar">Seleccionar delegación</option>
+														<?php foreach ($delegacion_area_atencion as $key => $delegacion) { ?>
 
-													<option value="<?php echo $delegacion->delegacion ?>"><?php echo $delegacion->delegacion ?></option>
-													<?php } ?>
-
-												</select>
-											</fieldset>
-										</form>
-										<div class="[ tabla tabla-small ] [ j_area_atencion ] [ hide ]">
-											<div class="fila header clearfix">
-												<div class="[ columna xmall-3 ]">
-													Nombre
+														<option value="<?php echo $delegacion->delegacion ?>"><?php echo $delegacion->delegacion ?></option>
+														<?php } ?>
+													</select>
+												</fieldset>
+											</form>
+											<div class="[ tabla tabla-small ] [ j_area_atencion ] [ hide ]">
+												<div class="fila header clearfix">
+													<div class="[ columna xmall-3 ]">
+														Nombre
+													</div>
+													<div class="[ columna xmall-4 ]">
+														Dirección
+													</div>
+													<div class="[ columna xmall-3 ]">
+														Horarios
+													</div>
+													<div class="[ columna xmall-2 ]">
+														Teléfonos
+													</div>
 												</div>
-												<div class="[ columna xmall-4 ]">
-													Dirección
-												</div>
-												<div class="[ columna xmall-3 ]">
-													Horarios
-												</div>
-												<div class="[ columna xmall-2 ]">
-													Teléfonos
-												</div>
-											</div>
-											<div class="clear"></div>
-										</div><!-- tabla -->
-									</li>
-								</ul>
-							</div>
-					<?php }
-							$nivel = $ts->nvl_automatizacion;
-							$link = $ts->url_nvl_automatizacion;
-							if( is_null($nivel) || $link == '' ){
-							} else{
-								echo '<div class="[ acordeon-item ]">';
-									echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
-										echo '<i class="icon-ts-tramite-en-linea"></i> En línea <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
-									echo '</a>';
-									echo '<ul class="[ none ] [ hide ]">';
-										echo '<li class="[ clearfix ]">';
-
-									if($nivel == '2'){
-										echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'" target="_blank">siguiente enlace.</a></p>';
-									} else {
-										echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
-										echo '<ul class=" ]">';
-
-										$nivel_arr = explode('_', $nivel);
-
-										foreach ($nivel_arr as $key => $value) {
-											switch($value){
-												case '1':
-													echo '<li>Solicitud en línea</li>';
-													break;
-												case '2':
-													echo '<li>Generación de línea de captura</li>';
-													break;
-												case '3':
-													echo '<li>Pago totalmente en línea</li>';
-													break;
-												case '4':
-													echo '<li>Entrega en línea</li>';
-													break;
-											}// switch
-										}// foreach
-										echo '</ul><div class="clear margin-bottom"></div>';
-										echo '<br/><a class="[ boton chico ] [ margin-bottom left ]" href="'.$link.'" target="_blank">realizar en línea</a>';
-									}
-										echo '</li>';
-									echo '</ul>';
-								echo '</div>';
-							}
-							if($ts->tel_presentacion != '0'){
-								$tel = $ts->tel_presentacion;
-								if($ts->ext_presentacion != '0')
-									$tel = $tel.' ext. '.$ts->ext_presentacion;
-								echo '<div class="[ acordeon-item ]">';
+												<div class="clear"></div>
+											</div><!-- tabla -->
+										</li>
+									</ul>
+								</div>
+						<?php }
+								$nivel = $ts->nvl_automatizacion;
+								$link = $ts->url_nvl_automatizacion;
+								if( is_null($nivel) || $link == '' ){
+								} else{
+									echo '<div class="[ acordeon-item ]">';
 										echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
-											echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
+											echo '<i class="icon-ts-tramite-en-linea"></i> En línea <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
 										echo '</a>';
-									echo '<ul class="[ none ] [ hide ]">';
-										echo '<li>';
-											echo '<p>'.$tel.'</p>';
-										echo '</li>';
-									echo '</ul>';
-								echo '</div>';
-							}
-						?>
-					</div><!-- acordeon -->
-				</article>
-				<hr>
+										echo '<ul class="[ none ] [ hide ]">';
+											echo '<li class="[ clearfix ]">';
+
+										if($nivel == '2'){
+											echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'" target="_blank">siguiente enlace.</a></p>';
+										} else {
+											echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
+											echo '<ul class=" ]">';
+
+											$nivel_arr = explode('_', $nivel);
+
+											foreach ($nivel_arr as $key => $value) {
+												switch($value){
+													case '1':
+														echo '<li>Solicitud en línea</li>';
+														break;
+													case '2':
+														echo '<li>Generación de línea de captura</li>';
+														break;
+													case '3':
+														echo '<li>Pago totalmente en línea</li>';
+														break;
+													case '4':
+														echo '<li>Entrega en línea</li>';
+														break;
+												}// switch
+											}// foreach
+											echo '</ul><div class="clear margin-bottom"></div>';
+											echo '<br/><a class="[ boton chico ] [ margin-bottom left ]" href="'.$link.'" target="_blank">realizar en línea</a>';
+										}
+											echo '</li>';
+										echo '</ul>';
+									echo '</div>';
+								}
+								if($ts->tel_presentacion != '0'){
+									$tel = $ts->tel_presentacion;
+									if($ts->ext_presentacion != '0')
+										$tel = $tel.' ext. '.$ts->ext_presentacion;
+									echo '<div class="[ acordeon-item ]">';
+											echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
+												echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
+											echo '</a>';
+										echo '<ul class="[ none ] [ hide ]">';
+											echo '<li>';
+												echo '<p>'.$tel.'</p>';
+											echo '</li>';
+										echo '</ul>';
+									echo '</div>';
+								}
+							?>
+						</div><!-- acordeon -->
+					</article>
+					<hr>
+				<?php } ?>
 				<?php if(trim($ts->observaciones) != '') { ?>
 					<article class="[ padding ]" data-seccion="observaciones">
 						<h2 class="highlight">¿Qué debes considerar?</h2>
@@ -250,11 +251,11 @@
 								<li>
 									<div class="[ margin-bottom ]">
 										<h3 class="[ highlight ][ margin-bottom ]"><small>¿Qué ocurre si no dan respuesta a mi trámite en el plazo establecido?</small></h3>
-										<?php 
-											if($ts->afirmativa_ficta == '1' || $ts->negativa_ficta == '1') { 
+										<?php
+											if($ts->afirmativa_ficta == '1' || $ts->negativa_ficta == '1') {
 												$afirmativa_ficta = $ts->afirmativa_ficta;
 												$negativa_ficta = $ts->negativa_ficta;
-											} 
+											}
 
 											if($afirmativa_ficta == '3' && $negativa_ficta == '3')
 												echo '<p><small>No aplica</small></p>';
@@ -328,23 +329,23 @@
 						</fieldset>
 						<fieldset class="rating-f">
 							<label>¿Qué tan útil ha sido?</label>
-				            <select class="example-f" id="example-f" name="rating">
-				                <option value="1">1</option>
-				                <option value="2">2</option>
-				                <option value="3">3</option>
-				                <option value="4">4</option>
-				                <option value="5">5</option>
-				            </select>
+							<select class="example-f" id="example-f" name="rating">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
 						</fieldset>
 						<fieldset class="rating-f">
 							<label>Si haz realizado este trámite anteriormente ¿cómo calificas el servicio?</label>
-				            <select class="example-f" id="example-f" name="rating-servicio">
-				                <option value="1">1</option>
-				                <option value="2">2</option>
-				                <option value="3">3</option>
-				                <option value="4">4</option>
-				                <option value="5">5</option>
-				            </select>
+							<select class="example-f" id="example-f" name="rating-servicio">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
 						</fieldset>
 						<fieldset>
 							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
@@ -386,7 +387,7 @@
 				<hr>
 				<div class="quick-info">
 					<h3 class="highlight">Tiempo de respuesta</h3>
-					
+
 					<p><?php echo $tiempo_respuesta ?></p>
 				</div><!-- quick-info -->
 				<?php if($ts->afirmativa_ficta == '1' || $ts->negativa_ficta == '1') { ?>
