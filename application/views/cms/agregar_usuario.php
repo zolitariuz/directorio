@@ -9,22 +9,22 @@
 					echo '<p class="error">'.$error.'</p>';
 				}
 			?>
-			<form class="crea-aviso js-validate" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_usuario' ?>">
+			<form class="crea-aviso js-validate-usuario" method="POST" action="<?php echo base_url().'index.php/gestor_contenidos/agregar_usuario' ?>">
 				<fieldset class="">
 					<label class="block" for="usuario">Nombre de usuario</label>
-					<input type="text" name="usuario" class=" columna xmall-12" maxlength="50">
+					<input type="text" name="usuario" class=" columna xmall-12" maxlength="50" required>
 				</fieldset>
 				<fieldset class="">
 					<label class="block" for="password" >Contraseña</label>
-					<input type="text" name="password" class=" columna xmall-12" maxlength="30">
+					<input type="text" name="password" class=" columna xmall-12" maxlength="30" required>
 				</fieldset>
 				<fieldset class="">
-					<label class="block" for="nombre" >Nombre</label>
-					<input type="text" name="nombre" class=" columna xmall-12" maxlength="30">
+					<label class="block" for="nombre">Nombre</label>
+					<input type="text" name="nombre" class=" columna xmall-12" maxlength="30" required>
 				</fieldset>
 				<fieldset class="">
 					<label class="block" for="apellidos" >Apellidos</label>
-					<input type="text" name="apellidos" class=" columna xmall-12" maxlength="50">
+					<input type="text" name="apellidos" class=" columna xmall-12" maxlength="50" required>
 				</fieldset>
 				<fieldset class=" url_aviso">
 					<label class="block" for="nombre" >Tipo de usuario</label>

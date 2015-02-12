@@ -117,6 +117,7 @@
 		//****** CMS *****//
 		//****************//
 		$('.js-login-form').validate();
+		$('.js-validate-usuario').validate();
 		$('.js-validate-aviso').validate({
 			rules: {
 				aviso: {
