@@ -127,7 +127,7 @@
 					<hr>
 					<div class="clear"></div>
 				<?php } ?>
-				<?php if( $delegacion_area_atencion != '' AND ( is_null($nivel) OR $link == '' ) AND $ts->tel_presentacion != '0' ) { ?>
+				<?php if( $delegacion_area_atencion != '' OR ( ! is_null($nivel) OR $link != '' ) OR $ts->tel_presentacion != '0' ) { ?>
 					<article class="" data-seccion="area-atencion">
 						<?php if( $delegacion_area_atencion != '') { ?>
 							<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
