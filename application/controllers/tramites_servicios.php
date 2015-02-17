@@ -54,13 +54,6 @@ class Tramites_servicios extends CI_Controller {
 		else
 			$data['formatos'] = json_decode($formatos);
 
-		// Carga areas de atención de un trámite o servicio
-		/*$area_atencion =  file_get_contents($url_ws.'/area_atencion/id/'.$id_tramite.'/format/json');
-		if(is_null($area_atencion))
-			$data['area_atencion'] = '';
-		else
-			$data['area_atencion'] = $this->dameAreasAtencion(json_decode($area_atencion));*/
-
 		// Carga delegaciones de las áreas de atención de un trámite
 		$delegacion_area_atencion =  file_get_contents($url_ws.'/delegacion_area_atencion/id/'.$id_tramite.'/format/json');
 		if(is_null($delegacion_area_atencion))
