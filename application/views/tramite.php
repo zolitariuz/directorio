@@ -15,7 +15,7 @@
 					</div><!-- .breadcrumbs -->
 					<div class="[ quick-info ] [ margin-bottom ]">
 						<i class="icon-ts-temas"></i> <b>Tema:</b> <span class="[ highlight ]"><?php echo $ts->materia ?></span><br />
-						<i class="<?php echo $clase_icono ?>"></i> <b>Unidad responsable:</b> <span class="[ highlight ]"><?php echo $ts->ente ?></span>
+						<i class="<?php echo $clase_icono ?>"></i> <b>Unidad responsable:</b> <span class="[ highlight ]"><?php echo $ente ?></span>
 					</div><!-- quick-info -->
 				</article><!-- header-single -->
 				<article class="consiste">
@@ -28,7 +28,11 @@
 				</article>
 				<hr>
 				<article class="beneficiario">
-					<h2 class="highlight">¿Quién realiza el trámite?</h2>
+					<?php if($is_tramite == '1') { ?>
+						<h2 class="highlight">¿Quién realiza el trámite?</h2>
+					<?php } else { ?>
+						<h2 class="highlight">¿Quién realiza el servicio?</h2>
+					<?php } ?>
 					<p><?php echo $ts->beneficiario ?></p>
 				</article>
 				<hr>
@@ -374,9 +378,11 @@
 				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ busqueda ] [ js-overlay-opener ] [ large ]">
 					<i class="icon-ts-buscar"></i> Busca tu trámite
 				</a>
-				<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
-					<i class="icon-ts-marcador-mapa"></i> ¿Dónde se realiza?
-				</a>
+				<?php if( $delegacion_area_atencion != '') { ?>
+					<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
+						<i class="icon-ts-marcador-mapa"></i> ¿Dónde se realiza?
+					</a>
+				<?php } ?>
 				<a href="#" data-seccion="requisitos" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
 					<i class="icon-ts-reportes"></i> Requisitos
 				</a>

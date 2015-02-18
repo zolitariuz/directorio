@@ -108,6 +108,14 @@ class Tramites_servicios extends CI_Controller {
 		$materia_actual = $this->formateaMateria($data['ts']->materia);
 		$data['clase_icono'] = 'icon-ts-'.$materia_actual;
 
+		// Revisar si tiene ente papa
+		if($data['ts']->ente_padre != '0') {
+			$ente_responsable = file_get_contents($url_ws.'/institucion/id/'.$data['ts']->ente_padre.'/format/json');
+			$data['ente'] = json_decode($ente_responsable)->institucion;
+		} else {
+			$data['ente'] = $data['ts']->ente;
+		}
+
 		$data['id_tramite'] = $id_tramite;
 
 		// carga avisos
