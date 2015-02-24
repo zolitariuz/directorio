@@ -23,7 +23,7 @@
 					<?php if(is_null($ts->descripcion)) { ?>
 						<p class="hero">Este trámite no tiene descripción.</p>
 					<?php } else {  ?>
-						<p class="hero"><?php echo $ts->descripcion; ?></p>
+						<p class="hero"><?php echo nl2br($ts->descripcion); ?></p>
 					<?php } ?>
 				</article>
 				<hr>
@@ -33,7 +33,7 @@
 					<?php } else { ?>
 						<h2 class="highlight">¿Quién realiza el servicio?</h2>
 					<?php } ?>
-					<p><?php echo $ts->beneficiario ?></p>
+					<p><?php echo nl2br($ts->beneficiario) ?></p>
 				</article>
 				<hr>
 				<?php
@@ -95,7 +95,7 @@
 										$requisitoEsp = $value->requisito_especifico;
 										echo '<div class="paso clearfix">';
 										echo '<span>'.$numReq.'</span>';
-										echo '<p>'.$requisitoEsp.'</p>';
+										echo '<p>'.nl2br($requisitoEsp).'</p>';
 										echo '</div>';
 										$numReq = $numReq + 1;
 									} // end foreach
@@ -122,7 +122,7 @@
 									echo '<p class="highlight">Actor: Sistema informático</p>';
 								}
 
-								echo '<p>'.$value->accion.'</p>';
+								echo '<p>'.nl2br($value->accion).'</p>';
 							echo '</div>';
 						} // end foreach
 					?>
@@ -241,7 +241,7 @@
 				<?php if(trim($ts->observaciones) != '') { ?>
 					<article class="[ padding ]" data-seccion="observaciones">
 						<h2 class="highlight">¿Qué debes considerar?</h2>
-						<p class="[ darker-light-grey italic ]"><?php echo $ts->observaciones ?></p>
+						<p class="[ darker-light-grey italic ]"><?php echo nl2br($ts->observaciones) ?></p>
 					</article>
 					<hr>
 				<?php } ?>
@@ -308,7 +308,7 @@
 											<?php
 											if($info_juridica != ''){
 												foreach ($info_juridica as $key => $value) {
-													echo '<li><small>'.$value->descripcion.' '.$value->articulos.'</small></li>';
+													echo '<li><small>'.nl2br($value->descripcion.' '.$value->articulos).'</small></li>';
 												} // end foreach
 											}
 											?>
