@@ -38,6 +38,7 @@
 				<hr>
 				<?php
 				$numReq = 1;
+
 				if($requisitos == '' && $requisitos_esp == ''){
 					echo '<p>Este trámite o servicio no tiene requisitos</p>';
 				} else { ?>
@@ -88,19 +89,21 @@
 									$numReqAcr = $numReqAcr + 1;
 								} // end foreach
 								echo '</ul></div>';
-								// Cargar requisitos específicos si existen
-								if($requisitos_esp != ''){
-									$requisitoEsp = '';
-									foreach ($requisitos_esp as $key => $value) {
-										$requisitoEsp = $value->requisito_especifico;
-										echo '<div class="paso clearfix">';
-										echo '<span>'.$numReq.'</span>';
-										echo '<p>'.nl2br($requisitoEsp).'</p>';
-										echo '</div>';
-										$numReq = $numReq + 1;
-									} // end foreach
-								}
-							} ?>
+								
+							} 
+							// Cargar requisitos específicos si existen
+							if($requisitos_esp != ''){
+								$requisitoEsp = '';
+								foreach ($requisitos_esp as $key => $value) {
+									$requisitoEsp = $value->requisito_especifico;
+									echo '<div class="paso clearfix">';
+									echo '<span>'.$numReq.'</span>';
+									echo '<p>'.nl2br($requisitoEsp).'</p>';
+									echo '</div>';
+									$numReq = $numReq + 1;
+								} // end foreach
+							}
+							?>
 						</div>
 					</article>
 					<hr>
