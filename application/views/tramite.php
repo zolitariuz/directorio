@@ -15,7 +15,7 @@
 					</div><!-- .breadcrumbs -->
 					<div class="[ quick-info ] [ margin-bottom ]">
 						<i class="icon-ts-temas"></i> <b>Tema:</b> <span class="[ highlight ]"><?php echo $ts->materia ?></span><br />
-						<i class="<?php echo $clase_icono ?>"></i> <b>Unidad responsable:</b> <span class="[ highlight ]"><?php echo $ts->ente ?></span>
+						<i class="<?php echo $clase_icono ?>"></i> <b>Unidad responsable:</b> <span class="[ highlight ]"><?php echo $ente ?></span>
 					</div><!-- quick-info -->
 				</article><!-- header-single -->
 				<article class="consiste">
@@ -23,17 +23,22 @@
 					<?php if(is_null($ts->descripcion)) { ?>
 						<p class="hero">Este trámite no tiene descripción.</p>
 					<?php } else {  ?>
-						<p class="hero"><?php echo $ts->descripcion; ?></p>
+						<p class="hero"><?php echo nl2br($ts->descripcion); ?></p>
 					<?php } ?>
 				</article>
 				<hr>
 				<article class="beneficiario">
-					<h2 class="highlight">¿Quién realiza el trámite?</h2>
-					<p><?php echo $ts->beneficiario ?></p>
+					<?php if($is_tramite == '1') { ?>
+						<h2 class="highlight">¿Quién realiza el trámite?</h2>
+					<?php } else { ?>
+						<h2 class="highlight">¿Quién realiza el servicio?</h2>
+					<?php } ?>
+					<p><?php echo nl2br($ts->beneficiario) ?></p>
 				</article>
 				<hr>
 				<?php
 				$numReq = 1;
+
 				if($requisitos == '' && $requisitos_esp == ''){
 					echo '<p>Este trámite o servicio no tiene requisitos</p>';
 				} else { ?>
@@ -84,19 +89,21 @@
 									$numReqAcr = $numReqAcr + 1;
 								} // end foreach
 								echo '</ul></div>';
-								// Cargar requisitos específicos si existen
-								if($requisitos_esp != ''){
-									$requisitoEsp = '';
-									foreach ($requisitos_esp as $key => $value) {
-										$requisitoEsp = $value->requisito_especifico;
-										echo '<div class="paso clearfix">';
-										echo '<span>'.$numReq.'</span>';
-										echo '<p>'.$requisitoEsp.'</p>';
-										echo '</div>';
-										$numReq = $numReq + 1;
-									} // end foreach
-								}
-							} ?>
+								
+							} 
+							// Cargar requisitos específicos si existen
+							if($requisitos_esp != ''){
+								$requisitoEsp = '';
+								foreach ($requisitos_esp as $key => $value) {
+									$requisitoEsp = $value->requisito_especifico;
+									echo '<div class="paso clearfix">';
+									echo '<span>'.$numReq.'</span>';
+									echo '<p>'.nl2br($requisitoEsp).'</p>';
+									echo '</div>';
+									$numReq = $numReq + 1;
+								} // end foreach
+							}
+							?>
 						</div>
 					</article>
 					<hr>
@@ -118,7 +125,7 @@
 									echo '<p class="highlight">Actor: Sistema informático</p>';
 								}
 
-								echo '<p>'.$value->accion.'</p>';
+								echo '<p>'.nl2br($value->accion).'</p>';
 							echo '</div>';
 						} // end foreach
 					?>
@@ -127,7 +134,7 @@
 					<hr>
 					<div class="clear"></div>
 				<?php } ?>
-				<?php if( $delegacion_area_atencion != '' AND ( is_null($nivel) OR $link == '' ) AND $ts->tel_presentacion != '0' ) { ?>
+				<?php if( $delegacion_area_atencion != '' OR ( ! is_null($nivel) OR $link != '' ) OR $ts->tel_presentacion != '0' ) { ?>
 					<article class="" data-seccion="area-atencion">
 						<?php if( $delegacion_area_atencion != '') { ?>
 							<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
@@ -237,7 +244,7 @@
 				<?php if(trim($ts->observaciones) != '') { ?>
 					<article class="[ padding ]" data-seccion="observaciones">
 						<h2 class="highlight">¿Qué debes considerar?</h2>
-						<p class="[ darker-light-grey italic ]"><?php echo $ts->observaciones ?></p>
+						<p class="[ darker-light-grey italic ]"><?php echo nl2br($ts->observaciones) ?></p>
 					</article>
 					<hr>
 				<?php } ?>
@@ -304,7 +311,7 @@
 											<?php
 											if($info_juridica != ''){
 												foreach ($info_juridica as $key => $value) {
-													echo '<li><small>'.$value->descripcion.' '.$value->articulos.'</small></li>';
+													echo '<li><small>'.nl2br($value->descripcion.' '.$value->articulos).'</small></li>';
 												} // end foreach
 											}
 											?>
@@ -374,9 +381,11 @@
 				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ busqueda ] [ js-overlay-opener ] [ large ]">
 					<i class="icon-ts-buscar"></i> Busca tu trámite
 				</a>
-				<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
-					<i class="icon-ts-marcador-mapa"></i> ¿Dónde se realiza?
-				</a>
+				<?php if( $delegacion_area_atencion != '') { ?>
+					<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
+						<i class="icon-ts-marcador-mapa"></i> ¿Dónde se realiza?
+					</a>
+				<?php } ?>
 				<a href="#" data-seccion="requisitos" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
 					<i class="icon-ts-reportes"></i> Requisitos
 				</a>

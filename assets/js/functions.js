@@ -117,6 +117,7 @@
 		//****** CMS *****//
 		//****************//
 		$('.js-login-form').validate();
+		$('.js-validate-usuario').validate();
 		$('.js-validate-aviso').validate({
 			rules: {
 				aviso: {
@@ -479,7 +480,7 @@ function busquedaTS(dataTS, base_url){
 	$('.main-search-movil button').on('click', function(e){
 
 		e.preventDefault();
-		idTS = $('#ts_movil_id').val();
+		idTS = $('#ts_id').val();
 		if(typeof idTS !== 'undefined')
 			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
 	});
