@@ -1791,7 +1791,7 @@ body.cms footer nav {
   position: absolute;
   left: 0;
   bottom: 40px;
-  background: none;
+  background: #ec2383;
 }
 body.cms footer nav a {
   display: block;
@@ -2354,25 +2354,6 @@ body.cms footer nav i {
   footer section {
     padding: 20px;
   }
-  footer nav {
-    height: 100%;
-    position: relative !important;
-    bottom: 0 !important;
-  }
-  footer nav > * {
-    border-left: 1px solid #ec2383 !important;
-    color: #ec2383 !important;
-  }
-  footer nav a {
-    display: inline-block !important;
-    margin: 0 1% !important;
-    padding: 0 10px !important;
-    color: #ec2383 !important;
-  }
-  footer nav i {
-    top: 2px !important;
-    color: #ec2383 !important;
-  }
   .main-search.hero {
     margin: 0;
   }
@@ -2463,6 +2444,26 @@ body.cms footer nav i {
   }
   .slider .cycle-controls.cycle-next {
     right: 2%;
+  }
+  body.cms footer nav {
+    height: 100%;
+    position: relative !important;
+    bottom: 0 !important;
+    background: none;
+  }
+  body.cms footer nav > * {
+    border-left: 1px solid #ec2383 !important;
+    color: #ec2383 !important;
+  }
+  body.cms footer nav a {
+    display: inline-block !important;
+    margin: 0 1% !important;
+    padding: 0 10px !important;
+    color: #ec2383 !important;
+  }
+  body.cms footer nav i {
+    top: 2px !important;
+    color: #ec2383 !important;
   }
 }
 /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */

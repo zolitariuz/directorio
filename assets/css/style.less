@@ -827,7 +827,7 @@ body.cms{
 			display: none;
 			height: auto;
 			position: absolute; left: 0; bottom: 40px;
-			background: none;
+			background: @highlight;
 			a{
 				display: block;
 			}
@@ -1115,28 +1115,6 @@ body.cms{
 	//FOOTER
 	footer{
 		section{ padding: @margen; }
-
-		nav{
-			height: 100%;
-			position: relative !important; bottom: 0 !important;
-
-			> *{
-				border-left: 1px solid @highlight !important;
-				color: @highlight !important;
-			}
-
-			a{
-				display: inline-block !important;
-				margin: 0 1% !important;
-				padding: 0 10px !important;
-				color: @highlight !important;
-			}
-
-			i{
-				top: 2px !important;
-				color: @highlight !important;
-			}
-		}
 	}
 
 	//MAIN-HOME
@@ -1186,6 +1164,35 @@ body.cms{
 			&.cycle-next{ right: 2%; }
 		}
 	}
+
+	body.cms{
+
+		footer nav{
+			height: 100%;
+			position: relative !important; bottom: 0 !important;
+			background: none;
+
+			> *{
+				border-left: 1px solid @highlight !important;
+				color: @highlight !important;
+			}
+
+			a{
+				display: inline-block !important;
+				margin: 0 1% !important;
+				padding: 0 10px !important;
+				color: @highlight !important;
+			}
+
+			i{
+				top: 2px !important;
+				color: @highlight !important;
+			}
+		}
+
+	}
+
+
 }
 
  /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
