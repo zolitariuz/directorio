@@ -45,7 +45,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 // Datos de conexión a los web services
 define('USUARIO_WS', 'admin_ts');
-define('PASSWORD_WS', '@dm1n_TS_123');
+define('PASSWORD_WS', 'Adm1n_TS_123');
 define('URL_WS', 'localhost:8888/tramites_cdmx_ws/index.php/api/');
 
 

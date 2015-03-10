@@ -78,6 +78,47 @@ class Inicio extends CI_Controller {
 	} // index
 
 	/**
+	 * Descripción: Link para mostrar la gaceta
+	 */
+	function consulta_gaceta() {
+
+		$data['seccion'] = 'Consulta Gaceta';
+
+		$this->load->view('header', $data);
+		$this->load->view('consulta_gaceta', $data);
+		$this->load->view('footer', $data);
+	}// consulta_gaceta
+
+	/**
+	 * Descripción: Link para mostrar la gaceta
+	 */
+	function busqueda($palabra_clave) {
+		$this->load->helper('url');
+		// Variable de conexión a web services
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+		//$data['palabra_clave'] = strtolower(urldecode($palabra_clave));
+		$data['palabra_clave'] = strtolower($this->reemplazarAcentosEsp($palabra_clave));
+
+		// Obtener nombres de trámites y servicios via WS
+		$busqueda =  file_get_contents($url_ws.'/buscar/term/'.$data['palabra_clave'].'/format/json');
+		if(is_null($busqueda))
+			$data['resultados'] = '';
+		else
+			$data['resultados'] = json_decode($busqueda);
+
+		if(count($data['resultados']) == 1) redirect('/tramites_servicios/muestraInfo/'.$data['resultados'][0]->id_tramite_servicio);
+
+		$data['num_resultados'] = count($data['resultados']);
+		$data['palabra_clave'] = urldecode($palabra_clave);
+
+		$data['seccion'] = 'Búsqueda';
+
+		$this->load->view('header', $data);
+		$this->load->view('busqueda', $data);
+		$this->load->view('footer', $data);
+	}// busqueda
+
+	/**
 	 * Descripción: Cuenta voto de la pregunta actual
 	 * @param
 	 * @return
@@ -101,22 +142,26 @@ class Inicio extends CI_Controller {
 	private function formateaMateria($str) {
 		$str = trim($str);
 		$a = array('À','Á','Â','Ã','Ä','Å','Æ','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ð','Ñ','Ò','Ó','Ô','Õ','Ö','Ø','Ù','Ú','Û','Ü','Ý','ß','à','á','â','ã','ä','å','æ','ç','è','é','ê','ë','ì','í','î','ï','ñ','ò','ó','ô','õ','ö','ø','ù','ú','û','ü','ý','ÿ','Ā','ā','Ă','ă','Ą','ą','Ć','ć','Ĉ','ĉ','Ċ','ċ','Č','č','Ď','ď','Đ','đ','Ē','ē','Ĕ','ĕ','Ė','ė','Ę','ę','Ě','ě','Ĝ','ĝ','Ğ','ğ','Ġ','ġ','Ģ','ģ','Ĥ','ĥ','Ħ','ħ','Ĩ','ĩ','Ī','ī','Ĭ','ĭ','Į','į','İ','ı','Ĳ','ĳ','Ĵ','ĵ','Ķ','ķ','Ĺ','ĺ','Ļ','ļ','Ľ','ľ','Ŀ','ŀ','Ł','ł','Ń','ń','Ņ','ņ','Ň','ň','ŉ','Ō','ō','Ŏ','ŏ','Ő','ő','Œ','œ','Ŕ','ŕ','Ŗ','ŗ','Ř','ř','Ś','ś','Ŝ','ŝ','Ş','ş','Š','š','Ţ','ţ','Ť','ť','Ŧ','ŧ','Ũ','ũ','Ū','ū','Ŭ','ŭ','Ů','ů','Ű','ű','Ų','ų','Ŵ','ŵ','Ŷ','ŷ','Ÿ','Ź','ź','Ż','ż','Ž','ž','ſ','ƒ','Ơ','ơ','Ư','ư','Ǎ','ǎ','Ǐ','ǐ','Ǒ','ǒ','Ǔ','ǔ','Ǖ','ǖ','Ǘ','ǘ','Ǚ','ǚ','Ǜ','ǜ','Ǻ','ǻ','Ǽ','ǽ','Ǿ','ǿ','Ά','ά','Έ','έ','Ό','ό','Ώ','ώ','Ί','ί','ϊ','ΐ','Ύ','ύ','ϋ','ΰ','Ή','ή');
-	  $b = array('A','A','A','A','A','A','AE','C','E','E','E','E','I','I','I','I','D','N','O','O','O','O','O','O','U','U','U','U','Y','s','a','a','a','a','a','a','ae','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','o','u','u','u','u','y','y','A','a','A','a','A','a','C','c','C','c','C','c','C','c','D','d','D','d','E','e','E','e','E','e','E','e','E','e','G','g','G','g','G','g','G','g','H','h','H','h','I','i','I','i','I','i','I','i','I','i','IJ','ij','J','j','K','k','L','l','L','l','L','l','L','l','l','l','N','n','N','n','N','n','n','O','o','O','o','O','o','OE','oe','R','r','R','r','R','r','S','s','S','s','S','s','S','s','T','t','T','t','T','t','U','u','U','u','U','u','U','u','U','u','U','u','W','w','Y','y','Y','Z','z','Z','z','Z','z','s','f','O','o','U','u','A','a','I','i','O','o','U','u','U','u','U','u','U','u','U','u','A','a','AE','ae','O','o','Α','α','Ε','ε','Ο','ο','Ω','ω','Ι','ι','ι','ι','Υ','υ','υ','υ','Η','η');
-	  $materia_formateada = strtolower(str_replace($a,$b,$str));
-	  $materia_formateada = str_replace(',', '', $materia_formateada);
-	  return str_replace(' ','-',$materia_formateada);
+	  	$b = array('A','A','A','A','A','A','AE','C','E','E','E','E','I','I','I','I','D','N','O','O','O','O','O','O','U','U','U','U','Y','s','a','a','a','a','a','a','ae','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','o','u','u','u','u','y','y','A','a','A','a','A','a','C','c','C','c','C','c','C','c','D','d','D','d','E','e','E','e','E','e','E','e','E','e','G','g','G','g','G','g','G','g','H','h','H','h','I','i','I','i','I','i','I','i','I','i','IJ','ij','J','j','K','k','L','l','L','l','L','l','L','l','l','l','N','n','N','n','N','n','n','O','o','O','o','O','o','OE','oe','R','r','R','r','R','r','S','s','S','s','S','s','S','s','T','t','T','t','T','t','U','u','U','u','U','u','U','u','U','u','U','u','W','w','Y','y','Y','Z','z','Z','z','Z','z','s','f','O','o','U','u','A','a','I','i','O','o','U','u','U','u','U','u','U','u','U','u','A','a','AE','ae','O','o','Α','α','Ε','ε','Ο','ο','Ω','ω','Ι','ι','ι','ι','Υ','υ','υ','υ','Η','η');
+	  	$materia_formateada = strtolower(str_replace($a,$b,$str));
+	  	$materia_formateada = str_replace(',', '', $materia_formateada);
+	  	return str_replace(' ','-',$materia_formateada);
 	}// formateaMateria
 
 	/**
-	 * Descripción: Link para mostrar la gaceta
+	 * Descripción: Borra acentos de materias para
+	 * armar el nombre del icono
+	 * @param string $str
+	 * @return string 
 	 */
-	function consulta_gaceta() {
+	private function reemplazarAcentosEsp($str) {
+		$str = trim($str);
 
-		$data['seccion'] = 'Consulta Gaceta';
-
-		$this->load->view('header', $data);
-		$this->load->view('consulta_gaceta', $data);
-		$this->load->view('footer', $data);
+		$a = array('Á','É','Í','Ó','Ú','á','é','í','ó','ú');
+	  	$b = array('_A_','_E_','_I_','_O_','_U_','_a_','_e_','_i_','_o_','_u_');
+	  	return str_replace($a,$b,$str);
 	}// formateaMateria
+
+	
 
 }// class Inicio

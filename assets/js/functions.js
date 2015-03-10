@@ -478,7 +478,6 @@ function busquedaTS(dataTS, base_url){
 		appendTo: '.main-search-home'
 	});
 	$('.main-search-movil button').on('click', function(e){
-
 		e.preventDefault();
 		idTS = $('#ts_id').val();
 		if(typeof idTS !== 'undefined')
@@ -487,17 +486,28 @@ function busquedaTS(dataTS, base_url){
 	$('.main-search-header button').on('click', function(e){
 		e.preventDefault();
 		idTS = $('#ts_id').val();
-		if(typeof idTS !== 'undefined')
-			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
+		var searchTerm = $('.search-input').val();
 	});
 
 	$('.main-search-home button').on('click', function(e){
 		e.preventDefault();
-		idTS = $('#ts_id').val();
-		if(typeof idTS !== 'undefined')
-			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
+		idTS = $('#ts_home_id').val();
+		var searchTerm = $('.search-input').val();
+
+		if(searchTerm != ''){
+			searchTerm = replaceDisallowedChars(searchTerm);
+			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
+			return;
+		}
+		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
+		
 	});
 } // busquedaTS
+
+function replaceDisallowedChars(term){
+	var new_term = term.replace(new RegExp('  ', 'g'), '||');
+	return new_term.replace(new RegExp(',', 'g'), '---');
+}
 
 function agregarTS(dataTS, base_url, ts_omitir){
 	var nombreTS = $.parseJSON(dataTS);
@@ -547,7 +557,6 @@ function agregarTS(dataTS, base_url, ts_omitir){
 function agregarTSSolicitado(id_ts, ts, base_url){
 	var jsonSolicitado = {};
 	jsonSolicitado['id_ts'] = id_ts;
-	console.log(id_ts);
 
 	$.post(
 		base_url + "gestor_contenidos/agregar_ts_solicitado",
@@ -935,6 +944,7 @@ function imprimirInfoTramite(){
 }
 
 function muestraAreaAtencionPorDelegacion(){
+	
 	$('select[name="delegacion"]').change(function(){
 		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
 		var delegacion = $(this).find('option:selected').val();
@@ -1003,15 +1013,12 @@ function creaMapaAreaAtencion(area_atencion_data){
 
 function getHorarioAreaAtencion(id_area_atencion, index){
 	var url = localStorage.getItem('url_ws') + '/horario_area_atencion/id/' + id_area_atencion + '/format/json';
-	console.log(url);
 
 	$.get(
 		url,
 		function(response){
-			console.log(response);
-			var dias_anteriores = 0;
+			var dias_anteriores = 0;s
 
-			console.log(response);
 			$.each(response, function(i, val){
 				var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
 
