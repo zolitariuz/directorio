@@ -32,6 +32,7 @@ class Inicio extends CI_Controller {
 		else
 			$data['nombres_ts_comunes'] = json_decode($nombres_ts_comunes);
 
+
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
 		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');

@@ -1075,7 +1075,7 @@ function getDia(dia){
 function agregarFeedback(){
 	$('.feedback [type="submit"]').on('click', function(e){
 		e.preventDefault();
-		var comentario = $('textarea[name="comentarios"').val();
+		var comentario = $('textarea[name="comentarios"]').val();
 		if($.trim(comentario) == ''){
 			alert('El campo de comentarios no puede quedar vacío.');
 			return;

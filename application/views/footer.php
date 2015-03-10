@@ -182,10 +182,12 @@
 	<script src="<?php echo base_url() ?>assets/js/plugins.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/functions.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 	<script>
+
 		localStorage.setItem('url_ws', '<?php echo $ws ?>');
 		localStorage.setItem('base_url', '<?php echo base_url() ?>');
+
 
 		<?php if($nombres_ts != '') { ?>
 			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
