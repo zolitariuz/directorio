@@ -165,7 +165,7 @@
 					<section class="busqueda clearfix">
 						<h2 class="text-center">Busca tu trámite o servicio</h2>
 						<form class="[ main-search main-search-home hero ] [ input-group ] [ full ] [ clearfix ] " action="#">
-							<input type="text" class="[ span xmall-10 large-11 ]" placeholder="Busca tu trámite o servicio">
+							<input type="text" class="[ span xmall-10 large-11 ][ search-input ]" placeholder="Busca tu trámite o servicio">
 							<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
 							<button type="submit" class="[ span xmall-2 large-1 ]"><i class="icon-ts-buscar"></i></button>
 						</form>
@@ -258,6 +258,10 @@
 
 		<?php if($seccion == 'Oficina por delegación') { ?>
 			creaMapaAreaAtencion(<?php echo $area_atencion ?>);
+		<?php } ?>
+
+		<?php if($seccion == 'Consulta Gaceta' || $seccion == 'Búsqueda' )  { ?>
+			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
 		<?php } ?>
 
 	</script>

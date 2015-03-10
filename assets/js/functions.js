@@ -479,20 +479,31 @@ function busquedaTS(dataTS, base_url){
 	});
 	$('.main-search-movil button').on('click', function(e){
 		e.preventDefault();
-		idTS = $('#ts_id').val();
-		if(typeof idTS !== 'undefined')
-			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
+		var searchTerm = $('.search-input').val();
+
+		if(searchTerm != ''){
+			searchTerm = replaceDisallowedChars(searchTerm);
+			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
+			return;
+		}
+		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
 	});
 	$('.main-search-header button').on('click', function(e){
 		e.preventDefault();
-		idTS = $('#ts_id').val();
 		var searchTerm = $('.search-input').val();
+
+		if(searchTerm != ''){
+			searchTerm = replaceDisallowedChars(searchTerm);
+			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
+			return;
+		}
+		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
 	});
 
 	$('.main-search-home button').on('click', function(e){
 		e.preventDefault();
-		idTS = $('#ts_home_id').val();
 		var searchTerm = $('.search-input').val();
+		console.log(searchTerm);
 
 		if(searchTerm != ''){
 			searchTerm = replaceDisallowedChars(searchTerm);
