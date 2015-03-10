@@ -479,9 +479,13 @@ function busquedaTS(dataTS, base_url){
 	});
 	$('.main-search-movil button').on('click', function(e){
 		e.preventDefault();
-		idTS = $('#ts_id').val();
-		if(typeof idTS !== 'undefined')
-			window.open(base_url + 'tramites_servicios/muestraInfo/' + idTS , '_self');
+		var searchTerm = $('.main-search-movil .search-input').val();
+		if( typeof searchTerm  != 'undefined' ){
+			searchTerm = replaceDisallowedChars(searchTerm);
+			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
+			return;
+		}
+		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
 	});
 	$('.main-search-header button').on('click', function(e){
 		e.preventDefault();
@@ -493,14 +497,13 @@ function busquedaTS(dataTS, base_url){
 		e.preventDefault();
 		idTS = $('#ts_home_id').val();
 		var searchTerm = $('.search-input').val();
-
-		if(searchTerm != ''){
+		if( typeof searchTerm  != 'undefined' ){
 			searchTerm = replaceDisallowedChars(searchTerm);
 			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
 			return;
 		}
 		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
-		
+
 	});
 } // busquedaTS
 
@@ -944,7 +947,7 @@ function imprimirInfoTramite(){
 }
 
 function muestraAreaAtencionPorDelegacion(){
-	
+
 	$('select[name="delegacion"]').change(function(){
 		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
 		var delegacion = $(this).find('option:selected').val();

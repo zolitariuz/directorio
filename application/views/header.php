@@ -130,9 +130,10 @@
 						Consulta Gaceta
 					</a>
 				</nav>
-				<form class="main-search main-search-movil clearfix" action="#">
-					<input type="text" class="span xmall-10">
-					<input type="hidden" name="tags_id" id="ts_movil_id" value="x" />
+				<form class="[ main-search main-search-movil ][ clearfix ][ input-group ]" action="#">
+					<input class="[ search-input ][ span xmall-10 ]" type="text">
+					<input type="hidden" name="tags_id" id="ts_movil_id"/>
 					<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
+					<p class="error"></p>
 				</form>
 			</header>

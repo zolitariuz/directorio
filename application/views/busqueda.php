@@ -6,16 +6,21 @@
 			<span>></span>
 			<span class="actual">Resultados</span>
 		</div><!-- .breadcrumbs -->
-		<section class="[ columna full medium-8 ] [ center ] [ directorio ]">
+		<section class="[ columna full medium-8 ][ center ][ directorio ]">
 			<h2 class="text-center highlight"><?php echo $num_resultados ?> resultados para: <?php echo $palabra_clave ?></h2>
-			<?php 
-				if($resultados != ''){
-					foreach ($resultados as $key => $resultado) {
-						echo '<a href="/directorio/tramites_servicios/muestraInfo/'.$resultado->id_tramite_servicio.'">'.$resultado->nombre_tramite.'</a>';
+			<ul class="[ arabigos ]">
+				<?php
+					if($resultados != ''){
+						foreach ($resultados as $key => $resultado) { ?>
+							<li>
+								<a href="/directorio/tramites_servicios/muestraInfo/<?php echo $resultado->id_tramite_servicio; ?>" class="[ margin-bottom-small ]">
+									<?php echo $resultado->nombre_tramite; ?>
+								</a>
+							</li>
+						<?php }
 					}
-				}
-			?>
-			
+				?>
+			</ul>
 		</section>
 		<div class="clear"></div>
 	</div><!-- width -->

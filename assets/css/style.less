@@ -362,7 +362,7 @@ button, .boton{
 	:-ms-input-placeholder {
 		text-align: center; color: @highlight;
 	}
-button{
+	button{
 		margin-left: -2px; border: 3px solid @highlight; .border-radiuses(15px, 15px, 0px, 0px);
 	}
 }
@@ -580,9 +580,13 @@ footer{
 	}
 	input{
 		border: 3px solid @highlight;
+		border-right-width: 5px;
 		.font(1.2em, 1); color: @highlight;
 	}
-	button{ font-size: 1.3em; color: @highlight; }
+	button{
+		font-size: 1.3em; color: @highlight;
+		background: @claro;
+	}
 	.ui-autocomplete{
 		width: 99.6% !important; max-height: 200px;
 		margin: 0; border: 3px solid @highlight;
@@ -596,10 +600,16 @@ footer{
 		}
 		.ui-state-focus{ background: @highlight; color: @claro; }
 	}
+	.error{
+		text-align: center;
+		color: @highlight;
+	}
 }
 .main-search-movil{
+	background: @claro !important;
 	.ui-autocomplete{ top: (@margen*3) !important; }
 	input, button{ height: (@margen*3); }
+	z-index: 300;
 }
 span[role="status"]{ display: none !important; }
 
