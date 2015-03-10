@@ -90,8 +90,8 @@
 							Directorio de áreas de atención ciudadana
 						</a><a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
 							Trámites y servicios en línea
-						</a><a class="text-center" href="#">
-							Preguntas frecuentes
+						</a><a class="text-center <?php if ( $seccion == 'Consulta Gaceta' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/inicio/consulta_gaceta' ?>/">
+							Consulta Gaceta
 						</a>
 					</div><!-- width -->
 				</nav>
@@ -120,9 +120,15 @@
 					</div><!-- width -->
 				</div>
 				<nav class="no-large">
-					<a class="text-center <?php if ( $seccion == 'Oficinas atencion' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">Directorio de áreas de atención ciudadana</a>
-					<a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">Trámites y servicios en línea</a>
-					<a class="text-center" href="#">Preguntas frecuentes</a>
+					<a class="text-center <?php if ( $seccion == 'Oficinas atencion' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">
+						Directorio de áreas de atención ciudadana
+					</a>
+					<a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
+						Trámites y servicios en línea
+					</a>
+					<a class="text-center <?php if ( $seccion == 'Consulta Gaceta' ) { echo 'active'; } ?>" href="<?php echo base_url().'inicio/consulta_gaceta' ?>/">
+						Consulta Gaceta
+					</a>
 				</nav>
 				<form class="main-search main-search-movil clearfix" action="#">
 					<input type="text" class="span xmall-10">

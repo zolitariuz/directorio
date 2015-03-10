@@ -106,4 +106,16 @@ class Inicio extends CI_Controller {
 	  return str_replace(' ','-',$materia_formateada);
 	}// formateaMateria
 
+	/**
+	 * Descripción: Link para mostrar la gaceta
+	 */
+	function consulta_gaceta() {
+
+		$data['seccion'] = 'Consulta Gaceta';
+
+		$this->load->view('header', $data);
+		$this->load->view('consulta_gaceta', $data);
+		$this->load->view('footer', $data);
+	}// formateaMateria
+
 }// class Inicio

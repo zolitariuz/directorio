@@ -1200,7 +1200,7 @@ nav a {
 }
 nav a:hover,
 nav a.active {
-  color: #e6e6e6;
+  color: #55072d;
 }
 /*** FOOTER ***/
 footer section {
@@ -2231,6 +2231,7 @@ body.cms footer nav i {
   }
   .header-top {
     width: 100%;
+    margin: 0;
     min-height: 110px;
   }
   .logo-bloque,
