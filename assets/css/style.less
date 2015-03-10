@@ -523,7 +523,7 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @highlight; backgro
 
 nav{ display: none; width: 100%; border-top: 1px solid @gris-obscuro; background: @highlight; position: absolute;
 	a{ display: block; padding: (@margen/2); text-align: center; border-bottom: 1px solid @claro; .font(1em, 1, 600); color: @claro; background: @gris-obscuro; text-decoration: none; .transition;
-		&:hover, &.active{ color: darken(@highlight, 35%); }
+		&:hover, &.active{ color: darken(@claro, 10%); }
 	}
 }
 
@@ -1071,7 +1071,11 @@ body.cms{
 		position: absolute; bottom: 10px;
 	}
 	nav{ margin-top: (@margen/2); padding: (@margen/2) 0 (@margen/3) 0; border-top: 1px solid @gris-claro; position: relative;
-		a{ display: inline-block; vertical-align: top; width: 31%; margin: 0 1%; padding: 0; border: none; text-align: left;  background: none; }
+		a{ display: inline-block; vertical-align: top; width: 31%; margin: 0 1%; padding: 0; border: none; text-align: left;  background: none;
+			&:hover, &.active{
+				color: darken(@highlight, 35%);
+			}
+		}
 	}
 	.ads{
 		height: 100%;

@@ -1200,7 +1200,7 @@ nav a {
 }
 nav a:hover,
 nav a.active {
-  color: #55072d;
+  color: #e6e6e6;
 }
 /*** FOOTER ***/
 footer section {
@@ -2278,6 +2278,10 @@ body.cms footer nav i {
     border: none;
     text-align: left;
     background: none;
+  }
+  nav a:hover,
+  nav a.active {
+    color: #55072d;
   }
   .ads {
     height: 100%;
