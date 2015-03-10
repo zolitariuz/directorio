@@ -449,7 +449,7 @@ function busquedaTS(dataTS, base_url){
 
 	// Autocompletado carga página en blanco con trámite o servicio
 	// al seleccionar opción o dar <Enter>
-	$('.main-search-movil input[type="search"]').autocomplete({
+	$('.main-search-movil input[type="text"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 			$('#ts_movil_id').val(mapNombreTS[ui.item.value]);
@@ -458,7 +458,7 @@ function busquedaTS(dataTS, base_url){
 		},
 		appendTo: '.main-search-movil'
 	});
-	$('.main-search-footer input[type="search"]').autocomplete({
+	$('.main-search-footer input[type="text"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 			$('#ts_footer_id').val(mapNombreTS[ui.item.value]);
@@ -467,7 +467,7 @@ function busquedaTS(dataTS, base_url){
 		},
 		appendTo: '.main-search-footer'
 	});
-	$('.main-search-home input[type="search"]').autocomplete({
+	$('.main-search-home input[type="text"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 			$('#ts_home_id').val(mapNombreTS[ui.item.value]);
@@ -516,7 +516,7 @@ function agregarTS(dataTS, base_url, ts_omitir){
 
 	// Autocompletado carga página en blanco con trámite o servicio
 	// al seleccionar opción o dar <Enter>
-	$('.main-search-cms input[type="search"]').autocomplete({
+	$('.main-search-cms input[type="text"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 			$('#ts_cms_id').val(mapNombreTS[ui.item.value]);
@@ -532,7 +532,7 @@ function agregarTS(dataTS, base_url, ts_omitir){
 	$('.main-search button').on('click', function(e){
 		e.preventDefault();
 		var idTS = $('#ts_cms_id').val();
-		var ts = $('input[type="search"]').val();
+		var ts = $('input[type="text"]').val();
 
 		if(idTS == 'x') {
 			$('.error').text('No existe el trámite o servicio "'+ts+'."');
@@ -612,7 +612,7 @@ function agregarTSReportes(dataTS, base_url){
 
 	// Autocompletado carga página en blanco con trámite o servicio
 	// al seleccionar opción o dar <Enter>
-	$('.main-search-reportes input[type="search"]').autocomplete({
+	$('.main-search-reportes input[type="text"]').autocomplete({
 		source: srcNombreTS,
 		select: function(event, ui) {
 			$('#ts_cms_id').val(mapNombreTS[ui.item.value]);
@@ -626,7 +626,7 @@ function agregarTSReportes(dataTS, base_url){
 	$('.main-search button').on('click', function(e){
 		e.preventDefault();
 		var idTS = $('#ts_cms_id').val();
-		var ts = $('input[type="search"]').val();
+		var ts = $('input[type="text"]').val();
 
 		muestraReporteTS(idTS, ts, base_url);
 	});
@@ -795,13 +795,13 @@ function toggleUrlAviso(){
 	$('.crea-aviso input[name="link_aviso"]').change(function(){
 		if($(this).is(":checked")) {
 			$('.url_aviso').removeClass('hide');
-			$('.url_aviso input').addClass('required');			
+			$('.url_aviso input').addClass('required');
 			$('.url_aviso input').val('');
 			$('.url_aviso input').focus();
 		}
 		else {
 			$('.url_aviso').addClass('hide');
-			$('.url_aviso input').removeClass('required');	
+			$('.url_aviso input').removeClass('required');
 			$('.url_aviso input').val('-');
 		}
 	});
@@ -811,13 +811,13 @@ function toggleUrlAnuncio(){
 	$('.crea-anuncio input[name="link_anuncio"]').change(function(){
 		if($(this).is(":checked")) {
 			$('.url_anuncio').removeClass('hide');
-			$('.url_anuncio input').addClass('required');	
+			$('.url_anuncio input').addClass('required');
 			$('.url_anuncio input').val('');
 			$('.url_anuncio input').focus();
 		}
 		else {
 			$('.url_anuncio').addClass('hide');
-			$('.url_anuncio input').removeClass('required');	
+			$('.url_anuncio input').removeClass('required');
 			$('.url_anuncio input').val('-');
 		}
 	});
@@ -1075,7 +1075,7 @@ function getDia(dia){
 function agregarFeedback(){
 	$('.feedback [type="submit"]').on('click', function(e){
 		e.preventDefault();
-		var comentario = $('textarea[name="comentarios"').val();
+		var comentario = $('textarea[name="comentarios"]').val();
 		if($.trim(comentario) == ''){
 			alert('El campo de comentarios no puede quedar vacío.');
 			return;

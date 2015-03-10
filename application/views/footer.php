@@ -165,7 +165,7 @@
 					<section class="busqueda clearfix">
 						<h2 class="text-center">Busca tu trámite o servicio</h2>
 						<form class="[ main-search main-search-home hero ] [ input-group ] [ full ] [ clearfix ] " action="#">
-							<input type="search" class="[ span xmall-10 large-11 ]" placeholder="Busca tu trámite o servicio">
+							<input type="text" class="[ span xmall-10 large-11 ]" placeholder="Busca tu trámite o servicio">
 							<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
 							<button type="submit" class="[ span xmall-2 large-1 ]"><i class="icon-ts-buscar"></i></button>
 						</form>
@@ -219,7 +219,7 @@
 					message: ''
 					}, function(response){});
 			});
-			
+
 
 			agregarFeedback();
 			muestraAreaAtencionPorDelegacion();
