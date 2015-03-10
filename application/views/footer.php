@@ -261,5 +261,9 @@
 			creaMapaAreaAtencion(<?php echo $area_atencion ?>);
 		<?php } ?>
 
+		<?php if($seccion == 'Consulta Gaceta' || $seccion == 'Búsqueda' )  { ?>
+			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
+		<?php } ?>
+
 	</script>
 </html>

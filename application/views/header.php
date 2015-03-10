@@ -80,9 +80,9 @@
 						</div><!-- ads -->
 					</div><div class="menu no-large">
 						<i class="[ fa fa-bars ] [ full ] [ text-center ]"></i>
-					</div><div class="search no-large">
+					</div><?php if ( $seccion !== 'Inicio' ) { ?><div class="search no-large">
 						<i class="[ fa fa-search ] [ full ] [ text-center ]"></i>
-					</div>
+					</div><?php } ?>
 				</div><!-- width -->
 				<nav class="large">
 					<div class="width">
@@ -131,8 +131,8 @@
 					</a>
 				</nav>
 				<form class="[ main-search main-search-movil ][ clearfix ][ input-group ]" action="#">
-					<input class="[ search-input ][ span xmall-10 ]" type="text">
-					<input type="hidden" name="tags_id" id="ts_movil_id"/>
+					<input type="text" class="[ span xmall-10 ][ search-input ]">
+					<input type="hidden" name="tags_id" id="ts_movil_id" value="x" />
 					<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
 					<p class="error"></p>
 				</form>

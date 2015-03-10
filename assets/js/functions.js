@@ -489,13 +489,18 @@ function busquedaTS(dataTS, base_url){
 	});
 	$('.main-search-header button').on('click', function(e){
 		e.preventDefault();
-		idTS = $('#ts_id').val();
 		var searchTerm = $('.search-input').val();
+
+		if(searchTerm != ''){
+			searchTerm = replaceDisallowedChars(searchTerm);
+			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
+			return;
+		}
+		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
 	});
 
 	$('.main-search-home button').on('click', function(e){
 		e.preventDefault();
-		idTS = $('#ts_home_id').val();
 		var searchTerm = $('.search-input').val();
 		if( typeof searchTerm  != 'undefined' ){
 			searchTerm = replaceDisallowedChars(searchTerm);
