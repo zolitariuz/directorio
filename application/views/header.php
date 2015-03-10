@@ -21,11 +21,11 @@
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 
-		<meta property="fb:app_id"          content="551510448309522" /> 
-		<meta property="og:type"            content="website" /> 
-		<meta property="og:url"             content="http://samples.ogp.me/136756249803614" /> 
-		<meta property="og:title"           content="Chocolate Pecan Pie" /> 
-		<meta property="og:image"           content="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.2178-6/851565_496755187057665_544240989_n.jpg" /> 
+		<meta property="fb:app_id"          content="551510448309522" />
+		<meta property="og:type"            content="website" />
+		<meta property="og:url"             content="http://samples.ogp.me/136756249803614" />
+		<meta property="og:title"           content="Chocolate Pecan Pie" />
+		<meta property="og:image"           content="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.2178-6/851565_496755187057665_544240989_n.jpg" />
 		<meta property="cookbook:author"    content="http://samples.ogp.me/390580850990722" />
 	</head>
 	<body>
@@ -90,8 +90,8 @@
 							Directorio de áreas de atención ciudadana
 						</a><a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
 							Trámites y servicios en línea
-						</a><a class="text-center" href="#">
-							Preguntas frecuentes
+						</a><a class="text-center <?php if ( $seccion == 'Consulta Gaceta' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/inicio/consulta_gaceta' ?>/">
+							Consulta Gaceta
 						</a>
 					</div><!-- width -->
 				</nav>
@@ -120,12 +120,18 @@
 					</div><!-- width -->
 				</div>
 				<nav class="no-large">
-					<a class="text-center <?php if ( $seccion == 'Oficinas atencion' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">Directorio de áreas de atención ciudadana</a>
-					<a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">Trámites y servicios en línea</a>
-					<a class="text-center" href="#">Preguntas frecuentes</a>
+					<a class="text-center <?php if ( $seccion == 'Oficinas atencion' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">
+						Directorio de áreas de atención ciudadana
+					</a>
+					<a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
+						Trámites y servicios en línea
+					</a>
+					<a class="text-center <?php if ( $seccion == 'Consulta Gaceta' ) { echo 'active'; } ?>" href="<?php echo base_url().'inicio/consulta_gaceta' ?>/">
+						Consulta Gaceta
+					</a>
 				</nav>
 				<form class="main-search main-search-movil clearfix" action="#">
-					<input type="search" class="span xmall-10">
+					<input type="text" class="span xmall-10">
 					<input type="hidden" name="tags_id" id="ts_movil_id" value="x" />
 					<button type="submit" class="span xmall-2"><i class="fa fa-search"></i></button>
 				</form>

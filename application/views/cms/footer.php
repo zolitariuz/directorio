@@ -1,7 +1,34 @@
 			</div><!-- container -->
 		<footer>
 			<div class="width">
-				<?php if($_SESSION['is_admin'] == 't') { ?>
+				<nav class="[ large ]">
+					<?php if($_SESSION['is_admin'] == 't') { ?>
+						<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_contenido/'?>">
+							<i class="icon-ts-agregar-contenido"></i>
+							<!-- <i class="icon-ts-agregar-contenido"></i> -->
+							Agregar contenido
+						</a><a href="<?php echo base_url().'index.php/gestor_contenidos/administrar_usuarios/'?>">
+							<i class="icon-ts-agregar-usuario"></i>
+							Administrar usuarios
+						</a><?php } ?><a href="<?php echo base_url().'index.php/gestor_contenidos/editar_contenido/'?>">
+						<i class="icon-ts-editar-contenido"></i>
+						Editar contenido
+					</a><a href="<?php echo base_url().'index.php/gestor_contenidos/mas_solicitados/'?>">
+						<i class="icon-ts-tramites-mas-buscados"></i>
+						Trámites y servicios mas solicitados
+					</a><a href="<?php echo base_url().'index.php/gestor_contenidos/panel_reportes/'?>">
+						<i class="icon-ts-reportes"></i>
+						Reportes
+					</a>
+				</div><!-- large -->
+				<div class="width">
+					<div class="[ menu ] [ no-large ] [ full ] [ text-right ]">
+						<i class="[ fa fa-bars ]"></i>
+					</div>
+				</div>
+			</nav>
+			<?php if($_SESSION['is_admin'] == 't') { ?>
+				<nav class="[ no-large ]">
 					<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_contenido/'?>">
 						<i class="icon-ts-agregar-contenido"></i>
 						<!-- <i class="icon-ts-agregar-contenido"></i> -->
@@ -9,9 +36,9 @@
 					</a><a href="<?php echo base_url().'index.php/gestor_contenidos/administrar_usuarios/'?>">
 						<i class="icon-ts-agregar-usuario"></i>
 						Administrar usuarios
-					</a><?php } ?><a href="<?php echo base_url().'index.php/gestor_contenidos/editar_contenido/'?>">
-					<i class="icon-ts-editar-contenido"></i>
-					Editar contenido
+				</a><?php } ?><a href="<?php echo base_url().'index.php/gestor_contenidos/editar_contenido/'?>">
+				<i class="icon-ts-editar-contenido"></i>
+				Editar contenido
 				</a><a href="<?php echo base_url().'index.php/gestor_contenidos/mas_solicitados/'?>">
 					<i class="icon-ts-tramites-mas-buscados"></i>
 					Trámites y servicios mas solicitados
@@ -19,7 +46,7 @@
 					<i class="icon-ts-reportes"></i>
 					Reportes
 				</a>
-			</div>
+			</nav>
 		</footer>
 	</body>
 

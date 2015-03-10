@@ -511,6 +511,11 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @highlight; backgro
 .search{ width: 10%;
 	i{ display: block; font-size: 1.6em; }
 }
+
+.menu, .search{
+	cursor: pointer;
+}
+
 .logo{ width: 15%;
 	img{ display: block; width: 90%; }
 }
@@ -746,7 +751,7 @@ body.cms{
 		font-size: 10px; line-height: 47px;
 	}
 	form{ margin-bottom: (@margen*2);
-		input, textarea{ padding: (@margen/2); border: 1px solid @highlight;
+		input, textarea{ padding: (@margen/2); border: 3px solid @highlight;
 			&:focus{ outline-color: @highlight; }
 		}
 		input{
@@ -759,7 +764,7 @@ body.cms{
 
 	//Log in
 	.modal-wrapper{ background: @gris-claro;}
-	.modal{ width: 300px; height: auto; border: 1px solid @highlight; .center-full;
+	.modal{ width: 300px; height: auto; padding: 10px; border: 1px solid @highlight; .center-full;
 		h1{ margin: 0 0 (@margen*2) 0; }
 		form{ margin: 0;
 			label{ .font(1.4em, 1.4em, 600);
@@ -780,9 +785,10 @@ body.cms{
 	nav{ margin: 0; padding: 0; border: none; background: @highlight; position: static;
 		> *{ display: inline-block; vertical-align: middle; width: auto; height: 100%; margin: 0; padding: 0 3%; border-left: 1px solid @claro; line-height: 42px; color: @claro; }
 		a{ padding: 0;
+			background: transparent;
 			i{
-				padding: 31%;
-				color: @claro; background: darken(@highlight, 20%);
+				padding: 8px;
+				color: @claro;
 				.transition;
 				&:hover{
 					background: @claro;
@@ -794,12 +800,46 @@ body.cms{
 	}
 
 	//Footer
-	footer{ width: 100%; height: 40px; border-top: 1px solid @highlight; background: @claro; position: fixed; bottom: 0; z-index: 9;
-		.width > a{ display: inline-block; vertical-align: middle; width: auto; height: 100%; margin: 0; padding: 0 2%; border-left: 1px solid @highlight; line-height: 42px; color: @highlight; .transition;
+	footer{
+		width: 100%; height: 40px;
+		border-top: 1px solid @highlight;
+		background: @claro;
+		position: fixed; bottom: 0;
+		z-index: 9;
+		.width > a{
+			display: inline-block; vertical-align: middle;
+			width: auto; height: 100%; margin: 0;
+			padding: 0 2%; border-left: 1px solid @highlight;
+			line-height: 42px; color: @highlight; .transition;
 			&:hover{ background: @highlight; color: @claro; }
 			&:last-child{ border-right: 1px solid @highlight; }
 		}
-		i{ font-size: 2em; line-height: 0.6em; position: relative; top: 10px; }
+		i{
+			font-size: 2em; line-height: 0.6em;
+			position: relative; top: 10px;
+		}
+		.menu i{
+			top: 0;
+		}
+
+
+		nav{
+			display: none;
+			height: auto;
+			position: absolute; left: 0; bottom: 40px;
+			background: @highlight;
+			a{
+				display: block;
+			}
+
+			i{
+				padding: 5px;
+				font-size: 1em; line-height: 1;
+				background: none;
+				top: 0;
+			}
+		}
+
 	}
 }
 
@@ -920,6 +960,7 @@ body.cms{
 		.img-60{ width: 60%; }
 		.img-50{ width: 50%; }
 		.img-40{ width: 40%; }
+
 	}
 
 	//QUICK INFO
@@ -1013,7 +1054,7 @@ body.cms{
 		z-index: 501;
 		.transition;
 	}
-	.header-top{ width: 100%; min-height: 110px; }
+	.header-top{ width: 100%; margin: 0; min-height: 110px; }
 	.logo-bloque, h1, .slogan{ display: inline-block !important; vertical-align: bottom; }
 	.logo-bloque{ width: 8%; margin-right: 1%;
 		img{ display: block; }
@@ -1030,7 +1071,11 @@ body.cms{
 		position: absolute; bottom: 10px;
 	}
 	nav{ margin-top: (@margen/2); padding: (@margen/2) 0 (@margen/3) 0; border-top: 1px solid @gris-claro; position: relative;
-		a{ display: inline-block; vertical-align: top; width: 31%; margin: 0 1%; padding: 0; border: none; text-align: left;  background: none; }
+		a{ display: inline-block; vertical-align: top; width: 31%; margin: 0 1%; padding: 0; border: none; text-align: left;  background: none;
+			&:hover, &.active{
+				color: darken(@highlight, 35%);
+			}
+		}
 	}
 	.ads{
 		height: 100%;
@@ -1107,12 +1152,51 @@ body.cms{
 				}
 			}
 		}
-		.cycle-controls{ cursor: pointer; position: absolute; top: 45%; z-index: 500;
-			i{ font-size: 4em; color: @claro; }
+		.cycle-controls{
+			width: 64px;
+			.border-radius(50%);
+			background: rgba(0, 0, 0, 0.2);
+			cursor: pointer;
+			position: absolute; top: 45%;
+			z-index: 500;
+			i{
+				width: 100%;
+				font-size: 4em; color: @claro;
+				text-align: center;
+			}
 			&.cycle-prev{ left: 2%; }
 			&.cycle-next{ right: 2%; }
 		}
 	}
+
+	body.cms{
+
+		footer nav{
+			height: 100%;
+			position: relative !important; bottom: 0 !important;
+			background: none;
+
+			> *{
+				border-left: 1px solid @highlight !important;
+				color: @highlight !important;
+			}
+
+			a{
+				display: inline-block !important;
+				margin: 0 1% !important;
+				padding: 0 10px !important;
+				color: @highlight !important;
+			}
+
+			i{
+				top: 2px !important;
+				color: @highlight !important;
+			}
+		}
+
+	}
+
+
 }
 
  /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
