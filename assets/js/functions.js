@@ -489,7 +489,7 @@ function busquedaTS(dataTS, base_url){
 	});
 	$('.main-search-header button').on('click', function(e){
 		e.preventDefault();
-		var searchTerm = $('.search-input').val();
+		var searchTerm = $('.main-search-header .search-input').val();
 
 		if(searchTerm != ''){
 			searchTerm = replaceDisallowedChars(searchTerm);
@@ -501,8 +501,9 @@ function busquedaTS(dataTS, base_url){
 
 	$('.main-search-home button').on('click', function(e){
 		e.preventDefault();
-		var searchTerm = $('.search-input').val();
+		var searchTerm = $('.main-search-home .search-input').val();
 
+		console.log(searchTerm);
 		if( typeof searchTerm  != 'undefined' ){
 			searchTerm = replaceDisallowedChars(searchTerm);
 			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
@@ -1050,7 +1051,7 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 			var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
 				horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
 		}
-	})
+	});
 
 }// getHorarioAreaAtencion
 

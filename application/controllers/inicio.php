@@ -83,7 +83,7 @@ class Inicio extends CI_Controller {
 	function consulta_gaceta() {
 		// Variable de conexión a web services
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
-		
+
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
 		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
