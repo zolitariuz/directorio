@@ -102,10 +102,12 @@ class Inicio extends CI_Controller {
 	/**
 	 * Descripción: Link para mostrar la gaceta
 	 */
-	function busqueda($palabra_clave) {
+	function busqueda() {
 		$this->load->helper('url');
 		// Variable de conexión a web services
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
+		$palabra_clave = $_POST['search_term'];
 
 		// Carga nombre y id de todos los trámites y servicios
 		// para la función de autocompletar
