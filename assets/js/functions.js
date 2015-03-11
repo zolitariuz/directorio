@@ -480,37 +480,29 @@ function busquedaTS(dataTS, base_url){
 	$('.main-search-movil button').on('click', function(e){
 		e.preventDefault();
 		var searchTerm = $('.main-search-movil .search-input').val();
-		if( typeof searchTerm  != 'undefined' ){
-			searchTerm = replaceDisallowedChars(searchTerm);
-			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
-			return;
-		}
-		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
-	});
-	$('.main-search-header button').on('click', function(e){
-		e.preventDefault();
-		var searchTerm = $('.main-search-header .search-input').val();
 
-		if(searchTerm != ''){
-			searchTerm = replaceDisallowedChars(searchTerm);
-			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
+		if(searchTerm == ''){
+			e.preventDefault();
+			$('p.error').text('Por favor ingresa una palabra antes de buscar.');
 			return;
 		}
-		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
+		if( typeof searchTerm  != 'undefined' ){
+			$('.main-search-movil').submit();
+		}
 	});
 
 	$('.main-search-home button').on('click', function(e){
-		e.preventDefault();
 		var searchTerm = $('.main-search-home .search-input').val();
 
-		console.log(searchTerm);
-		if( typeof searchTerm  != 'undefined' ){
-			searchTerm = replaceDisallowedChars(searchTerm);
-			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
+		if(searchTerm == ''){
+			e.preventDefault();
+			$('p.error').text('Por favor ingresa una palabra antes de buscar.');
 			return;
 		}
-		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
-
+		if( typeof searchTerm  != 'undefined' ){
+			$('.main-search-home').submit();
+		}
+		
 	});
 } // busquedaTS
 

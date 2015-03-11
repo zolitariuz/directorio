@@ -13,7 +13,7 @@
 					if($resultados != ''){
 						foreach ($resultados as $key => $resultado) { ?>
 							<li>
-								<a href="/directorio/tramites_servicios/muestraInfo/<?php echo $resultado->id_tramite_servicio; ?>" class="[ margin-bottom-small ]">
+								<a href="<?php echo base_url() ?>/index.php/tramites_servicios/muestraInfo/<?php echo $resultado->id_tramite_servicio; ?>" class="[ margin-bottom-small ]">
 									<?php echo $resultado->nombre_tramite; ?>
 								</a>
 							</li>
