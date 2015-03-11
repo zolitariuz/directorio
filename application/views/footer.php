@@ -9,7 +9,7 @@
 							</a>
 						</div><div class="[ inline-block vertical-middle ]">
 							<a href="http://www.om.df.gob.mx/" target="_blank">
-								<img class="[ img-60 ] [ block center ]" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
+								<img class="[ img-70 ] [ block center ]" src="<?php echo base_url() ?>assets/img/om-gray.png" alt="">
 							</a>
 						</div><div class="[ inline-block vertical-middle ]">
 							<a href="http://www.cgma.df.gob.mx/index.jsp" target="_blank">
