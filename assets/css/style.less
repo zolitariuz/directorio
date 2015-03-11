@@ -519,7 +519,11 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @highlight; backgro
 .logo{ width: 15%;
 	img{ display: block; width: 90%; }
 }
-.header-top{ width: 60%; margin-left: 1%; margin-right: 4%; }
+.header-top{
+	width: 74%;
+	margin-left: 0%;
+	margin-right: 1%;
+}
 
 nav{ display: none; width: 100%; border-top: 1px solid @gris-obscuro; background: @highlight; position: absolute;
 	a{ display: block; padding: (@margen/2); text-align: center; border-bottom: 1px solid @claro; .font(1em, 1, 600); color: @claro; background: @gris-obscuro; text-decoration: none; .transition;
@@ -771,6 +775,9 @@ body.cms{
 		textarea{ height: 80px; }
 		label.error{ width: 100%; color: @warning; .font(0.9em, 0.9em) !important; position: relative; }
 	}
+	.main-search-home {
+		input[type="text"]{ height: 50px; }
+	}
 
 	//Log in
 	.modal-wrapper{ background: @gris-claro;}
@@ -949,7 +956,12 @@ body.cms{
 
 	//HEADER
 	.logo{ width: 13%; }
-	.header-top{ width: 50%; margin-left: 1%; margin-right: 16%; position: relative; }
+	.header-top{
+		width: 64%;
+		margin-left: 1%;
+		margin-right: 12%;
+		position: relative;
+	}
 
 	//FOOTER
 	footer{
@@ -1070,7 +1082,7 @@ body.cms{
 		img{ display: block; }
 	}
 	h1{
-		width: 38%;
+		width: 44%;
 		padding: 0;
 		text-align: left;
 		position: relative;

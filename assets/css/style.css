@@ -1172,9 +1172,9 @@ header .main-search {
   width: 90%;
 }
 .header-top {
-  width: 60%;
-  margin-left: 1%;
-  margin-right: 4%;
+  width: 74%;
+  margin-left: 0%;
+  margin-right: 1%;
 }
 nav {
   display: none;
@@ -1659,6 +1659,9 @@ body.cms form label.error {
   font-weight: 400 !important;
   position: relative;
 }
+body.cms .main-search-home input[type="text"] {
+  height: 50px;
+}
 body.cms .modal-wrapper {
   background: #dcdcdc;
 }
@@ -2011,9 +2014,9 @@ body.cms footer nav i {
     width: 13%;
   }
   .header-top {
-    width: 50%;
+    width: 64%;
     margin-left: 1%;
-    margin-right: 16%;
+    margin-right: 12%;
     position: relative;
   }
   footer section {
@@ -2258,7 +2261,7 @@ body.cms footer nav i {
     display: block;
   }
   h1 {
-    width: 38%;
+    width: 44%;
     padding: 0;
     text-align: left;
     position: relative;

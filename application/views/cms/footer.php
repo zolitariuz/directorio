@@ -27,8 +27,8 @@
 					</div>
 				</div>
 			</nav>
-			<?php if($_SESSION['is_admin'] == 't') { ?>
-				<nav class="[ no-large ]">
+			<nav class="[ no-large ]">
+				<?php if($_SESSION['is_admin'] == 't') { ?>
 					<a href="<?php echo base_url().'index.php/gestor_contenidos/agregar_contenido/'?>">
 						<i class="icon-ts-agregar-contenido"></i>
 						<!-- <i class="icon-ts-agregar-contenido"></i> -->
