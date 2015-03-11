@@ -1,7 +1,7 @@
 <!doctype html>
 	<head>
 		<meta charset="utf-8">
-		<title>Trámites</title>
+		<title>Trámites CDMX</title>
 
 		<link rel="shortcut icon" href="<?php echo base_url() ?>assets/img/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="<?php echo base_url() ?>assets/img/favicon.ico" type="image/x-icon">
@@ -86,11 +86,11 @@
 				</div><!-- width -->
 				<nav class="large">
 					<div class="width">
-						<a class="text-center <?php if ( $seccion == 'Oficinas atencion' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">
+						<a class="[ text-center ] <?php if ( $seccion == 'Oficinas atencion' ) { echo '[ active ]'; } ?>" href="<?php echo base_url().'index.php/instituciones/oficinas_atencion_ciudadana' ?>">
 							Directorio de áreas de atención ciudadana
-						</a><a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
+						</a><a class="[ text-center ] <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo '[ active ]'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
 							Trámites y servicios en línea
-						</a><a class="text-center <?php if ( $seccion == 'Consulta Gaceta' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/inicio/consulta_gaceta' ?>/">
+						</a><a class="[ text-center ] <?php if ( $seccion == 'Consulta Gaceta' ) { echo '[ active ]'; } ?>" href="<?php echo base_url().'index.php/inicio/consulta_gaceta' ?>/">
 							Consulta Gaceta
 						</a>
 					</div><!-- width -->
@@ -125,9 +125,6 @@
 					</a>
 					<a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
 						Trámites y servicios en línea
-					</a>
-					<a class="text-center <?php if ( $seccion == 'Consulta Gaceta' ) { echo 'active'; } ?>" href="<?php echo base_url().'inicio/consulta_gaceta' ?>/">
-						Consulta Gaceta
 					</a>
 				</nav>
 				<form class="[ main-search main-search-movil ][ clearfix ][ input-group ]" action="#">
