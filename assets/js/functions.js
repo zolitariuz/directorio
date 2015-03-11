@@ -479,9 +479,8 @@ function busquedaTS(dataTS, base_url){
 	});
 	$('.main-search-movil button').on('click', function(e){
 		e.preventDefault();
-		var searchTerm = $('.search-input').val();
-
-		if(searchTerm != ''){
+		var searchTerm = $('.main-search-movil .search-input').val();
+		if( typeof searchTerm  != 'undefined' ){
 			searchTerm = replaceDisallowedChars(searchTerm);
 			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
 			return;
@@ -504,13 +503,13 @@ function busquedaTS(dataTS, base_url){
 		e.preventDefault();
 		var searchTerm = $('.search-input').val();
 
-		if(searchTerm != ''){
+		if( typeof searchTerm  != 'undefined' ){
 			searchTerm = replaceDisallowedChars(searchTerm);
 			window.open(base_url + 'inicio/busqueda/' + searchTerm , '_self');
 			return;
 		}
 		$('p.error').text('Por favor ingresa una palabra antes de buscar.');
-		
+
 	});
 } // busquedaTS
 
@@ -954,7 +953,7 @@ function imprimirInfoTramite(){
 }
 
 function muestraAreaAtencionPorDelegacion(){
-	
+
 	$('select[name="delegacion"]').change(function(){
 		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
 		var delegacion = $(this).find('option:selected').val();

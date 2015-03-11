@@ -168,6 +168,7 @@
 							<input type="text" class="[ span xmall-10 large-11 ][ search-input ]" placeholder="Busca tu trámite o servicio">
 							<input type="hidden" name="tags_id" id="ts_home_id" value="x" />
 							<button type="submit" class="[ span xmall-2 large-1 ]"><i class="icon-ts-buscar"></i></button>
+							<p class="error"></p>
 						</form>
 					</section><!-- busqueda -->
 				</div>

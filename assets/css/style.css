@@ -1320,6 +1320,7 @@ footer a {
 }
 .main-search input {
   border: 3px solid #ec2383;
+  border-right-width: 5px;
   font:  1.2em / 1 "proxima-nova";
   font-weight: 400;
   color: #ec2383;
@@ -1327,6 +1328,7 @@ footer a {
 .main-search button {
   font-size: 1.3em;
   color: #ec2383;
+  background: #ffffff;
 }
 .main-search .ui-autocomplete {
   width: 99.6% !important;
@@ -1350,6 +1352,14 @@ footer a {
 .main-search .ui-autocomplete .ui-state-focus {
   background: #ec2383;
   color: #ffffff;
+}
+.main-search .error {
+  text-align: center;
+  color: #ec2383;
+}
+.main-search-movil {
+  background: #ffffff !important;
+  z-index: 300;
 }
 .main-search-movil .ui-autocomplete {
   top: 60px !important;
