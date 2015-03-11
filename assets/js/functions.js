@@ -970,8 +970,9 @@ function muestraAreaAtencionPorDelegacion(){
 					$('.j_area_atencion').after('<div class="[ map-wrapper ] [ margin-bottom ]"><div id="map"></div></div>');
 					creaMapaAreaAtencion(response);
 				},
-				username: 'admin_ts',
-				password: 'Adm1n_TS_123'
+				beforeSend: function(xhr) { 
+					xhr.setRequestHeader("Authorization", "Basic " + btoa("admin_ts:Adm1n_TS_123"));
+				}
 			});
 		}
 	});
@@ -1025,9 +1026,9 @@ function creaMapaAreaAtencion(area_atencion_data){
 function getHorarioAreaAtencion(id_area_atencion, index){
 	var url = localStorage.getItem('url_ws') + '/horario_area_atencion/id/' + id_area_atencion + '/format/json';
 
-	$.get(
-		url,
-		function(response){
+	$.ajax({
+		url: url,
+		success: function(response){
 			var dias_anteriores = 0;s
 
 			$.each(response, function(i, val){
@@ -1041,11 +1042,38 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 					horario.append(val.hora_inicio+' - '+val.hora_fin+'<br /><br />');
 				}
 			});
-		})
-		.fail(function(){
-			var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
-			horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
-		});
+		},
+		beforeSend: function(xhr) { 
+			xhr.setRequestHeader("Authorization", "Basic " + btoa("admin_ts:Adm1n_TS_123"));
+		}
+	})
+	.fail(function(){
+		var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
+		horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
+	});
+
+	// $.get(
+	// 	url,
+	// 	function(response){
+	// 		var dias_anteriores = 0;s
+
+	// 		$.each(response, function(i, val){
+	// 			var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
+
+	// 			if(dias_anteriores != val.dias){
+	// 				dias_anteriores = val.dias;
+	// 				var dias = getDiasAreaAtencion(val.dias);
+	// 				horario.append('<strong>'+dias+'</strong><br />'+val.hora_inicio+' - '+val.hora_fin+'<br />');
+	// 			} else {
+	// 				horario.append(val.hora_inicio+' - '+val.hora_fin+'<br /><br />');
+	// 			}
+	// 		});
+	// 	}
+	// )
+	// .fail(function(){
+	// 	var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
+	// 	horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
+	// });
 }// getHorarioAreaAtencion
 
 function getDiasAreaAtencion(dias_abreviados){
