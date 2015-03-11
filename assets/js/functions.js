@@ -1029,7 +1029,7 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 	$.ajax({
 		url: url,
 		success: function(response){
-			var dias_anteriores = 0;s
+			var dias_anteriores = 0;
 
 			$.each(response, function(i, val){
 				var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
@@ -1045,35 +1045,13 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 		},
 		beforeSend: function(xhr) { 
 			xhr.setRequestHeader("Authorization", "Basic " + btoa("admin_ts:Adm1n_TS_123"));
+		},
+		fail: function(){
+			var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
+				horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
 		}
 	})
-	.fail(function(){
-		var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
-		horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
-	});
 
-	// $.get(
-	// 	url,
-	// 	function(response){
-	// 		var dias_anteriores = 0;s
-
-	// 		$.each(response, function(i, val){
-	// 			var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
-
-	// 			if(dias_anteriores != val.dias){
-	// 				dias_anteriores = val.dias;
-	// 				var dias = getDiasAreaAtencion(val.dias);
-	// 				horario.append('<strong>'+dias+'</strong><br />'+val.hora_inicio+' - '+val.hora_fin+'<br />');
-	// 			} else {
-	// 				horario.append(val.hora_inicio+' - '+val.hora_fin+'<br /><br />');
-	// 			}
-	// 		});
-	// 	}
-	// )
-	// .fail(function(){
-	// 	var horario = $('div').find('[data-area="'+id_area_atencion+index+'"]');
-	// 	horario.append('<strong>No hay horarios de atención disponible.</strong><br />');
-	// });
 }// getHorarioAreaAtencion
 
 function getDiasAreaAtencion(dias_abreviados){
