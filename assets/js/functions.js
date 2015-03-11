@@ -503,7 +503,6 @@ function busquedaTS(dataTS, base_url){
 	$('.main-search-home button').on('click', function(e){
 		e.preventDefault();
 		var searchTerm = $('.search-input').val();
-		console.log(searchTerm);
 
 		if(searchTerm != ''){
 			searchTerm = replaceDisallowedChars(searchTerm);
@@ -965,14 +964,16 @@ function muestraAreaAtencionPorDelegacion(){
 		$('.j_area_atencion .fila').not('.header').remove();
 		$('.map-wrapper').remove();
 		if(delegacion !== 'Seleccionar'){
-			$.get(
-				url,
-				function(response){
+			$.ajax({
+				url: url,
+				success: function(response){
 					$('.j_area_atencion').removeClass('hide');
 					$('.j_area_atencion').after('<div class="[ map-wrapper ] [ margin-bottom ]"><div id="map"></div></div>');
 					creaMapaAreaAtencion(response);
-				}
-			);
+				},
+				username: 'admin_ts',
+				password: 'Adm1n_TS_123'
+			});
 		}
 	});
 }// muestraAreaAtencionPorDelegacion
