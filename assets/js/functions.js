@@ -1101,8 +1101,8 @@ function getDia(dia){
 	}
 }// getDia
 
-function agregarFeedback(){
-	$('.feedback [type="submit"]').on('click', function(e){
+function agregarFeedback(mediaQuery){
+	$('.feedback'+mediaQuery+' [type="submit"]').on('click', function(e){
 		e.preventDefault();
 		var comentario = $('textarea[name="comentarios"]').val();
 		if($.trim(comentario) == ''){
@@ -1110,13 +1110,13 @@ function agregarFeedback(){
 			return;
 		}
 
-		var data = $('.feedback').serialize();
+		var data = $('.feedback'+mediaQuery).serialize();
 		var url = localStorage.getItem('base_url') + "tramites_servicios/agregar_feedback";
 		$.post(
 			url ,
 			data,
 			function(response){
-				$('.feedback').remove();
+				$('.feedback'+mediaQuery).remove();
 				$('.danos-tu-opinion').append('<h3>Gracias por tus comentarios. Tu opinión es muy importante para nosotros.</h3>')
 			}
 		);
