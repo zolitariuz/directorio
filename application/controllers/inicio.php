@@ -149,6 +149,7 @@ class Inicio extends CI_Controller {
 			$data['resultados'] = '';
 		else
 			$data['resultados'] = json_decode($busqueda);
+		echo $url_ws.'/buscar/term/'.$data['palabra_clave'].'/format/json';
 
 		if(count($data['resultados']) == 1) redirect('/tramites_servicios/muestraInfo/'.$data['resultados'][0]->id_tramite_servicio);
 
@@ -207,8 +208,8 @@ class Inicio extends CI_Controller {
 	  	$str = str_replace('"','',$str);
 	  	$str = str_replace('/','~',$str);
 	  	$str = str_replace(' ','---',$str);
-	  	$str = str_replace('(', '<', $str);
-	  	$str = str_replace(')', '>', $str);
+	  	$str = str_replace('(', '000', $str);
+	  	$str = str_replace(')', '_', $str);
 	  	return str_replace($a,$b,$str);
 	}// formateaMateria
 
