@@ -207,8 +207,8 @@ class Inicio extends CI_Controller {
 	  	$str = str_replace('"','',$str);
 	  	$str = str_replace('/','~',$str);
 	  	$str = str_replace(' ','---',$str);
-	  	$str = str_replace('(', '<', $str);
-	  	$str = str_replace(')', '>', $str);
+	  	$str = str_replace('(', '000', $str);
+	  	$str = str_replace(')', '_', $str);
 	  	return str_replace($a,$b,$str);
 	}// formateaMateria
 
