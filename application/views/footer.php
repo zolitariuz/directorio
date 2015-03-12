@@ -224,8 +224,8 @@
 			});
 
 
-			agregarFeedback('.medium');
-			agregarFeedback('.no-medium');
+			agregarFeedback('medium');
+			agregarFeedback('no-medium');
 			muestraAreaAtencionPorDelegacion();
 			imprimirInfoTramite();
 			scrollHeader('aside .busqueda');
