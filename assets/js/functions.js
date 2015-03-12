@@ -142,23 +142,6 @@
 				}
 			}
 		});
-		$('.feedback').validate({
-			rules: {
-				comentarios: {
-					maxlength: 1000
-				}
-			}
-		});
-		$('.js-validate-aviso').validate({
-			rules: {
-				aviso: {
-					maxlength: 140
-				},
-				vigencia: {
-					date: true
-				}
-			}
-		});
 
 		$.datepicker.regional['es'] = {
 			closeText: 'Cerrar',
@@ -1113,7 +1096,7 @@ function agregarFeedback(mediaQuery){
 		var data = $('.feedback-'+mediaQuery).serialize();
 		var url = localStorage.getItem('base_url') + "tramites_servicios/agregar_feedback";
 		$.post(
-			url ,
+			url,
 			data,
 			function(response){
 				$('.feedback-'+mediaQuery).remove();
@@ -1147,7 +1130,6 @@ function previousPage(paso){
 
 	if ( $('.page[data-paso="'+paso+'"]').hasClass('page-inicial') ){
 		$('.paginacion-anterior').addClass('hide');
-	} else {
 		$('.paginacion-siguiente').removeClass('hide');
 	}
 }
@@ -1157,12 +1139,17 @@ function charactersLeftCounter(input, output, left){
 	limit = left - $(input).val().length;
 	$(output).text(limit);
 
-	$(input).keyup(function () {
+	$(input).on('keydown', function () {
 		limit = left - $(this).val().length;
 		$(output).text(limit);
 	});
 
-	$('body').on('keyup', input, function(){
+	$(input).on('keyup', function () {
+		limit = left - $(this).val().length;
+		$(output).text(limit);
+	});
+
+	$(input).on('change', function () {
 		limit = left - $(this).val().length;
 		$(output).text(limit);
 	});

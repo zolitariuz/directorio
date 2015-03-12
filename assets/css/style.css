@@ -2305,7 +2305,7 @@ body.cms footer nav i {
   }
   .header__icon--wrapper {
     display: inline-block;
-    position: absolute;
+    position: absolute !important;
     right: 28px;
     top: 48px;
   }
