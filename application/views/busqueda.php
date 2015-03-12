@@ -21,6 +21,8 @@
 					}
 				?>
 			</ul>
+			<p>pagination aquí</p>
+			<?php echo $this->pagination->create_links(); ?>
 		</section>
 		<div class="clear"></div>
 	</div><!-- width -->

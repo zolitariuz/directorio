@@ -104,6 +104,7 @@ class Inicio extends CI_Controller {
 	 */
 	function busqueda() {
 		$this->load->helper('url');
+		$this->load->library('pagination');
 		// Variable de conexión a web services
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
 
@@ -118,7 +119,7 @@ class Inicio extends CI_Controller {
 			$data['nombres_ts'] = $nombres_ts;
 
 		//$data['palabra_clave'] = strtolower(urldecode($palabra_clave));
-		$data['palabra_clave'] = strtolower($this->reemplazarAcentosEsp($palabra_clave));
+		$data['palabra_clave'] = strtolower($this->reemplazarCarEspeciales($palabra_clave));
 
 		// Obtener nombres de trámites y servicios via WS
 		$busqueda =  file_get_contents($url_ws.'/buscar/term/'.$data['palabra_clave'].'/format/json');
@@ -126,6 +127,21 @@ class Inicio extends CI_Controller {
 			$data['resultados'] = '';
 		else
 			$data['resultados'] = json_decode($busqueda);
+
+
+		// The pagination controller code
+		$quantity = 15;
+		$start = $this->uri->segment(3);
+
+		$data['displayArray'] = array_slice($data['resultados'],$start,$quantity);
+		$config['base_url'] = base_url().'/index.php/inicio/busqueda';
+		$config['total_rows'] = count($data['resultados']);
+		$config['per_page'] = $quantity;
+		$this->pagination->initialize($config);
+
+		echo '<pre>';
+		var_dump($data['displayArray']);
+		echo '</pre>';
 
 		if(count($data['resultados']) == 1) redirect('/tramites_servicios/muestraInfo/'.$data['resultados'][0]->id_tramite_servicio);
 
@@ -175,11 +191,17 @@ class Inicio extends CI_Controller {
 	 * @param string $str
 	 * @return string 
 	 */
-	private function reemplazarAcentosEsp($str) {
+	private function reemplazarCarEspeciales($str) {
 		$str = trim($str);
 
 		$a = array('Á','É','Í','Ó','Ú','á','é','í','ó','ú');
 	  	$b = array('_A_','_E_','_I_','_O_','_U_','_a_','_e_','_i_','_o_','_u_');
+	  	$str = str_replace(',','',$str);
+	  	$str = str_replace('"','',$str);
+	  	$str = str_replace('/','~',$str);
+	  	$str = str_replace(' ','---',$str);
+	  	$str = str_replace('(', '<', $str);
+	  	$str = str_replace(')', '>', $str);
 	  	return str_replace($a,$b,$str);
 	}// formateaMateria
 

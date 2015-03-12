@@ -507,8 +507,7 @@ function busquedaTS(dataTS, base_url){
 } // busquedaTS
 
 function replaceDisallowedChars(term){
-	var new_term = term.replace(new RegExp('  ', 'g'), '||');
-	return new_term.replace(new RegExp(',', 'g'), '---');
+	return term.replace(new RegExp(',', 'g'), '---');
 }
 
 function agregarTS(dataTS, base_url, ts_omitir){
@@ -534,17 +533,22 @@ function agregarTS(dataTS, base_url, ts_omitir){
 			$('#ts_cms_id').val(mapNombreTS[ui.item.value]);
 			var idTS = $('#ts_cms_id').attr('value');
 			var ts = ui.item.value;
+			console.log(idTS);
 
 			agregarTSSolicitado(idTS, ts, base_url);
-			idTS = $('#ts_cms_id').val('x');
+			//idTS = $('#ts_cms_id').val('x');
 		},
 		appendTo: '.main-search-cms'
 	});
 
-	$('.main-search button').on('click', function(e){
+	$('.main-search-cms button').on('click', function(e){
 		e.preventDefault();
-		var idTS = $('#ts_cms_id').val();
+
 		var ts = $('input[type="text"]').val();
+		$('#ts_cms_id').val(mapNombreTS[ts]);
+		var idTS = $('#ts_cms_id').attr('value');
+
+		console.log(idTS);
 
 		if(idTS == 'x') {
 			$('.error').text('No existe el trámite o servicio "'+ts+'."');

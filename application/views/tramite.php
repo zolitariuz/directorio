@@ -133,11 +133,14 @@
 					<div class="clear"></div>
 					<hr>
 					<div class="clear"></div>
-				<?php } ?>
+				<?php } 
+					$nivel = $ts->nvl_automatizacion;
+					$link = $ts->url_nvl_automatizacion;
+				?>
 				<?php if( $delegacion_area_atencion != '' OR ( ! is_null($nivel) OR $link != '' ) OR $ts->tel_presentacion != '0' ) { ?>
 					<article class="" data-seccion="area-atencion">
+						<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
 						<?php if( $delegacion_area_atencion != '') { ?>
-							<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
 							<div class="[ acordeon ]">
 								<div class="[ acordeon-item ]">
 									<a href="#" class="[ block margin-bottom ] [ boton boton-acordeon horizontal ] [ text-left ] [ ]">
@@ -179,8 +182,6 @@
 									</ul>
 								</div>
 						<?php }
-								$nivel = $ts->nvl_automatizacion;
-								$link = $ts->url_nvl_automatizacion;
 								if( is_null($nivel) || $link == '' ){
 								} else{
 									echo '<div class="[ acordeon-item ]">';
@@ -355,8 +356,8 @@
 							</select>
 						</fieldset>
 						<fieldset>
-							<label>¿Tienes algún comentario para mejorar nuestro servicio?</label>
-							<textarea name="comentarios" rows="8" maxLength="1000"></textarea>
+							<label>¿Tienes algún comentario para mejorar nuestro servicio? <small>(Máximo 1200 caracteres)</small></label>
+							<textarea name="comentarios" rows="8" maxLength="1200"></textarea>
 						</fieldset>
 						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
 						<button type="submit" class="[ boton chico horizontal ] [ right ]">Enviar</button>
