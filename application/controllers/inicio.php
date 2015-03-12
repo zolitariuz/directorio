@@ -128,17 +128,6 @@ class Inicio extends CI_Controller {
 		else
 			$data['resultados'] = json_decode($busqueda);
 
-
-		// The pagination controller code
-		$quantity = 15;
-		$start = $this->uri->segment(3);
-
-		$data['displayArray'] = array_slice($data['resultados'],$start,$quantity);
-		$config['base_url'] = base_url().'/index.php/inicio/busqueda';
-		$config['total_rows'] = count($data['resultados']);
-		$config['per_page'] = $quantity;
-		$this->pagination->initialize($config);
-
 		if(count($data['resultados']) == 1) redirect('/tramites_servicios/muestraInfo/'.$data['resultados'][0]->id_tramite_servicio);
 
 		$data['num_resultados'] = count($data['resultados']);

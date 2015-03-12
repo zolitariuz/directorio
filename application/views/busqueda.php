@@ -11,18 +11,27 @@
 			<ul class="[ arabigos ]">
 				<?php
 					if($resultados != ''){
-						foreach ($resultados as $key => $resultado) { ?>
+						$resultados_por_pagina = 5;
+						$pagina_actual = 1;
+						foreach ($resultados as $key => $resultado) { 
+							if($key == 0) echo '<article class="[ page ][ page-'.$pagina_actual.' ]">';
+							if($key%$resultados_por_pagina == 0 && $key > 0) {
+								$pagina_actual += 1;
+								echo '</article>';
+								echo '<article class="[ page ][ page-'.$pagina_actual.' ][ hide ]">';
+							}
+				?>
+
 							<li>
 								<a href="<?php echo base_url() ?>/index.php/tramites_servicios/muestraInfo/<?php echo $resultado->id_tramite_servicio; ?>" class="[ margin-bottom-small ]">
 									<?php echo $resultado->nombre_tramite; ?>
 								</a>
 							</li>
 						<?php }
+						echo '</article>';
 					}
 				?>
 			</ul>
-			<p>pagination aquí</p>
-			<?php echo $this->pagination->create_links(); ?>
 		</section>
 		<div class="clear"></div>
 	</div><!-- width -->
