@@ -1644,7 +1644,7 @@ body.cms form input[type="text"],
 body.cms form input[type="number"],
 body.cms form input[type="password"],
 body.cms form input[type="email"] {
-  height: 30px;
+  height: 50px;
 }
 body.cms form input[type="file"] {
   padding: 0;
