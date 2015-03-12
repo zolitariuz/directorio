@@ -18,6 +18,8 @@ class Tramites_servicios extends CI_Controller {
 	 */
 	function muestraInfo($id_tramite, $feedback = 0){
 
+
+
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
 		$data['ws'] = $url_ws;
 

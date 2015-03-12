@@ -516,11 +516,11 @@ header{ margin-bottom: (@margen*2); border-bottom: 1px solid @highlight; backgro
 	cursor: pointer;
 }
 
-.logo{ width: 15%;
+.logo{ width: 13%;
 	img{ display: block; width: 90%; }
 }
 .header-top{
-	width: 74%;
+	width: 66%;
 	margin-left: 0%;
 	margin-right: 1%;
 }
@@ -570,7 +570,7 @@ footer{
 		input, button{ height: (@margen*2.5); padding: 12px 10px 10px 8px;
 			i{ font-size: 1.5em; }
 		}
-		input{ .font(1.4em, 1); }
+		input{ .font(1.2em, 1); }
 		button{
 			padding: 7px 10px 12px 10px; border-left: none;
 		}
@@ -703,7 +703,9 @@ aside{
 .content{
 	h2{ margin-bottom: (@margen/2); }
 	.paso{
-		p{ margin-left: 55px; }
+		p{
+			margin-left: 55px;
+		}
 		ul{ margin-left: 80px; }
 		ul > li:before{
 			content: "–"; /* en dash here */
@@ -711,7 +713,7 @@ aside{
 			margin-left: -1.1em;
 		}
 	}
-	ul, p{ .font(1.2em, 1.6em); color: @gris-obscuro; }
+	ul, p{ .font(1.2em, 1.6em); color: @gris-obscuro; word-wrap: break-word }
 	ul p, ul ul li{ margin-bottom: @margen; color: @gris-obscuro; }
 	ul p{ .font(1em, 1.2em); }
 	ul ul li{ .font(0.7em, 1em); }
@@ -955,11 +957,11 @@ body.cms{
 	}
 
 	//HEADER
-	.logo{ width: 13%; }
+	.logo{ width: 12%; }
 	.header-top{
-		width: 64%;
+		width: 61%;
 		margin-left: 1%;
-		margin-right: 12%;
+		margin-right: 6%;
 		position: relative;
 	}
 

@@ -4,7 +4,7 @@
 	<div class="width clearfix">
 		<div class="main-content clearfix">
 			<div class="clear"></div>
-			<section class="[ content ] [ columna medium-8 large-9 ]">
+			<section class="[ content ] [ columna xmall-12 medium-8 large-9 ]">
 				<article class="[ header-single ] [ clearfix ] [ margin-bottom-big ]">
 					<div class="[ breadcrumbs ] [ margin-bottom-small ]">
 						<span><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i>Inicio</a></span>
@@ -89,8 +89,8 @@
 									$numReqAcr = $numReqAcr + 1;
 								} // end foreach
 								echo '</ul></div>';
-								
-							} 
+
+							}
 							// Cargar requisitos específicos si existen
 							if($requisitos_esp != ''){
 								$requisitoEsp = '';
