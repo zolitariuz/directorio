@@ -177,110 +177,112 @@
 				<i class="fa fa-times"></i>
 			</div>
 		</div>
-	</body>
+		<script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
+		<script src="<?php echo base_url() ?>assets/js/plugins.js"></script>
+		<script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
+		<script src="<?php echo base_url() ?>assets/js/functions.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+		<script>
 
-	<script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/plugins.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/functions.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
-	<script>
-
-		localStorage.setItem('url_ws', '<?php echo $ws ?>');
-		localStorage.setItem('base_url', '<?php echo base_url() ?>');
+			localStorage.setItem('url_ws', '<?php echo $ws ?>');
+			localStorage.setItem('base_url', '<?php echo base_url() ?>');
 
 
-		<?php if($nombres_ts != '') { ?>
-			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
-		<?php } ?>
-
-		<?php if($seccion == 'Inicio') { ?>
-			votoPregunta('<?php echo base_url() ?>');
-			scrollHeader('.main-search');
-
-			//*** ON SCROLL ***//
-			$(window).scroll(function() {
-				scrollHeader('.main-search');
-			});
-		<?php }
-
-		if($seccion == 'Tramite') { ?>
-			window.fbAsyncInit = function() {
-				FB.init({
-					appId      : '551510448309522',
-					xfbml      : true,
-					version    : 'v2.1'
-				});
-			};
-			$('.js-share-fb').click(function(e){
-				e.preventDefault();
-				FB.ui({
-					method: 'feed',
-					name: 'Portal Trámites y Servicios CDMX',
-					link: 'http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/<?php echo $id_tramite ?>',
-					caption: '<?php echo $ts->nombre_tramite; ?>',
-					message: ''
-					}, function(response){});
-			});
-
-
-			agregarFeedback('medium');
-			agregarFeedback('no-medium');
-			muestraAreaAtencionPorDelegacion();
-			imprimirInfoTramite();
-			scrollHeader('aside .busqueda');
-
-			// Mostrar mensaje en caso de haber mandado feedback
-			<?php  if($feedback == '1') { ?>
-				alert('¡Gracias por tu participación! Tu opinión es muy importante para nosotros.');
+			<?php if($nombres_ts != '') { ?>
+				busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
 			<?php } ?>
-			//*** ON SCROLL ***//
-			$(window).scroll(function() {
+
+			<?php if($seccion == 'Inicio') { ?>
+				votoPregunta('<?php echo base_url() ?>');
+				scrollHeader('.main-search');
+
+				//*** ON SCROLL ***//
+				$(window).scroll(function() {
+					scrollHeader('.main-search');
+				});
+			<?php }
+
+			if($seccion == 'Tramite') { ?>
+				window.fbAsyncInit = function() {
+					FB.init({
+						appId      : '551510448309522',
+						xfbml      : true,
+						version    : 'v2.1'
+					});
+				};
+				$('.js-share-fb').click(function(e){
+					e.preventDefault();
+					FB.ui({
+						method: 'feed',
+						name: 'Portal Trámites y Servicios CDMX',
+						link: 'http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/<?php echo $id_tramite ?>',
+						caption: '<?php echo $ts->nombre_tramite; ?>',
+						message: ''
+						}, function(response){});
+				});
+
+
+				agregarFeedback('medium');
+				agregarFeedback('no-medium');
+				muestraAreaAtencionPorDelegacion();
+				imprimirInfoTramite();
 				scrollHeader('aside .busqueda');
-			});
-		<?php }
 
-		if($seccion == 'Temas') { ?>
-			scrollHeader('header');
+				charactersLeftCounter('.comentarios-medium textarea[name="comentarios"]', '.comentarios-medium label small span', 1200);
+				charactersLeftCounter('.comentarios-no-medium textarea[name="comentarios"]', '.comentarios-no-medium label small span', 1200);
 
-			//*** ON SCROLL ***//
-			$(window).scroll(function() {
+				// Mostrar mensaje en caso de haber mandado feedback
+				<?php  if($feedback == '1') { ?>
+					alert('¡Gracias por tu participación! Tu opinión es muy importante para nosotros.');
+				<?php } ?>
+				//*** ON SCROLL ***//
+				$(window).scroll(function() {
+					scrollHeader('aside .busqueda');
+				});
+			<?php }
+
+			if($seccion == 'Temas') { ?>
 				scrollHeader('header');
-			});
-		<?php }
 
-		if($seccion == 'Instituciones') { ?>
-			scrollHeader('header');
+				//*** ON SCROLL ***//
+				$(window).scroll(function() {
+					scrollHeader('header');
+				});
+			<?php }
 
-			//*** ON SCROLL ***//
-			$(window).scroll(function() {
+			if($seccion == 'Instituciones') { ?>
 				scrollHeader('header');
-			});
-		<?php } ?>
 
-		<?php if($seccion == 'Oficina por delegación') { ?>
-			creaMapaAreaAtencion(<?php echo $area_atencion ?>);
-		<?php } ?>
+				//*** ON SCROLL ***//
+				$(window).scroll(function() {
+					scrollHeader('header');
+				});
+			<?php } ?>
 
-		<?php if($seccion == 'Consulta Gaceta' || $seccion == 'Búsqueda' || $seccion == 'Trámites y servicios en linea' )  { ?>
-			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
-		<?php } ?>
+			<?php if($seccion == 'Oficina por delegación') { ?>
+				creaMapaAreaAtencion(<?php echo $area_atencion ?>);
+			<?php } ?>
 
-		<?php if($seccion == 'Búsqueda') { ?>
+			<?php if($seccion == 'Consulta Gaceta' || $seccion == 'Búsqueda' || $seccion == 'Trámites y servicios en linea' )  { ?>
+				busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
+			<?php } ?>
 
-			$('.paginacion-siguiente').on('click', function(e){
-				e.preventDefault();
-				var paso = $('.page-active').data('paso');
-				nextPage(paso);
-			});
+			<?php if($seccion == 'Búsqueda') { ?>
 
-			$('.paginacion-anterior').on('click', function(e){
-				e.preventDefault();
-				var paso = $('.page-active').data('paso');
-				previousPage(paso);
-			});
+				$('.paginacion-siguiente').on('click', function(e){
+					e.preventDefault();
+					var paso = $('.page-active').data('paso');
+					nextPage(paso);
+				});
 
-		<?php } ?>
+				$('.paginacion-anterior').on('click', function(e){
+					e.preventDefault();
+					var paso = $('.page-active').data('paso');
+					previousPage(paso);
+				});
 
-	</script>
+			<?php } ?>
+
+		</script>
+	</body>
 </html>

@@ -181,65 +181,64 @@
 										</li>
 									</ul>
 								</div>
-						<?php }
-								if( is_null($nivel) || $link == '' ){
-								} else{
-									echo '<div class="[ acordeon-item ]">';
+						<?php } if( is_null($nivel) || $link == '' ){
+
+							} else{
+								echo '<div class="[ acordeon-item ]">';
+									echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
+										echo '<i class="icon-ts-tramite-en-linea"></i> En línea <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
+									echo '</a>';
+									echo '<ul class="[ none ] [ hide ]">';
+										echo '<li class="[ clearfix ]">';
+
+									if($nivel == '2'){
+										echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'" target="_blank">siguiente enlace.</a></p>';
+									} else {
+										echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
+										echo '<ul class=" ">';
+
+										$nivel_arr = explode('_', $nivel);
+
+										foreach ($nivel_arr as $key => $value) {
+											switch($value){
+												case '1':
+													echo '<li>Solicitud en línea</li>';
+													break;
+												case '2':
+													echo '<li>Generación de línea de captura</li>';
+													break;
+												case '3':
+													echo '<li>Pago totalmente en línea</li>';
+													break;
+												case '4':
+													echo '<li>Entrega en línea</li>';
+													break;
+											}// switch
+										}// foreach
+										echo '</ul><div class="clear margin-bottom"></div>';
+										echo '<br/><a class="[ boton chico ] [ margin-bottom left ]" href="'.$link.'" target="_blank">realizar en línea</a>';
+									}
+										echo '</li>';
+									echo '</ul>';
+								echo '</div>';
+							}
+							if($ts->tel_presentacion != '0'){
+								$tel = $ts->tel_presentacion;
+								if($ts->ext_presentacion != '0')
+									$tel = $tel.' ext. '.$ts->ext_presentacion;
+								echo '<div class="[ acordeon-item ]">';
 										echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
-											echo '<i class="icon-ts-tramite-en-linea"></i> En línea <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
+											echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
 										echo '</a>';
-										echo '<ul class="[ none ] [ hide ]">';
-											echo '<li class="[ clearfix ]">';
-
-										if($nivel == '2'){
-											echo '<p>El trámite/servicio se puede realizar completamente en línea a través del <a href="'.$link.'" target="_blank">siguiente enlace.</a></p>';
-										} else {
-											echo '<p>Sólo una parte del trámite/servicio puede realizarse en línea:</p>';
-											echo '<ul class=" ]">';
-
-											$nivel_arr = explode('_', $nivel);
-
-											foreach ($nivel_arr as $key => $value) {
-												switch($value){
-													case '1':
-														echo '<li>Solicitud en línea</li>';
-														break;
-													case '2':
-														echo '<li>Generación de línea de captura</li>';
-														break;
-													case '3':
-														echo '<li>Pago totalmente en línea</li>';
-														break;
-													case '4':
-														echo '<li>Entrega en línea</li>';
-														break;
-												}// switch
-											}// foreach
-											echo '</ul><div class="clear margin-bottom"></div>';
-											echo '<br/><a class="[ boton chico ] [ margin-bottom left ]" href="'.$link.'" target="_blank">realizar en línea</a>';
-										}
-											echo '</li>';
-										echo '</ul>';
-									echo '</div>';
-								}
-								if($ts->tel_presentacion != '0'){
-									$tel = $ts->tel_presentacion;
-									if($ts->ext_presentacion != '0')
-										$tel = $tel.' ext. '.$ts->ext_presentacion;
-									echo '<div class="[ acordeon-item ]">';
-											echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
-												echo '<i class="icon-ts-tramite-telefonico"></i> Vía telefónica  <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
-											echo '</a>';
-										echo '<ul class="[ none ] [ hide ]">';
-											echo '<li>';
-												echo '<p>'.$tel.'</p>';
-											echo '</li>';
-										echo '</ul>';
-									echo '</div>';
-								}
-							?>
-						</div><!-- acordeon -->
-					</article>
+									echo '<ul class="[ none ] [ hide ]">';
+										echo '<li>';
+											echo '<p>'.$tel.'</p>';
+										echo '</li>';
+									echo '</ul>';
+								echo '</div>';
+							}
+						?>
+					</article><!-- acordeon -->
 					<hr>
 				<?php } ?>
 				<?php if(trim($ts->observaciones) != '') { ?>
@@ -355,8 +354,8 @@
 									<option value="5">5</option>
 								</select>
 							</fieldset>
-							<fieldset>
-								<label>¿Tienes algún comentario para mejorar nuestro servicio? <small>(Máximo 1200 caracteres)</small></label>
+							<fieldset class="[ comentarios-medium ]">
+								<label>¿Tienes algún comentario para mejorar nuestro servicio? <small>(Máximo <span>1200</span> caracteres)</small></label>
 								<textarea name="comentarios" rows="8" maxLength="1200"></textarea>
 							</fieldset>
 							<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
@@ -558,8 +557,8 @@
 									<option value="5">5</option>
 								</select>
 							</fieldset>
-							<fieldset>
-								<label>¿Tienes algún comentario para mejorar nuestro servicio? <small>(Máximo 1200 caracteres)</small></label>
+							<fieldset class="[ comentarios-no-medium ]">
+								<label>¿Tienes algún comentario para mejorar nuestro servicio? <small>(Máximo <span>1200</span> caracteres)</small></label>
 								<textarea name="comentarios" rows="8" maxLength="1200"></textarea>
 							</fieldset>
 							<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">

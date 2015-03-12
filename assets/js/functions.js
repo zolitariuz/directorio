@@ -1104,7 +1104,7 @@ function getDia(dia){
 function agregarFeedback(mediaQuery){
 	$('.feedback-'+mediaQuery+' [type="submit"]').on('click', function(e){
 		e.preventDefault();
-		var comentario = $('textarea[name="comentarios"]').val();
+		var comentario = $('.feedback-'+mediaQuery+' textarea[name="comentarios"]').val();
 		if($.trim(comentario) == ''){
 			alert('El campo de comentarios no puede quedar vacío.');
 			return;
@@ -1150,7 +1150,22 @@ function previousPage(paso){
 	} else {
 		$('.paginacion-siguiente').removeClass('hide');
 	}
+}
 
+function charactersLeftCounter(input, output, left){
+
+	limit = left - $(input).val().length;
+	$(output).text(limit);
+
+	$(input).keyup(function () {
+		limit = left - $(this).val().length;
+		$(output).text(limit);
+	});
+
+	$('body').on('keyup', input, function(){
+		limit = left - $(this).val().length;
+		$(output).text(limit);
+	});
 }
 
 

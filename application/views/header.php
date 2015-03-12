@@ -29,8 +29,13 @@
 		<meta property="cookbook:author"    content="http://samples.ogp.me/390580850990722" />
 	</head>
 	<body>
-		<!--[if lt IE 9]>
-			<p class="chromeframe">Estás usando una versión <strong>vieja</strong> de tu explorador. Por favor <a href="http://browsehappy.com/" target="_blank"> actualiza tu explorador</a> para tener una experiencia completa.</p>
+		<!--[if IE ]>
+			<div class="chromeframe" style=" margin-top: 10px; ">
+				<center>
+					<img class="[ text-center ]" src="<?php echo base_url() ?>assets/img/internet-explorer-tile_48x48.png" alt="">
+				</center>
+				<p class="[ text-center ]">Este sitio no está optimizado para <strong>Internet Explorer</strong> por favor usa <a href="http://browsehappy.com/" target="_blank"> otro navegador</a>.</p>
+			</div>
 		<![endif]-->
 		<div id="fb-root"></div>
 		<script>
@@ -46,11 +51,11 @@
 			<header class="clearfix">
 				<div class="width clearfix">
 					<div class="logo no-large">
-						<a href="<?php echo base_url() ?>">
+						<a target="_blank" href="http://df.gob.mx/">
 							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo-gray.png" alt="">
 						</a>
 					</div><div class="header-top">
-						<a href="<?php echo base_url() ?>" class="logo-bloque large">
+						<a target="_blank" href="http://df.gob.mx/" class="logo-bloque large">
 							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo-gray.png" alt="">
 						</a><h1 class="">
 							<a class="[ block ]" href="<?php echo base_url() ?>">
@@ -80,11 +85,16 @@
 								<?php } ?>
 							</span>
 						</div><!-- ads -->
-					</div><div class="menu no-large">
-						<i class="[ fa fa-bars ] [ full ] [ text-center ]"></i>
 					</div><?php if ( $seccion !== 'Inicio' ) { ?><div class="search no-large">
 						<i class="[ fa fa-search ] [ full ] [ text-center ]"></i>
-					</div><?php } ?>
+					</div><div class="menu no-large">
+						<i class="[ fa fa-bars ] [ full ] [ text-center ]"></i>
+					</div><?php } else { ?><div class="search no-large">
+						&nbsp;
+					</div><div class="menu no-large">
+						<i class="[ fa fa-bars ] [ full ] [ text-center ]"></i>
+					</div>
+				<?php } ?>
 				</div><!-- width -->
 				<nav class="large">
 					<div class="width">
@@ -129,6 +139,9 @@
 					</a>
 					<a class="text-center <?php if ( $seccion == 'Trámites y servicios en linea' ) { echo 'active'; } ?>" href="<?php echo base_url().'index.php/tramites_servicios/ts_en_linea' ?>">
 						Trámites y servicios en línea
+					</a>
+					<a class="[ text-center ] <?php if ( $seccion == 'Preguntas frecuentes' ) { echo '[ active ]'; } ?>" href="<?php echo base_url().'index.php/inicio/preguntas_frecuentes' ?>/">
+						Preguntas frecuentes
 					</a>
 				</nav>
 				<form class="[ main-search main-search-movil ][ clearfix ][ input-group ]" action="<?php echo base_url().'index.php/inicio/busqueda' ?>" method="POST">
