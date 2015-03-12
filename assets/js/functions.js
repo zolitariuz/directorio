@@ -548,6 +548,9 @@ function agregarTS(dataTS, base_url, ts_omitir){
 		$('#ts_cms_id').val(mapNombreTS[ts]);
 		var idTS = $('#ts_cms_id').attr('value');
 
+		console.log(idTS);
+		console.log(ts);
+
 		if(idTS == 'x') {
 			$('.error').text('No existe el trámite o servicio "'+ts+'."');
 			$('.error').removeClass('hide');
