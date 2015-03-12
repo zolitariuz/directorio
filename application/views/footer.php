@@ -261,7 +261,7 @@
 			creaMapaAreaAtencion(<?php echo $area_atencion ?>);
 		<?php } ?>
 
-		<?php if($seccion == 'Consulta Gaceta' || $seccion == 'Búsqueda' )  { ?>
+		<?php if($seccion == 'Consulta Gaceta' || $seccion == 'Búsqueda' || $seccion == 'Trámites y servicios en linea' )  { ?>
 			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
 		<?php } ?>
 

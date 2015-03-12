@@ -185,7 +185,7 @@ class Inicio extends CI_Controller {
 	 * Descripción: Borra acentos de materias para
 	 * armar el nombre del icono
 	 * @param string $str
-	 * @return string 
+	 * @return string
 	 */
 	private function reemplazarCarEspeciales($str) {
 		$str = trim($str);
@@ -201,6 +201,6 @@ class Inicio extends CI_Controller {
 	  	return str_replace($a,$b,$str);
 	}// formateaMateria
 
-	
+
 
 }// class Inicio
