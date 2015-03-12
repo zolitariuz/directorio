@@ -1124,5 +1124,33 @@ function agregarFeedback(mediaQuery){
 	})
 }// agregarFeedback
 
+function nextPage(paso){
+	$('.page[data-paso="'+paso+'"]').removeClass('page-active').addClass('hide');
+	paso = parseInt(paso) + 1;
+	$('.page[data-paso="'+paso+'"]').addClass('page-active').removeClass('hide');
+
+	if ( $('.paginacion-anterior').hasClass('hide') ){
+		$('.paginacion-anterior').removeClass('hide')
+	}
+
+	if ( $('.page[data-paso="'+paso+'"]').hasClass('page-final') ){
+		$('.paginacion-siguiente').addClass('hide');
+	} else {
+		$('.paginacion-anterior').removeClass('hide');
+	}
+}
+
+function previousPage(paso){
+	$('.page[data-paso="'+paso+'"]').removeClass('page-active').addClass('hide');
+	paso = parseInt(paso) - 1;
+	$('.page[data-paso="'+paso+'"]').addClass('page-active').removeClass('hide');
+
+	if ( $('.page[data-paso="'+paso+'"]').hasClass('page-inicial') ){
+		$('.paginacion-anterior').addClass('hide');
+	} else {
+		$('.paginacion-siguiente').removeClass('hide');
+	}
+
+}
 
 

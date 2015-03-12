@@ -266,5 +266,21 @@
 			busquedaTS('<?php echo $nombres_ts ?>', '<?php echo base_url() ?>');
 		<?php } ?>
 
+		<?php if($seccion == 'Búsqueda') { ?>
+
+			$('.paginacion-siguiente').on('click', function(e){
+				e.preventDefault();
+				var paso = $('.page-active').data('paso');
+				nextPage(paso);
+			});
+
+			$('.paginacion-anterior').on('click', function(e){
+				e.preventDefault();
+				var paso = $('.page-active').data('paso');
+				previousPage(paso);
+			});
+
+		<?php } ?>
+
 	</script>
 </html>
