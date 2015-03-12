@@ -137,7 +137,7 @@
 					$nivel = $ts->nvl_automatizacion;
 					$link = $ts->url_nvl_automatizacion;
 				?>
-				<?php if( $delegacion_area_atencion != '' OR ( ! is_null($nivel) OR $link != '' ) OR $ts->tel_presentacion != '0' ) { ?>
+				<?php if( $delegacion_area_atencion != '' || ( (! is_null($nivel) && $nivel != '1'  )|| $link != '' ) || $ts->tel_presentacion != '0' ) { ?>
 					<article class="" data-seccion="area-atencion">
 						<h2 class="[ highlight ]">¿Dónde lo realizo?</h2>
 						<?php if( $delegacion_area_atencion != '') { ?>
@@ -181,8 +181,7 @@
 										</li>
 									</ul>
 								</div>
-						<?php } if( is_null($nivel) || $link == '' ){
-
+						<?php } if( is_null($nivel) && $link == '' ){
 							} else{
 								echo '<div class="[ acordeon-item ]">';
 									echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';

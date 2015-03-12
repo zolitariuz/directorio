@@ -149,7 +149,6 @@ class Inicio extends CI_Controller {
 			$data['resultados'] = '';
 		else
 			$data['resultados'] = json_decode($busqueda);
-		echo $url_ws.'/buscar/term/'.$data['palabra_clave'].'/format/json';
 
 		if(count($data['resultados']) == 1) redirect('/tramites_servicios/muestraInfo/'.$data['resultados'][0]->id_tramite_servicio);
 

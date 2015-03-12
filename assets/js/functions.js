@@ -548,11 +548,11 @@ function agregarTS(dataTS, base_url, ts_omitir){
 		$('#ts_cms_id').val(mapNombreTS[ts]);
 		var idTS = $('#ts_cms_id').attr('value');
 
-		console.log(idTS);
-
 		if(idTS == 'x') {
 			$('.error').text('No existe el trámite o servicio "'+ts+'."');
 			$('.error').removeClass('hide');
+			return 0;
+		} else if (idTS == '') {
 			return 0;
 		}
 		agregarTSSolicitado(idTS, ts, base_url);
