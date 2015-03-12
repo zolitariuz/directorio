@@ -94,6 +94,8 @@
 							Trámites y servicios en línea
 						</a><a class="[ text-center ] <?php if ( $seccion == 'Consulta Gaceta' ) { echo '[ active ]'; } ?>" href="<?php echo base_url().'index.php/inicio/consulta_gaceta' ?>/">
 							Consulta Gaceta
+						</a><a class="[ text-center ] <?php if ( $seccion == 'Preguntas frecuentes' ) { echo '[ active ]'; } ?>" href="<?php echo base_url().'index.php/inicio/preguntas_frecuentes' ?>/">
+							Preguntas frecuentes
 						</a>
 					</div><!-- width -->
 				</nav>

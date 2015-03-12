@@ -100,7 +100,29 @@ class Inicio extends CI_Controller {
 	}// consulta_gaceta
 
 	/**
-	 * Descripción: Link para mostrar la gaceta
+	 * Descripción: Link para mostrar las preguntas frecuentes
+	 */
+	function preguntas_frecuentes() {
+		// Variable de conexión a web services
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
+		// Carga nombre y id de todos los trámites y servicios
+		// para la función de autocompletar
+		$nombres_ts =  file_get_contents($url_ws.'/nombres_ts/format/json');
+		if(is_null($nombres_ts))
+			$data['nombres_ts'] = '';
+		else
+			$data['nombres_ts'] = $nombres_ts;
+
+		$data['seccion'] = 'Preguntas frecuentes';
+
+		$this->load->view('header', $data);
+		$this->load->view('preguntas_frecuentes', $data);
+		$this->load->view('footer', $data);
+	}// preguntas_frecuentes
+
+	/**
+	 * Descripción: Link para la busqueda
 	 */
 	function busqueda() {
 		$this->load->helper('url');

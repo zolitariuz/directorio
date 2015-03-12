@@ -2285,8 +2285,8 @@ body.cms footer nav i {
   }
   nav a {
     display: inline-block;
-    vertical-align: top;
-    width: 31%;
+    vertical-align: middle;
+    width: 23%;
     margin: 0 1%;
     padding: 0;
     border: none;

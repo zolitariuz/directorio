@@ -133,7 +133,7 @@
 					<div class="clear"></div>
 					<hr>
 					<div class="clear"></div>
-				<?php } 
+				<?php }
 					$nivel = $ts->nvl_automatizacion;
 					$link = $ts->url_nvl_automatizacion;
 				?>
@@ -324,45 +324,45 @@
 					</div><!-- [ acordeon ] -->
 				</article>
 				<hr>
-				<article class="danos-tu-opinion">
+				<article class="[ danos-tu-opinion ][ medium ]">
 					<h2 class="highlight">Danos tu opinión</h2>
-				<?php if($feedback == '1') { ?>
-					<label>Gracias por participar.</label>
-				<?php } else { ?>
-					<form class="feedback clearfix" action="<?php echo base_url().'tramites_servicios/agregar_feedback' ?>" method="POST">
-						<fieldset>
-							<label>¿Te ha sido útil esta información?</label>
-							<input name="ayuda" type="radio" value="t" checked="checked"> Sí
-							<input name="ayuda" type="radio" value="f"> No
-						</fieldset>
-						<fieldset class="rating-f">
-							<label>¿Qué tan útil ha sido?</label>
-							<select class="example-f" id="example-f" name="rating">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
-						</fieldset>
-						<fieldset class="rating-f">
-							<label>Si haz realizado este trámite anteriormente ¿cómo calificas el servicio?</label>
-							<select class="example-f" id="example-f" name="rating-servicio">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
-						</fieldset>
-						<fieldset>
-							<label>¿Tienes algún comentario para mejorar nuestro servicio? <small>(Máximo 1200 caracteres)</small></label>
-							<textarea name="comentarios" rows="8" maxLength="1200"></textarea>
-						</fieldset>
-						<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
-						<button type="submit" class="[ boton chico horizontal ] [ right ]">Enviar</button>
-					</form>
-				<?php } ?>
+					<?php if($feedback == '1') { ?>
+						<label>Gracias por participar.</label>
+					<?php } else { ?>
+						<form class="[ feedback feedback-medium ] clearfix" action="<?php echo base_url().'tramites_servicios/agregar_feedback' ?>" method="POST">
+							<fieldset>
+								<label>¿Te ha sido útil esta información?</label>
+								<input name="ayuda" type="radio" value="t" checked="checked"> Sí
+								<input name="ayuda" type="radio" value="f"> No
+							</fieldset>
+							<fieldset class="rating-f">
+								<label>¿Qué tan útil ha sido?</label>
+								<select class="example-f" id="example-f" name="rating">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</fieldset>
+							<fieldset class="rating-f">
+								<label>Si haz realizado este trámite anteriormente ¿cómo calificas el servicio?</label>
+								<select class="example-f" id="example-f" name="rating-servicio">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</fieldset>
+							<fieldset>
+								<label>¿Tienes algún comentario para mejorar nuestro servicio? <small>(Máximo 1200 caracteres)</small></label>
+								<textarea name="comentarios" rows="8" maxLength="1200"></textarea>
+							</fieldset>
+							<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
+							<button type="submit" class="[ boton chico horizontal ] [ right ]">Enviar</button>
+						</form>
+					<?php } ?>
 				</article><!-- danos tu opinion -->
 			</section><!-- content -->
 			<aside class="[ columna medium-4 large-3 ] [ right ] [ margin-bottom-big ]">
@@ -372,7 +372,11 @@
 						<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ] [ js-share-fb ]">
 							<i class="fa fa-facebook"></i> Compartir en Facebook
 						</a>
-						<a class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ]" href="https://twitter.com/share?url=<?php echo $actual_link; ?>&text=<?php echo trim($ts->nombre_tramite); ?>&via=TramsyServGDF" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+						<?php
+							$nombre = trim($ts->nombre_tramite);
+							$nombre = urlencode ( $nombre)
+						?>
+						<a class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ]" href="https://twitter.com/share?url=<?php echo $actual_link; ?>&text=<?php echo $nombre ?>&via=TramsyServGDF" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
 							<i class="fa fa-twitter"></i> Compartir en Twitter
 						</a>
 					</div><!-- share -->
@@ -523,6 +527,46 @@
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 					</a>
 				</div>
+				<article class="[ danos-tu-opinion ][ no-medium ]">
+					<h2 class="highlight">Danos tu opinión</h2>
+					<?php if($feedback == '1') { ?>
+						<label>Gracias por participar.</label>
+					<?php } else { ?>
+						<form class="[ feedback feedback-no-medium ] clearfix" action="<?php echo base_url().'tramites_servicios/agregar_feedback' ?>" method="POST">
+							<fieldset>
+								<label>¿Te ha sido útil esta información?</label>
+								<input name="ayuda" type="radio" value="t" checked="checked"> Sí
+								<input name="ayuda" type="radio" value="f"> No
+							</fieldset>
+							<fieldset class="rating-f">
+								<label>¿Qué tan útil ha sido?</label>
+								<select class="example-f" id="example-f" name="rating">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</fieldset>
+							<fieldset class="rating-f">
+								<label>Si haz realizado este trámite anteriormente ¿cómo calificas el servicio?</label>
+								<select class="example-f" id="example-f" name="rating-servicio">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</fieldset>
+							<fieldset>
+								<label>¿Tienes algún comentario para mejorar nuestro servicio? <small>(Máximo 1200 caracteres)</small></label>
+								<textarea name="comentarios" rows="8" maxLength="1200"></textarea>
+							</fieldset>
+							<input type="hidden" name="id_ts" value="<?php echo $ts->id_tramite_servicio ?>">
+							<button type="submit" class="[ boton chico horizontal ] [ right ]">Enviar</button>
+						</form>
+					<?php } ?>
+				</article><!-- danos tu opinion -->
 			</aside>
 		</div><!-- main-content large-->
 	</div><!-- width -->
