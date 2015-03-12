@@ -139,10 +139,6 @@ class Inicio extends CI_Controller {
 		$config['per_page'] = $quantity;
 		$this->pagination->initialize($config);
 
-		echo '<pre>';
-		var_dump($data['displayArray']);
-		echo '</pre>';
-
 		if(count($data['resultados']) == 1) redirect('/tramites_servicios/muestraInfo/'.$data['resultados'][0]->id_tramite_servicio);
 
 		$data['num_resultados'] = count($data['resultados']);

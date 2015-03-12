@@ -28,7 +28,7 @@
 				</article>
 				<hr>
 				<article class="beneficiario">
-					<?php if($is_tramite == '1') { ?>
+					<?php if($ts->is_tramite == '1') { ?>
 						<h2 class="highlight">¿Quién realiza el trámite?</h2>
 					<?php } else { ?>
 						<h2 class="highlight">¿Quién realiza el servicio?</h2>
