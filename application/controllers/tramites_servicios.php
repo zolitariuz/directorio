@@ -149,13 +149,20 @@ class Tramites_servicios extends CI_Controller {
 		// Datos de conexión para WS
 		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
 
-		// Carga nombre y id de todos los trámites y servicios
-		// para la función de autocompletar
 		$ts_en_linea =  file_get_contents($url_ws.'/ts_en_linea/format/json');
 		if(is_null($ts_en_linea))
 			$data['ts_en_linea'] = '';
 		else
 			$data['ts_en_linea'] = json_decode($ts_en_linea);
+
+		// Carga nombre y id de todos los trámites y servicios
+		// para la función de autocompletar
+
+		$nombres_ts = file_get_contents($url_ws.'/nombres_ts/format/json');
+		if(is_null($nombres_ts))
+			$data['nombres_ts'] = '';
+		else
+			$data['nombres_ts'] = $nombres_ts;
 
 		// carga avisos
 		$this->load->model('aviso');

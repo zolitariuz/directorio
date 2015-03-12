@@ -46,9 +46,11 @@
 			<header class="clearfix">
 				<div class="width clearfix">
 					<div class="logo no-large">
-						<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo-gray.png" alt="">
+						<a href="<?php echo base_url() ?>">
+							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo-gray.png" alt="">
+						</a>
 					</div><div class="header-top">
-						<a href="#" class="logo-bloque large">
+						<a href="<?php echo base_url() ?>" class="logo-bloque large">
 							<img class="img-full" src="<?php echo base_url() ?>assets/img/ciudad-de-mexico-logo-gray.png" alt="">
 						</a><h1 class="">
 							<a class="[ block ]" href="<?php echo base_url() ?>">
