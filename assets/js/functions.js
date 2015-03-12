@@ -545,7 +545,7 @@ function agregarTS(dataTS, base_url, ts_omitir){
 		e.preventDefault();
 
 		var ts = $('input[type="text"]').val();
-		$('#ts_cms_id').val(mapNombreTS[ts]);
+		$('#ts_cms_id').val(mapNombreTS[s]);
 		var idTS = $('#ts_cms_id').attr('value');
 
 		console.log(idTS);
