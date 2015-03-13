@@ -503,8 +503,8 @@ function agregarTS(dataTS, base_url, ts_omitir){
 	// omitiendo los que ya existen
 	$.each(nombreTS, function(i, val){
 		if(ts_omitir.indexOf(val.id_tramite_servicio) < 0){
-			srcNombreTS.push(val.nombre_ts);
-			mapNombreTS[val.nombre_ts] = val.id_tramite_servicio;
+			srcNombreTS.push(val.nombre_ts.trim());
+			mapNombreTS[val.nombre_ts.trim()] = val.id_tramite_servicio;
 		}
 	});
 
@@ -547,6 +547,7 @@ function agregarTS(dataTS, base_url, ts_omitir){
 } // agregarTS
 
 function agregarTSSolicitado(id_ts, ts, base_url){
+	console.log('agregando...');
 	var jsonSolicitado = {};
 	jsonSolicitado['id_ts'] = id_ts;
 
@@ -556,6 +557,7 @@ function agregarTSSolicitado(id_ts, ts, base_url){
 		function(response){
 			var respuesta = $.parseJSON(response);
 			$('.success, .error').addClass('hide');
+			console.log(response);
 			if(respuesta.estatus == 'success'){
 				$('.success').text(respuesta.msg);
 				$('.success').removeClass('hide');
