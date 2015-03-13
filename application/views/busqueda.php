@@ -18,9 +18,11 @@
 						Anteriores
 					</a>
 					&nbsp;
-					<a href="" class="[ boton ][ paginacion paginacion-siguiente ]">
-						Siguientes
-					</a>
+					<?php if ( $num_resultados > $resultados_por_pagina ){ ?>
+						<a href="" class="[ boton ][ paginacion paginacion-siguiente ]">
+							Siguientes
+						</a>
+					<?php } ?>
 
 				</div>
 				<ul class="[ none ]">
