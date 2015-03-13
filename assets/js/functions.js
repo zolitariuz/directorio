@@ -950,12 +950,15 @@ function muestraAreaAtencionPorDelegacion(){
 		if(delegacion !== 'Seleccionar'){
 			$.ajax({
 				url: url,
+				username: 'admin_ts',
+				password: 'Adm1n_TS_123',
 				success: function(response){
 					$('.j_area_atencion').removeClass('hide');
 					$('.j_area_atencion').after('<div class="[ map-wrapper ] [ margin-bottom ]"><div id="map"></div></div>');
 					creaMapaAreaAtencion(response);
 				},
 				beforeSend: function(xhr) {
+					xhr.withCredentials = true;
 					xhr.setRequestHeader("Authorization", "Basic " + btoa("admin_ts:Adm1n_TS_123"));
 				}
 			});
@@ -1013,6 +1016,8 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 
 	$.ajax({
 		url: url,
+		username: 'admin_ts',
+		password: 'Adm1n_TS_123',
 		success: function(response){
 			var dias_anteriores = 0;
 
@@ -1037,6 +1042,7 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 
 		},
 		beforeSend: function(xhr) {
+			xhr.withCredentials = true;
 			xhr.setRequestHeader("Authorization", "Basic " + btoa("admin_ts:Adm1n_TS_123"));
 		},
 		fail: function(){
