@@ -2412,7 +2412,7 @@ body.cms footer nav i {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
   }
   .slider .slide .info p {
     margin: 0;

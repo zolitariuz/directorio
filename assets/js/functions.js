@@ -582,6 +582,9 @@ function eliminarTSSolicitado(base_url){
 		e.preventDefault();
 
 		var id_ts = $(this).data('ts');
+		var nombre_ts = $(this).data('nombre');
+		console.log(nombre_ts);
+
 		var jsonEliminado = {};
 		jsonEliminado['id_ts'] = id_ts;
 
@@ -591,9 +594,9 @@ function eliminarTSSolicitado(base_url){
 			function(response){
 				var respuesta = $.parseJSON(response);
 				$('.success, .error').addClass('hide');
-
 				$('.success').text(respuesta.msg);
 				$('.success').removeClass('hide');
+				location.reload();
 			}
 		);
 		$(this).parent().remove();
