@@ -1142,6 +1142,8 @@ function previousPage(paso){
 	if ( $('.page[data-paso="'+paso+'"]').hasClass('page-inicial') ){
 		$('.paginacion-anterior').addClass('hide');
 		$('.paginacion-siguiente').removeClass('hide');
+	} else {
+		$('.paginacion-siguiente').removeClass('hide');
 	}
 }
 
