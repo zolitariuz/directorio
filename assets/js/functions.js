@@ -943,11 +943,23 @@ function muestraAreaAtencionPorDelegacion(){
 		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
 		var delegacion = $(this).find('option:selected').val();
 		var url = localStorage.getItem('url_ws') + '/area_atencion_tramite_delegacion/del/' + delegacion.trim() + '/id/'+id_tramite_servicio+'/format/json';
+		//var url = localStorage.getItem('base_url') + "tramites_servicios/area_atencion_delegacion";
 
 		$('.j_area_atencion').addClass('hide');
 		$('.j_area_atencion .fila').not('.header').remove();
 		$('.map-wrapper').remove();
 		if(delegacion !== 'Seleccionar'){
+			var data = {};
+			// data['delegacion'] = delegacion.trim();
+			// data['id_tramite_servicio'] = id_tramite_servicio;
+
+			// $.post(
+			// 	url,
+			// 	data,
+			// 	function(response){
+			// 		console.log(response);
+			// 	}
+			// );
 			$.ajax({
 				url: url,
 				username: 'admin_ts',
@@ -962,6 +974,7 @@ function muestraAreaAtencionPorDelegacion(){
 					xhr.setRequestHeader("Authorization", "Basic " + btoa("admin_ts:Adm1n_TS_123"));
 				}
 			});
+	
 		}
 	});
 }// muestraAreaAtencionPorDelegacion

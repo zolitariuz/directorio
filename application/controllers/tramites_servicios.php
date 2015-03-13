@@ -312,7 +312,37 @@ class Tramites_servicios extends CI_Controller {
 		// Carga trámite/servicio
 		//$this->muestraInfo($id_tramite_servicio, 1);
 		echo 'success';
-	} // dameAreasAtencion
+	} // agregar_feedback
+
+
+	/**
+	 * Descripción: Agrega feedback sobre un trámite/servicio
+	 * @param
+	 * @return
+	 */
+	public function area_atencion_delegacion(){
+		// Datos de conexión para WS
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
+		$delegacion = $_POST['delegacion'];
+		$id_tramite_servicio = $_POST['id_tramite_servicio'];
+
+		$area_atencion_delegacion =  file_get_contents($url_ws.'/area_atencion_tramite_delegacion/del/'.$delegacion.'/id/'.$id_tramite_servicio.'/format/json');
+
+		echo $url_ws.'/area_atencion_tramite_delegacion/del/'.$delegacion.'/id/'.$id_tramite_servicio.'/format/json';
+
+		
+
+
+		if(is_null($area_atencion_delegacion))
+			$data['area_atencion_delegacion'] = '';
+		else
+			$data['area_atencion_delegacion'] = json_decode($area_atencion_delegacion);
+
+		var_dump($area_atencion_delegacion);
+		echo $data['area_atencion_delegacion'];
+	} // area_atencion_delegacion
+
 
 	/**
 	 * Descripción: Borra acentos de materias para

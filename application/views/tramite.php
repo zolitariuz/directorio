@@ -18,6 +18,7 @@
 						<i class="<?php echo $clase_icono ?>"></i> <b>Unidad responsable:</b> <span class="[ highlight ]"><?php echo $ente ?></span>
 					</div><!-- quick-info -->
 				</article><!-- header-single -->
+
 				<article class="consiste">
 					<h2 class="highlight"><strong><?php echo $ts->nombre_tramite; ?></strong></h2>
 					<?php if(is_null($ts->descripcion)) { ?>
@@ -27,6 +28,13 @@
 					<?php } ?>
 				</article>
 				<hr>
+				<?php if(trim($ts->observaciones) != '') { ?>
+					<article class="[ padding ]" data-seccion="observaciones">
+						<h2 class="highlight">¿Qué debes considerar?</h2>
+						<p class="[ darker-light-grey italic ]"><?php echo nl2br($ts->observaciones) ?></p>
+					</article>
+					<hr>
+				<?php } ?>
 				<article class="beneficiario">
 					<?php if($ts->is_tramite == '1') { ?>
 						<h2 class="highlight">¿Quién realiza el trámite?</h2>
@@ -238,13 +246,6 @@
 							}
 						?>
 					</article><!-- acordeon -->
-					<hr>
-				<?php } ?>
-				<?php if(trim($ts->observaciones) != '') { ?>
-					<article class="[ padding ]" data-seccion="observaciones">
-						<h2 class="highlight">¿Qué debes considerar?</h2>
-						<p class="[ darker-light-grey italic ]"><?php echo nl2br($ts->observaciones) ?></p>
-					</article>
 					<hr>
 				<?php } ?>
 				<article class="" data-seccion="informacion-juridica">
