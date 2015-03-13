@@ -385,7 +385,7 @@
 				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ busqueda ] [ js-overlay-opener ] [ large ]">
 					<i class="icon-ts-buscar"></i> Busca tu trámite
 				</a>
-				<?php if( $delegacion_area_atencion != '') { ?>
+				<?php if( $delegacion_area_atencion != '' || ( (! is_null($nivel) && $nivel != '1'  )|| $link != '' ) || $ts->tel_presentacion != '0' )  { ?>
 					<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
 						<i class="icon-ts-marcador-mapa"></i> ¿Dónde se realiza?
 					</a>
