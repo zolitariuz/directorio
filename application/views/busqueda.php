@@ -9,7 +9,10 @@
 		<section class="[ columna full medium-8 ][ center ][ directorio ]">
 			<h2 class="text-center highlight"><?php echo $num_resultados ?> resultados para: <?php echo $palabra_clave ?></h2>
 
-			<?php if($resultados != ''){ ?>
+			<?php
+				if($resultados != ''){
+					$resultados_por_pagina = 10;
+			?>
 				<div class="[ text-center ][ margin-bottom ]">
 					<a href="" class="[ boton ][ paginacion paginacion-anterior ][ hide ]">
 						Anteriores
@@ -18,10 +21,11 @@
 					<a href="" class="[ boton ][ paginacion paginacion-siguiente ]">
 						Siguientes
 					</a>
+
 				</div>
 				<ul class="[ none ]">
 				<?php
-					$resultados_por_pagina = 10;
+
 					$pagina_actual         = 1;
 					$total_pages           = ceil( count($resultados) / $resultados_por_pagina );
 
@@ -33,7 +37,7 @@
 							echo '</article>';
 							echo '<article class="[ page ][ hide ][ '.(( $pagina_actual == $total_pages )?"page-final":"").' ]"  data-paso="'.$pagina_actual.'">';
 						}
-			?>
+				?>
 
 							<li>
 								<?php echo ($key+1).'.- '; ?>
