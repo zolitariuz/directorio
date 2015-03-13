@@ -37,7 +37,7 @@
 
 							<li>
 								<?php echo ($key+1).'.- '; ?>
-								<a href="<?php echo base_url() ?>/index.php/tramites_servicios/muestraInfo/<?php echo $resultado->id_tramite_servicio; ?>" class="[ margin-bottom-small ]">
+								<a href="<?php echo base_url() ?>index.php/tramites_servicios/muestraInfo/<?php echo $resultado->id_tramite_servicio; ?>" class="[ margin-bottom-small ]">
 									<?php echo $resultado->nombre_tramite; ?>
 								</a>
 							</li>
