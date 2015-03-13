@@ -215,7 +215,7 @@
 					FB.ui({
 						method: 'feed',
 						name: 'Portal Trámites y Servicios CDMX',
-						link: 'http://localhost:8888/directorio/index.php/tramites_servicios/muestraInfo/<?php echo $id_tramite ?>',
+						link: localStorage.getItem('base_url')+'/tramites_servicios/muestraInfo/<?php echo $id_tramite ?>',
 						caption: '<?php echo $ts->nombre_tramite; ?>',
 						message: ''
 						}, function(response){});

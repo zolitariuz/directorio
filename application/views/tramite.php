@@ -181,9 +181,9 @@
 										</li>
 									</ul>
 								</div>
-						<?php } if( is_null($nivel) && $link == '' ){
-							} else{
-								echo '<div class="[ acordeon-item ]">';
+						<?php } 
+							if( strcmp($nivel,'1')!=0 && $link != '' ){
+									echo '<div class="[ acordeon-item ]">';
 									echo '<a href="#" class="block [ boton boton-acordeon horizontal ] [ text-left ] margin-bottom">';
 										echo '<i class="icon-ts-tramite-en-linea"></i> En línea <i class="[ fa fa-angle-down drop ] [ right ]"></i>';
 									echo '</a>';
