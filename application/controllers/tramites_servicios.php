@@ -132,8 +132,8 @@ class Tramites_servicios extends CI_Controller {
 
 		//87
 		$data['nombre_ts_twitter'] = $data['ts']->nombre_tramite;
-		if( strlen($data['nombre_ts_twitter']) > 100  ){
-			$data['nombre_ts_twitter'] = substr($data['nombre_ts_twitter'], 0, 97).'...';
+		if( strlen($data['nombre_ts_twitter']) > 98  ){
+			$data['nombre_ts_twitter'] = substr($data['nombre_ts_twitter'], 0, 95).'...';
 		}
 
 
