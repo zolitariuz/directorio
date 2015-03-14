@@ -47,7 +47,7 @@ class Tramites_servicios extends CI_Controller {
 		if(is_null($requisitos_esp))
 			$data['requisitos_esp'] = '';
 		else
-			$data['requisitos_esp'] = json_decode($requisitos_esp);
+			$data['requisitos_esp'] = json_decode($requisitos_esp);		
 
 		// Carga formatos de un trámite o servicio
 		$formatos =  file_get_contents($url_ws.'/formatos/id/'.$id_tramite.'/format/json');
@@ -129,6 +129,17 @@ class Tramites_servicios extends CI_Controller {
 		if($feedback == 1){
 			$data['feedback'] = $feedback;
 		}
+
+		//87
+		$data['nombre_ts_twitter'] = $data['ts']->nombre_tramite;
+		if( strlen($data['nombre_ts_twitter']) > 100  ){
+			$data['nombre_ts_twitter'] = substr($data['nombre_ts_twitter'], 0, 97).'...';
+		}
+
+
+		// URL corta para Twitter
+		$url_tramite = base_url().'tramites_servicios/muestraInfo/'.$id_tramite;
+		$data['tiny_url'] = file_get_contents('http://tinyurl.com/api-create.php?url='.$url_tramite);
 
 		// Carga la vista que muestra información de trámites o servicios
 		// en caso de error, redirecciona al inicio

@@ -373,9 +373,10 @@
 						</a>
 						<?php
 							$nombre = trim($ts->nombre_tramite);
-							$nombre = urlencode ( $nombre)
+							$nombre = urlencode ( $nombre);
 						?>
-						<a class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ]" href="https://twitter.com/share?url=<?php echo $actual_link; ?>&text=<?php echo $nombre ?>&via=TramsyServGDF" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+
+						<a class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ]" href="https://twitter.com/share?url=<?php echo $tiny_url; ?>&text=<?php echo $nombre_ts_twitter ?>&via=TramsyServGDF" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
 							<i class="fa fa-twitter"></i> Compartir en Twitter
 						</a>
 					</div><!-- share -->
