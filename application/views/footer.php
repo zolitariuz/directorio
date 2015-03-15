@@ -214,11 +214,18 @@
 					e.preventDefault();
 					FB.ui({
 						method: 'feed',
+						display: 'popup',
 						name: 'Portal Trámites y Servicios CDMX',
 						link: localStorage.getItem('base_url')+'/tramites_servicios/muestraInfo/<?php echo $id_tramite ?>',
 						caption: '<?php echo $ts->nombre_tramite; ?>',
 						message: ''
-						}, function(response){});
+						}, function(response){
+							if (response && response.post_id) {
+								console.log('OK! User has published on Facebook.');
+							} else {
+								console.log('Post was not published.');
+							}
+						});
 				});
 
 
