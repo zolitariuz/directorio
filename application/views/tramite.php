@@ -18,6 +18,7 @@
 						<i class="<?php echo $clase_icono ?>"></i> <b>Unidad responsable:</b> <span class="[ highlight ]"><?php echo $ente ?></span>
 					</div><!-- quick-info -->
 				</article><!-- header-single -->
+
 				<article class="consiste">
 					<h2 class="highlight"><strong><?php echo $ts->nombre_tramite; ?></strong></h2>
 					<?php if(is_null($ts->descripcion)) { ?>
@@ -27,6 +28,13 @@
 					<?php } ?>
 				</article>
 				<hr>
+				<?php if(trim($ts->observaciones) != '') { ?>
+					<article class="[ padding ]" data-seccion="observaciones">
+						<h2 class="highlight">¿Qué debes considerar?</h2>
+						<p class="[ darker-light-grey italic ]"><?php echo nl2br($ts->observaciones) ?></p>
+					</article>
+					<hr>
+				<?php } ?>
 				<article class="beneficiario">
 					<?php if($ts->is_tramite == '1') { ?>
 						<h2 class="highlight">¿Quién realiza el trámite?</h2>
@@ -240,13 +248,6 @@
 					</article><!-- acordeon -->
 					<hr>
 				<?php } ?>
-				<?php if(trim($ts->observaciones) != '') { ?>
-					<article class="[ padding ]" data-seccion="observaciones">
-						<h2 class="highlight">¿Qué debes considerar?</h2>
-						<p class="[ darker-light-grey italic ]"><?php echo nl2br($ts->observaciones) ?></p>
-					</article>
-					<hr>
-				<?php } ?>
 				<article class="" data-seccion="informacion-juridica">
 					<div class="[ acordeon ]">
 						<div class="[ acordeon-item ]">
@@ -372,9 +373,10 @@
 						</a>
 						<?php
 							$nombre = trim($ts->nombre_tramite);
-							$nombre = urlencode ( $nombre)
+							$nombre = urlencode ( $nombre);
 						?>
-						<a class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ]" href="https://twitter.com/share?url=<?php echo $actual_link; ?>&text=<?php echo $nombre ?>&via=TramsyServGDF" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+
+						<a class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ large ]" href="https://twitter.com/share?url=<?php echo $tiny_url; ?>&text=<?php echo $nombre_ts_twitter ?>&via=TramsyServGDF" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
 							<i class="fa fa-twitter"></i> Compartir en Twitter
 						</a>
 					</div><!-- share -->
@@ -384,7 +386,7 @@
 				<a href="#" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ busqueda ] [ js-overlay-opener ] [ large ]">
 					<i class="icon-ts-buscar"></i> Busca tu trámite
 				</a>
-				<?php if( $delegacion_area_atencion != '') { ?>
+				<?php if( $delegacion_area_atencion != '' || ( (! is_null($nivel) && $nivel != '1'  )|| $link != '' ) || $ts->tel_presentacion != '0' )  { ?>
 					<a href="#" data-seccion="area-atencion" class="[ block margin-bottom ] [ boton horizontal ] [ text-left ] [ scrollTo ] [ large ]">
 						<i class="icon-ts-marcador-mapa"></i> ¿Dónde se realiza?
 					</a>

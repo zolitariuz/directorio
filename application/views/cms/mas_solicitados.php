@@ -23,7 +23,7 @@
 						foreach ($nombres_ts_comunes as $key => $value) {
 							echo '<div class="fila clearfix">';
 							echo '<div class="columna xmall-10">'.$value->nombre_ts.'</div>';
-							echo '<a href="" data-ts="'.$value->id_tramite_servicio.'" class="text-center columna xmall-2">Eliminar</a>';
+							echo '<a href="" data-ts="'.$value->id_tramite_servicio.'" data-nombre="'.$value->nombre_ts.'" class="text-center columna xmall-2">Eliminar</a>';
 							echo '</div>';
 						} // end foreach
 					?>

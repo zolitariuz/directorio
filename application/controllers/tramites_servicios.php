@@ -47,7 +47,7 @@ class Tramites_servicios extends CI_Controller {
 		if(is_null($requisitos_esp))
 			$data['requisitos_esp'] = '';
 		else
-			$data['requisitos_esp'] = json_decode($requisitos_esp);
+			$data['requisitos_esp'] = json_decode($requisitos_esp);		
 
 		// Carga formatos de un trámite o servicio
 		$formatos =  file_get_contents($url_ws.'/formatos/id/'.$id_tramite.'/format/json');
@@ -129,6 +129,17 @@ class Tramites_servicios extends CI_Controller {
 		if($feedback == 1){
 			$data['feedback'] = $feedback;
 		}
+
+		//87
+		$data['nombre_ts_twitter'] = $data['ts']->nombre_tramite;
+		if( strlen($data['nombre_ts_twitter']) > 97  ){
+			$data['nombre_ts_twitter'] = substr($data['nombre_ts_twitter'], 0, 94).'...';
+		}
+
+
+		// URL corta para Twitter
+		$url_tramite = base_url().'tramites_servicios/muestraInfo/'.$id_tramite;
+		$data['tiny_url'] = file_get_contents('http://tinyurl.com/api-create.php?url='.$url_tramite);
 
 		// Carga la vista que muestra información de trámites o servicios
 		// en caso de error, redirecciona al inicio
@@ -312,7 +323,37 @@ class Tramites_servicios extends CI_Controller {
 		// Carga trámite/servicio
 		//$this->muestraInfo($id_tramite_servicio, 1);
 		echo 'success';
-	} // dameAreasAtencion
+	} // agregar_feedback
+
+
+	/**
+	 * Descripción: Agrega feedback sobre un trámite/servicio
+	 * @param
+	 * @return
+	 */
+	public function area_atencion_delegacion(){
+		// Datos de conexión para WS
+		$url_ws = 'http://'.USUARIO_WS.':'.PASSWORD_WS.'@'.URL_WS;
+
+		$delegacion = $_POST['delegacion'];
+		$id_tramite_servicio = $_POST['id_tramite_servicio'];
+
+		$area_atencion_delegacion =  file_get_contents($url_ws.'/area_atencion_tramite_delegacion/del/'.$delegacion.'/id/'.$id_tramite_servicio.'/format/json');
+
+		echo $url_ws.'/area_atencion_tramite_delegacion/del/'.$delegacion.'/id/'.$id_tramite_servicio.'/format/json';
+
+		
+
+
+		if(is_null($area_atencion_delegacion))
+			$data['area_atencion_delegacion'] = '';
+		else
+			$data['area_atencion_delegacion'] = json_decode($area_atencion_delegacion);
+
+		var_dump($area_atencion_delegacion);
+		echo $data['area_atencion_delegacion'];
+	} // area_atencion_delegacion
+
 
 	/**
 	 * Descripción: Borra acentos de materias para

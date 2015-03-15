@@ -582,6 +582,9 @@ function eliminarTSSolicitado(base_url){
 		e.preventDefault();
 
 		var id_ts = $(this).data('ts');
+		var nombre_ts = $(this).data('nombre');
+		console.log(nombre_ts);
+
 		var jsonEliminado = {};
 		jsonEliminado['id_ts'] = id_ts;
 
@@ -591,9 +594,9 @@ function eliminarTSSolicitado(base_url){
 			function(response){
 				var respuesta = $.parseJSON(response);
 				$('.success, .error').addClass('hide');
-
 				$('.success').text(respuesta.msg);
 				$('.success').removeClass('hide');
+				location.reload();
 			}
 		);
 		$(this).parent().remove();
@@ -943,22 +946,38 @@ function muestraAreaAtencionPorDelegacion(){
 		var id_tramite_servicio = $('input[name="id_tramite_servicio"]').val();
 		var delegacion = $(this).find('option:selected').val();
 		var url = localStorage.getItem('url_ws') + '/area_atencion_tramite_delegacion/del/' + delegacion.trim() + '/id/'+id_tramite_servicio+'/format/json';
+		//var url = localStorage.getItem('base_url') + "tramites_servicios/area_atencion_delegacion";
 
 		$('.j_area_atencion').addClass('hide');
 		$('.j_area_atencion .fila').not('.header').remove();
 		$('.map-wrapper').remove();
 		if(delegacion !== 'Seleccionar'){
+			var data = {};
+			// data['delegacion'] = delegacion.trim();
+			// data['id_tramite_servicio'] = id_tramite_servicio;
+
+			// $.post(
+			// 	url,
+			// 	data,
+			// 	function(response){
+			// 		console.log(response);
+			// 	}
+			// );
 			$.ajax({
 				url: url,
+				username: 'admin_ts',
+				password: 'Adm1n_TS_123',
 				success: function(response){
 					$('.j_area_atencion').removeClass('hide');
 					$('.j_area_atencion').after('<div class="[ map-wrapper ] [ margin-bottom ]"><div id="map"></div></div>');
 					creaMapaAreaAtencion(response);
 				},
 				beforeSend: function(xhr) {
+					xhr.withCredentials = true;
 					xhr.setRequestHeader("Authorization", "Basic " + btoa("admin_ts:Adm1n_TS_123"));
 				}
 			});
+	
 		}
 	});
 }// muestraAreaAtencionPorDelegacion
@@ -1013,6 +1032,8 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 
 	$.ajax({
 		url: url,
+		username: 'admin_ts',
+		password: 'Adm1n_TS_123',
 		success: function(response){
 			var dias_anteriores = 0;
 
@@ -1037,6 +1058,7 @@ function getHorarioAreaAtencion(id_area_atencion, index){
 
 		},
 		beforeSend: function(xhr) {
+			xhr.withCredentials = true;
 			xhr.setRequestHeader("Authorization", "Basic " + btoa("admin_ts:Adm1n_TS_123"));
 		},
 		fail: function(){

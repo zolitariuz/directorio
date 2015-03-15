@@ -92,6 +92,10 @@ class Inicio extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos_activos();
+
 		$data['seccion'] = 'Consulta Gaceta';
 
 		$this->load->view('header', $data);
@@ -114,6 +118,10 @@ class Inicio extends CI_Controller {
 		else
 			$data['nombres_ts'] = $nombres_ts;
 
+		// carga avisos
+		$this->load->model('aviso');
+		$data['avisos'] = $this->aviso->dame_avisos_activos();
+		
 		$data['seccion'] = 'Preguntas frecuentes';
 
 		$this->load->view('header', $data);
