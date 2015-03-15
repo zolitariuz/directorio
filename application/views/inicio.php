@@ -28,6 +28,9 @@
 				</ol>
 			</div>
 		</section><!-- ts más solicitados -->
+		<section class="[ no-large ]">
+			<p class="[ highlight ]">En esta primera etapa encontrarás trámites de: Consejería Jurídica y de Servicios Legales, Secretaría de Desarrollo Económico, Secretaría de Desarrollo Urbano y Vivienda, Secretaría del Medio Ambiente SEDECO, SEDUVI y SEDEMA</p>
+		</section>
 		<hr class="[ large ]">
 		<?php if($anuncios != '') { ?>
 			<section class="[ anuncios ] [ clearfix ] [ large ]">
@@ -123,15 +126,24 @@
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 					</a>
 				</div>
-			</div><?php if(!is_null($pregunta['pregunta'])){ ?><div class="[ inline-block vertical-middle ] [ columna xmall-12 medium-6 ]  [ denuncia-home ] [ j-pregunta-container ]">
-					<h2 class="text-center highlight">Nos interesa tu opinión</h2>
-					<p class="[ text-center ] [ title--small ]"><?php echo $pregunta['pregunta'] ?></p>
-					<div class="[ text-center ]">
-						<a href="#" class="[ boton grande ]" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
-						<a href="#" class="[ boton grande ]" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
-					</div>
-				</div>
-			<?php } ?>
+			</div><section class="[ inline-block vertical-middle ][ columna xmall-12 medium-6 ]">
+				<?php if(!is_null($pregunta['pregunta'])){ ?>
+					<article class="[ margin-bottom-big ][ denuncia-home ][ j-pregunta-container ]">
+						<h2 class="text-center highlight">Nos interesa tu opinión</h2>
+						<p class="[ text-center ] [ title--small ]"><?php echo $pregunta['pregunta'] ?></p>
+						<div class="[ text-center ]">
+							<a href="#" class="[ boton grande ][ inline-block ]" data-respuesta="t" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">Sí</a>
+							<a href="#" class="[ boton grande ][ inline-block ]" data-respuesta="f" data-pregunta="<?php echo $pregunta['id_pregunta'] ?>">No</a>
+						</div>
+					</article>
+				<?php } ?>
+				<article class="[ margin-bottom ]">
+					<h2 class="text-center highlight">Catálogo Único de Trámites y Servicios</h2>
+					<a href="http://tramitesyservicios.df.gob.mx/index.jsp" class="block columna xmall-8 center" target="_blank">
+						<img class="full" src="<?php echo base_url() ?>assets/img/catalogo.jpg" alt="">
+					</a>
+				</article>
+			</section>
 		</section>
 	</div><!-- width -->
 </div><!-- main -->

@@ -221,9 +221,9 @@
 						message: ''
 						}, function(response){
 							if (response && response.post_id) {
-								console.log('OK! User has published on Facebook.');
+								//console.log('OK! User has published on Facebook.');
 							} else {
-								console.log('Post was not published.');
+								//console.log('Post was not published.');
 							}
 						});
 				});
