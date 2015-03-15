@@ -138,7 +138,7 @@
 					</article>
 				<?php } ?>
 				<article class="[ margin-bottom ]">
-					<h2 class="text-center highlight">Catálogo Único de Trámites y Servicios</h2>
+					<h2 class="text-center highlight">Consulta más información de tramites y servicios en</h2>
 					<a href="http://tramitesyservicios.df.gob.mx/index.jsp" class="block columna xmall-8 center" target="_blank">
 						<img class="full" src="<?php echo base_url() ?>assets/img/catalogo.jpg" alt="">
 					</a>
