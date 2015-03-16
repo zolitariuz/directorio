@@ -112,10 +112,10 @@
 		<div class="clear large"></div>
 		<hr class="columna xmall-6 center">
 		<div class="clear"></div>
-		<section class="[ pregunta links ] [ clearfix ]">
-			<div class=" [ inline-block vertical-middle ] [ columna medium-6 ] [ sugerencias-home ]">
+		<section class="[ pregunta links ][ clearfix ]">
+			<div class=" [ inline-block vertical-middle ][ columna xmall-12 medium-6 ] [ sugerencias-home ]">
 				<h2 class="[ text-center highlight ]">Compártenos sugerencias</h2>
-				<div class="[ columna xmall-6 ] [ center ] [ margin-bottom-big ]">
+				<div class="[ columna xmall-6 ] [ center ][ margin-bottom-big ]">
 					<a href="http://www1.df.gob.mx/virtual/ssac/atencion_ciudadana/solicitud_info.php" class="block columna xmall-8 center" target="_blank">
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-atencion-ciudadana-cdmx.png" alt="">
 					</a>
@@ -126,9 +126,9 @@
 						<img class="full" src="<?php echo base_url() ?>assets/img/logo-anticorrupcion.png" alt="">
 					</a>
 				</div>
-			</div><section class="[ inline-block vertical-middle ][ columna xmall-12 medium-6 ]">
+			</div><section class="[ inline-block vertical-middle ][ denuncia-home ][ columna xmall-12 medium-6 ]">
 				<?php if(!is_null($pregunta['pregunta'])){ ?>
-					<article class="[ margin-bottom-big ][ denuncia-home ][ j-pregunta-container ]">
+					<article class="[ margin-bottom-big ][ j-pregunta-container ]">
 						<h2 class="text-center highlight">Nos interesa tu opinión</h2>
 						<p class="[ text-center ] [ title--small ]"><?php echo $pregunta['pregunta'] ?></p>
 						<div class="[ text-center ]">
